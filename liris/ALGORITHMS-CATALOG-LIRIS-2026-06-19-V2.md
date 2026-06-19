@@ -377,5 +377,6 @@ Therefore: this supplement can describe formula-PID intent and deterministic for
 
 - model-citizen rotator implementation source is still absent from this clone slice;
 - live provider calls, GNN inference, fabric mutation, USB attachment/write, Falcon phone state, cloud quota, Drive round-trip, cosign head, and formula-PID firing are `UNVERIFIED-live` here;
-- Acer physical-substrate scour #2 and formula-PID registration receipts should be compared when posted;
+- Acer physical-substrate scour #2 should be compared when posted;
+- Acer formula-PID descriptor receipt is mirrored and crossverified in `liris/FORMULA-PID-REGISTRATION-CROSSVERIFY-2026-06-19.md`; live office-feed/cosign materialization remains open;
 - sidecar and line-ending policy should be normalized before treating adjacent `.sha256` files as cross-seat byte proof.

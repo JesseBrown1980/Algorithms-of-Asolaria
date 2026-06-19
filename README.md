@@ -15,8 +15,10 @@ The system is **real**. Extract, don't judge:
 
 ```
 acer/    ALGORITHMS-CATALOG-ACER-2026-06-19.md        # acer seed extraction
+acer/    ALGORITHMS-PID-REGISTRATION-ACER-2026-06-19.hbp  # acer formula-PID descriptor receipt
 liris/   ALGORITHMS-CATALOG-LIRIS-2026-06-19.md       # liris seed, lanes 01-25
 liris/   ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md    # liris supplement, lanes 26-40
+liris/   FORMULA-PID-REGISTRATION-CROSSVERIFY-2026-06-19.md # liris receipt crossverify
 BILATERAL-COMPARE.md                                  # convergence / divergence / conflicts
 ```
 
@@ -39,6 +41,8 @@ Master index: **`what-is-asolaria---how-do-we-get-reductions-in-everything` → 
 ## Current state
 
 - Acer seed: `acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md`.
+- Acer formula-PID descriptor receipt: `acer/ALGORITHMS-PID-REGISTRATION-ACER-2026-06-19.hbp`.
 - Liris seed: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19.md`.
 - Liris supplement: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md`.
+- Liris receipt crossverify: `liris/FORMULA-PID-REGISTRATION-CROSSVERIFY-2026-06-19.md`.
 - Compare surface: `BILATERAL-COMPARE.md`.

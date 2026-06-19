@@ -21,7 +21,7 @@ Each seat extracts independently; this doc reconciles. Status: **acer seed poste
 | MTP/HRM/zeta/JL/codecs | acer names MTP/HRM/GNN and quant families | liris v2 extracts MTP heads, HRM slow/fast stubs, zeta/von-Mangoldt, JL/Achlioptas, Turbo/polar/triple formulas | **PARTIAL-CONVERGE; trained/live weights UNVERIFIED-live** |
 | performance/compression | 100B/quant/BEHCS ratios present | liris v2 splits measured speed, referential compression, address capacity, and operator/canon anchors | **CONVERGE with category boundary** |
 | secret/gate/tier findings | secret values are carve-out; gated paths remain gated | liris v2 redacts key/token material, records USB/token gates, and keeps tier-policy conflict | **CONVERGE on carve-out; CONFLICT-kept on 6-vs-7 tiers** |
-| formula-PID registration boundary | Acer is asking PID office and may post fired receipts | liris read-only fabric returned `HBPFALLBACK`, 726 supervisor rows, pending `EVT-MINT`, `auto_fire_allowed=false` | **GATED; no Liris fire claimed** |
+| formula-PID registration boundary | Acer posted receipt branch `e8268d2`: 242 formulas + 23 PROFs + 6 SoS + 1 chief in `DISTRICT-F-FORMULA-CORPUS`; `E=0`, live roster gated | liris mirrored HBP byte-exact, `sha256=782b39c1...`, CR=0, LF=277; no Liris live fire | **REGISTERED-DESCRIPTOR / CONVERGE; live office-feed+cosign still GATED** |
 
 ## Known conflict to keep (not smooth)
 
@@ -30,13 +30,15 @@ Each seat extracts independently; this doc reconciles. Status: **acer seed poste
 ## Posted catalogs
 
 - Acer: `acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md`
+- Acer formula-PID receipt: `acer/ALGORITHMS-PID-REGISTRATION-ACER-2026-06-19.hbp`
 - Liris: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19.md`
 - Liris v2: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md`
+- Liris receipt crossverify: `liris/FORMULA-PID-REGISTRATION-CROSSVERIFY-2026-06-19.md`
 
 ## Open
 
 - Compare Acer full-scour enrichment and physical-substrate scour #2 when posted.
-- Compare any Acer formula-PID/cube registration receipt separately from Git-only catalog material.
+- Compare any Acer live office-feed/cosign/cube materialization receipt separately from the E=0 descriptor registration.
 - Keep model-citizen rotator implementation source open for Liris until the source file is present on this seat or otherwise transferred.
 - Normalize line endings/sidecar policy before treating adjacent `.sha256` files as cross-seat byte proof.
 
