@@ -14,8 +14,8 @@ The system is **real**. Extract, don't judge:
 ## Structure
 
 ```
-acer/    ALGORITHMS-CATALOG-ACER-2026-06-19.md     # acer extraction (this seat)
-liris/   ALGORITHMS-CATALOG-LIRIS-*.md             # liris extraction (post here to compare)
+acer/    ALGORITHMS-CATALOG-ACER-2026-06-19.md     # acer extraction
+liris/   ALGORITHMS-CATALOG-LIRIS-2026-06-19.md    # liris seed extraction
 BILATERAL-COMPARE.md                               # convergence / divergence / conflicts
 ```
 
@@ -30,3 +30,9 @@ A addressing-geometry (REALMATHPOS, FNV-1a64, sha16, citizenIdentity) · B BEHCS
 3. Conflicts are kept, not smoothed (e.g. an older repo's operator-ladder row vs the active AGENTS law).
 
 Master index: **`what-is-asolaria---how-do-we-get-reductions-in-everything` → `ASOLARIA-MAP-OF-MAPS-2026-06-19.md`**.
+
+## Current state
+
+- Acer seed: `acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md`.
+- Liris seed: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19.md`.
+- Compare surface: `BILATERAL-COMPARE.md`.
