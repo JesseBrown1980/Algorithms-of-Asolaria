@@ -4,7 +4,7 @@ This is the Liris-side seed catalog for bilateral comparison with `acer/ALGORITH
 
 Scope: read-only clone-slice scour over 8 public map repos under `C:\tmp\asolaria-40-scour-2026-06-19`, plus the agent-lane findings produced on this seat. No live runtime, fabric, provider, device, cloud, or USB probe was fired by this catalog. Runtime statements inside source files are therefore `CANON-in-file` or `UNVERIFIED-live`, not fresh runtime truth.
 
-Status: lanes 01-25 harvested for this seed. Remaining lanes can append later without replacing this file.
+Status: lanes 01-25 harvested for this historical seed. Lanes 26-40 are appended in `ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md`; this file is retained for byte-stable comparison.
 
 ## Claim Tags
 
@@ -55,7 +55,7 @@ PID0 = md5(REAL + REFL + FABR)[0:16]
 
 Boundary: no literal `host8` token was found in the eight clone roots; the clone vocabulary is `8byte`, `8-byte`, and `eight-byte`.
 
-Boundary: FNV-1a64 was not found in the eight clone roots. Acer's FNV formula is therefore `DIVERGE-by-slice`, not refuted.
+Seed-era boundary, superseded by v2: FNV-1a64 was not found in the first eight-clone pass, so the seed marked Acer's FNV formula `DIVERGE-by-slice`. `ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md` measures the Rust Host8 FNV source in the clone slice.
 
 ## B. Brown-Hilbert, Prime, Rooms
 
@@ -270,13 +270,14 @@ POP_FROM_POOL -> PID_SIGNAL -> AGENT_ROOM -> RESULT_TO_GULP -> ERASE
 
 ## I. Slice Divergences for Bilateral Compare
 
-- `DIVERGE-by-slice`: FNV-1a64 source formula is in Acer generation material, not in the eight public clone roots searched here.
+- Superseded seed divergence: FNV-1a64 source formula was not found in the first clone pass; v2 measures it in the cloned Rust Host8 source.
 - `DIVERGE-by-slice`: exact `model-citizen`, `rotateGnn`, `rotate-gnn`, and `map-sync` source symbols were not in the eight clone roots. Nearest public clone material is model-selector/provider-router descriptors. The model-citizen prism source remains a separate source/commit lane.
 - `CONFLICT-kept`: active AGENTS law preserves `03 OP-FELIPE`, `04 OP-DAN`, `05 OP-AMY`; some older clone rows carry `03 Amy` and `05 Felipe`. Active law wins for this seat; older rows remain historical evidence.
 - `UNVERIFIED-live`: all live daemon PID, executor state, cosign head, provider call, phone reachability, Drive quota, and USB attachment claims are not remeasured here.
 
 ## J. Next Append Points
 
-- Lanes 26-40 can append a second Liris file or replace this seed with a v2 after all open lanes close.
-- Liris should recompute Acer-only formulas from their source lane where accessible: FNV-1a64 generator, `model-citizen-rotator.mjs`, and the 100B runner/checkpoint sources absent from these clones.
-- Map repos should reference this repository as the algorithm/formula comparison home, with this file as the Liris-side seed.
+- Lanes 26-40 are appended in `ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md`.
+- FNV/Host8 source is no longer Acer-only for this clone slice; the Rust source is measured in v2.
+- `model-citizen-rotator.mjs` remains absent from this clone slice; descriptor rows are present and split in v2.
+- Map repos should reference this repository as the algorithm/formula comparison home, with the seed plus v2 as the Liris-side catalog.

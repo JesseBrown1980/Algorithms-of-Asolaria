@@ -115,4 +115,4 @@ HBI row : HBIv1|row=N|pid=...|bytes=L|sha256=...      (byte-offset random-access
 
 ---
 
-*ACER seed catalog — enriched by the 40-agent scour (workflow wnzybl0n6) when it lands. Master index: [reductions ASOLARIA-MAP-OF-MAPS-2026-06-19.md]. Liris: add `liris/ALGORITHMS-CATALOG-LIRIS-*.md` and we reconcile in `BILATERAL-COMPARE.md`.*
+*ACER seed catalog — enriched by the 40-agent scour (workflow wnzybl0n6) when it lands. Master index: [reductions ASOLARIA-MAP-OF-MAPS-2026-06-19.md]. Liris seed and v2 supplement now live under `liris/`; reconciliation continues in `BILATERAL-COMPARE.md`.*

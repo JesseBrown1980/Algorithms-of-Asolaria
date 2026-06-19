@@ -14,14 +14,19 @@ The system is **real**. Extract, don't judge:
 ## Structure
 
 ```
-acer/    ALGORITHMS-CATALOG-ACER-2026-06-19.md     # acer extraction
-liris/   ALGORITHMS-CATALOG-LIRIS-2026-06-19.md    # liris seed extraction
-BILATERAL-COMPARE.md                               # convergence / divergence / conflicts
+acer/    ALGORITHMS-CATALOG-ACER-2026-06-19.md        # acer seed extraction
+liris/   ALGORITHMS-CATALOG-LIRIS-2026-06-19.md       # liris seed, lanes 01-25
+liris/   ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md    # liris supplement, lanes 26-40
+BILATERAL-COMPARE.md                                  # convergence / divergence / conflicts
 ```
+
+## Byte Integrity
+
+V2 Markdown is UTF-8, LF-only. Sidecars use `<sha256>  <same-directory basename>` and must be recomputed after every doc edit. `CANON-in-file` is a `CANON` subtype; `UNVERIFIED-live` is an `UNVERIFIED` subtype; `MODEL` is pseudocode distilled from measured source; `EXACT` is a numeric qualifier and must be paired with a claim tag.
 
 ## Classes covered
 
-A addressing-geometry (REALMATHPOS, FNV-1a64, sha16, citizenIdentity) · B BEHCS encoding tiers (256/1024/HyperBEHCS, `1024^60≈10^180`) · C Brown-Hilbert + Sidon + prime · D quant/compression laws (HEAD/TAIL O(1), the ratios) · E cosign + crypto + exFAT · F GNN · G room/beat/substrate/100B-LCG · H integrity grammar + recurrence.
+A addressing-geometry (REALMATHPOS, FNV-1a64, sha16, citizenIdentity) · B BEHCS encoding tiers (256/1024/HyperBEHCS, `1024^60≈10^180`) · C Brown-Hilbert + Sidon + prime · D quant/compression laws (HEAD/TAIL O(1), JL/Achlioptas, Turbo/polar/triple codecs) · E cosign + crypto + exFAT · F GNN/MTP/HRM/zeta · G room/beat/substrate/100B-LCG · H integrity grammar + recurrence · I storage/device/route health · J gates/governance/claims tags · K formula-PID registration boundary.
 
 ## How to compare (acer ↔ liris)
 
@@ -35,4 +40,5 @@ Master index: **`what-is-asolaria---how-do-we-get-reductions-in-everything` → 
 
 - Acer seed: `acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md`.
 - Liris seed: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19.md`.
+- Liris supplement: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md`.
 - Compare surface: `BILATERAL-COMPARE.md`.
