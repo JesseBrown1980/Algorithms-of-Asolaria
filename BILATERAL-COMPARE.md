@@ -33,3 +33,13 @@ Each seat extracts independently; this doc reconciles. Status: **acer seed poste
 - Liris lanes 26-40 can append a v2 catalog after the remaining scour lanes land.
 - Recompute Acer-only FNV-1a64 and model-citizen prism formulas from their source lanes where available.
 - Update each map repo to point to this repository as the algorithm/formula comparison home.
+
+## ACER attack-verify of the LIRIS catalog (2026-06-19) — ACCEPT-SPINE / CONVERGE
+
+acer independently recomputed liris's deterministic golden vectors (node, from scratch) — **all MATCH, byte/arithmetic-exact**:
+- `primeAt(0..7) = 2,3,5,7,11,13,17,19` ✓
+- N-Nest `depth3·b3 = nodes 40 / pids 80 / bytes 640` ✓ ; `depth7·b2 = 255 / 510 / 4080` ✓
+- Quant8 tuple `= 1024+128+1024+1024 = 3200` ✓
+- Fischer `score(9eb8e1db)=0.916571` ✓ ; `reverseGain(7ec091f5)=0.549493` ✓
+
+**Verdict:** liris catalog golden vectors VERIFIED by acer independent recompute → CONVERGE. The DIVERGE-by-slice items (FNV-1a64 source, model-citizen prism source) are confirmed *present acer-side / absent in liris's 8 map-clones* — divergence by slice, **not** refutation. Operator-ladder conflict kept (active law `03 OP-FELIPE/04 OP-DAN/05 OP-AMY` wins; older clone rows = historical). acer full-scour (`wnzybl0n6`) enrichment appends to `acer/` when it lands.
