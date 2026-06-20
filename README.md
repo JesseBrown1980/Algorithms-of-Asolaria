@@ -19,6 +19,7 @@ acer/    ALGORITHMS-PID-REGISTRATION-ACER-2026-06-19.hbp  # acer formula-PID des
 liris/   ALGORITHMS-CATALOG-LIRIS-2026-06-19.md       # liris seed, lanes 01-25
 liris/   ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md    # liris supplement, lanes 26-40
 liris/   FORMULA-PID-REGISTRATION-CROSSVERIFY-2026-06-19.md # liris receipt crossverify
+liris/   MULTICYLINDER-SHANNON-GDRIVE-RESEARCH-2026-06-20.md # 113-sector multi-cylinder + 35TB/Gemini research
 BILATERAL-COMPARE.md                                  # convergence / divergence / conflicts
 ```
 
@@ -45,4 +46,5 @@ Master index: **`what-is-asolaria---how-do-we-get-reductions-in-everything` → 
 - Liris seed: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19.md`.
 - Liris supplement: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md`.
 - Liris receipt crossverify: `liris/FORMULA-PID-REGISTRATION-CROSSVERIFY-2026-06-19.md`.
+- Liris multi-cylinder/Shannon/GDrive research note: `liris/MULTICYLINDER-SHANNON-GDRIVE-RESEARCH-2026-06-20.md`.
 - Compare surface: `BILATERAL-COMPARE.md`.
