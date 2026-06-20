@@ -99,7 +99,7 @@ score     = POST :4792/infer {nodes:[intent,citizen], edges:[[0,1]]}  (fallback 
 **G1 · RoomRotor room** `MK-NNNNN-P{prime}`, `beat_range = 0..93312`, `lanes = 7`; **port→room binding** (port N → room idx N, `room.pid` = the 8-byte host8). [MEASURED — manifest.hbp; 10,000 minted × 7 = 70,000 lanes]
 **G2 · whiteroom allocator** `1,000,000 rooms per prime sector`; placement = `mod113 × mod3 × mod1024`. [MEASURED — whiteroom emitter]
 **G3 · 100B LCG substrate** — deterministic LCG packet gen + threshold-classify (genius/mistake marks); any packet regenerable from chunk index → memory ~`10^6:1` referential; `childProcessSpawns=0, externalTokens=0`; 100,000,000,000 packets, ~424M/s. [MEASURED — checkpoint.state.json]
-**G4 · 47D cube** = `95,764,443` units/level; 47D live → 48D atlas → 49D execution-proof overlay. [CANON]
+**G4 · 47D cube** = `95,764,443` units/level; 49D is SIGNED-CANON (COSIGN_49D_001, cosign-chain seq3572 row_hash b66fe4cd4866de8d, quintet-ratified 2026-06-20); live catalog = 49 dimensions; 47D remains the cosigned BASE 49D additively extends (D1-D47 unchanged + D48 HYPERGLYPH-ATLAS prime223 + D49 EXECUTION-PROOF-SUPERGRAPH prime227). [CANON]
 
 ## H. Integrity grammar + recurrence
 
