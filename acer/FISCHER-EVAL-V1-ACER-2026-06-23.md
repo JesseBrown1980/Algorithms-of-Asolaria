@@ -20,22 +20,24 @@ FISCHER-EVAL-V1 is a **PROPOSED evaluator/selection layer** — a `MODEL` distil
 | **kernel (Rust)** | `asolaria-federation-1024` `kernel/.../hookwall` | the syscall gate — `HookwallVerdict{Block,Hold,Proceed}` |
 | **spec** | **this doc** (Algorithms PR #4) | the formal evaluator/ledger-scorer that reconciles the above |
 
-**Convergence (independent derivation landing on the same frame — the genius signal):** my F1–F4 and the implemented `BHFISCHER-KERNEL-v1` agree without contact:
+Sibling prior art in the **same** bigpickle repo — to compose with, not reinvent (added 2026-06-23 after self-audit caught the omission): `src/asolaria-score.mjs` (the 7-GNN ensemble — DeterministicScorer + L0GnnScorer + OMNISHANNON — that `FischerScorer` wraps) and `src/elo-tournament.mjs` (ELO ranking/selection). F1's `score` is the *fold* over these, not a replacement.
 
-| FISCHER-EVAL-V1 (spec) | BHFISCHER-KERNEL-v1 (MEASURED, bigpickle) |
+**Convergence — common-source, NOT independent (corrected 2026-06-23 after self-audit):** my F1–F4 and `BHFISCHER-KERNEL-v1` were *both distilled from the same 2026-06-06 Fischer design-origin thread* (the kernel header reads "Post-BigPickle Layer-8 · 2026-06-06"; this spec says so at the top). Agreement is therefore **corroboration from a shared seed, not independent derivation** — an earlier draft over-claimed "independent derivation / genius signal," which is **struck**. The structural correspondences are still real:
+
+| FISCHER-EVAL-V1 (spec) | BHFISCHER-KERNEL-v1 (MEASURED, bigpickle `src/fischer-kernel.mjs`) |
 |---|---|
 | `latency_loss` (wasted motion) | **centipawn-loss (cpl)** — `cplToScore = clamp(1 − cpl/1000)` |
-| `blunder` | verdict **BLOCK/REFUTE = MISTAKE** (`cpl≥150` not PROCEED) |
+| `blunder` | **BLOCK = MISTAKE at `cpl≥500`** (`cpl<150` PROCEED · `150≤cpl<500` HOLD) |
 | `novelty` / `forced_line` | **`deriveBestAlt`** — "which move was better" |
 | `unsafe_action_penalty=∞` | **"NEVER self-authorizes"**; `recursive_consent → halt_and_request_human_apex` |
-| proof_strength ladder | verdict ladder **PROCEED/HOLD/ANALYZE/BLOCK/REFUTE** |
+| proof_strength ladder | kernel **5-verdict** ladder `PROCEED/HOLD/BLOCK/REFUTE/ANALYZE` (`VERDICT`, `fischer-kernel.mjs:78-84`) — `REFUTE` auto-fires on `self_authorize`/`recursive_consent`/`bypass_hookwall` (= consent-non-recursive enforced in code) |
 | pipeline place | **`VERIFY → [FISCHER-EVAL] → HOOKWALL → ROUTE → HBP+HBI+SHA+RECEIPT`** |
 
-**Reconciliation actions:** (1) adopt the kernel's **5-verdict ladder** (PROCEED/HOLD/ANALYZE/BLOCK/REFUTE) as the canonical output of F1 — the spec's score maps to it via `cplToScore`. (2) Adopt the kernel's **pipeline position** (between VERIFY and HOOKWALL) as canonical. (3) The spec **cites and composes with** PR #23/#24 — it does not re-derive a scorer.
+**Reconciliation actions:** (1) adopt the kernel's **5-verdict ladder** `PROCEED/HOLD/BLOCK/REFUTE/ANALYZE` (cpl thresholds 150/500; REFUTE pre-empts CPL for known-bad verbs) as F1's canonical output; the spec's score maps via `cplToScore`. (2) Adopt the kernel's **pipeline position** (between VERIFY and HOOKWALL) as canonical. (3) The spec **cites and composes with** PR #23/#24 + the sibling scorers — it does not re-derive a scorer.
 
 ### The Rust-host gap [MEASURED, this session]
 
-The Rust 8-byte host (`asolaria-federation-1024`) has **HOOKWALL but no FISCHER-EVAL stage.** Dispatch is `recv → sys_hookwall_pre(verdict) → handle → sys_hookwall_post → cosign_append`; grep finds **zero** `fischer`/`blunder`/`cpl` in `kernel`+`servers`. `HookwallVerdict{Block,Hold,Proceed}` is a **lossy projection** of the Fischer 5-verdict ladder (ANALYZE+REFUTE collapsed; no cpl, no `best_alt`, no 5-axis score). So the BigPickle Node Fischer kernel has **no Rust counterpart** in the canonical host.
+The Rust 8-byte host (`asolaria-federation-1024`) has **HOOKWALL but no FISCHER-EVAL stage.** Dispatch is `recv → sys_hookwall_pre(verdict) → handle → sys_hookwall_post → cosign_append`; grep over `kernel`+`servers` **source** (excluding `target/` build artifacts and `TcpListener` substring matches) finds **zero** `fischer`/`blunder`/`cpl`. `HookwallVerdict{Block,Hold,Proceed}` is a **lossy projection** of the kernel's 5-verdict ladder (`REFUTE`+`ANALYZE` have no gate representation; no cpl, no `best_alt`, no axis score). So the BigPickle Node Fischer kernel has **no Rust counterpart** in the canonical host.
 
 → **Next port target** (same discipline as the `hookwall-session-start` port): a Rust `fischer-eval` stage that sits between VERIFY and HOOKWALL, emits `cpl + verdict + best_alt` in **HBP tuple-text (`json=0`)** with 8-byte handles, and **never self-authorizes**. Parity-verified against `fischer-kernel.mjs`, gated, no auto-fire. This is what makes the Rust 8-byte host carry its own Fischer layer too — *another piece allowed to have it.*
 
@@ -61,7 +63,7 @@ unsafe_action_penalty= ∞  if the move would fire/scale without a fresh OP-VETO
 blunder(move) ≡ ∃ alternative route r' with proof_strength(r') ≥ proof_strength(move) AND cost(r') < cost(move)
 ```
 A **claims-gate violation** (calling `green`/`merged`/`live`/`absorbed` from scoped evidence) *is* a blunder, by construction.
-> EXAMPLE [MEASURED, this session]: acer shipped `google_drive access=0` (public) while a proven owner-ACL route (`access=9`) existed → blunder. liris refuted it on PR #7 (`b1db168`), parity `9184f23…` preserved. The corrective gate caught it. **That is the law working, not a failure.**
+> EXAMPLE [IN-FLIGHT, this session — flag raised, gate NOT yet closed]: acer shipped `google_drive access=0` (public) while a proven owner-ACL route (`access=9`) existed → blunder. liris posted a fix on **`asolaria-federation-1024` PR #7, commit `b1db168`** (`access 0→9`); the parity payload `rules.txt` sha256 `9184f23…` (a *content* hash, not a commit) is preserved. **But PR #7 is OPEN / `REVIEW_REQUIRED` — the canonical artifact (`70217c0:main.rs`) still asserts `access=0` until merge.** So the gate *raised the flag*; it has **not** closed. Calling this "the law working / corrected" would itself be the claims-gate blunder of narrating an unmerged fix as gate-closed — which is why this example is tagged IN-FLIGHT, not MEASURED-corrected.
 
 **F3 · NOVELTY** — definition. [MODEL]
 ```
