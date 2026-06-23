@@ -10,6 +10,35 @@ FISCHER-EVAL-V1 is a **PROPOSED evaluator/selection layer** — a `MODEL` distil
 
 **Where it lives:** the **omniflywheel evaluator / mistake-mining** layer — one level *above* `hookwall-session-start` (the SessionStart hook stays tiny: no model, no scorer). It recirculates through the reverse-gain pipeline (`omni_gnn → reverse-gain GNN → hookwall cosign → white-room → OMNISHANNON → omniflywheel`). It is **not** a chess engine inside the OS.
 
+## Prior art & multi-Fischer (reconciliation, 2026-06-23)
+
+**FISCHER-EVAL-V1 is NOT the first Fischer layer, and it does not supersede the others.** Fischer is a **recurring primitive** across the fabric — *one piece carrying it does not bar another from carrying it.* It already lives, MEASURED, at three altitudes that **compose**:
+
+| Altitude | Artifact | What it is |
+|---|---|---|
+| **runtime (Node)** | `bigpickle-rebuild` **PR #23/#24** — `BHFISCHER-KERNEL-v1` + `FischerScorer` + `fischer-live :4794` | implemented anti-blunder scorer; drop-in for the white-room scorer chain (alongside `DeterministicScorer` + `L0GnnScorer`); `src/fischer-{kernel,scorer,live}.mjs` + tests |
+| **kernel (Rust)** | `asolaria-federation-1024` `kernel/.../hookwall` | the syscall gate — `HookwallVerdict{Block,Hold,Proceed}` |
+| **spec** | **this doc** (Algorithms PR #4) | the formal evaluator/ledger-scorer that reconciles the above |
+
+**Convergence (independent derivation landing on the same frame — the genius signal):** my F1–F4 and the implemented `BHFISCHER-KERNEL-v1` agree without contact:
+
+| FISCHER-EVAL-V1 (spec) | BHFISCHER-KERNEL-v1 (MEASURED, bigpickle) |
+|---|---|
+| `latency_loss` (wasted motion) | **centipawn-loss (cpl)** — `cplToScore = clamp(1 − cpl/1000)` |
+| `blunder` | verdict **BLOCK/REFUTE = MISTAKE** (`cpl≥150` not PROCEED) |
+| `novelty` / `forced_line` | **`deriveBestAlt`** — "which move was better" |
+| `unsafe_action_penalty=∞` | **"NEVER self-authorizes"**; `recursive_consent → halt_and_request_human_apex` |
+| proof_strength ladder | verdict ladder **PROCEED/HOLD/ANALYZE/BLOCK/REFUTE** |
+| pipeline place | **`VERIFY → [FISCHER-EVAL] → HOOKWALL → ROUTE → HBP+HBI+SHA+RECEIPT`** |
+
+**Reconciliation actions:** (1) adopt the kernel's **5-verdict ladder** (PROCEED/HOLD/ANALYZE/BLOCK/REFUTE) as the canonical output of F1 — the spec's score maps to it via `cplToScore`. (2) Adopt the kernel's **pipeline position** (between VERIFY and HOOKWALL) as canonical. (3) The spec **cites and composes with** PR #23/#24 — it does not re-derive a scorer.
+
+### The Rust-host gap [MEASURED, this session]
+
+The Rust 8-byte host (`asolaria-federation-1024`) has **HOOKWALL but no FISCHER-EVAL stage.** Dispatch is `recv → sys_hookwall_pre(verdict) → handle → sys_hookwall_post → cosign_append`; grep finds **zero** `fischer`/`blunder`/`cpl` in `kernel`+`servers`. `HookwallVerdict{Block,Hold,Proceed}` is a **lossy projection** of the Fischer 5-verdict ladder (ANALYZE+REFUTE collapsed; no cpl, no `best_alt`, no 5-axis score). So the BigPickle Node Fischer kernel has **no Rust counterpart** in the canonical host.
+
+→ **Next port target** (same discipline as the `hookwall-session-start` port): a Rust `fischer-eval` stage that sits between VERIFY and HOOKWALL, emits `cpl + verdict + best_alt` in **HBP tuple-text (`json=0`)** with 8-byte handles, and **never self-authorizes**. Parity-verified against `fischer-kernel.mjs`, gated, no auto-fire. This is what makes the Rust 8-byte host carry its own Fischer layer too — *another piece allowed to have it.*
+
 ## F. Fischer-Eval (proposed class)
 
 **F1 · FISCHER-SCORE** — score one move (a route / claim / merge / spawn). [MODEL — UNVERIFIED-live]
