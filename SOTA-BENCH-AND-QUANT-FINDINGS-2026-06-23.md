@@ -47,6 +47,17 @@ The live fabric dashboard decided quant = **BEHCS-1024**, a radix-1024 glyph lan
 
 **Honest tag** (the fabric's own rule — *"glyphs summarize backend proof; they never replace cosign evidence"*): the 520:1 is real descriptor compression + a lossless index into the 1024-cell space; the capsule figure is **addressing**-compression (the tuple *points* to the artifact), not a decompressible codec. Not inflated to "arbitrary 520:1"; not deflated to "just a glyph."
 
+## 4b. Scope & limits — what this does NOT measure (important)
+
+This benchmark characterizes **one language engine** (keyword inverted-index recall-serve) on **one host** (acer), one corpus, **token-AND only**, with a **3-level** simplification (L0/L5/L9). That is a narrow slice of the real system — the q/s numbers should not be read as "Asolaria vs Tantivy" in full:
+
+- **Multiple substrates (5, per the fabric):** USB Falcon SOVLINUX 2TB (liris cold-storage / master copy), Acer (live-runtime), Liris (sister-organ), GitHub (durable cosign anchor), Onboarding — plus shadow drives and a hidden/shadow layer. Recall spans these; this test hit a single local file.
+- **Multiple language engines:** BEHCS-1024 glyph/quant, keyword recall, reductions, formulas, GNN/Shannon — only the keyword engine was raced.
+- **Multiple MCP surfaces:** the system is reached through several MCPs; this test spoke raw HTTP to one engine.
+- **The real access model is richer than 3 levels:** the live fabric's access-tier matrix is **6 tiers × 6 scopes = 36 cells** (`PUBLIC/RESTRICTED/STEALTH/HIDDEN/SHADOW/SECRET` × `drive/usb/device/folder/file/pid`), over a 60-dimension BEHCS-1024 tuple; the architecture is a **16-component PID cohort (A16)**. recall-serve's L0/L5/L9 is a 3-level *collapse* of that lattice.
+
+A faithful "is Asolaria SOTA" answer must measure the multi-engine, multi-substrate, multi-level system — not one keyword engine on token-AND throughput. These findings are that single slice, honestly labeled.
+
 ## 5. Bottom line
 
 recall-serve is SOTA-class and competitive but **not the fastest keyword engine** (Tantivy is) — and that race runs on a maxed 2018 i5 on the one axis Asolaria least optimizes for. The architecture's measured edge is **quant**: BEHCS-1024 packs a full ~6 KB cell descriptor into a single ~12-byte glyph at **520:1**, and names whole subsystems in ~200-byte capsules — a payload/addressing advantage a queries-per-second benchmark is structurally blind to.
