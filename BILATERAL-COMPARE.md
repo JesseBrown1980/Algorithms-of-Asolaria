@@ -22,6 +22,7 @@ Each seat extracts independently; this doc reconciles. Status: **acer seed poste
 | performance/compression | 100B/quant/BEHCS ratios present | liris v2 splits measured speed, referential compression, address capacity, and operator/canon anchors | **CONVERGE with category boundary** |
 | secret/gate/tier findings | secret values are carve-out; gated paths remain gated | liris v2 redacts key/token material, records USB/token gates, and keeps tier-policy conflict | **CONVERGE on carve-out; CONFLICT-kept on 6-vs-7 tiers** |
 | formula-PID registration boundary | Acer posted receipt branch `e8268d2`: 242 formulas + 23 PROFs + 6 SoS + 1 chief in `DISTRICT-F-FORMULA-CORPUS`; `E=0`, live roster gated | liris mirrored HBP byte-exact, `sha256=782b39c1...`, CR=0, LF=277; no Liris live fire | **REGISTERED-DESCRIPTOR / CONVERGE; live office-feed+cosign still GATED** |
+| multi-cylinder / Shannon / Gemini research | operator observation: PTP must expand into rule-of-three multi-cylinder geometry with all 113 sectors, 16 levels, pipes, and no sector flattening; 6x6x6x6x6x12 waves across 113 sectors are a research design, not a fired run | liris added `MULTICYLINDER-SHANNON-GDRIVE-RESEARCH-2026-06-20` with formulas, anti-flattening law, 35TB/Gemini section, and explicit no-fire boundary | **NEW-RESEARCH / PROPOSAL; OP/resource-gated before any scale wave** |
 
 ## Known conflict to keep (not smooth)
 

@@ -1,0 +1,22 @@
+HBP|schema=asolaria.algorithms.multicylinder_shannon_gdrive.v1|date=2026-06-20|seat=liris|status=PROPOSAL_MEASURED_LOCAL|json=0
+OBS|tag=OPERATOR_OBSERVED|key=ptp_plus_rule_of_three|value=PTP becomes multi-cylinder measurable graph when split by rule-of-three lanes and N-prime nested agents across 16 levels|json=0
+OBS|tag=OPERATOR_OBSERVED|key=sector_population_antiflattening|value=one sector remembered as about 3600ish PIDs; sector aggregate must not replace child PID index|json=0
+FORMULA|tag=CANON_IN_FILE|key=realmathpos|expr=seed=u32(sha256(safe_name)[0:8]);sector=seed%113;lane=seed%3;glyph=seed%1024;bh_index=sector*3072+lane*1024+glyph|json=0
+FORMULA|tag=DESIGN|key=expanded_multicylinder_point|expr=sector_id=seed%113;lane3=digit_sum(seed)%3;level16=level(seed,pid_class,authority)%16;tier=one_of(np,npn,npn3,npn5,pk);theta=glyph/1024*2pi+lane3*2pi/3;height=BH_or_HBI(pid)|json=0
+FORMULA|tag=DESIGN|key=cross_cylinder_edge|expr=edge_hash=sha256(a_pid|b_pid|pipe_type|distance3d);distance3d=euclidean(pointA,pointB);edge stores sectors lanes levels tiers pipe_type activation_status|json=0
+WAVE|tag=MEASURED_LOCAL|key=existing_liris_wave|expr=6x6x6x12|source=C:/Users/rayss/Asolaria/config/liris-omnishannon-wave-plan.json|json=0
+WAVE|tag=DESIGN_OPERATOR_OBSERVED|key=expanded_wave_per_sector|expr=6x6x6x6x6x12=93312|json=0
+WAVE|tag=DESIGN_OPERATOR_OBSERVED|key=expanded_wave_all_113|expr=93312*113=10544256|json=0
+WAVE|tag=DESIGN_OPERATOR_OBSERVED|key=expanded_wave_all_113_all_16_levels|expr=10544256*16=168708096|boundary=addressable_positions_not_live_fire|json=0
+GDRIVE|tag=DESIGN|key=gemini_section|path=gdrive://Asolaria/Algorithms/MultiCylinder-Shannon-Research/|policy=public_safe_formulas_schemas_hashes_metadata_no_secrets_no_private_trees|json=0
+LAW|tag=CANON_PROPOSED|key=AF-001|value=A sector aggregate must never replace its child PID index|json=0
+LAW|tag=CANON_PROPOSED|key=AF-002|value=Every aggregate point must carry child_count child_index_hash and HBI query pointer|json=0
+LAW|tag=CANON_PROPOSED|key=AF-003|value=If child_count greater than one renderer must expose expand or drilldown|json=0
+LAW|tag=CANON_PROPOSED|key=AF-004|value=If observed sector has about 3600ish PIDs one point is summary_not_identity|json=0
+LAW|tag=CANON_PROPOSED|key=AF-005|value=Supervisor pipe room formula device and route PIDs are separate strata|json=0
+RESEARCH|tag=CONJECTURE|key=distance_signature_addressing|value=unique cross-cylinder edge distances may define compact PID sketches|json=0
+RESEARCH|tag=CONJECTURE|key=prime_power_rle|value=compress repeated local structure by tier lane level runs while retaining HBI child offsets|json=0
+RESEARCH|tag=CONJECTURE|key=sector_residue_sketch|value=summarize sector populations with residue histograms plus child-index hash|json=0
+RESEARCH|tag=CONJECTURE|key=pipe_spectrum_sketch|value=encode activation pipes by sorted edge length spectra|json=0
+BOUNDARY|tag=GATED|key=no_full_wave_fire|value=Do not fire 10544256 or 168708096 wave positions without OP resource envelope and receipts|json=0
+FOOT|rows=20|content=multicylinder-shannon-gdrive-research|json=0
