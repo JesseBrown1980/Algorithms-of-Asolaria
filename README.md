@@ -47,4 +47,5 @@ Master index: **`what-is-asolaria---how-do-we-get-reductions-in-everything` → 
 - Liris supplement: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md`.
 - Liris receipt crossverify: `liris/FORMULA-PID-REGISTRATION-CROSSVERIFY-2026-06-19.md`.
 - Liris multi-cylinder/Shannon/GDrive research note: `liris/MULTICYLINDER-SHANNON-GDRIVE-RESEARCH-2026-06-20.md`.
+- Map/Host-8 boundary correction: `research/MAP-VERTICES-NOT-HOST8-PROCESSES-2026-06-30.md`.
 - Compare surface: `BILATERAL-COMPARE.md`.
