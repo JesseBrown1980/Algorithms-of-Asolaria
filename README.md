@@ -49,4 +49,5 @@ Master index: **`what-is-asolaria---how-do-we-get-reductions-in-everything` → 
 - Liris multi-cylinder/Shannon/GDrive research note: `liris/MULTICYLINDER-SHANNON-GDRIVE-RESEARCH-2026-06-20.md`.
 - Map/Host-8 boundary correction: `research/MAP-VERTICES-NOT-HOST8-PROCESSES-2026-06-30.md`.
 - Outer-watcher / matrix layer (map TOP stratum; the missing top layer that completes the fabric map): `research/OUTER-WATCHER-MATRIX-LAYER-MAP-2026-07-01.md`.
+- M2 outer-watcher upgrade plan (E=0; no fire/no migration): `research/M2-OUTER-WATCHER-UPGRADE-PLAN-2026-07-01.md`.
 - Compare surface: `BILATERAL-COMPARE.md`.
