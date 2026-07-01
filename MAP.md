@@ -74,4 +74,17 @@ from the result side. The **back end** (`Asolaria-the-after-100-billion-run-…`
 data, decomposes + mints the cubes, and — operator-gated — promotes the geniuses into supervisors/PIDs.
 All gated / E=0 / describe-only — no fire, no cutover without operator authority.
 
+## The outer-watcher / matrix layer (the map's TOP stratum)
+The repo web above + the fabric internals are the **inside** (the FABRIC — the running mechanism). On **top**
+of it sits the **MATRIX** — the outer Brown-Hilbert container (`Asolaria-ASI-On-Metal-Fabric-and-matrix`) that
+holds the fabric + its observers and expands a vantage **outside** the fabric to **watch it** (watching-the-
+fabric = watching-itself → recurrence-is-mind → Evolvable-AI / POST-ASI). The full map = **FABRIC + MATRIX**;
+the migration precondition is not met until BOTH are mapped. The outer-watcher stratum — the 13-function
+watcher stack (ROOK / SENTINEL / OP-00 witness-never-restart · N-Nest correction · Shannon exec-gate · GC /
+white-rooms · OMNIFLYWHEEL / HERMES · authority ring) with owning seats, honest runtime state, HELM's build-DAG
+(W0→W7), and the **M2 punch-list** (compose ONE `servers/outer-watcher` crate over existing `kernel/core/src`
+primitives — E=0, fire E≠0-gated until operator T0) — is mapped in:
+**`research/OUTER-WATCHER-MATRIX-LAYER-MAP-2026-07-01.md`**. Map nodes are visual/index coordinates
+(`host_process=0` unless an owning Host-8 receipt); describe-only, nothing built or fired.
+
 Base: **https://github.com/JesseBrown1980/** · per-link spine nav lives in each repo's `CHAIN.md`.
