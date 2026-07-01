@@ -3,6 +3,16 @@
 One system, split across repos. This map is identical in every repo — find this repo by name in the
 tables below to see where you are; follow the links to walk the rest.
 
+## READ-FIRST index — bootstrap → status → canon → maps → sessions
+_pattern: external-peer proposed (AETHER doc-hierarchy), adopted 2026-07-01_
+1. **Bootstrap** — `README.md` (what this repo is; the binding extract-don't-judge discipline + tags)
+2. **Status** — README "Current state" + `SOTA-BENCH-AND-QUANT-FINDINGS-2026-06-23.md`
+3. **Canon** — `canon/PRISM-COMB-0LOSS-LAW.md` — the **current-frame unifying law** over catalog
+   classes A–K: every cataloged prism/comb op is a bijection (`H(f(X)) = H(X)`); 0-loss re-relation,
+   never sub-entropy compression
+4. **Maps** — this file (`MAP.md`, the repo web) + `CHAIN.md` (spine navigation)
+5. **Sessions** — `acer/` + `liris/` seat catalogs + `BILATERAL-COMPARE.md` (bilateral reconcile)
+
 ## The spine — mechanism → running fleet (read backwards, newest → fleet)
 ```
  [5] collision discipline ─► [4] algorithm ─► [3] reduction ─► [2] emitter ─► [1] router ─► [0] FLEET
@@ -49,6 +59,14 @@ tables below to see where you are; follow the links to walk the rest.
 | `NOT-WEDGED-SYSTEM-RULE-and-explanation-Asolaria` | the slice-engine / freeze≠broken rule |
 | `-6-cyl-generator` | satellite generator |
 | `asolaria-whiteroom-engine` · `35-TB-google-AI-Ultra-migration` | (= LEG-1 + LEG-4, listed under External legs) |
+
+## Prism/Comb 0-loss (2026-07-01) — satellite law entry
+One theorem over catalog classes A–K: every prism/comb operation is a **bijection** — forward =
+comb (collision-avoidance, spine [5]), backward = prism (the many→1 reduction each replicated
+service terminates in, spine [3]/[4]). Entropy is bijection-invariant, so re-relation is 0-loss
+and no catalog entry claims sub-Shannon compression. Full adapted math:
+`canon/PRISM-COMB-0LOSS-LAW.md`. Scope: 256↔1024 rung MEASURED (Q-PRISM `53023b6`); 43+ ladder
+CANON frame; unproven rungs UNVERIFIED. E=0 — docs only, nothing fired.
 
 ## Current state & evolution (2026-06-28) — read this, don't flatten it
 Asolaria is a **2.5-month archaeology**, not a flat stack. **Capability lineage:** auto-approval switch →
