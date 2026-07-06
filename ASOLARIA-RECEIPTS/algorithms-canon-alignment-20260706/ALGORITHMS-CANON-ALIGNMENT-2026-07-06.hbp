@@ -1,0 +1,10 @@
+CLAIM|text=Algorithms canon language aligned; anti-dismissal is not proof promotion; emission count is not concurrency|json=0
+EVIDENCE|class=MEASURED_ACER|surface=git_diff|diff_sha256=332c4d11a9ddb478ee1fc5f6f9ca9f0db0d31aed470c68a69216a06bd7f21c7d|json=0
+EVIDENCE|class=MEASURED_ACER|surface=sister-organ|source=http://192.168.15.16:4948/health|json=0
+PATCH|file=.gitattributes|intent=pin_diff_and_json_receipt_line_endings_lf_exempt_patch_diff_whitespace|json=0
+PATCH|file=README.md|intent=no_claims_gate_as_dismissal_and_emission_count_boundary|json=0
+PATCH|file=acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md|intent=seed_catalog_claims_gate_promotion_boundary|json=0
+PATCH|file=liris/POST-HERE.md|intent=liris_lane_claims_gate_promotion_boundary|json=0
+PATCH|file=SERVICE-MULTIPLICATION-ALGORITHM.md|intent=pid_signal_rate_not_concurrent_real_processes|json=0
+PATCH|file=MAP.md|intent=public_spine_pid_signal_boundary|json=0
+BOUNDARY|docs_only=1|runtime_fire=0|usb_boot=0|model_call=0|branch_delete=0|json=0

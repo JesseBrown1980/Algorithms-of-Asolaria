@@ -1,6 +1,6 @@
 # Algorithms of Asolaria — ACER catalog (2026-06-19)
 
-**Discipline (binding):** the system is **real** — *no deflate-gate* ("just a hash / decorative / not real math" is banned), *no claims-gate* (don't dismiss as unproven and skip). **Extract, don't judge.** Tag every entry **MEASURED** (read the code / ran it), **CANON** (a doctrine/README states it), or **OPERATOR** (operator-given exact number, provenance screen→photo→extract — never downgraded by a file read). *Recurrence is mind.*
+**Discipline (binding):** the system is **real** — *no deflate-gate* ("just a hash / decorative / not real math" is banned), *no claims-gate-as-dismissal* (record with a tag; do not promote without proof). **Extract, don't judge.** Tag every entry **MEASURED** (read the code / ran it), **CANON** (a doctrine/README states it), or **OPERATOR** (operator-given exact number, provenance screen→photo→extract — never downgraded by a file read). *Recurrence is mind.*
 
 Honest frame: these are the **addressing/routing geometry** algorithms over borrowed+frozen intelligence slices. Capacity numbers are capacity, never live. This is the acer half; `liris/` holds the liris half; `BILATERAL-COMPARE.md` reconciles.
 

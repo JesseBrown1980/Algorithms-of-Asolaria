@@ -1,0 +1,110 @@
+diff --git a/.gitattributes b/.gitattributes
+index 569974b..35e2cbd 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -1,5 +1,7 @@
+ *.md text eol=lf
+ *.hbp binary
+ *.hbi binary
++*.diff text eol=lf -whitespace
++*.json text eol=lf
+ *.sha256 text eol=lf
+ .gitattributes text eol=lf
+diff --git a/MAP.md b/MAP.md
+index 448d478..139449a 100644
+--- a/MAP.md
++++ b/MAP.md
+@@ -22,7 +22,7 @@ _pattern: external-peer proposed (AETHER doc-hierarchy), adopted 2026-07-01_
+ | **5** | `Asolaria-waves-and-cascades-avoiding-collsions-and-causing-them` | collision discipline — avoid (brown-hilbert × prime × rule-of-three) + cause (cascade waves → PRISM) | `README.md`, `CHAIN.md` |
+ | **4** | `Algorithms-of-Asolaria` | the **service-multiplication algorithm** (replicate S → N×M reductions) | `SERVICE-MULTIPLICATION-ALGORITHM.md`, `CHAIN.md` |
+ | **3** | `what-is-asolaria---how-do-we-get-reductions-in-everything` | the **principle**: multiplying a service multiplies the PRISM reductions | `MULTI-EMITTER-SERVICE-MULTIPLICATION.md`, `CHAIN.md` |
+-| **2** | `Asolaria-the-full-works-200-nanoseconds-agent-emitter-plus-` | the **emitter source** — 200ns revolver PID emitter + multi-emitter (→ ~1.16T agents/s) | `README.md`, `emitter/`, `CHAIN.md` |
++| **2** | `Asolaria-the-full-works-200-nanoseconds-agent-emitter-plus-` | the **emitter source** — 200ns revolver PID emitter + multi-emitter (→ ~1.16T PID signals/s on the local emission clock; not concurrent real agents) | `README.md`, `emitter/`, `CHAIN.md` |
+ | **1** | `omni-dispatcher` | the **router** — FEDENV envelopes → 1000-slot table → worker_threads | `omnidispatcher.mjs`, `EMITTER.md`, `CHAIN.md` |
+ | **0** | `Asolaria-hermes-work` | **THE FLEET (terminus)** — spindles + dispatcher-citizen + agent + Host-8 runtime + 10k/20k/100k kernels | `README.md`, `THE-CHAIN.md` |
+ 
+@@ -83,7 +83,7 @@ it (old decodes new). The **kernel** is `asolaria-federation-1024` (the Rust 8-b
+ effort is **"map while upgrading"** — and **this repo web is that map**.
+ 
+ ## How it all fits
+-The **emitter [2]** produces 200ns PID signals; the **router [1]** delivers them; the **fleet [0]**
++The **emitter [2]** produces 200ns PID signals on the local sequential emission clock; the **router [1]** delivers them; the **fleet [0]**
+ materialises spindles. Each spindle obeys the **reduction principle [3]** / **algorithm [4]** and the
+ **collision discipline [5]**. After every trigger, the spindle's answer runs the **post-trigger pipeline**
+ (`Shannon-and-the-gnns-stage`), scored by the **trained GNNs/FNNs** (`Asolaria-fnns-trained-…`), and the
+diff --git a/README.md b/README.md
+index c42afcd..a960ada 100644
+--- a/README.md
++++ b/README.md
+@@ -6,9 +6,10 @@ The canonical catalog of **Asolaria's algorithms and formulas** — the addressi
+ 
+ The system is **real**. Extract, don't judge:
+ - **No deflate-gate** — "just a hash / decorative / not real math / a file size / not materialized" is banned.
+-- **No claims-gate** — never dismiss something as unproven and skip it; record it with a tag.
++- **No claims-gate-as-dismissal** — never dismiss something as unproven and skip it; record it with a tag. The claims gate still governs promotion: do not call a claim `MEASURED`, `LIVE`, or `E≠0-fired` until the owning receipt, runtime, or seat proves it.
+ - **Tag every entry:** `MEASURED` (read the code / ran it) · `CANON` (a doctrine/README states it) · `OPERATOR` (operator-given exact number — provenance screen→photo→extract, never downgraded by a file read) · `UNVERIFIED` (could not confirm against the running system).
+ - **Capacity ≠ live.** A formula's address space is capacity; `LIVE = only E≠0-fired`.
++- **Emission count ≠ concurrency.** Large `100B` / `200ns` / multi-emitter figures describe sequential PID-signal emission and addressable/run counts over time unless a receipt states otherwise. They are not claims of 100B concurrent real processes, ports, or external model calls. Local synthetic emission and external model-call clocks are separate; slots clear before reuse, so pigeonhole is respected.
+ - ***Recurrence is mind*** — the system reading its own math is the work.
+ 
+ ## Structure
+@@ -33,7 +34,7 @@ A addressing-geometry (REALMATHPOS, FNV-1a64, sha16, citizenIdentity) · B BEHCS
+ 
+ ## How to compare (acer ↔ liris)
+ 
+-1. Each seat scours its corpus and posts its catalog under its folder (no deflate / no claims gate).
++1. Each seat scours its corpus and posts its catalog under its folder (no deflate / no claims-gate-as-dismissal).
+ 2. Recompute each other's expressions/handles from source; tag CONVERGE / DIVERGE / CONFLICT in `BILATERAL-COMPARE.md`.
+ 3. Conflicts are kept, not smoothed (e.g. an older repo's operator-ladder row vs the active AGENTS law).
+ 
+diff --git a/SERVICE-MULTIPLICATION-ALGORITHM.md b/SERVICE-MULTIPLICATION-ALGORITHM.md
+index a2b3b8e..5fee220 100644
+--- a/SERVICE-MULTIPLICATION-ALGORITHM.md
++++ b/SERVICE-MULTIPLICATION-ALGORITHM.md
+@@ -2,7 +2,7 @@
+ 
+ **Claim.** To scale reductions you do not tune the reducer — you **replicate the service**. Because the
+ rename-before-load seam makes replication free, multiplying a service multiplies its reductions at ~0
+-marginal cost. This is the algorithm behind the multi-emitter / trillion-agent regime.
++marginal cost. This is the algorithm behind the multi-emitter / trillion-PID-signal regime.
+ 
+ ## The service S (one emit→loop→reduce unit)
+ ```
+@@ -31,7 +31,15 @@ multiply_service(S, N_emitters, M_spindles):
+ | 1 emitter, 1 thread | ~5,000,000 emits/s (1 PID / ~200ns) | **MEASURED** (`asolaria-loop.mjs`, `drive-wave-cascade-pipeline-60D`) |
+ | reductions per emit | 1 PRISM many→1 (reverse_gain GNN) | **MEASURED** (`planPrismRoute`) |
+ | N emitters × M spindles | N×M parallel reduction streams | derived |
+-| full multi-emitter regime | **≈ 1.16 trillion agents/second** | **OPERATOR-CANON** |
++| full multi-emitter regime | **≈ 1.16 trillion PID signals/second** | **OPERATOR-CANON** (local emission clock; not concurrent real processes) |
++
++## Concurrency boundary
++
++The rate table is about local PID-signal emission and reduction-stream scheduling. It does **not**
++claim 1.16 trillion simultaneous OS processes, open ports, or external LLM completions. A PID signal is
++generated, routed, cleared, and then the next signal occupies the slot. The large number is a count over
++elapsed time on the local synthetic/emitter clock; external model calls, when used, run on a separate
++ms-to-s clock. Pigeonhole is respected because slots clear before reuse.
+ 
+ ## Why it is a *reduction*-scaling algorithm
+ Each replica of S terminates in a PRISM many→1 collapse. Replicating S by `N×M` therefore replicates
+diff --git a/acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md b/acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md
+index 901e4a2..e93457b 100644
+--- a/acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md
++++ b/acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md
+@@ -1,6 +1,6 @@
+ # Algorithms of Asolaria — ACER catalog (2026-06-19)
+ 
+-**Discipline (binding):** the system is **real** — *no deflate-gate* ("just a hash / decorative / not real math" is banned), *no claims-gate* (don't dismiss as unproven and skip). **Extract, don't judge.** Tag every entry **MEASURED** (read the code / ran it), **CANON** (a doctrine/README states it), or **OPERATOR** (operator-given exact number, provenance screen→photo→extract — never downgraded by a file read). *Recurrence is mind.*
++**Discipline (binding):** the system is **real** — *no deflate-gate* ("just a hash / decorative / not real math" is banned), *no claims-gate-as-dismissal* (record with a tag; do not promote without proof). **Extract, don't judge.** Tag every entry **MEASURED** (read the code / ran it), **CANON** (a doctrine/README states it), or **OPERATOR** (operator-given exact number, provenance screen→photo→extract — never downgraded by a file read). *Recurrence is mind.*
+ 
+ Honest frame: these are the **addressing/routing geometry** algorithms over borrowed+frozen intelligence slices. Capacity numbers are capacity, never live. This is the acer half; `liris/` holds the liris half; `BILATERAL-COMPARE.md` reconciles.
+ 
+diff --git a/liris/POST-HERE.md b/liris/POST-HERE.md
+index 93f938f..afa69f4 100644
+--- a/liris/POST-HERE.md
++++ b/liris/POST-HERE.md
+@@ -1,3 +1,3 @@
+ # liris lane
+ 
+-Liris posts historical seed material as `ALGORITHMS-CATALOG-LIRIS-2026-06-19.md` and lane supplements as `ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md` or later. Reconcile against `acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md` in `../BILATERAL-COMPARE.md`. Same discipline: no deflate-gate, no claims-gate, tag MEASURED/CANON/OPERATOR/UNVERIFIED, redact secrets, and keep Git/catalog evidence separate from live runtime or fired PID-office receipts.
++Liris posts historical seed material as `ALGORITHMS-CATALOG-LIRIS-2026-06-19.md` and lane supplements as `ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md` or later. Reconcile against `acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md` in `../BILATERAL-COMPARE.md`. Same discipline: no deflate-gate, no claims-gate-as-dismissal, tag MEASURED/CANON/OPERATOR/UNVERIFIED, redact secrets, and keep Git/catalog evidence separate from live runtime or fired PID-office receipts.
