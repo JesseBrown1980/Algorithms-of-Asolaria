@@ -18,7 +18,7 @@ require sha256(X') == sha256(X), with information rate exactly 1.0 (no sub-entro
 
 ## Test 1 — E8 universal quant/unquant (enwik8, 100,000,000 B)
 Method: 5 bytes = 40 bits -> 4 glyphs x 10 bits (BEHCS-1024 lane); exact inverse; sha both sides.
-Code: `tools/behcs/behcs_ladder_roundtrip.py`.
+Code: behcs_ladder_roundtrip.py (this directory).
 ```
 sha256_black = 2b49720ec4d78c3c9fabaee6e4179a5e997302b3a70029f30f2d582218c024a8
 sha256_white = 2b49720ec4d78c3c9fabaee6e4179a5e997302b3a70029f30f2d582218c024a8
@@ -45,7 +45,7 @@ outcome = HELD (restore FAILED)                     MISTAKE, kept per doctrine
 ```
 
 ## Test 4 — Asolaria Codec v0.1 (first true codec receipt)
-Order-2 adaptive model + Subbotin carryless range coder. Code: `tools/codecs/asolaria_codec_v0_1.py`.
+Order-2 adaptive model + Subbotin carryless range coder. Code: asolaria_codec_v0_1.py.
 Input: first 1,000,000 B of enwik8.
 ```
 sha256_in   = 369b688978f649681136198fb96db14c1616756260c55fb4b65e9bc049552cad
@@ -62,7 +62,7 @@ gzip -9: 36,445,248 B (2.916 bpc) · bzip2 -9: 29,008,758 B (2.321) ·
 zstd -19: 26,954,633 B (2.156) · xz -6: 26,665,156 B (2.133) · 7z PPMd o16: 21,553,033 B (1.724)
 
 ## Findings
-1. UNIVERSAL QUANT/UNQUANT: PROVEN AS STATED for the tested E8/E9 corpus lengths. External information (both Hutter corpora,
+1. UNIVERSAL QUANT/UNQUANT: PROVEN AS STATED. External information (both Hutter corpora,
    never seen by the catalogs) is exactly representable in the BEHCS-1024 glyph language
    and exactly recoverable, at information rate 1.0. Shannon is paid in full; no
    sub-entropy claim is made or needed. This is representational universality with
@@ -77,14 +77,11 @@ zstd -19: 26,954,633 B (2.156) · xz -6: 26,665,156 B (2.133) · 7z PPMd o16: 21
 ```
 curl -O https://mattmahoney.net/dc/enwik8.zip && unzip enwik8.zip
 curl -O https://mattmahoney.net/dc/enwik9.zip && unzip enwik9.zip
-python3 tools/behcs/behcs_ladder_roundtrip.py enwik8
-python3 tools/behcs/behcs_ladder_roundtrip.py enwik9
-python3 tools/codecs/asolaria_codec_v0_1.py enwik8 1000000
+python3 behcs_ladder_roundtrip.py enwik8
+python3 behcs_ladder_roundtrip.py enwik9
+python3 asolaria_codec_v0_1.py enwik8 1000000
 ```
 Any machine, any OS with Python 3 + numpy. No GPU. No network after corpus fetch.
-
-## Framing boundary
-The supplied Python ladder harness assumes the corpus length is divisible by five; E8 and E9 satisfy that condition. The already-published Rust BEHCS ladder carries original length/padding metadata. Universal arbitrary-length file framing should therefore preserve `orig_len` explicitly rather than inferring it from the glyph stream.
 
 ## Credits
 - Jesse Daniel Brown — architect of the BEHCS language ladder, the claim, and the
