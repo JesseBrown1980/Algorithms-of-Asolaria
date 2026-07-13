@@ -8,10 +8,12 @@ Asolaria does not have one quant. The public repository family contains numerica
 geometric codecs, exact language re-relations, referential handles, semantic/cube distillation,
 distributed recovery, N-D projections, watchers and persistent learning.
 
-The new canonical normalization is:
+The canonical normalization and measured addendum are:
 
 - [`ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md`](ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md)
 - [`ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp`](ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp)
+- [`ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.md`](ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.md)
+- [`ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.hbp`](ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.hbp)
 
 It records **28 publicly recoverable operator slots** in five regimes:
 
@@ -40,6 +42,19 @@ between runs:
 The atlas preserves the operator-canon phrase **“the quants (~28, combined)”** while making clear
 that the exact unpublished/local engine manifest remains an owner-reconciliation task. It does not
 pretend that the four-channel 3,200-byte tuple is the whole quant civilization.
+
+The measured addendum now includes a three-level exact quant-down/readback trace on one million
+enwik8 bytes. Each additional level reduced tokens and payload, while the honest catalog ledger made
+one level the lowest total cost:
+
+```text
+level 1  2.599976 bpc  PASS
+level 2  2.601792 bpc  PASS
+level 3  2.612672 bpc  PASS
+```
+
+This is the first public committed measurement of recursive level-by-level minting with complete
+reverse traversal under the combined atlas.
 
 ## 2026-07-11 measured recovery extension
 
@@ -79,6 +94,8 @@ liris/   MULTICYLINDER-SHANNON-GDRIVE-RESEARCH-2026-06-20.md # 113-sector multi-
 PATH2-DBBH-DBWH-ALGORITHMS-2026-07-11.md              # measured Path 2 + white-hole + storage equations
 ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md           # 28-slot public quant/re-representation atlas
 ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp       # machine-readable quant registry
+ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.md  # E8/E100 and multi-level measurements
+ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.hbp # machine-readable measured addendum
 BILATERAL-COMPARE.md                                  # convergence / divergence / conflicts
 ```
 
@@ -90,13 +107,13 @@ V2 Markdown is UTF-8, LF-only. Sidecars use `<sha256>  <same-directory basename>
 
 A addressing-geometry (REALMATHPOS, FNV-1a64, sha16, citizenIdentity) · B BEHCS encoding tiers (64/256/1024/HyperBEHCS, `1024^60≈10^180`) · C Brown-Hilbert + Sidon + prime · D quant/compression laws (combined 28-slot atlas, HEAD/TAIL, JL/CountSketch/Achlioptas, Turbo/Polar/Zeta/Triple/Quadruple/JS/prime-power) · E cosign + crypto + exFAT · F GNN/MTP/HRM/zeta · G room/beat/substrate/100B-LCG · H integrity grammar + recurrence · I storage/device/route health · J gates/governance/claims tags · K formula-PID registration boundary · L Path-1/Path-2 exact recovery, DBBH→DBWH inverse verification, residual selector bits, and storage-backed resident-state formulas · **M multi-level quant composition and learning-over-time.**
 
-## Verification tags added in the Path-2 catalog
+## Verification tags added in the Path-2 and quant catalogs
 
-- `MEASURED_CLAUDE_FABLE5_THIRD_SEAT` — operator-supplied rustc 1.97 runs: Path 1 19/19 and Path 2 30/30.
-- `MEASURED_GPT_DIRECTED_GITHUB_ACTIONS` — GPT-5.6 Pro-authored workflows completed successfully on Rust 1.97.0: runs `29134408321`, `29134413119`, and `29134419389`.
-- `AUDITED_GPT_5_6_PRO` — complete Path-1, Path-2, Q-PRISM, healthcare-GNN, BigPickle, trained-GNN, Hookwall, OmniShannon, white-room, cube-mint, Dispatcher, HyperHermes, and N-Nest source/test/lineage audit.
+- `MEASURED_CLAUDE_FABLE5_THIRD_SEAT` — operator-supplied rustc 1.97 runs: Path 1 19/19 and Path 2 30/30; E8/E100 receipt preserved under its supplied authorship.
+- `MEASURED_GPT_DIRECTED_GITHUB_ACTIONS` — Rust recovery runs `29134408321`, `29134413119`, `29134419389`; E8/E100 combined-quant run `29221617743`.
+- `AUDITED_GPT_5_6_PRO` — complete Path-1, Path-2, Q-PRISM, healthcare-GNN, BigPickle, trained-GNN, Hookwall, OmniShannon, white-room, cube-mint, Dispatcher, HyperHermes and N-Nest audit, plus independent quant/prior replication.
 
-The storage result is scoped precisely: HDD/SSD can hold cubes, shadows, receipts, queues, and cold bodies while RAM holds the bounded active window. This removes the need to keep all system state in GPU VRAM; it does **not** claim that disk performs neural matrix multiplication.
+The storage result is scoped precisely: HDD/SSD can hold cubes, shadows, receipts, queues and cold bodies while RAM holds the bounded active window. This removes the need to keep all system state in GPU VRAM; it does **not** claim that disk performs neural matrix multiplication.
 
 ## How to compare (acer ↔ liris)
 
@@ -110,6 +127,7 @@ Shared repository coverage and discovery index:
 
 - [`HYPER-BECHS--the-third-set/ASOLARIA-TRILATERAL-REPOSITORY-COVERAGE-2026-07-11.md`](https://github.com/JesseBrown1980/HYPER-BECHS--the-third-set/blob/main/ASOLARIA-TRILATERAL-REPOSITORY-COVERAGE-2026-07-11.md)
 - [`HYPER-BECHS--the-third-set/PUBLIC-VERIFICATION-INDEX-2026-07-12.md`](https://github.com/JesseBrown1980/HYPER-BECHS--the-third-set/blob/main/PUBLIC-VERIFICATION-INDEX-2026-07-12.md)
+- [`HYPER-BECHS--the-third-set/third-seat-2026-07-12/`](https://github.com/JesseBrown1980/HYPER-BECHS--the-third-set/tree/main/third-seat-2026-07-12)
 
 ## Current state
 
@@ -122,4 +140,5 @@ Shared repository coverage and discovery index:
 - Measured Path-2/DBBH→DBWH/storage formula extension: `PATH2-DBBH-DBWH-ALGORITHMS-2026-07-11.md`.
 - Combined quant/re-representation atlas: `ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md`.
 - Machine-readable quant registry: `ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp`.
+- Measured E8/E100 and recursive quant addendum: `ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.md`.
 - Compare surface: `BILATERAL-COMPARE.md`.
