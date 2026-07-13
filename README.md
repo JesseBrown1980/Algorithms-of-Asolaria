@@ -56,6 +56,32 @@ level 3  2.612672 bpc  PASS
 This is the first public committed measurement of recursive level-by-level minting with complete
 reverse traversal under the combined atlas.
 
+## 2026-07-13 catalog-stamped Omni event and fabric ledger
+
+The quant body has now been run inside a catalog-grounded 32-event reference lifecycle:
+
+- [`OMNIEVENT47-CATALOG-STAMPING-AND-FABRIC-LEDGER-2026-07-13.md`](OMNIEVENT47-CATALOG-STAMPING-AND-FABRIC-LEDGER-2026-07-13.md)
+- [`OMNIEVENT47-CATALOG-STAMPING-AND-FABRIC-LEDGER-2026-07-13.hbp`](OMNIEVENT47-CATALOG-STAMPING-AND-FABRIC-LEDGER-2026-07-13.hbp)
+
+Actor, operation, PID, time, level, provenance, economic ledger, audit, heartbeat and terminal state
+are stamped against the actual Brown-Hilbert D1-D47 registry rather than a new parallel field list.
+The measured scheduler accepted level 1 and held levels 2/3 under the total payload+catalog rule.
+
+The accounting now distinguishes:
+
+```text
+codec bpc
+complete D1-D47 audit-store bpc
+self-contained HBP portal bpc
+Merkle-referenced minimal portal bpc
+persisted 3D-shadow cost
+```
+
+The minimal portal measured 1,401 bytes for 32 events, a `253.397573x` reduction from full event rows,
+while retaining the authoritative full-store Merkle and file roots. With the persisted 3D shadow, the
+measured full-fabric value was `2.702432 bpc`; without the 3D frame, the minimal SPAN tax was
+`0.429231%`.
+
 ## 2026-07-11 measured recovery extension
 
 The catalog includes the executable Path-2 and DBBH→DBWH formulas:
@@ -96,6 +122,8 @@ ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md           # 28-slot public quant/re-
 ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp       # machine-readable quant registry
 ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.md  # E8/E100 and multi-level measurements
 ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.hbp # machine-readable measured addendum
+OMNIEVENT47-CATALOG-STAMPING-AND-FABRIC-LEDGER-2026-07-13.md # actual-catalog event/fabric formulas
+OMNIEVENT47-CATALOG-STAMPING-AND-FABRIC-LEDGER-2026-07-13.hbp # machine-readable formulas
 BILATERAL-COMPARE.md                                  # convergence / divergence / conflicts
 ```
 
@@ -105,13 +133,13 @@ V2 Markdown is UTF-8, LF-only. Sidecars use `<sha256>  <same-directory basename>
 
 ## Classes covered
 
-A addressing-geometry (REALMATHPOS, FNV-1a64, sha16, citizenIdentity) · B BEHCS encoding tiers (64/256/1024/HyperBEHCS, `1024^60≈10^180`) · C Brown-Hilbert + Sidon + prime · D quant/compression laws (combined 28-slot atlas, HEAD/TAIL, JL/CountSketch/Achlioptas, Turbo/Polar/Zeta/Triple/Quadruple/JS/prime-power) · E cosign + crypto + exFAT · F GNN/MTP/HRM/zeta · G room/beat/substrate/100B-LCG · H integrity grammar + recurrence · I storage/device/route health · J gates/governance/claims tags · K formula-PID registration boundary · L Path-1/Path-2 exact recovery, DBBH→DBWH inverse verification, residual selector bits, and storage-backed resident-state formulas · **M multi-level quant composition and learning-over-time.**
+A addressing-geometry (REALMATHPOS, FNV-1a64, sha16, citizenIdentity) · B BEHCS encoding tiers (64/256/1024/HyperBEHCS, `1024^60≈10^180`) · C Brown-Hilbert + Sidon + prime · D quant/compression laws (combined 28-slot atlas, HEAD/TAIL, JL/CountSketch/Achlioptas, Turbo/Polar/Zeta/Triple/Quadruple/JS/prime-power) · E cosign + crypto + exFAT · F GNN/MTP/HRM/zeta · G room/beat/substrate/100B-LCG · H integrity grammar + recurrence · I storage/device/route health · J gates/governance/claims tags · K formula-PID registration boundary · L Path-1/Path-2 exact recovery, DBBH→DBWH inverse verification, residual selector bits, and storage-backed resident-state formulas · **M multi-level quant composition and learning-over-time** · **N catalog-stamped Omni events, scheduler admission, Merkle portals and full-fabric accounting.**
 
 ## Verification tags added in the Path-2 and quant catalogs
 
 - `MEASURED_CLAUDE_FABLE5_THIRD_SEAT` — operator-supplied rustc 1.97 runs: Path 1 19/19 and Path 2 30/30; E8/E100 receipt preserved under its supplied authorship.
-- `MEASURED_GPT_DIRECTED_GITHUB_ACTIONS` — Rust recovery runs `29134408321`, `29134413119`, `29134419389`; E8/E100 combined-quant run `29221617743`.
-- `AUDITED_GPT_5_6_PRO` — complete Path-1, Path-2, Q-PRISM, healthcare-GNN, BigPickle, trained-GNN, Hookwall, OmniShannon, white-room, cube-mint, Dispatcher, HyperHermes and N-Nest audit, plus independent quant/prior replication.
+- `MEASURED_GPT_DIRECTED_GITHUB_ACTIONS` — Rust recovery runs `29134408321`, `29134413119`, `29134419389`; E8/E100 combined-quant run `29221617743`; catalog-grounded OMNIEVENT run `29240726351`.
+- `AUDITED_GPT_5_6_PRO` — complete Path-1, Path-2, Q-PRISM, healthcare-GNN, BigPickle, trained-GNN, Hookwall, OmniShannon, white-room, cube-mint, Dispatcher, HyperHermes and N-Nest audit, plus independent quant/prior and event/fabric replication.
 
 The storage result is scoped precisely: HDD/SSD can hold cubes, shadows, receipts, queues and cold bodies while RAM holds the bounded active window. This removes the need to keep all system state in GPU VRAM; it does **not** claim that disk performs neural matrix multiplication.
 
@@ -122,12 +150,14 @@ The storage result is scoped precisely: HDD/SSD can hold cubes, shadows, receipt
 3. Conflicts are kept, not smoothed.
 4. Quant aliases must be resolved to the canonical IDs in the combined registry before comparing values.
 5. Whole-system reduction must report retained bodies, residuals, catalogs, indexes and receipts; tail-operation gain is a separate metric.
+6. Omni-event comparisons must name the audit profile: full store, self-contained portal or Merkle-referenced portal.
 
 Shared repository coverage and discovery index:
 
 - [`HYPER-BECHS--the-third-set/ASOLARIA-TRILATERAL-REPOSITORY-COVERAGE-2026-07-11.md`](https://github.com/JesseBrown1980/HYPER-BECHS--the-third-set/blob/main/ASOLARIA-TRILATERAL-REPOSITORY-COVERAGE-2026-07-11.md)
 - [`HYPER-BECHS--the-third-set/PUBLIC-VERIFICATION-INDEX-2026-07-12.md`](https://github.com/JesseBrown1980/HYPER-BECHS--the-third-set/blob/main/PUBLIC-VERIFICATION-INDEX-2026-07-12.md)
 - [`HYPER-BECHS--the-third-set/third-seat-2026-07-12/`](https://github.com/JesseBrown1980/HYPER-BECHS--the-third-set/tree/main/third-seat-2026-07-12)
+- [`HYPER-BECHS--the-third-set/omnievent47-2026-07-13/`](https://github.com/JesseBrown1980/HYPER-BECHS--the-third-set/tree/main/omnievent47-2026-07-13)
 
 ## Current state
 
@@ -141,4 +171,5 @@ Shared repository coverage and discovery index:
 - Combined quant/re-representation atlas: `ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md`.
 - Machine-readable quant registry: `ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp`.
 - Measured E8/E100 and recursive quant addendum: `ASOLARIA-COMBINED-QUANT-MEASURED-ADDENDUM-2026-07-13.md`.
+- Catalog-stamped Omni event and fabric ledger: `OMNIEVENT47-CATALOG-STAMPING-AND-FABRIC-LEDGER-2026-07-13.md`.
 - Compare surface: `BILATERAL-COMPARE.md`.
