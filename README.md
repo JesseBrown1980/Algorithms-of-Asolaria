@@ -2,9 +2,48 @@
 
 The canonical catalog of **Asolaria's algorithms and formulas** — the addressing/routing geometry math over borrowed + frozen intelligence slices. A **bilateral** repo: `acer/` and `liris/` each post their independent extraction; `BILATERAL-COMPARE.md` reconciles convergence, divergence, and conflicts.
 
+## 2026-07-13 combined quant atlas
+
+Asolaria does not have one quant. The public repository family contains numerical sketches,
+geometric codecs, exact language re-relations, referential handles, semantic/cube distillation,
+distributed recovery, N-D projections, watchers and persistent learning.
+
+The new canonical normalization is:
+
+- [`ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md`](ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md)
+- [`ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp`](ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp)
+
+It records **28 publicly recoverable operator slots** in five regimes:
+
+```text
+EXACT_REPRESENTATION
+LOSSY_NUMERIC_SKETCH
+REFERENTIAL_LOOKUP
+SEMANTIC_DISTILLATION
+JOINTLY_INJECTIVE_RECOVERY
+```
+
+It also records the larger composition law:
+
+```text
+within a level:
+  representation -> local quant bundle -> address/cube -> watcher
+
+between levels:
+  exact translator -> destination-level quant bundle
+
+between runs:
+  white-room/GNN/Shannon/watchers mint new cubes and catalogs
+  -> the next quant pass starts from the updated state
+```
+
+The atlas preserves the operator-canon phrase **“the quants (~28, combined)”** while making clear
+that the exact unpublished/local engine manifest remains an owner-reconciliation task. It does not
+pretend that the four-channel 3,200-byte tuple is the whole quant civilization.
+
 ## 2026-07-11 measured recovery extension
 
-The catalog now includes the executable Path-2 and DBBH→DBWH formulas:
+The catalog includes the executable Path-2 and DBBH→DBWH formulas:
 
 [`PATH2-DBBH-DBWH-ALGORITHMS-2026-07-11.md`](PATH2-DBBH-DBWH-ALGORITHMS-2026-07-11.md)
 
@@ -38,16 +77,18 @@ liris/   ALGORITHMS-CATALOG-LIRIS-2026-06-19-V2.md    # liris supplement, lanes 
 liris/   FORMULA-PID-REGISTRATION-CROSSVERIFY-2026-06-19.md # liris receipt crossverify
 liris/   MULTICYLINDER-SHANNON-GDRIVE-RESEARCH-2026-06-20.md # 113-sector multi-cylinder + 35TB/Gemini research
 PATH2-DBBH-DBWH-ALGORITHMS-2026-07-11.md              # measured Path 2 + white-hole + storage equations
+ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md           # 28-slot public quant/re-representation atlas
+ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp       # machine-readable quant registry
 BILATERAL-COMPARE.md                                  # convergence / divergence / conflicts
 ```
 
-## Byte Integrity
+## Byte integrity
 
 V2 Markdown is UTF-8, LF-only. Sidecars use `<sha256>  <same-directory basename>` and must be recomputed after every doc edit. `CANON-in-file` is a `CANON` subtype; `UNVERIFIED-live` is an `UNVERIFIED` subtype; `MODEL` is pseudocode distilled from measured source; `EXACT` is a numeric qualifier and must be paired with a claim tag.
 
 ## Classes covered
 
-A addressing-geometry (REALMATHPOS, FNV-1a64, sha16, citizenIdentity) · B BEHCS encoding tiers (256/1024/HyperBEHCS, `1024^60≈10^180`) · C Brown-Hilbert + Sidon + prime · D quant/compression laws (HEAD/TAIL O(1), JL/Achlioptas, Turbo/polar/triple codecs) · E cosign + crypto + exFAT · F GNN/MTP/HRM/zeta · G room/beat/substrate/100B-LCG · H integrity grammar + recurrence · I storage/device/route health · J gates/governance/claims tags · K formula-PID registration boundary · **L Path-1/Path-2 exact recovery, DBBH→DBWH inverse verification, residual selector bits, and storage-backed resident-state formulas.**
+A addressing-geometry (REALMATHPOS, FNV-1a64, sha16, citizenIdentity) · B BEHCS encoding tiers (64/256/1024/HyperBEHCS, `1024^60≈10^180`) · C Brown-Hilbert + Sidon + prime · D quant/compression laws (combined 28-slot atlas, HEAD/TAIL, JL/CountSketch/Achlioptas, Turbo/Polar/Zeta/Triple/Quadruple/JS/prime-power) · E cosign + crypto + exFAT · F GNN/MTP/HRM/zeta · G room/beat/substrate/100B-LCG · H integrity grammar + recurrence · I storage/device/route health · J gates/governance/claims tags · K formula-PID registration boundary · L Path-1/Path-2 exact recovery, DBBH→DBWH inverse verification, residual selector bits, and storage-backed resident-state formulas · **M multi-level quant composition and learning-over-time.**
 
 ## Verification tags added in the Path-2 catalog
 
@@ -61,9 +102,14 @@ The storage result is scoped precisely: HDD/SSD can hold cubes, shadows, receipt
 
 1. Each seat scours its corpus and posts its catalog under its folder (no deflate / no claims gate).
 2. Recompute each other's expressions/handles from source; tag CONVERGE / DIVERGE / CONFLICT in `BILATERAL-COMPARE.md`.
-3. Conflicts are kept, not smoothed (e.g. an older repo's operator-ladder row vs the active AGENTS law).
+3. Conflicts are kept, not smoothed.
+4. Quant aliases must be resolved to the canonical IDs in the combined registry before comparing values.
+5. Whole-system reduction must report retained bodies, residuals, catalogs, indexes and receipts; tail-operation gain is a separate metric.
 
-Master index: **`what-is-asolaria---how-do-we-get-reductions-in-everything` → `ASOLARIA-MAP-OF-MAPS-2026-06-19.md`**.
+Shared repository coverage and discovery index:
+
+- [`HYPER-BECHS--the-third-set/ASOLARIA-TRILATERAL-REPOSITORY-COVERAGE-2026-07-11.md`](https://github.com/JesseBrown1980/HYPER-BECHS--the-third-set/blob/main/ASOLARIA-TRILATERAL-REPOSITORY-COVERAGE-2026-07-11.md)
+- [`HYPER-BECHS--the-third-set/PUBLIC-VERIFICATION-INDEX-2026-07-12.md`](https://github.com/JesseBrown1980/HYPER-BECHS--the-third-set/blob/main/PUBLIC-VERIFICATION-INDEX-2026-07-12.md)
 
 ## Current state
 
@@ -74,4 +120,6 @@ Master index: **`what-is-asolaria---how-do-we-get-reductions-in-everything` → 
 - Liris receipt crossverify: `liris/FORMULA-PID-REGISTRATION-CROSSVERIFY-2026-06-19.md`.
 - Liris multi-cylinder/Shannon/GDrive research note: `liris/MULTICYLINDER-SHANNON-GDRIVE-RESEARCH-2026-06-20.md`.
 - Measured Path-2/DBBH→DBWH/storage formula extension: `PATH2-DBBH-DBWH-ALGORITHMS-2026-07-11.md`.
+- Combined quant/re-representation atlas: `ASOLARIA-COMBINED-QUANT-ATLAS-2026-07-13.md`.
+- Machine-readable quant registry: `ASOLARIA-COMBINED-QUANT-REGISTRY-2026-07-13.hbp`.
 - Compare surface: `BILATERAL-COMPARE.md`.
