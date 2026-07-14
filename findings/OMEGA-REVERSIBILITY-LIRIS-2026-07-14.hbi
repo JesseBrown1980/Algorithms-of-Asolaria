@@ -1,0 +1,7 @@
+HBIHDR|artifact=OMEGA-REVERSIBILITY-LIRIS-2026-07-14.hbp|rows=5|encoding=utf8|newline=LF|row_hash=sha256|json=0
+HBIROW|n=1|tag=FINDHDR|offset=0|bytes=155|sha256=a8aa8925bd7730a7f93461cd0e397f2f8c2c4d3280084a535bbe90c57f8fb305|json=0
+HBIROW|n=2|tag=FINDREV|offset=155|bytes=178|sha256=82bc33a1ee21145aba14e455f6cd74945fc9593005c10e62ffcc55853c7a28fd|json=0
+HBIROW|n=3|tag=FINDOMEGA|offset=333|bytes=229|sha256=d4aec0eede8abcdddef40eab58e7e591f2353d6672d867efbc9a0961e624ef99|json=0
+HBIROW|n=4|tag=FINDISO|offset=562|bytes=141|sha256=189bbde4c29efbefcd1badf04116bc617520e98c2238cd67b32135e81ddb2e81|json=0
+HBIROW|n=5|tag=FINDEND|offset=703|bytes=50|sha256=737497cba685e9068158428a4c0b63b19dc05c445a4873b80eb0dbfb483d6c2b|json=0
+HBIEND|rows=5|bytes=753|json=0
