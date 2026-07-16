@@ -2,6 +2,46 @@
 
 The canonical catalog of **Asolaria's algorithms and formulas** — the addressing/routing geometry math over borrowed + frozen intelligence slices. A **bilateral** repo: `acer/` and `liris/` each post their independent extraction; `BILATERAL-COMPARE.md` reconciles convergence, divergence, and conflicts.
 
+**Operator doctrine (OP-JESSE, 2026-07-15):** this repo is the collection of ALL Asolaria
+algorithms. Every algorithm — wherever its working code lands — gets an in-depth entry here
+with linking notes back to its working repo, receipts, and runs. An algorithm living only
+where its code landed is a catalog defect. One clean repo: one `main` branch, everything
+merged and visible; corrections are addenda, never mutations of sealed receipts.
+
+## 2026-07-15 canonical catalog — start here
+
+- [`ASOLARIA-ALGORITHM-CATALOG-GAPFILL-2026-07-15.md`](ASOLARIA-ALGORITHM-CATALOG-GAPFILL-2026-07-15.md)
+  — the 2026-07-14/15 algorithms: **GitRAM** (stateless containers as distributed training
+  RAM, self-authenticating checkpoint resume), the artifact-layout + loud-resume laws, the
+  **timing-free leaf preimage** (seat-convergent Omega), the floor-two ×4 alphabet sizing
+  law with its BEHCS-64 control arm, the six signed apex faces pair-collapse algebra, and
+  the named-but-unbuilt frontier (spatial fold traversal, 26-direction stencil, lens
+  continuum, Fisher-score view selection).
+- [`ASOLARIA-ALGORITHM-CATALOG-SWEEP-2026-07-15.md`](ASOLARIA-ALGORITHM-CATALOG-SWEEP-2026-07-15.md)
+  — the full sweep (~90 algorithms) across **Metatagging** (all four layers), the
+  **Q-PRISM cluster** (both repos, host8, the prism comb), the **reductions + quants
+  engines** (core moves, F01–F10, named quant series), and the **white rooms** — every
+  entry with MEASURED / MEASURED_LOCAL / CANON / DESIGN_OPEN / MYTHOLOGY provenance and
+  linking notes. Cross-cluster resolutions recorded there: the **60D-vs-50D discrepancy is
+  resolved from code** (60 = addressing width 1024⁶=2⁶⁰; 49D = signed-executable catalog;
+  D50 = 233 council-sealed skip), the white room defined as the clean-rebuild-and-attest
+  stage, and the Path-2 u128 FALSE-HOLD defect flagged as the canonization blocker.
+- [`findings/OMEGA-REVERSIBILITY-LIRIS-2026-07-14.md`](findings/OMEGA-REVERSIBILITY-LIRIS-2026-07-14.md)
+  — LIRIS Ω-bit + reversibility findings, **with the standing correction**
+  [`findings/OMEGA-REVERSIBILITY-CORRECTION-2026-07-15.md`](findings/OMEGA-REVERSIBILITY-CORRECTION-2026-07-15.md):
+  the repo-orbit mean relative spread is **1.8427135%** (recomputed from the sealed
+  artifact, matches the exact PVSPREAD fraction), not ~0.18%.
+- [`GLYPH-HYPERSTACK-FIRST-FLOOR-FORMULAS-2026-07-13.md`](GLYPH-HYPERSTACK-FIRST-FLOOR-FORMULAS-2026-07-13.md)
+  and [`liris/FORMULA-CROSSVERIFY-LIRIS-2026-07-13.md`](liris/FORMULA-CROSSVERIFY-LIRIS-2026-07-13.md)
+  (12/12 independent checks PASS) — merged from the former draft queue.
+
+**Repo consolidation (2026-07-15):** all open PRs merged, all 19 side branches folded into
+`main` and deleted. Unique content from five never-PR'd branches was consolidated in:
+the combined quant **lattice** record (historical — superseded by the 28-slot atlas), the
+E8/E9 third-seat receipts + `tools/` (BEHCS ladder round-trip, codec v0.1), the 49D
+propagation catalog update, the outer-watcher/matrix research docs, and the acer
+recall-portal metrics.
+
 ## 2026-07-13 combined quant atlas
 
 Asolaria does not have one quant. The public repository family contains numerical sketches,
@@ -162,6 +202,14 @@ Shared repository coverage and discovery index:
 
 ## Current state
 
+- Canonical catalog entry points: `ASOLARIA-ALGORITHM-CATALOG-GAPFILL-2026-07-15.md` +
+  `ASOLARIA-ALGORITHM-CATALOG-SWEEP-2026-07-15.md` (start here).
+- LIRIS Ω/reversibility findings + spread correction: `findings/`.
+- Glyph-hyperstack first-floor formulas: `GLYPH-HYPERSTACK-FIRST-FLOOR-FORMULAS-2026-07-13.md`.
+- Liris formula cross-verify (12/12): `liris/FORMULA-CROSSVERIFY-LIRIS-2026-07-13.md`.
+- Third-seat E8/E9 receipts + tools: `receipts/`, `tools/`.
+- Acer recall-portal metrics: `acer/RECALL-PORTAL-METRICS-2026-06-23.md`.
+- Outer-watcher / matrix layer research: `research/`.
 - Acer seed: `acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md`.
 - Acer formula-PID descriptor receipt: `acer/ALGORITHMS-PID-REGISTRATION-ACER-2026-06-19.hbp`.
 - Liris seed: `liris/ALGORITHMS-CATALOG-LIRIS-2026-06-19.md`.

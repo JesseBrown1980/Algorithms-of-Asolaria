@@ -7,6 +7,8 @@ tables below to see where you are; follow the links to walk the rest.
 _pattern: external-peer proposed (AETHER doc-hierarchy), adopted 2026-07-01_
 1. **Bootstrap** — `README.md` (what this repo is; the binding extract-don't-judge discipline + tags)
 2. **Status** — README "Current state" + `SOTA-BENCH-AND-QUANT-FINDINGS-2026-06-23.md`
+   — plus the **canonical catalog** (2026-07-15, start here for any algorithm):
+   `ASOLARIA-ALGORITHM-CATALOG-GAPFILL-2026-07-15.md` + `ASOLARIA-ALGORITHM-CATALOG-SWEEP-2026-07-15.md`
 3. **Canon** — `canon/PRISM-COMB-0LOSS-LAW.md` — the **current-frame unifying law** over catalog
    classes A–K: every cataloged prism/comb op is a bijection (`H(f(X)) = H(X)`); 0-loss re-relation,
    never sub-entropy compression
