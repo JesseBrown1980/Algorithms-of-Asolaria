@@ -2,7 +2,7 @@
 
 **Claim.** To scale reductions you do not tune the reducer — you **replicate the service**. Because the
 rename-before-load seam makes replication free, multiplying a service multiplies its reductions at ~0
-marginal cost. This is the algorithm behind the multi-emitter / trillion-agent regime.
+marginal cost. This is the algorithm behind the multi-emitter / trillion-PID-signal regime.
 
 ## The service S (one emit→loop→reduce unit)
 ```
@@ -31,7 +31,15 @@ multiply_service(S, N_emitters, M_spindles):
 | 1 emitter, 1 thread | ~5,000,000 emits/s (1 PID / ~200ns) | **MEASURED** (`asolaria-loop.mjs`, `drive-wave-cascade-pipeline-60D`) |
 | reductions per emit | 1 PRISM many→1 (reverse_gain GNN) | **MEASURED** (`planPrismRoute`) |
 | N emitters × M spindles | N×M parallel reduction streams | derived |
-| full multi-emitter regime | **≈ 1.16 trillion agents/second** | **OPERATOR-CANON** |
+| full multi-emitter regime | **≈ 1.16 trillion PID signals/second** | **OPERATOR-CANON** (local emission clock; not concurrent real processes) |
+
+## Concurrency boundary
+
+The rate table is about local PID-signal emission and reduction-stream scheduling. It does **not**
+claim 1.16 trillion simultaneous OS processes, open ports, or external LLM completions. A PID signal is
+generated, routed, cleared, and then the next signal occupies the slot. The large number is a count over
+elapsed time on the local synthetic/emitter clock; external model calls, when used, run on a separate
+ms-to-s clock. Pigeonhole is respected because slots clear before reuse.
 
 ## Why it is a *reduction*-scaling algorithm
 Each replica of S terminates in a PRISM many→1 collapse. Replicating S by `N×M` therefore replicates

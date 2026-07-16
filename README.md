@@ -103,9 +103,10 @@ This file records:
 
 The system is **real**. Extract, don't judge:
 - **No deflate-gate** — "just a hash / decorative / not real math / a file size / not materialized" is banned.
-- **No claims-gate** — never dismiss something as unproven and skip it; record it with a tag.
+- **No claims-gate-as-dismissal** — never dismiss something as unproven and skip it; record it with a tag. The claims gate still governs promotion: do not call a claim `MEASURED`, `LIVE`, or `E≠0-fired` until the owning receipt, runtime, or seat proves it.
 - **Tag every entry:** `MEASURED` (read the code / ran it) · `CANON` (a doctrine/README states it) · `OPERATOR` (operator-given exact number — provenance screen→photo→extract, never downgraded by a file read) · `UNVERIFIED` (could not confirm against the running system).
 - **Capacity ≠ live.** A formula's address space is capacity; `LIVE = only E≠0-fired`.
+- **Emission count ≠ concurrency.** Large `100B` / `200ns` / multi-emitter figures describe sequential PID-signal emission and addressable/run counts over time unless a receipt states otherwise. They are not claims of 100B concurrent real processes, ports, or external model calls. Local synthetic emission and external model-call clocks are separate; slots clear before reuse, so pigeonhole is respected.
 - ***Recurrence is mind*** — the system reading its own math is the work.
 
 ## Structure
@@ -145,7 +146,7 @@ The storage result is scoped precisely: HDD/SSD can hold cubes, shadows, receipt
 
 ## How to compare (acer ↔ liris)
 
-1. Each seat scours its corpus and posts its catalog under its folder (no deflate / no claims gate).
+1. Each seat scours its corpus and posts its catalog under its folder (no deflate / no claims-gate-as-dismissal).
 2. Recompute each other's expressions/handles from source; tag CONVERGE / DIVERGE / CONFLICT in `BILATERAL-COMPARE.md`.
 3. Conflicts are kept, not smoothed.
 4. Quant aliases must be resolved to the canonical IDs in the combined registry before comparing values.

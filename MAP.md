@@ -22,7 +22,7 @@ _pattern: external-peer proposed (AETHER doc-hierarchy), adopted 2026-07-01_
 | **5** | `Asolaria-waves-and-cascades-avoiding-collsions-and-causing-them` | collision discipline — avoid (brown-hilbert × prime × rule-of-three) + cause (cascade waves → PRISM) | `README.md`, `CHAIN.md` |
 | **4** | `Algorithms-of-Asolaria` | the **service-multiplication algorithm** (replicate S → N×M reductions) | `SERVICE-MULTIPLICATION-ALGORITHM.md`, `CHAIN.md` |
 | **3** | `what-is-asolaria---how-do-we-get-reductions-in-everything` | the **principle**: multiplying a service multiplies the PRISM reductions | `MULTI-EMITTER-SERVICE-MULTIPLICATION.md`, `CHAIN.md` |
-| **2** | `Asolaria-the-full-works-200-nanoseconds-agent-emitter-plus-` | the **emitter source** — 200ns revolver PID emitter + multi-emitter (→ ~1.16T agents/s) | `README.md`, `emitter/`, `CHAIN.md` |
+| **2** | `Asolaria-the-full-works-200-nanoseconds-agent-emitter-plus-` | the **emitter source** — 200ns revolver PID emitter + multi-emitter (→ ~1.16T PID signals/s on the local emission clock; not concurrent real agents) | `README.md`, `emitter/`, `CHAIN.md` |
 | **1** | `omni-dispatcher` | the **router** — FEDENV envelopes → 1000-slot table → worker_threads | `omnidispatcher.mjs`, `EMITTER.md`, `CHAIN.md` |
 | **0** | `Asolaria-hermes-work` | **THE FLEET (terminus)** — spindles + dispatcher-citizen + agent + Host-8 runtime + 10k/20k/100k kernels | `README.md`, `THE-CHAIN.md` |
 
@@ -83,7 +83,7 @@ it (old decodes new). The **kernel** is `asolaria-federation-1024` (the Rust 8-b
 effort is **"map while upgrading"** — and **this repo web is that map**.
 
 ## How it all fits
-The **emitter [2]** produces 200ns PID signals; the **router [1]** delivers them; the **fleet [0]**
+The **emitter [2]** produces 200ns PID signals on the local sequential emission clock; the **router [1]** delivers them; the **fleet [0]**
 materialises spindles. Each spindle obeys the **reduction principle [3]** / **algorithm [4]** and the
 **collision discipline [5]**. After every trigger, the spindle's answer runs the **post-trigger pipeline**
 (`Shannon-and-the-gnns-stage`), scored by the **trained GNNs/FNNs** (`Asolaria-fnns-trained-…`), and the

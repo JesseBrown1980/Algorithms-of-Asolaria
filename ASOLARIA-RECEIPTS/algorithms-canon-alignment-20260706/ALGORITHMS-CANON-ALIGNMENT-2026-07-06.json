@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-07-06T15:20:46.9795656Z",
+  "claim": "Algorithms canon language aligned: no claims-gate-as-dismissal; PID-signal emission count != concurrency",
+  "repository": "JesseBrown1980/Algorithms-of-Asolaria",
+  "branch": "codex/algorithms-canon-alignment-20260706",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "ffcbaf9247f1cffe62d4a847e4d8f18cb9ffb4636a222c881cc0a46237936111"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4e7a3d092d37d483fa53b036c6e2345668259aa074a1b05fa87e88a50101035a"
+    },
+    {
+      "path": "SERVICE-MULTIPLICATION-ALGORITHM.md",
+      "sha256": "2e65dad03f48dd7a518f4187056f558fd73496e3871f387681d8a9fd2b1d81f9"
+    },
+    {
+      "path": "MAP.md",
+      "sha256": "53392d0476ea8a386c00d65a81e310d64385cbdc59a85ec09c500273150e1d81"
+    },
+    {
+      "path": "acer/ALGORITHMS-CATALOG-ACER-2026-06-19.md",
+      "sha256": "fc1d855c485df851a47a88d45822fa679b19f00abf789663768309086f2e030a"
+    },
+    {
+      "path": "liris/POST-HERE.md",
+      "sha256": "c9bbbaa1fab421e38699f3a1a839b4a8429dabbb0fcd801dda7195c517afd083"
+    }
+  ],
+  "diff_sha256": "332c4d11a9ddb478ee1fc5f6f9ca9f0db0d31aed470c68a69216a06bd7f21c7d",
+  "sister_organ": {
+    "source": "http://192.168.15.16:4948/health",
+    "body": "{\"ok\":true,\"service\":\"liris-fabric-dashboard\",\"port\":4948,\"ts\":\"2026-07-06T15:20:53.728Z\"}"
+  },
+  "boundary": "docs-only; no runtime fire; no USB/boot operation; no model call; receipt diff/json line endings pinned LF; .diff exempted from whitespace checking because patch files preserve plus-space blank-line records"
+}
