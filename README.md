@@ -26,6 +26,14 @@ merged and visible; corrections are addenda, never mutations of sealed receipts.
   resolved from code** (60 = addressing width 1024⁶=2⁶⁰; 49D = signed-executable catalog;
   D50 = 233 council-sealed skip), the white room defined as the clean-rebuild-and-attest
   stage, and the Path-2 u128 FALSE-HOLD defect flagged as the canonization blocker.
+- [`ASOLARIA-INVERSE-PAIR-LAW-2026-07-15.md`](ASOLARIA-INVERSE-PAIR-LAW-2026-07-15.md)
+  — the **DBBH ↔ DBWH inverse-pair law** unified: four pairs of mutual inverses
+  (I↔RNQ, R↔NQ, N↔RQ, Q↔NR), the six signed faces pair-balancing, and the same
+  black↔white inversion repeating at every level (transform, learning, gain, codec,
+  recovery, session). Includes the NEW measured instance: trained gain is near-invariant
+  under the inverse pairing (56.5% exact byte ties; true 4-class orientation dependence
+  1.4986%; symmetry breaking localized to two cells) with the open fork and the
+  discriminating test registered.
 - [`findings/OMEGA-REVERSIBILITY-LIRIS-2026-07-14.md`](findings/OMEGA-REVERSIBILITY-LIRIS-2026-07-14.md)
   — LIRIS Ω-bit + reversibility findings, **with the standing correction**
   [`findings/OMEGA-REVERSIBILITY-CORRECTION-2026-07-15.md`](findings/OMEGA-REVERSIBILITY-CORRECTION-2026-07-15.md):
