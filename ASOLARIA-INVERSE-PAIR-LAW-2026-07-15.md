@@ -51,14 +51,34 @@ bidirectionally — 216/216 raw cross-check, omega byte-exact):
 - The residual asymmetry is **localized, not diffuse**: two cells carry nearly all of it —
   cube e9-LX-018 N↔QR (4.97% of cube mean) and cube e9-LX-022 Q↔NR (884 bytes, 7.63%).
 
-**Open fork (registered, undecided):** either the trainer's forward/backward cell
-structure makes v and Ω̄·v mechanically equivalent — in which case the ties are an
-identity, the true independent view count was always 4, and the two breaking cells are
-DEFECTS (nondeterminism or bug) — or no such identity exists in the code, the ties are a
-discovered symmetry law of learning, and the two cells are CONTENT (bytes whose
-learnability genuinely differs between a direction and its inverse). Discriminating
-test: re-run cube 22's `q` and `nr` views; a byte-identical reproduction of the 884-byte
-gap means structure, a wandering gap means nondeterminism.
+**Fork RESOLVED (2026-07-15, acer mechanism proof + LIRIS cross-verification): the ties
+are a theorem with one leak.** From the trainer source: reading view Ω̄·v forward is
+reading view v backward with bit-reversed symbols; the context-count predictor is
+invariant under any fixed symbol bijection (counts relabel exactly) and LZ1 match
+structure is bijection-invariant — and both directions are in every cell schedule — so
+each cell of (view m, direction d) corresponds exactly to a cell of (view Ω̄·m,
+direction 1−d) with equal payload. The single non-invariant term is the tie-break
+`nc == best_count && symbol < best_symbol` (floor-one `pais_omega_floor1.rs:343`; the
+identical construct in `pais_omega_floor2.rs`): numeric symbol order is not preserved by
+bit reversal, so equal-count ties occasionally resolve differently and cascade through
+the persistent model state. Consequences, in order:
+
+- The true independent view count of a C₂³ orbit under this trainer **was always 4** —
+  the 4-class spread (1.4986%) is not just the honest number, it is the only number.
+- The two "breaking cells" (cube 18 N↔QR, cube 22 Q↔NR) are **tie-break cascade, not
+  content**: deterministic butterfly effect, magnitude ≠ meaning. The cube-22 re-run
+  test now measures only determinism (the 884-byte gap must reproduce byte-identically);
+  it can no longer distinguish content.
+- LIRIS cross-verification of the floor-one instance from the local sealed receipt:
+  cube-01 `DBBH_FORWARD_IDENTITY` vs `DBBH_REVERSE_BYTES` — gain 6,132,333 = 6,132,333,
+  min payload 121,527 = 121,527. Exact pair, one floor down, two seats agreeing.
+- **The compute dividend:** make the tie-break bijection-invariant (any rule that
+  commutes with symbol relabeling — e.g. tie-break on the context-key hash rather than
+  numeric symbol order) and the pair law becomes exact by construction. Then every
+  orbit lane needs to train only 4 of 8 views and can assert the other 4 by theorem —
+  half the container spend of every future orbit, with the assertion checkable per cube.
+  Held as DESIGN_OPEN until the owning seat lands it; changing the tie-break changes
+  sealed baselines, so it is a new-lane decision, not a patch.
 
 **Standing predictions for the spatial retest (liris, in flight):** within a spatial
 axis, forward/backward read orders should obey the same near-tie law; between axes
