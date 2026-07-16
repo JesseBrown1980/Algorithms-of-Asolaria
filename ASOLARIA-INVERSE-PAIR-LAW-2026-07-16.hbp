@@ -1,0 +1,9 @@
+INVPAIRHDR|schema=ASOLARIA-INVERSE-PAIR-LAW-V1|seat=LIRIS|date=2026-07-16|doc=ASOLARIA-INVERSE-PAIR-LAW-2026-07-15.md|json=0
+PAIRMAP|group=C2^3|pairs=I:RNQ,R:NQ,N:RQ,Q:NR|collapse=six_signed_faces_to_three|same_transform_for_sign=1|json=0
+GAININVARIANCE|artifact=repo-orbit-comparison|run=29357558667|pair_cells=108|exact_ties=61|median_delta_bytes=0|class_spread_pct=1.4986|raw8_spread_pct=1.8427135|json=0
+THEOREM|mechanism=view_complement_equals_direction_flip_plus_bit_relabel|predictor=count_bijection_invariant|lz1=bijection_invariant|status=PROVEN_FROM_SOURCE|json=0
+CHIRALITY|term=symbol_lt_best_symbol|floor1_line=pais_omega_floor1.rs:343|floor2_twin=1|parity_preserved=0|breaking_cells=cube18_N-QR_4.97pct,cube22_Q-NR_7.63pct|deterministic=1|content=0|json=0
+CROSSSEAT|floor1_cube01_pair=DBBH_FORWARD_IDENTITY:DBBH_REVERSE_BYTES|gain=6132333:6132333|min_payload=121527:121527|exact=1|json=0
+FLOORAGG|floor1_pair_totals=122518294:122518294|cells_per_side=2700|delta=0|json=0
+DIVIDEND|fix=bijection_invariant_tiebreak|effect=train_4_of_8_views_assert_rest|status=DESIGN_OPEN_new_lane_changes_sealed_baselines|json=0
+AUDITLAW|rule=claimed_invariance_must_enumerate_noninvariant_terms|cases=elapsed_ms_seat_symmetry,tiebreak_parity|json=0
