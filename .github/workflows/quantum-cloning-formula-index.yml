@@ -1,0 +1,29 @@
+name: Verify quantum-cloning formula index
+
+on:
+  pull_request:
+    paths:
+      - .gitattributes
+      - AGENTS.md
+      - SHADOW-RESOLUTION-CRATE-FAMILY-2026-07-04.md
+      - receipts/quantum-cloning-real-hardware/**
+      - tools/quantum-cloning-real-hardware/**
+      - .github/workflows/quantum-cloning-formula-index.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact commit
+        uses: actions/checkout@v4
+      - name: Compile verifiers
+        run: python3 -m py_compile tools/quantum-cloning-real-hardware/build_formula_index.py tools/quantum-cloning-real-hardware/verify_formula_index.py
+      - name: Reproduce deterministic packet
+        run: python3 tools/quantum-cloning-real-hardware/build_formula_index.py --check
+      - name: Verify HBP HBI and SHA bytes
+        run: python3 tools/quantum-cloning-real-hardware/verify_formula_index.py
