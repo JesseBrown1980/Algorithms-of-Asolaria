@@ -30,7 +30,7 @@ papers (shadow wall) -> capstone (recovery, **not** inversion) -> Path-1 (recall
 ## Honest boundaries (dual-lens)
 - **MEASURED_LOCAL**, both seats: the crates, tests, and the merged PRs; the live acer<->liris cross-fabric recall bridge (:4791, both directions return real HILBRA matches).
 - **UNVERIFIED**: fabric `SYSTEM_AFFIRMED` seal (council/bus reachable-but-not-clean this session); live GNN training of the hookwall edges.
-- **FALSE if asserted**: physical quantum cloning ("clone" = classical representation copy, no-cloning respected); sub-entropy compression (Shannon holds); physical time travel (reversible retrodiction of a determined trajectory only); recovering an entropy-increased / quantum past.
+- **FALSE if asserted about this crate family**: its classical representation copies are themselves physical quantum cloning; sub-entropy compression (Shannon holds); physical time travel (reversible retrodiction of a determined trajectory only); recovering an entropy-increased / quantum past. This crate boundary does not deny the separate `MEASURED_EXTERNAL` result that encrypted, single-use-key quantum cloning was demonstrated on physical superconducting-qubit hardware; see `receipts/quantum-cloning-real-hardware/LAW-ENCRYPTED-SINGLE-USE-QUANTUM-CLONING-REAL-HARDWARE.md`.
 
 ## Repos (shared across fabrics)
 github.com/JesseBrown1980/{asolaria-hbi-hbp, dbbh-coms-quant-prism, path2-two-shadow-recovery, qprism-3d-slice-harness, deterministic-slice-time-harness, holographic-wormhole-codec, asolaria-office-service}

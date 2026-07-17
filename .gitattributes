@@ -3,5 +3,6 @@
 *.hbi binary
 *.diff text eol=lf -whitespace
 *.json text eol=lf
+SHA256SUMS text eol=lf
 *.sha256 text eol=lf
 .gitattributes text eol=lf
