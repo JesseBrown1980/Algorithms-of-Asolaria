@@ -65,16 +65,39 @@ is the full cm_asolaria.py source (9,138 bytes).
 | 1024 | 3 | 1280 | 375,164 | 296,810 | 3,175 | 9,138 | 309,123 | 2.4730 | OK |
 | 1024 | 4 | 1280 | 375,164 | 297,014 | 3,175 | 9,138 | 309,327 | 2.4746 | OK |
 
+## cm2: bitwise logistic mixing + APM + match model (second rung climb)
+
+Binary decomposition per glyph (MSB-first), hashed context models of orders 1..k
+with count-adaptive rates, an order-5 match model, per-(bit-position, last-byte)
+logistic mixer trained online, one APM/SSE stage, exact binary arithmetic coder.
+Self-contained single-file decoder (12,662 bytes), fully charged. 2^23-entry
+hash tables. BPE measured and rejected for this model (bit-tree correlations
+prefer raw bytes: BPE-512/k=5 = 2.4856 vs bytes/k=5 = 2.3218).
+
+| merges | k | payload | dict | decoder | total | bpc_total | restore |
+|---|---|---|---|---|---|---|---|
+| 0 | 5 | 269,601 | 0 | 20,619* | 290,220 | 2.3218 | OK |
+| 512 | 5 | 288,594 | 1,481 | 20,619* | 310,694 | 2.4856 | OK |
+| 0 | 6 | 265,996 | 0 | 20,619* | 286,615 | 2.2929 | OK |
+| 0 | 7 | 261,617 | 0 | 12,662 | 274,279 | 2.1942 | OK |
+| **0** | **8** | **260,459** | **0** | **12,662** | **273,121** | **2.1850** | **OK** |
+
+\* early rows charged cm2 + the imported cm_asolaria.py before the decoder was
+made self-contained; payloads are unaffected (k=7 payload byte-identical across
+both charges: 261,617).
+
 ## Ladder (identical 1M slice, total-counted bpc)
 
 ```
 stock merges=0        3.8352
-stock merges=1024     2.6570
-gzip -9               2.8429   <- stock compressor passes gzip at 1024 merges
-cm 512,3              2.4575   <- new best, lossless, total-counted
+gzip -9               2.8429
+stock merges=1024     2.6570   <- stock passes gzip at 1024 merges
+cm 512,3              2.4575   <- rung 1: count-mixing passes zstd's neighborhood
 zstd -19              2.4005
 xz -9                 2.3255
+cm2 0,7               2.1942   <- rung 2: logistic mixing passes xz AND bzip2
 bzip2 -9              2.2506
+cm2 0,8               2.1850   <- best measured, lossless, total-counted
 source entropy est    ~1.0-1.5 (GPU-model region, out of scope for this run)
 ```
 
@@ -83,15 +106,21 @@ source entropy est    ~1.0-1.5 (GPU-model region, out of scope for this run)
 1. The context-mixing lever works exactly as the spec predicts: k=1→2→3 on raw
    bytes gives 3.97 → 3.19 → 2.72 bpc, the same trend as the spec's earlier
    measurement (4.52 → 3.77 → 3.38), and our implementation lands lower at each k.
-2. Best measured config: **BPE-512 + orders 0–3 mixing = 2.4575 bpc total** —
-   from the gzip rung (2.77 stock) to 0.057 bpc above zstd -19, closing 61% of the
-   stock→zstd gap. Payload-only it is 2.3725 bpc, already below zstd's stream and
-   0.047 above xz's — but the honest number charges the decoder, so 2.4575 stands.
-3. k=4 is past the knee on 1M bytes (2.4587 > 2.4575): order-4 contexts are too
-   sparse to pay for their dilution at this corpus size. More corpus, context
-   hashing (bounded tables), and SSE/APM stages are the next CPU-honest steps
-   toward xz; ~1.0 bpc still requires a GPU-trained predictor, out of scope here.
-4. Nothing below entropy, no external data at decode, every restore SHA-verified.
+2. Rung 1 (cm, count mixing): **BPE-512 + orders 0–3 = 2.4575 bpc total**, from
+   the gzip rung to 0.057 above zstd -19. k=4 was past the knee (2.4587),
+   which pointed at sparsity, not order depth, as the binding constraint.
+3. Rung 2 (cm2, logistic mixing): switching to bitwise hashed contexts with
+   count-adaptive rates, a match model, an online logistic mixer, and one APM
+   stage — the sparsity fix — reached **2.1942 bpc (k=7)** and **2.1850 bpc
+   (k=8)**, passing xz -9 (2.3255) and bzip2 -9 (2.2506) with the decoder fully
+   charged. Every general-purpose baseline on this ladder is now passed on CPU.
+4. BPE helps the count mixer (denser glyph statistics) but hurts the bitwise
+   mixer (2.4856 vs 2.3218 at k=5): the bit-tree's own context modeling
+   supersedes the glyph layer. Both directions measured, one kept.
+5. Diminishing returns are visible again at k=8 (−0.009 from k=7): the next
+   CPU-honest steps are SSE chains, state-machine counters, and a word model;
+   ~1.0 bpc still requires a GPU-trained predictor, out of scope here.
+6. Nothing below entropy, no external data at decode, every restore SHA-verified.
    The cube involution remains a no-op (0.02%), confirming formula-5 discipline.
 
 ## Repro
@@ -100,4 +129,5 @@ source entropy est    ~1.0-1.5 (GPU-model region, out of scope for this run)
 head -c 1000000 enwik8 > slice1M.txt          # sha 369b6889...
 python3 asolaria_cube_compressor.py slice1M.txt
 python3 cm_asolaria.py slice1M.txt 0,1 0,2 0,3 512,2 512,3 512,4 1024,3 1024,4
+python3 cm2_asolaria.py slice1M.txt 0,5 0,6 0,7 0,8
 ```
