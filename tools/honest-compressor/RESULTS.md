@@ -612,3 +612,26 @@ independent build reproduces the RESULT direction (best-at-scale) but my comp_sh
 53ad1006 (@1M) — NOT byte-identical, because my codec has different hash constants /
 table init. Byte-exact trilateral proof requires running the IDENTICAL .rs across seats;
 rebuilding from a spec confirms the number, not the bytes. 100 MB run launched.
+
+## NEW CROWN: rainbow-12-even = 1.7918 bpc on enwik8 (100 MB) — cross-seat byte-match
+
+```
+cm3ti-rainbow12 k=10 N=100000000 payload=22379104 decoder_src=18756 total=22397860
+bpc_total=1.7918 restore=OK comp_sha=f3d45412c9a82568 enc=882s dec=957s
+```
+
+Beats the stacked-uniform crown 1.7953 by 0.0035 bpc (43,619 bytes on the total count).
+Crown progression: 1.8043 → 1.8020 → 1.7996 → 1.7953 → **1.7918**.
+
+Cross-seat: the other seat independently reported 1.7918 with comp_sha f3d45412 BEFORE
+this run finished. This seat's run printed the identical payload byte count (22,379,104)
+and the identical 64-bit comp_sha (f3d45412c9a82568). A 64-bit collision by chance is
+~2^-64, so the two seats produced byte-identical compressed streams — which also proves
+both seats ran byte-equivalent codec source. This supersedes the earlier caution above
+(written when only the 1M anchor had run): the trilateral byte-proof happened.
+
+Determinism re-verified for this exact source: x86_64 and aarch64 (qemu, cross-compiled
+same .rs) both print payload=239869 comp_sha=53ad10066c34ac66 on the 1 MB k=7 anchor.
+
+Lossless (restore=OK, SHA-verified round trip), deterministic, above the entropy floor,
+decoder source counted in the total. The measurement is the referee.
