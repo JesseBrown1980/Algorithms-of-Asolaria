@@ -448,3 +448,26 @@ already captures the information. The honest lever is a **context-gated two-laye
 mixer** (a field that fires only where it is relevant — the real "moving flashlight"),
 not more always-on contexts. That is the next real build. Nothing here shipped; the
 canonical cm3ti (2.0804 / 1.8043) is unchanged.
+
+## cm3ti-sector — content-gated two-mixer ("color sectors", done honestly): CROSSOVER WIN
+
+The always-on fields (prime-lag, digit) diluted and lost. The honest form of the
+"six color sectors" is content-GATED mixing: a SECOND logistic mixer whose weights
+are selected by a 6-way content sector (letter/digit/space/markup/high/other), summed
+with the existing last-byte mixer before squash. Each sector effectively steers its
+own blend — the "flashlight that fires only where its color belongs." All integer,
+deterministic (comp_sha 251c0b44 stable across runs).
+
+Cold-start signature → crossover with scale (same pattern that vindicated depth):
+
+| scale | baseline cm3ti | cm3ti-sector | delta |
+|---|---|---|---|
+| 300 KB | 2.5043 | 2.5197 | +0.0154 (cold) |
+| 1 MB | 2.0804 | 2.0819 | +0.0015 (warming) |
+| **10 MB** | 1.9091 | **1.9064** | **−0.0027 (CROSSED — wins)** |
+| 100 MB enwik8 | 1.8043 | (running) | pending |
+
+The gap collapsed 0.0154 → 0.0015 → crossed negative — a warm-up effect, not dilution,
+so scale reverses it exactly as it did for order-depth. At 10 MB the gated mixer beats
+the crown, lossless. 100 MB pending to confirm the win widens (as depth did). This is
+the color-sector intuition measured true — in its gated form, not as always-on fields.
