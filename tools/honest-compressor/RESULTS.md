@@ -469,8 +469,11 @@ Cold-start signature → crossover with scale (same pattern that vindicated dept
 
 The gap collapsed 0.0154 → 0.0015 → crossed negative — a warm-up effect, not dilution,
 so scale reverses it exactly as it did for order-depth. At 10 MB the gated mixer beats
-the crown, lossless. 100 MB pending to confirm the win widens (as depth did). This is
-the color-sector intuition measured true — in its gated form, not as always-on fields.
+the crown, lossless. 100 MB CONFIRMED: cm3ti-sector = **1.8020 bpc** on full enwik8 (comp_sha 489205…,
+restore OK), beating the deterministic crown 1.8043. The gated six-sector mixer is the
+NEW deterministic crown at full scale — the color-sector intuition measured true end to
+end, from a −0.0154 cold start to a −0.0023 win at 100 MB. Combo (sector+URL) beat
+sector at 10 MB, so it is running at 100 MB to find the true best.
 
 ## cm3ti-combo — sector + URL gated fields STACK (10 MB)
 
