@@ -558,3 +558,25 @@ Note: naive stacking ≠ the explicit antipodal table-tying (share slow tables, 
 mixer) — that distinct mechanism is untested and remains a live pre-registerable screen.
 
 _Stacked crown determinism gate CLOSED: byte-identical x86_64 == aarch64 (probe comp_sha b5a25fce), lossless — all three gates pass._
+
+## Sector-feature experiments: V1/V2 confirm, V3 soft-gate rejected
+
+Third-seat promoted two refined sector definitions; confirmed at 10 MB, plus a soft-
+gradient gate (V3, the "rainbow" in continuous form). Bench: stacked crown 1.8990.
+
+| arm | 1 MB | 10 MB | verdict |
+|---|---|---|---|
+| 6-sector | 2.0819 | 1.9064 | anchor |
+| V1 (8 targeted, letters/digits × run/boundary) | 2.0788 | 1.9035 | small win, below stack |
+| V2 (12, class × same-as-prev) | 2.0774 | 1.9028 | better feature, below stack |
+| 24-sector | 2.0785 | 1.9010 | — |
+| **stacked cubes 6+12+24** | 2.0746 | **1.8990** | best |
+| V3 soft-gradient (membership fade) | 2.1306 | — | **REJECTED (regressed)** |
+
+Findings: (1) the *feature* used to subdivide matters as much as the count — V2's
+run-vs-boundary axis beats uniform. (2) But V3 soft/continuous membership REGRESSED:
+fading the sector mixer by run-depth starves it of training signal. The honest lesson —
+the "rainbow gradient" benefit is captured better by DISCRETE stacked resolutions
+(coarse+fine hard sectors) than by a continuous fade. The stack already is the rainbow.
+Live untested arm: stack using V2's run/boundary sectors instead of uniform — could
+beat 1.8990 by combining the two measured-good things.
