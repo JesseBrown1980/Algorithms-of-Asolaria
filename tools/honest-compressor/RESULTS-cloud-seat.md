@@ -221,3 +221,21 @@ worse, not better: the third mirror re-refines what mirrors 1+2 already refined.
 CLOSED both scales.
 Bench summary: geometry (4096-wheel) and capacity (tables) pay; rate-spectrum
 and extra mirrors don't — the existing dials were already at their optima.
+
+## NEW OVERALL CROWN: vc28 full stack = 1.6399 @100MB (2026-07-19 21:40 UTC)
+
+cm3ti-vc28-fullstack k=10 N=100,000,000 payload=20,478,473 decoder_src=20,029
+total=20,498,502 **bpc_total=1.6399** restore=OK comp_sha=975abe08121fe2fb
+enc=1339s dec=1300s (RSS 9.64 GB). Landed dead-center of the pre-registered
+band (1.640 ± 0.002). Crown line today: 1.8043 → 1.7918 → 1.6805 → 1.6584 →
+1.6563 → **1.6399**. Gap to 2006 baseline (1.466): 0.174.
+
+**vc28m** (u8 history port for enwik9 RAM, pattern from container's 19f6c9e):
+IDENTITY GATE PASSED @10MB — payload 2,215,189 and comp_sha 6227e48478f05698
+byte-identical between vc28 and vc28m. (decoder_src metadata still reads
+vc27.rs — 20,029 B, same file size class; charged consistently on both sides.)
+
+**ENWIK9 CHAMPION LAUNCHED 21:47 UTC**: vc28m k=10 on the full 10⁹ — projected
+~10.8 GB RSS, ~7.3 h, seals ~05:00 UTC. Baseline to beat: 1.5719 (v6).
+Extrapolation from the 100MB deltas: ~1.42–1.46 territory — the 2006-era
+enwik8 baseline line, on the gigabyte, in one day of measured steps.
