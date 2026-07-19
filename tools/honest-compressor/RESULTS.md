@@ -471,3 +471,18 @@ The gap collapsed 0.0154 → 0.0015 → crossed negative — a warm-up effect, n
 so scale reverses it exactly as it did for order-depth. At 10 MB the gated mixer beats
 the crown, lossless. 100 MB pending to confirm the win widens (as depth did). This is
 the color-sector intuition measured true — in its gated form, not as always-on fields.
+
+## cm3ti-combo — sector + URL gated fields STACK (10 MB)
+
+Both gated fields cross over at 10 MB; combining them is additive (complementary,
+not redundant) — "combine the colors mathematically", measured:
+
+| config | 10 MB k10 bpc | vs baseline 1.9091 |
+|---|---|---|
+| baseline cm3ti | 1.9091 | — |
+| + URL gated | 1.9069 | −0.0022 |
+| + sector mixer | 1.9064 | −0.0027 |
+| **+ both (combo)** | **1.9042** | **−0.0049 (≈ sum — they stack)** |
+
+Gated fields that fire only where their color belongs add without diluting. Combo is
+the config to carry to 100 MB. Lossless, deterministic, above the floor.
