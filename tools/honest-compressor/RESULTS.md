@@ -472,8 +472,10 @@ so scale reverses it exactly as it did for order-depth. At 10 MB the gated mixer
 the crown, lossless. 100 MB CONFIRMED: cm3ti-sector = **1.8020 bpc** on full enwik8 (comp_sha 489205…,
 restore OK), beating the deterministic crown 1.8043. The gated six-sector mixer is the
 NEW deterministic crown at full scale — the color-sector intuition measured true end to
-end, from a −0.0154 cold start to a −0.0023 win at 100 MB. Combo (sector+URL) beat
-sector at 10 MB, so it is running at 100 MB to find the true best.
+end, from a −0.0154 cold start to a −0.0023 win at 100 MB. Determinism gate CLOSED for
+the new crown: byte-identical across **x86_64 AND aarch64** (comp_sha 251c0b44 both),
+lossless — all three gates pass. Combo (sector+URL) beat sector at 10 MB, so it is
+running at 100 MB to find the true best.
 
 ## cm3ti-combo — sector + URL gated fields STACK (10 MB)
 
