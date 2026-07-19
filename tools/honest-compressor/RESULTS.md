@@ -539,3 +539,11 @@ payload 20,710,481 · total 20,729,444 · comp_sha de5122afca0db106 · restore O
 Day's crown arc: 1.8043 → 1.7918 → 1.6805 → **1.6584** (−0.146 in one day).
 Combined model (vc26: +URL field on crown base) screened −0.0054 @1 MB, 10 MB
 confirm in flight; tb28 probe queued for the enwik9 champion config.
+
+## Crown: vc27 full stack = 1.6563 bpc enwik8 (2026-07-19 night)
+
+URL-combined + 24-way run-depth + even gradient + TBITS27. payload 20,683,246 ·
+total 20,703,275 · comp_sha 1465313e7acaf59e · restore OK. URL gain shrinks with
+scale (−0.0054/−0.0034/−0.0021 at 1M/10M/100M) but stays net-positive. Source:
+generated chain on rust/cm3ti_combo.rs (see variants receipt). Day arc:
+1.8043 → 1.7918 → 1.6805 → 1.6584 → 1.6563.
