@@ -239,3 +239,24 @@ vc27.rs — 20,029 B, same file size class; charged consistently on both sides.)
 ~10.8 GB RSS, ~7.3 h, seals ~05:00 UTC. Baseline to beat: 1.5719 (v6).
 Extrapolation from the 100MB deltas: ~1.42–1.46 territory — the 2006-era
 enwik8 baseline line, on the gigabyte, in one day of measured steps.
+
+## The 4ⁿ glyph ladder walked to its limit (2026-07-19 ~22:15 UTC)
+
+Jesse's sequence 64-256-1024-4096-16384(-65536), screened wheel-by-wheel.
+Payloads (1MB k7 / 10MB k10), all restore=OK:
+
+| wheel | 1MB | 10MB | comp_shas |
+|---|---|---|---|
+| s12 (baseline) | 239,869 | 2,330,753 | 53ad1006 / 4ae7ec1f |
+| s1024 (256×4) | 239,105 | 2,315,651 | c280622e / 178a8081 |
+| s4096 (256×16) | 238,739 | 2,311,093 | f365fdf0 / 31ca3950 |
+| s16384 (256×64) | 237,995 | 2,300,939 | 05484092 / d70ec471 |
+| **s65536 (256×256)** | **237,753** | **2,293,443** | c689f2a5 / b98eb79e |
+
+Monotone the whole way at both scales — the curve never turned. At 65,536 the
+wheel IS the full last-2-bytes: the second mixer is now order-2-gated, the
+natural limit of this construction. −0.030 bpc vs s12 at 10MB. s65536 100MB
+geometry-crown challenge launched beside the enwik9 champion. Tomorrow's
+composition: winning wheel × TBITS-28 tables. (Contrast on record: sector
+counts this small-table wheel keeps rewarding capacity, same lesson as the
+table ladder — geometry and capacity pay; re-processing doesn't.)
