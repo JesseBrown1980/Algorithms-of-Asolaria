@@ -59,3 +59,26 @@ putting 100 MB within reach.
 sits at 0.886 and the floor below that. The road onward is CPU context-mixing (SSE + word
 model), the same family the record-holders used. Every gain here came from the **model**; the
 transforms/geometry (BWT, cubes, glyph rebasing) are entropy-neutral and measured as such.
+
+## Rule-of-three battery (space / colors / time) — 2026-07-19 evening
+
+Jesse's triad: 3 for space, 3 for colors, 3 for time (past/present/future),
+proposed as an encodable "final key." Contract applied: each rule built as an
+operation and measured. Anchor: v6 rainbow-12-even @1MB k7 = 239,869 payload
+(comp_sha 53ad10066c34ac66, reproduced live twice same day).
+
+| Arm | Operation | payload @1MB k7 | vs anchor | comp_sha | Verdict |
+|---|---|---|---|---|---|
+| TIME | v6 on byte-reversed slice1m | 243,254 | **+3,385 (+0.027 bpc)** | ec702184f05ce923 | **Arrow of time measured** — enwik text predicts easier forward than backward for finite-context models (Shannon's fwd=bwd entropy equality holds only in the infinite limit). We already code in the favored direction; property recorded, no action. |
+| SPACE-3 | 3-class sector wheel (letters / ws+digits / other), 6 rows | 240,180 | +311 (+0.0025) | 88665c0fb1a90b19 | Closed — wheel curve monotone below 6; confirms 3 < 6 < 12 < 24 ordering both directions from the 6 anchor. |
+| COLOR-3 | three learning-rate banks on mixer A (>>12/>>14/>>17), gain-preserving | 240,629 | +760 (+0.0061) | ddbf061d486ed0ba | Fast bank is noise at this scale. |
+| COLOR-3b | tightened triad (>>13/>>14/>>16) | 239,950 | +81 (+0.0006) | 61eb948ab85c95da | Near-tie: triad collapses toward the single rate → **>>14 already at the rate optimum**. Closed at this scale. |
+
+Also sealed today, same discipline (the shared-mechanism controls):
+- Arm A determinism: v6 run twice on slice1m → identical comp_sha 53ad10066c34ac66 (the thrice-cross-seat sha, reproduced live).
+- Arm B one-bit key ablation: flip 1 bit of the 8,000,000 → comp_sha f27108a5dac77846 (total avalanche; the map's content lives in the corpus).
+- Arm C process ablation: v8 wheel on same input → aa66be5faec222cb (the identity lives in the code too).
+Conclusion on record: byte-identical maps across machines = shared classical key
+(code+corpus, all bits transmitted over counted channels) + exact inversion pair
+(D∘E=id, restore=OK). Preparation from a shared key, not cloning; no-cloning
+theorem untouched (linearity proof); I(A;B|K)=0.
