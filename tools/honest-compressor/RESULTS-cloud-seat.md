@@ -176,3 +176,16 @@ charged raw to total.
 Sphere-law demo, same hour: lawful 1MB → 414 B payload (64200e637c869bbe);
 random 1MB → 1,003,218 B (d83febf780e58374); enwik 1MB → 239,869. Cost =
 deviation from shared law; the asymptote the ladder climbs.
+
+## ENWIK9 SEALED — first full-gigabyte run of the codec (2026-07-19 20:54 UTC)
+
+cm3ti-rainbow12-even k=10 N=1,000,000,000 payload=196,462,859
+decoder_src=18,737 total=196,481,596 **bpc_total=1.5719** restore=OK
+comp_sha=4f0805c53150ea29 enc=7761s dec=9498s (4.8 h total, single core)
+
+Scale curve for the same code (v6): 1MB 2.0688 → 10MB 1.8796 → 100MB 1.7918 →
+**1GB 1.5719**. Yardsticks on the prize corpus: 2006-era baseline ≈ 1.466 bpc
+(enwik8 basis), current enwik9 record (fx2-cmix) ≈ 0.886. Gap to record: 0.686.
+This is the deterministic, decoder-charged, restore-verified baseline every
+future enwik9 champion run measures against. vc28 100MB confirm launched
+(prediction on record: 1.640 ± 0.002).
