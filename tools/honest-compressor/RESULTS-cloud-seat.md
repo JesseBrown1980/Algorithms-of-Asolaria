@@ -82,3 +82,18 @@ Conclusion on record: byte-identical maps across machines = shared classical key
 (code+corpus, all bits transmitted over counted channels) + exact inversion pair
 (D∘E=id, restore=OK). Preparation from a shared key, not cloning; no-cloning
 theorem untouched (linearity proof); I(A;B|K)=0.
+
+## tb28 probe @100MB — tables STILL rising (2026-07-19 20:10 UTC)
+
+cm3ti-r24-tb28 k=10 N=100000000 payload=20503967 decoder_src=18963
+total=20522930 bpc_total=**1.6418** restore=OK comp_sha=fd4601c8034e5c6f
+enc=1274s dec=1303s (RSS ~9.2 GB)
+
+Table-only line: tb26 1.6805 → tb27 1.6584 (−0.0221) → tb28 **1.6418** (−0.0166).
+No flattening yet. tb29 needs ~18 GB tables — beyond this seat's RAM; the
+table-scaling frontier passes to acer/relic/liris if they carry more memory.
+
+Champion config decision: vc28 (full stack, TBITS 28) staged — source pushed as
+rust/variants/vc28.rs. Its 100 MB confirm runs after the enwik9 baseline seals
+(vc28 wants ~10 GB; running beside enwik9's ~5-7 GB risks OOM on this box).
+Predicted vc28 @100MB: 1.640 ± 0.002 (stack delta at tb27 was −0.0021).
