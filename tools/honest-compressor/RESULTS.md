@@ -301,3 +301,33 @@ Honest law: independent shards cold-start the model, so N-way parallelism costs
 seal reports the true sharded total and does NOT claim the monolithic number.
 This is the CPU-scale path: your machine runs the monolithic best; GitHub's free
 public-repo cells run the wide sharded lane. Neither invents information.
+
+## cm3ti — integer-deterministic codec (submission-grade, cross-review hardening)
+
+A code review (parallel seat) noted the 13-byte Rust/Python drift is float
+non-determinism, and that real production coders (LZMA, cmix, zstd-FSE) are
+integer precisely because floats round differently across platforms. `rust/cm3ti.rs`
+integerizes the WHOLE prediction path — lpaq-style integer stretch/squash tables,
+fixed-point mixer (weights <<16, dot in i64), integer APM, integer range coder.
+No float anywhere.
+
+Determinism, proven (1M slice, k=7):
+
+| check | result |
+|---|---|
+| 3 independent runs, compressed SHA | 72a5fa77… × 3, **byte-identical** |
+| rebuilt at opt-level 1 vs 3 (platform proxy) | **byte-identical** |
+| lossless restore (SHA) | OK |
+
+| model | k | payload | total | bpc_total | deterministic |
+|---|---|---|---|---|---|
+| cm3t (float) | 7 | 244,215 | 261,729 | 2.0938 | no (13B Rust/Py drift) |
+| **cm3ti (integer)** | 7 | 254,425 | 271,606 | 2.1728 | **yes, bit-exact by construction** |
+
+Honest tradeoff: the integer version costs ~4% ratio here (2.1728 vs 2.0938)
+because its rate/mixer/APM constants are coarser than the tuned float ones — that
+is recoverable with the same kind of constant tuning cm3t got, not a fundamental
+limit. What it buys: bit-identical output on any platform/language, which (a) makes
+the SGRAM fan-out provably correct across heterogeneous runners and (b) is required
+for a Hutter-style submission (deterministic decode). Determinism first, ratio-tune
+second. Still lossless, decoder charged, above the entropy floor.
