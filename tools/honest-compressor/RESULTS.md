@@ -316,9 +316,39 @@ portable constants, no runtime float). Result: it not only closed the ~4% gap, i
 | cm3ti 12-bit | 2.1728 | — | — | yes |
 | **cm3ti 16-bit tuned** | **2.0804** | **2.0379** | **1.9091** | **yes (comp_sha stable across runs+opt)** |
 
-The deterministic codec is now the canonical instrument: one binary, one number,
-every seat, forever — and it beats the float codec it was hardening. Determinism
-bought a ratio *gain*, not a cost. Lossless, decoder charged, above the entropy floor.
+Honest framing (important, because the paradox is only apparent): the integer codec
+did NOT beat the float one because integers are magic. It beat it because the retune
+produced a slightly better *model* — 16-bit probabilities quantize finer, and the
+fixed-point rate table implements a marginally different (and evidently slightly
+better) adaptation curve than the original float schedule. Ratio is a property of
+prediction quality; this change nudged it up, and the better model also happens to be
+the deterministic one. So the true claim is "the retune improved the model and bought
+determinism," NOT "determinism improved compression." Both remain above the floor.
+Lossless, decoder charged. Canonical only after the scale-ladder gate below passes.
+
+### Determinism gate — evidence
+
+| test | result |
+|---|---|
+| 3 independent runs (same binary) | comp_sha 101c86ae… ×3, identical |
+| opt-level 1 vs 3 rebuild | identical |
+| **x86_64 vs aarch64** (cross-compiled, run under qemu) | **byte-identical, 1 distinct SHA** |
+| lossless restore, every slice | OK |
+
+The cross-architecture identity is the real proof: different instruction set,
+different registers, same compressed bytes — because every op is integer/fixed-point.
+
+### Scale-ladder gate (cm3ti tuned vs cm3t float, same slices)
+
+| slice | cm3t float | cm3ti deterministic | holds? |
+|---|---|---|---|
+| 1 MB k7 | 2.0938 | 2.0804 | ✓ better |
+| 2.2 MB k7 | 2.0426 | 2.0379 | ✓ better |
+| 10 MB k10 | 1.9276 | 1.9091 | ✓ better |
+| 100 MB k10 | 1.8187 | (running — the last cell) | pending |
+
+Crowned canonical only if the 100 MB cell holds at/under the float 1.8187 — the
+review's insistence, because adaptation-rate changes interact with corpus length.
 
 ## cm3ti (12-bit) — integer-deterministic codec (cross-review hardening milestone)
 
