@@ -594,3 +594,21 @@ L6 = class(last), L12 = class×(same-as-prev), L24 = class×(2-bit boundary stat
 Wins at both scales (−0.0045 @1M, −0.0029 @10MB). Combining stacking + the better
 subdivision feature works, as predicted. 100 MB run launched as crown challenger
 (crown = stacked-uniform 1.7953). Lossless, deterministic, above the floor.
+
+## rainbow-12-even — cross-seat arm (12-way run/boundary + even 2-row blend)
+
+Independent build of the other seat's rainbow-12-even: 12-way sector (class×same-as-prev)
+with the base mixer blended evenly with TWO adjacent sector rows (current + neighbor):
+dot = (4·base + 2·w2[s1] + 2·w2[s2]) >> 19. New best at every screened scale:
+
+| config | 1 MB | 10 MB |
+|---|---|---|
+| stacked-uniform | 2.0746 | 1.8990 |
+| stackRB (run/boundary) | 2.0701 | 1.8961 |
+| **rainbow-12-even** | **2.0690** | **1.8900** |
+
+Cross-seat note: the other seat reports 1.7918 @100MB, comp_sha f3d45412. This
+independent build reproduces the RESULT direction (best-at-scale) but my comp_sha is
+53ad1006 (@1M) — NOT byte-identical, because my codec has different hash constants /
+table init. Byte-exact trilateral proof requires running the IDENTICAL .rs across seats;
+rebuilding from a spec confirms the number, not the bytes. 100 MB run launched.
