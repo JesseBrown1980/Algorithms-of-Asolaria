@@ -491,3 +491,22 @@ not redundant) — "combine the colors mathematically", measured:
 
 Gated fields that fire only where their color belongs add without diluting. Combo is
 the config to carry to 100 MB. Lossless, deterministic, above the floor.
+
+## Sector-count sweep — 6→12→24→48 ("more distillation space", nested, 6 recovers crown)
+
+Nested refinement: fine(last,prev) in 0..47, sector = fine>>NSHIFT, so N=6 exactly
+recovers the crown and each finer rung is judged only on what it adds. Optimal
+granularity exists and grows with corpus (the sphere = 1 sample/sector = zero stats
+= the cliff, not perfection).
+
+| sectors | 1 MB k7 | 10 MB k10 |
+|---|---|---|
+| 6 | 2.0852 | 1.9067 |
+| 12 | 2.0803 | (—) |
+| **24** | **2.0785** | **1.9010** |
+| 48 | 2.0804 | (running) |
+
+24 sectors is today's optimum: beats 6-sector crown (1.9064) AND combo (1.9042) at
+10 MB with 1.9010. Finer helps to ~24 then plateaus (48 ≥ 24 at 1M) — the
+specificity-vs-starvation tradeoff, drawn by measurement. 24-sector is the new 100 MB
+challenger. The optimum will move outward at 1 GB (more data earns finer sectors).
