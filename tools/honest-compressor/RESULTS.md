@@ -140,6 +140,39 @@ own best of 2.1850 at k=8). Confirms the forward call: the CPU road past cm2 is
 better modeling (secondary estimation + word-level context), not deeper orders,
 and needs no GPU. ~1.0 bpc still requires a GPU-trained predictor (out of scope).
 
+## Pushing cm3: variation screen + SSE-trust tuning (before leveling up)
+
+Discipline: screen variations cheaply (300 KB slice), keep only what the byte-exact
+total rewards, confirm winners on the full slices. cm3 baseline on the 300K screen
+= 2.5514; cm2 = 2.6293.
+
+Variations tried (300K screen, k=7):
+
+| variation | screen bpc | vs cm3 2.5514 | kept? |
+|---|---|---|---|
+| + 2nd (order-9) match model | 2.6158 (payload unchanged) | neutral, +decoder | no |
+| + 3rd APM stage (order-2 keyed) | 2.9650 | −− harmful | no |
+| SSE trust ↑ (0.8/0.85) | 2.5850 | worse | no |
+| SSE trust ↓ (0.45/0.55) | 2.5239 | better | pursue |
+| SSE trust → [0.25,0.35] | 2.4862 | better | pursue |
+| SSE trust → [0.1,0.15] | 2.4554 | better | pursue |
+| **SSE trust → [0.05,0.1]** | **2.4497** | **−0.10 best** | **yes** |
+| SSE trust → [0,0] (APM off) | 2.4522 | (word model alone) | — |
+
+Finding: cm3's original APM trust (0.6/0.7) was **too high — the APM chain was
+dragging the result down**. The word model is the real gain; a whisper of APM
+([0.05,0.1]) is optimal, barely better than APM fully off (2.4522). Two other
+additions (2nd match, 3rd APM) were measured duds and dropped. This is variation
+discipline: 5 of 8 tries failed, 1 won, and only the winner scales forward.
+
+Confirmed at scale (k=7):
+
+| model | slice | total bpc | restore | note |
+|---|---|---|---|---|
+| cm3 (orig trust) | 1M | 2.1222 | OK | prior best 1M |
+| **cm3t[0.05,0.1]** | 1M | **2.0731** | OK | tuned, −0.049, new 1M best |
+| cm3 (orig trust) | 2.2M distinct | 2.0703 | OK | generalizes, beats cm2 2.1265 & xz 2.3329 |
+
 ## Trained glyph vocabularies (1024 / 4096) — the "glyphs aren't English" test
 
 Question: does a LARGER trained glyph vocabulary (not a 256-byte alphabet) lower
