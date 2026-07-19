@@ -99,6 +99,7 @@ impl Model {
             "48" => (vec![48], vec![2,2], 4, 19),          // separated finest
             "48a" => (vec![49], vec![2,2], 4, 19),         // 48-way, partner = boundary-complement (s^7)
             "48o" => (vec![50], vec![2,2], 4, 19),         // 48-way, partner = wheel-antipode ((s+24)%48)
+            "4k" => (vec![4096], vec![2,2], 4, 19),        // 4096-way: lastbyte*16 + 4 boundary bits, temporal partner
             "c2" => (vec![12,24], vec![2,2,2,2], 8, 20),   // combined two-level
             "c3" => (vec![12,24,48], vec![2,2,1,1,1,1], 8, 20), // combined pyramid, coarse-heavy
             _ => panic!("bad RB_MODE"),
@@ -158,8 +159,10 @@ impl Model {
         let pb3=if n>2{self.hist[n-3] as i32}else{0};
         let pb4=if n>3{self.hist[n-4] as i32}else{0};
         let pb5=if n>4{self.hist[n-5] as i32}else{0};
+        let pb6=if n>5{self.hist[n-6] as i32}else{0};
         let c0=cls6(lb); let c1=cls6(pb2); let c2c=cls6(pb3); let c3c=cls6(pb4); let c4c=cls6(pb5);
         let b1=(c1==c0) as usize; let b2=(c2c==c1) as usize; let b3=(c3c==c2c) as usize; let b4=(c4c==c3c) as usize;
+        let b5=(cls6(pb6)==c4c) as usize;
         let mut ri = 0usize;
         for li in 0..self.lvl_size.len() {
             let (sa, sb) = match self.lvl_size[li] {
@@ -168,6 +171,7 @@ impl Model {
                 48 => (c0*8+b1*4+b2*2+b3, c1*8+b2*4+b3*2+b4),
                 49 => { let s=c0*8+b1*4+b2*2+b3; (s, s^7) },
                 50 => { let s=c0*8+b1*4+b2*2+b3; (s, (s+24)%48) },
+                4096 => ((lb as usize & 255)*16 + b1*8+b2*4+b3*2+b4, (pb2 as usize & 255)*16 + b2*8+b3*4+b4*2+b5),
                 _ => (0,0),
             };
             self.sects[ri] = self.lvl_off[li] + sa; ri += 1;

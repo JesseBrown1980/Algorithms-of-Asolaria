@@ -676,3 +676,36 @@ Lossless, deterministic, above the entropy floor, decoder source counted. The ev
 blend is what makes the fine wheel trainable: 48 sectors under the blend are one warm
 gradient, not 48 cold tables — the gradiated-sphere intuition, in the only form that
 survives measurement.
+
+## NEW CROWN: s4096 (4^n wheel) = 1.7629 bpc on enwik8 — Jesse's ladder, biggest step yet
+
+Mode "4k" in cm3ti_rbladder.rs: 4096 sectors = last byte (256) x 16 boundary states,
+partner row = same feature one step back (the temporal-neighbor glue carried up the
+4^n ladder: 64, 256, 1024, 4096, 16384 — 256 already lives in the codec as mixer A).
+
+Pre-registered cold-start warning (4096 rows train ~85x less often than 48) was WRONG
+at both screens — measured wins at every scale:
+| scale | s4096 | prev best (48) | delta |
+|---|---|---|---|
+| 1 MB payload | 237716 | 238716 | −1000 |
+| 10 MB bpc | 1.8410 | 1.8566 | −0.0156 |
+| 100 MB bpc | **1.7629** | 1.7822 | **−0.0193** |
+
+```
+cm3ti-rbladder[4k] k=10 N=100000000 payload=22014891 decoder_src=21312 total=22036203
+bpc_total=1.7629 restore=OK comp_sha=64559d476c3f9332 enc=872s dec=905s
+```
+Crown progression: 1.8043 → 1.8020 → 1.7996 → 1.7953 → 1.7918 → 1.7822 → **1.7629**.
+−240,990 counted bytes vs rainbow-48 — the largest single crown step of the project.
+
+Cross-seat replication: the other seat independently implemented the same spec
+(different codebase) and measured the same verdict at 1M (−1130) and 10MB (−19,660);
+this seat: −1000 / −20,174. Same direction, same magnitude, independent constants.
+
+Determinism: x86_64 == aarch64 (qemu) byte-identical on 1M anchor
+(payload 237716, comp_sha e2a1177dd66c0db4). Regression anchor mode 12 still
+byte-reproduces the rainbow-12 line (239869 / 53ad1006).
+
+Lossless, deterministic, above the entropy floor, decoder source counted.
+Next rung queued: 16384. Composed experiment (4096-wheel x big tables) is the
+other seat's crown shot.
