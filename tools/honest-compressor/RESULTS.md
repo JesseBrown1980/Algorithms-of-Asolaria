@@ -709,3 +709,16 @@ byte-reproduces the rainbow-12 line (239869 / 53ad1006).
 Lossless, deterministic, above the entropy floor, decoder source counted.
 Next rung queued: 16384. Composed experiment (4096-wheel x big tables) is the
 other seat's crown shot.
+
+## Measured negatives: colored mirror + absorption spectrum (both anchored, both refuted)
+
+Two staged instruments from the optical-bench mapping, built as modes with anchors
+proven inert (mode 12 and 4k byte-identical with new code compiled in):
+- 4km "colored mirror": third APM stage keyed by 12-way sector after the two
+  colorblind mirrors. 1M: +1 byte; 10MB: +37. INERT — sector info already reaches
+  the existing mirrors through the prediction; a color-keyed pane is redundant glass.
+- 4ka "absorption spectrum": per-class sector-row adaptation rates (letters/space
+  >>15, bursty classes >>14). 1M: −187 (real cold-start win); 10MB: +584 — REGRESSED.
+  Fast rates help before tables warm, then keep jittering settled weights. The static
+  spectrum is refuted; only a decaying per-class schedule could reopen this.
+Crown remains s4096 = 1.7629. Negative results kept per the contract.
