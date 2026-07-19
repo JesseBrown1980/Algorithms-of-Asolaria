@@ -302,7 +302,25 @@ seal reports the true sharded total and does NOT claim the monolithic number.
 This is the CPU-scale path: your machine runs the monolithic best; GitHub's free
 public-repo cells run the wide sharded lane. Neither invents information.
 
-## cm3ti — integer-deterministic codec (submission-grade, cross-review hardening)
+## cm3ti TUNED — deterministic AND better than float (canonical instrument)
+
+Following the review's recommendation (widen probability 12→16 bit, refine the
+adaptive rate), `rust/cm3ti.rs` was tuned to 16-bit probabilities with a fixed-point
+count-adaptive rate (`~65536/(n+1.5)`, a pure-integer mirror of the float ramp — still
+portable constants, no runtime float). Result: it not only closed the ~4% gap, it
+**passed the float version** while staying bit-identical across runs and opt levels.
+
+| model | 1M k7 | 2.2M k7 | 10M k10 | deterministic |
+|---|---|---|---|---|
+| cm3t (float) | 2.0938 | 2.0426 | 1.9276 | no (13B drift) |
+| cm3ti 12-bit | 2.1728 | — | — | yes |
+| **cm3ti 16-bit tuned** | **2.0804** | **2.0379** | **1.9091** | **yes (comp_sha stable across runs+opt)** |
+
+The deterministic codec is now the canonical instrument: one binary, one number,
+every seat, forever — and it beats the float codec it was hardening. Determinism
+bought a ratio *gain*, not a cost. Lossless, decoder charged, above the entropy floor.
+
+## cm3ti (12-bit) — integer-deterministic codec (cross-review hardening milestone)
 
 A code review (parallel seat) noted the 13-byte Rust/Python drift is float
 non-determinism, and that real production coders (LZMA, cmix, zstd-FSE) are

@@ -1,4 +1,4 @@
-// cm3ti.rs — INTEGER-deterministic cm3t. Submission-grade: every arithmetic op is
+// cm3ti16.rs — INTEGER-deterministic cm3t at 16-bit probability (tuned from cm3ti). Submission-grade: every arithmetic op is
 // integer (fixed-point), so the compressed bytes are bit-identical on any CPU and
 // reproducible by any language that copies these exact integer ops (the point the
 // review raised: floats drift across platforms; integers do not). Same model shape
@@ -19,8 +19,8 @@ struct Tables { squash: Vec<i32>, stretch: Vec<i32> }
 impl Tables {
     fn new() -> Tables {
         // squash: d -> p ; build from the logistic curve using integer table + interp
-        let base: [i32; 33] = [1,2,3,6,10,16,27,45,73,120,194,310,488,747,1101,1546,
-            2047,2549,2994,3348,3607,3785,3901,3975,4022,4050,4068,4079,4085,4089,4092,4093,4094];
+        let base: [i32; 33] = [22,36,60,98,162,267,439,720,1179,1921,3108,4971,7812,11955,17625,24743,
+            32768,40793,47911,53581,57724,60565,62428,63615,64357,64816,65097,65269,65374,65438,65476,65500,65514];
         let mut squash = vec![0i32; 4096]; // index d+2048 for d in [-2047,2048]
         for d in -2047..=2047 {
             let w = d & 127;
@@ -28,21 +28,21 @@ impl Tables {
             let v = (base[idx] * (128 - w) + base[idx + 1] * w + 64) >> 7;
             squash[(d + 2048) as usize] = v;
         }
-        squash[0] = 1; // clamp ends
-        let mut stretch = vec![0i32; 4096];
+        squash[0] = 1; // clamp ends (16-bit)
+        let mut stretch = vec![0i32; 65536];
         let mut pi = 0usize;
         for d in -2047..=2047 {
             let p = squash[(d + 2048) as usize] as usize;
             while pi <= p { stretch[pi] = d; pi += 1; }
         }
-        while pi < 4096 { stretch[pi] = 2047; pi += 1; }
+        while pi < 65536 { stretch[pi] = 2047; pi += 1; }
         Tables { squash, stretch }
     }
     #[inline] fn squash(&self, d: i32) -> i32 {
         let d = if d < -2047 { -2047 } else if d > 2047 { 2047 } else { d };
         self.squash[(d + 2048) as usize]
     }
-    #[inline] fn stretch(&self, p: i32) -> i32 { self.stretch[p as usize & 4095] }
+    #[inline] fn stretch(&self, p: i32) -> i32 { self.stretch[p as usize & 65535] }
 }
 
 struct Model {
@@ -73,8 +73,9 @@ impl Model {
         let b = std::cmp::max(1, 64 - ((v as u64 - 1).leading_zeros())) as u32;
         let nin = k + 4;
         let mut rate = [0i32; 256];
-        // count-adaptive shift: young ctx adapts fast (small shift), matures to >>5
-        for n in 0..256 { rate[n] = if n < 2 {2} else if n < 4 {3} else if n < 8 {4} else {5}; }
+        // count-adaptive fixed-point rate ~ 65536/(n+1.5), matures to 1/32 (=2048) — a
+        // pure-integer mirror of the float 1/(n+1.5) ramp (portable constants).
+        for n in 0..256 { rate[n] = if n < 30 { (65536i32 * 2) / (2 * n as i32 + 3) } else { 2048 }; }
         let mut apm = vec![0u16; 1024 * 33];
         let mut apm2 = vec![0u16; 1024 * 33];
         let tb = Tables::new();
@@ -88,10 +89,10 @@ impl Model {
         }
         Model {
             k, b, nin, tb,
-            t: (0..k).map(|_| vec![2048u16; TSIZE]).collect(),
+            t: (0..k).map(|_| vec![32768u16; TSIZE]).collect(),
             tn: (0..k).map(|_| vec![0u8; TSIZE]).collect(),
-            t0: vec![2048u16; 1 << (b + 1)], t0n: vec![0u8; 1 << (b + 1)],
-            tw: (0..2).map(|_| vec![2048u16; TSIZE]).collect(),
+            t0: vec![32768u16; 1 << (b + 1)], t0n: vec![0u8; 1 << (b + 1)],
+            tw: (0..2).map(|_| vec![32768u16; TSIZE]).collect(),
             twn: (0..2).map(|_| vec![0u8; TSIZE]).collect(),
             rate,
             w: vec![(0.3 * 65536.0) as i32; (b as usize * 256) * nin],
@@ -101,7 +102,7 @@ impl Model {
             ctx_h: vec![0u64; k + 1], wh: 0, pwh: 0,
             idxs: vec![0usize; k], widx: [0, 0],
             st: vec![0i32; nin],
-            o0idx: 0, wrow: 0, pred_glyph: -1, match_bit: -1, p_pre: 2048,
+            o0idx: 0, wrow: 0, pred_glyph: -1, match_bit: -1, p_pre: 32768,
             a1: (0, 0, 0), a2: (0, 0, 0),
             bucket_base: 0, wctx1: 0, wctx2: 0,
         }
@@ -181,39 +182,39 @@ impl Model {
         let (pa2, s2) = Model::apm_apply(&self.tb, &self.apm2, actx2, p_s1);
         self.a2 = (s2.0, s2.1, p_s1);
         let mut p = (pa2 + p_s1 * 3) >> 2;
-        if p < 1 { p = 1; } if p > 4094 { p = 4094; }
+        if p < 1 { p = 1; } if p > 65534 { p = 65534; }
         p
     }
 
     fn update_bit(&mut self, bit: i32) {
         let k = self.k;
-        let err = (bit << 12) - self.p_pre;      // scaled error (p in 0..4095 ~ <<12? use 4096)
+        let err = (bit << 16) - self.p_pre;      // scaled error (p in 0..4095 ~ <<12? use 4096)
         for i in 0..self.nin {
-            self.w[self.wrow + i] += (self.st[i] * err) >> 10;
+            self.w[self.wrow + i] += (self.st[i] * err) >> 14;
         }
         for o in 1..=k {
             let idx = self.idxs[o - 1]; let nn = self.tn[o - 1][idx] as usize;
             let v = self.t[o - 1][idx] as i32;
-            self.t[o - 1][idx] = (v + (((bit << 12) - v) >> self.rate[nn])).clamp(1, 4094) as u16;
+            self.t[o - 1][idx] = (v + ((((bit << 16) - v) * self.rate[nn]) >> 16)).clamp(1, 65534) as u16;
             if nn < 255 { self.tn[o - 1][idx] = (nn + 1) as u8; }
         }
         let idx = self.o0idx; let nn = self.t0n[idx] as usize; let v = self.t0[idx] as i32;
-        self.t0[idx] = (v + (((bit << 12) - v) >> self.rate[nn])).clamp(1, 4094) as u16;
+        self.t0[idx] = (v + ((((bit << 16) - v) * self.rate[nn]) >> 16)).clamp(1, 65534) as u16;
         if nn < 255 { self.t0n[idx] = (nn + 1) as u8; }
         for wi in 0..2 {
             let idx = self.widx[wi]; let nn = self.twn[wi][idx] as usize; let v = self.tw[wi][idx] as i32;
-            self.tw[wi][idx] = (v + (((bit << 12) - v) >> self.rate[nn])).clamp(1, 4094) as u16;
+            self.tw[wi][idx] = (v + ((((bit << 16) - v) * self.rate[nn]) >> 16)).clamp(1, 65534) as u16;
             if nn < 255 { self.twn[wi][idx] = (nn + 1) as u8; }
         }
-        let g = bit << 12;
+        let g = bit << 16;
         let (b1, w1, _) = self.a1;
         let lo = self.apm[b1] as i32; let hi = self.apm[b1 + 1] as i32;
-        self.apm[b1] = (lo + (((g - lo) * (128 - w1)) >> 12)).clamp(1, 4094) as u16;
-        self.apm[b1 + 1] = (hi + (((g - hi) * w1) >> 12)).clamp(1, 4094) as u16;
+        self.apm[b1] = (lo + (((g - lo) * (128 - w1)) >> 12)).clamp(1, 65534) as u16;
+        self.apm[b1 + 1] = (hi + (((g - hi) * w1) >> 12)).clamp(1, 65534) as u16;
         let (b2, w2, _) = self.a2;
         let lo = self.apm2[b2] as i32; let hi = self.apm2[b2 + 1] as i32;
-        self.apm2[b2] = (lo + (((g - lo) * (128 - w2)) >> 12)).clamp(1, 4094) as u16;
-        self.apm2[b2 + 1] = (hi + (((g - hi) * w2) >> 12)).clamp(1, 4094) as u16;
+        self.apm2[b2] = (lo + (((g - lo) * (128 - w2)) >> 12)).clamp(1, 65534) as u16;
+        self.apm2[b2 + 1] = (hi + (((g - hi) * w2) >> 12)).clamp(1, 65534) as u16;
         if self.match_bit >= 0 && self.match_bit != bit { self.match_ptr = -1; self.match_len = 0; }
     }
 
@@ -242,7 +243,7 @@ impl Enc {
     fn new() -> Enc { Enc { x1: 0, x2: 0xFFFFFFFF, out: Vec::new() } }
     fn encode(&mut self, bit: i32, p: i32) {
         let range = (self.x2 - self.x1) as u64;
-        let mut xmid = self.x1 + ((range * p as u64) >> 12) as u32;
+        let mut xmid = self.x1 + ((range * p as u64) >> 16) as u32;
         if xmid < self.x1 { xmid = self.x1; } if xmid >= self.x2 { xmid = self.x2 - 1; }
         if bit == 1 { self.x2 = xmid; } else { self.x1 = xmid + 1; }
         while (self.x1 ^ self.x2) & 0xFF000000 == 0 {
@@ -259,7 +260,7 @@ impl<'a> Dec<'a> {
     }
     fn decode(&mut self, p: i32) -> i32 {
         let range = (self.x2 - self.x1) as u64;
-        let mut xmid = self.x1 + ((range * p as u64) >> 12) as u32;
+        let mut xmid = self.x1 + ((range * p as u64) >> 16) as u32;
         if xmid < self.x1 { xmid = self.x1; } if xmid >= self.x2 { xmid = self.x2 - 1; }
         let bit = if self.x <= xmid { 1 } else { 0 };
         if bit == 1 { self.x2 = xmid; } else { self.x1 = xmid + 1; }
@@ -326,6 +327,6 @@ fn main() {
     if args.len() >= 5 && args[3] == "--emit" { fs::write(&args[4], &comp).unwrap(); }
     let src_b = fs::metadata("cm3ti.rs").map(|m| m.len()).unwrap_or(0);
     let payload = comp.len() as u64; let total = payload + src_b;
-    println!("cm3ti-rust k={} N={} payload={} decoder_src={} total={} bpc_total={:.4} restore={} comp_sha={} enc={:.0}s dec={:.0}s",
+    println!("cm3ti-det-rust k={} N={} payload={} decoder_src={} total={} bpc_total={:.4} restore={} comp_sha={} enc={:.0}s dec={:.0}s",
         k, n, payload, src_b, total, (total as f64*8.0)/n as f64, if ok {"OK"} else {"FAIL"}, &comp_sha[..16], enc_s, dec_s);
 }
