@@ -472,8 +472,10 @@ so scale reverses it exactly as it did for order-depth. At 10 MB the gated mixer
 the crown, lossless. 100 MB CONFIRMED: cm3ti-sector = **1.8020 bpc** on full enwik8 (comp_sha 489205…,
 restore OK), beating the deterministic crown 1.8043. The gated six-sector mixer is the
 NEW deterministic crown at full scale — the color-sector intuition measured true end to
-end, from a −0.0154 cold start to a −0.0023 win at 100 MB. Combo (sector+URL) beat
-sector at 10 MB, so it is running at 100 MB to find the true best.
+end, from a −0.0154 cold start to a −0.0023 win at 100 MB. Determinism gate CLOSED for
+the new crown: byte-identical across **x86_64 AND aarch64** (comp_sha 251c0b44 both),
+lossless — all three gates pass. Combo (sector+URL) beat sector at 10 MB, so it is
+running at 100 MB to find the true best.
 
 ## cm3ti-combo — sector + URL gated fields STACK (10 MB)
 
@@ -490,60 +492,187 @@ not redundant) — "combine the colors mathematically", measured:
 Gated fields that fire only where their color belongs add without diluting. Combo is
 the config to carry to 100 MB. Lossless, deterministic, above the floor.
 
-## Third-seat granularity screens → NEW CROWN: rainbow-12-even = 1.7918 bpc (2026-07-19)
+## Sector-count sweep — 6→12→24→48 ("more distillation space", nested, 6 recovers crown)
 
-Cloud seat, from the pushed crown code. Anchor reproduced byte-exact before any
-variation was trusted (1 MB comp_sha 251c0b44; 100 MB comp_sha 489205479047d08f —
-container's crown sha, reproduced here at full scale: cross-seat determinism at 22.5 MB).
+Nested refinement: fine(last,prev) in 0..47, sector = fine>>NSHIFT, so N=6 exactly
+recovers the crown and each finer rung is judged only on what it adds. Optimal
+granularity exists and grows with corpus (the sphere = 1 sample/sector = zero stats
+= the cliff, not perfection).
 
-1 MB screens (payload vs 6-sector anchor 242,020, k=7): V1 8-targeted −0.0060 ·
-V3 soft-gate 3:1 −0.0069 · V2 12-uniform −0.0073 · V4 = V2+V3 −0.0139 (additive) ·
-leak sweep: 7:1 −0.0106, 3:1 −0.0139, **1:1 −0.0172** (leakier = better, monotone).
+| sectors | 1 MB k7 | 10 MB k10 |
+|---|---|---|
+| 6 | 2.0852 | 1.9067 |
+| 12 | 2.0803 | (—) |
+| **24** | **2.0785** | **1.9010** |
+| 48 | 2.0804 | (running) |
 
-10 MB confirms (k=10, slice sha c4e72b59…): anchor 1.8823 · V4 1.8679 (−0.0144,
-scale-stable) · **v6 1:1 even 1.8646 (−0.0177) — champion.**
+24 sectors is today's optimum: beats 6-sector crown (1.9064) AND combo (1.9042) at
+10 MB with 1.9010. Finer helps to ~24 then plateaus (48 ≥ 24 at 1M) — the
+specificity-vs-starvation tradeoff, drawn by measurement. 24-sector is the new 100 MB
+challenger. The optimum will move outward at 1 GB (more data earns finer sectors).
 
-100 MB crown challenge (full enwik8, k=10, same-seat pair, decoder charged):
+## CROWN below 1.80 — cm3ti-combo (sector+URL) = 1.7996 bpc on enwik8
 
-| arm | payload | total bpc | comp_sha | restore |
-|---|---|---|---|---|
-| 6-sector (old crown) | 22,506,819 | 1.8020 | 489205479047d08f | OK |
-| **rainbow-12-even (NEW CROWN)** | **22,379,104** | **1.7918** | f3d45412c9a82568 | OK |
+The stacked gated fields at full scale: cm3ti-combo (6-sector mixer + URL context) =
+**1.7996 bpc** on 100 MB enwik8 (comp_sha e066f9fc…, restore OK), below sector-only
+(1.8020) and the original deterministic crown (1.8043). First config under the 1.80
+line. All integer / deterministic. 24-sector (best @10MB, 1.9010) running at 100 MB —
+may take it lower. Crown progression, all your color idea: 1.8043 → 1.8020 (6-sector)
+→ 1.7996 (combo) → (24-sector pending). Lossless, decoder charged, above the floor.
 
-Config: 12-way sector = class(last)*2 + (prev same class), soft gate blending the
-last byte's sector row with the previous byte's 1:1 (dot = 4w + 2·w2[s1] + 2·w2[s2]
->> 19; updates >>15 both rows). The full stack of the operator's ideas — color
-sectors → finer wheel → gradient, at the softest tested blend — measured, lossless,
-deterministic. Cross-check requested from the container seat (expected f3d45412…).
-Next: single-stream enwik9 champion run (the current prize corpus).
+## Stacked cubes — multi-resolution sector ensemble ("process the cubes together")
 
-## CROWN LEAP: v8+TBITS26 = 1.6805 bpc on enwik8 (2026-07-19, Phase 0 pays at scale)
+Base mixer (last-byte) + THREE sector mixers at 6/12/24 granularity, all summed before
+squash. Not one resolution — all at once. New best at every scale:
 
-Table-bits sweep (ROADMAP Phase 0): TBITS 23→26 relieves hash collisions, gain GROWS
-with corpus (−0.021 @1MB → −0.066 @10MB → −0.111 @100MB stacked with the 24-way wheel).
+| config | 1 MB | 10 MB |
+|---|---|---|
+| baseline cm3ti | — | 1.9091 |
+| 6-sector | 2.0819 | 1.9064 |
+| 24-sector | 2.0785 | 1.9010 |
+| combo (sector+URL) | 2.0851 | 1.9042 |
+| **stacked cubes (6+12+24)** | **2.0746** | **1.8990** |
 
-| arm @100MB k=10 | payload | total bpc | comp_sha | restore |
-|---|---|---|---|---|
-| v6 rainbow-12-even tb23 (prior crown) | 22,379,104 | 1.7918 | f3d45412c9a82568 | OK |
-| **v8 24-way + TBITS=26 (NEW CROWN)** | **20,987,880** | **1.6805** | 4ac88955567940be | OK |
+Multi-resolution beats any single granularity — coarse cubes give warm/robust stats,
+fine cubes give specificity, summing lets each contribute where confident. Below 1.90 at 10 MB. **100 MB CONFIRMED: stacked cubes = 1.7953 bpc** on full enwik8
+(comp_sha 213a6aeb, restore OK), beating combo (1.7996) — the NEW CROWN. Crown
+progression, all from the color-sector idea: 1.8043 → 1.8020 (6-sector) → 1.7996
+(combo) → **1.7953 (stacked 6+12+24)**. Multi-resolution content gating is the record.
+Lossless, deterministic, above the entropy floor — better MODELING, never below it.
 
-Now inside the ROADMAP Phase-4 projection band (1.60–1.68) with only Phase 0 + the
-wheel landed. Gap to 2006 prize baseline (1.466): 0.21. Source: rust/variants/tb26.rs
-(v8_r24.rs with TBITS=26). enwik9: v6-tb23 baseline run in flight (seals as first
-prize-corpus receipt); champion re-run with the new crown config follows overnight.
+## Capacity-sharing test (add 48-cube to the stack) — measured negative
 
-## Crown again: v8+TBITS27 = 1.6584 bpc enwik8 (2026-07-19 evening)
+Hypothesis (antipodal/capacity-sharing): warm coarse cubes might let a fine 48-cube
+survive where standalone-48 starved. Tested naively (stack 6+12+24+48):
 
-Table law third confirmation: tb27 ≈ flat at 1 MB (−273 B) but −0.0221 at 100 MB.
-payload 20,710,481 · total 20,729,444 · comp_sha de5122afca0db106 · restore OK.
-Day's crown arc: 1.8043 → 1.7918 → 1.6805 → **1.6584** (−0.146 in one day).
-Combined model (vc26: +URL field on crown base) screened −0.0054 @1 MB, 10 MB
-confirm in flight; tb28 probe queued for the enwik9 champion config.
+| config | 1 MB | 10 MB |
+|---|---|---|
+| stack 6+12+24 | 2.0746 | 1.8990 |
+| stack 6+12+24+48 | 2.0800 | 1.9094 |
 
-## Crown: vc27 full stack = 1.6563 bpc enwik8 (2026-07-19 night)
+REJECTED: the 48-cube dilutes even with coarse backing, and the gap WIDENS at 10 MB
+(not a cold-start — active harm). The stack saturates at 6+12+24; the "sphere is the
+cliff" holds. (Caveat: the summed-mixer normalization shift wasn't retuned for 5 mixers;
+but the widening-with-scale gap indicates real dilution, not just miscalibration.)
+Note: naive stacking ≠ the explicit antipodal table-tying (share slow tables, keep fast
+mixer) — that distinct mechanism is untested and remains a live pre-registerable screen.
 
-URL-combined + 24-way run-depth + even gradient + TBITS27. payload 20,683,246 ·
-total 20,703,275 · comp_sha 1465313e7acaf59e · restore OK. URL gain shrinks with
-scale (−0.0054/−0.0034/−0.0021 at 1M/10M/100M) but stays net-positive. Source:
-generated chain on rust/cm3ti_combo.rs (see variants receipt). Day arc:
-1.8043 → 1.7918 → 1.6805 → 1.6584 → 1.6563.
+_Stacked crown determinism gate CLOSED: byte-identical x86_64 == aarch64 (probe comp_sha b5a25fce), lossless — all three gates pass._
+
+## Sector-feature experiments: V1/V2 confirm, V3 soft-gate rejected
+
+Third-seat promoted two refined sector definitions; confirmed at 10 MB, plus a soft-
+gradient gate (V3, the "rainbow" in continuous form). Bench: stacked crown 1.8990.
+
+| arm | 1 MB | 10 MB | verdict |
+|---|---|---|---|
+| 6-sector | 2.0819 | 1.9064 | anchor |
+| V1 (8 targeted, letters/digits × run/boundary) | 2.0788 | 1.9035 | small win, below stack |
+| V2 (12, class × same-as-prev) | 2.0774 | 1.9028 | better feature, below stack |
+| 24-sector | 2.0785 | 1.9010 | — |
+| **stacked cubes 6+12+24** | 2.0746 | **1.8990** | best |
+| V3 soft-gradient (membership fade) | 2.1306 | — | **REJECTED (regressed)** |
+
+Findings: (1) the *feature* used to subdivide matters as much as the count — V2's
+run-vs-boundary axis beats uniform. (2) But V3 soft/continuous membership REGRESSED:
+fading the sector mixer by run-depth starves it of training signal. The honest lesson —
+the "rainbow gradient" benefit is captured better by DISCRETE stacked resolutions
+(coarse+fine hard sectors) than by a continuous fade. The stack already is the rainbow.
+Live untested arm: stack using V2's run/boundary sectors instead of uniform — could
+beat 1.8990 by combining the two measured-good things.
+
+## stackRB — stacked cubes with run/boundary sectors (two measured-good things combined)
+
+The stack subdivides by V2's run/boundary axis (which beat uniform) instead of a hash:
+L6 = class(last), L12 = class×(same-as-prev), L24 = class×(2-bit boundary state).
+
+| config | 1 MB | 10 MB |
+|---|---|---|
+| stacked-uniform (6+12+24) | 2.0746 | 1.8990 |
+| **stackRB (run/boundary)** | **2.0701** | **1.8961** |
+
+Wins at both scales (−0.0045 @1M, −0.0029 @10MB). Combining stacking + the better
+subdivision feature works, as predicted. 100 MB run launched as crown challenger
+(crown = stacked-uniform 1.7953). Lossless, deterministic, above the floor.
+
+## rainbow-12-even — cross-seat arm (12-way run/boundary + even 2-row blend)
+
+Independent build of the other seat's rainbow-12-even: 12-way sector (class×same-as-prev)
+with the base mixer blended evenly with TWO adjacent sector rows (current + neighbor):
+dot = (4·base + 2·w2[s1] + 2·w2[s2]) >> 19. New best at every screened scale:
+
+| config | 1 MB | 10 MB |
+|---|---|---|
+| stacked-uniform | 2.0746 | 1.8990 |
+| stackRB (run/boundary) | 2.0701 | 1.8961 |
+| **rainbow-12-even** | **2.0690** | **1.8900** |
+
+Cross-seat note: the other seat reports 1.7918 @100MB, comp_sha f3d45412. This
+independent build reproduces the RESULT direction (best-at-scale) but my comp_sha is
+53ad1006 (@1M) — NOT byte-identical, because my codec has different hash constants /
+table init. Byte-exact trilateral proof requires running the IDENTICAL .rs across seats;
+rebuilding from a spec confirms the number, not the bytes. 100 MB run launched.
+
+## NEW CROWN: rainbow-12-even = 1.7918 bpc on enwik8 (100 MB) — cross-seat byte-match
+
+```
+cm3ti-rainbow12 k=10 N=100000000 payload=22379104 decoder_src=18756 total=22397860
+bpc_total=1.7918 restore=OK comp_sha=f3d45412c9a82568 enc=882s dec=957s
+```
+
+Beats the stacked-uniform crown 1.7953 by 0.0035 bpc (43,619 bytes on the total count).
+Crown progression: 1.8043 → 1.8020 → 1.7996 → 1.7953 → **1.7918**.
+
+Cross-seat: the other seat independently reported 1.7918 with comp_sha f3d45412 BEFORE
+this run finished. This seat's run printed the identical payload byte count (22,379,104)
+and the identical 64-bit comp_sha (f3d45412c9a82568). A 64-bit collision by chance is
+~2^-64, so the two seats produced byte-identical compressed streams — which also proves
+both seats ran byte-equivalent codec source. This supersedes the earlier caution above
+(written when only the 1M anchor had run): the trilateral byte-proof happened.
+
+Determinism re-verified for this exact source: x86_64 and aarch64 (qemu, cross-compiled
+same .rs) both print payload=239869 comp_sha=53ad10066c34ac66 on the 1 MB k=7 anchor.
+
+Lossless (restore=OK, SHA-verified round trip), deterministic, above the entropy floor,
+decoder source counted in the total. The measurement is the referee.
+
+## NEW CROWN: rainbow-48 (separated fine wheel) = 1.7822 bpc on enwik8 — the ladder pays
+
+The two-way ladder experiment (combined vs separated, Jesse's multi-resolution sphere):
+one generalized codec `cm3ti_rbladder.rs`, mode selected by RB_MODE env
+(12=champion-anchor / 24 / 48 / c2=12+24 / c3=12+24+48 pyramid). Mode 12 byte-reproduces
+the rainbow-12 champion exactly (payload 239869, comp_sha 53ad1006 @1M k=7) — harness proven.
+
+Screens (payload bytes @1M k=7; bpc_total @10MB k=10):
+| mode | 1 MB | 10 MB |
+|---|---|---|
+| 12 (champion) | 239869 | 1.8900 |
+| 24 | 239191 | 1.8608 |
+| **48** | **238716** | **1.8566** |
+| c2 | 239214 | 1.8611 |
+| c3 | 238740 | 1.8569 |
+
+Verdict at both scales: every rung beats the champion; SEPARATED narrowly beats COMBINED;
+48 leads. (c3 skipped at 100MB — screened behind 48 at both scales.)
+
+100 MB (k=10, RB_MODE=48):
+```
+cm3ti-rbladder[48] k=10 N=100000000 payload=22256212 decoder_src=20981 total=22277193
+bpc_total=1.7822 restore=OK comp_sha=61f113278737466f enc=844s dec=835s
+```
+Beats rainbow-12's 1.7918 by 0.0096 bpc (120,667 counted bytes) — largest single crown step.
+Progression: 1.8043 → 1.8020 → 1.7996 → 1.7953 → 1.7918 → **1.7822**.
+
+Determinism: x86_64 and aarch64 (qemu, same .rs) byte-match on the 1M anchor
+(payload 238716, comp_sha c1059d37117e112c).
+
+Measured negatives kept honestly (1M/10MB payload gaps vs 48-neighbor):
+- 48a boundary-complement partner (s^7): +1008 @1M, +7884 @10MB — inversion weaker than time
+- 48o wheel-antipode partner ((s+24)%48): +332 @1M, +2912 @10MB — gap narrows ~15%/decade,
+  cannot catch neighbor by enwik10 scale. "Inverted points are already known" is refuted;
+  temporal adjacency remains the strongest sector glue.
+
+Lossless, deterministic, above the entropy floor, decoder source counted. The even 2-row
+blend is what makes the fine wheel trainable: 48 sectors under the blend are one warm
+gradient, not 48 cold tables — the gradiated-sphere intuition, in the only form that
+survives measurement.

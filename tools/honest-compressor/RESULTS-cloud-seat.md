@@ -97,3 +97,60 @@ Champion config decision: vc28 (full stack, TBITS 28) staged — source pushed a
 rust/variants/vc28.rs. Its 100 MB confirm runs after the enwik9 baseline seals
 (vc28 wants ~10 GB; running beside enwik9's ~5-7 GB risks OOM on this box).
 Predicted vc28 @100MB: 1.640 ± 0.002 (stack delta at tb27 was −0.0021).
+## Third-seat granularity screens → NEW CROWN: rainbow-12-even = 1.7918 bpc (2026-07-19)
+
+Cloud seat, from the pushed crown code. Anchor reproduced byte-exact before any
+variation was trusted (1 MB comp_sha 251c0b44; 100 MB comp_sha 489205479047d08f —
+container's crown sha, reproduced here at full scale: cross-seat determinism at 22.5 MB).
+
+1 MB screens (payload vs 6-sector anchor 242,020, k=7): V1 8-targeted −0.0060 ·
+V3 soft-gate 3:1 −0.0069 · V2 12-uniform −0.0073 · V4 = V2+V3 −0.0139 (additive) ·
+leak sweep: 7:1 −0.0106, 3:1 −0.0139, **1:1 −0.0172** (leakier = better, monotone).
+
+10 MB confirms (k=10, slice sha c4e72b59…): anchor 1.8823 · V4 1.8679 (−0.0144,
+scale-stable) · **v6 1:1 even 1.8646 (−0.0177) — champion.**
+
+100 MB crown challenge (full enwik8, k=10, same-seat pair, decoder charged):
+
+| arm | payload | total bpc | comp_sha | restore |
+|---|---|---|---|---|
+| 6-sector (old crown) | 22,506,819 | 1.8020 | 489205479047d08f | OK |
+| **rainbow-12-even (NEW CROWN)** | **22,379,104** | **1.7918** | f3d45412c9a82568 | OK |
+
+Config: 12-way sector = class(last)*2 + (prev same class), soft gate blending the
+last byte's sector row with the previous byte's 1:1 (dot = 4w + 2·w2[s1] + 2·w2[s2]
+>> 19; updates >>15 both rows). The full stack of the operator's ideas — color
+sectors → finer wheel → gradient, at the softest tested blend — measured, lossless,
+deterministic. Cross-check requested from the container seat (expected f3d45412…).
+Next: single-stream enwik9 champion run (the current prize corpus).
+
+## CROWN LEAP: v8+TBITS26 = 1.6805 bpc on enwik8 (2026-07-19, Phase 0 pays at scale)
+
+Table-bits sweep (ROADMAP Phase 0): TBITS 23→26 relieves hash collisions, gain GROWS
+with corpus (−0.021 @1MB → −0.066 @10MB → −0.111 @100MB stacked with the 24-way wheel).
+
+| arm @100MB k=10 | payload | total bpc | comp_sha | restore |
+|---|---|---|---|---|
+| v6 rainbow-12-even tb23 (prior crown) | 22,379,104 | 1.7918 | f3d45412c9a82568 | OK |
+| **v8 24-way + TBITS=26 (NEW CROWN)** | **20,987,880** | **1.6805** | 4ac88955567940be | OK |
+
+Now inside the ROADMAP Phase-4 projection band (1.60–1.68) with only Phase 0 + the
+wheel landed. Gap to 2006 prize baseline (1.466): 0.21. Source: rust/variants/tb26.rs
+(v8_r24.rs with TBITS=26). enwik9: v6-tb23 baseline run in flight (seals as first
+prize-corpus receipt); champion re-run with the new crown config follows overnight.
+
+## Crown again: v8+TBITS27 = 1.6584 bpc enwik8 (2026-07-19 evening)
+
+Table law third confirmation: tb27 ≈ flat at 1 MB (−273 B) but −0.0221 at 100 MB.
+payload 20,710,481 · total 20,729,444 · comp_sha de5122afca0db106 · restore OK.
+Day's crown arc: 1.8043 → 1.7918 → 1.6805 → **1.6584** (−0.146 in one day).
+Combined model (vc26: +URL field on crown base) screened −0.0054 @1 MB, 10 MB
+confirm in flight; tb28 probe queued for the enwik9 champion config.
+
+## Crown: vc27 full stack = 1.6563 bpc enwik8 (2026-07-19 night)
+
+URL-combined + 24-way run-depth + even gradient + TBITS27. payload 20,683,246 ·
+total 20,703,275 · comp_sha 1465313e7acaf59e · restore OK. URL gain shrinks with
+scale (−0.0054/−0.0034/−0.0021 at 1M/10M/100M) but stays net-positive. Source:
+generated chain on rust/cm3ti_combo.rs (see variants receipt). Day arc:
+1.8043 → 1.7918 → 1.6805 → 1.6584 → 1.6563.
