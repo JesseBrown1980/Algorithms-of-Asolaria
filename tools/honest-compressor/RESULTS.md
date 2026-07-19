@@ -489,3 +489,30 @@ not redundant) — "combine the colors mathematically", measured:
 
 Gated fields that fire only where their color belongs add without diluting. Combo is
 the config to carry to 100 MB. Lossless, deterministic, above the floor.
+
+## Third-seat granularity screens → NEW CROWN: rainbow-12-even = 1.7918 bpc (2026-07-19)
+
+Cloud seat, from the pushed crown code. Anchor reproduced byte-exact before any
+variation was trusted (1 MB comp_sha 251c0b44; 100 MB comp_sha 489205479047d08f —
+container's crown sha, reproduced here at full scale: cross-seat determinism at 22.5 MB).
+
+1 MB screens (payload vs 6-sector anchor 242,020, k=7): V1 8-targeted −0.0060 ·
+V3 soft-gate 3:1 −0.0069 · V2 12-uniform −0.0073 · V4 = V2+V3 −0.0139 (additive) ·
+leak sweep: 7:1 −0.0106, 3:1 −0.0139, **1:1 −0.0172** (leakier = better, monotone).
+
+10 MB confirms (k=10, slice sha c4e72b59…): anchor 1.8823 · V4 1.8679 (−0.0144,
+scale-stable) · **v6 1:1 even 1.8646 (−0.0177) — champion.**
+
+100 MB crown challenge (full enwik8, k=10, same-seat pair, decoder charged):
+
+| arm | payload | total bpc | comp_sha | restore |
+|---|---|---|---|---|
+| 6-sector (old crown) | 22,506,819 | 1.8020 | 489205479047d08f | OK |
+| **rainbow-12-even (NEW CROWN)** | **22,379,104** | **1.7918** | f3d45412c9a82568 | OK |
+
+Config: 12-way sector = class(last)*2 + (prev same class), soft gate blending the
+last byte's sector row with the previous byte's 1:1 (dot = 4w + 2·w2[s1] + 2·w2[s2]
+>> 19; updates >>15 both rows). The full stack of the operator's ideas — color
+sectors → finer wheel → gradient, at the softest tested blend — measured, lossless,
+deterministic. Cross-check requested from the container seat (expected f3d45412…).
+Next: single-stream enwik9 champion run (the current prize corpus).
