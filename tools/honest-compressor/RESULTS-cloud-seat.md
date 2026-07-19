@@ -260,3 +260,15 @@ geometry-crown challenge launched beside the enwik9 champion. Tomorrow's
 composition: winning wheel × TBITS-28 tables. (Contrast on record: sector
 counts this small-table wheel keeps rewarding capacity, same lesson as the
 table ladder — geometry and capacity pay; re-processing doesn't.)
+
+## GEOMETRY CROWN AGAIN: s65536 = 1.7555 @100MB (2026-07-19 23:00 UTC)
+
+cm3ti-s65536 k=10 N=100,000,000 payload=21,925,581 decoder_src=18,737
+total=21,944,318 **bpc_total=1.7555** restore=OK comp_sha=6104215bf6c8d206
+enc=792s dec=767s. Beats s4096 (1.7738) by 0.0183 — the margin GREW from 10MB
+to 100MB (projection was ~1.766; measurement better again). Geometry line in
+one evening: 1.7918 (s12) → 1.7738 (s4096) → **1.7555 (s65536)**, all at
+TBITS-23 small tables. The 4ⁿ ladder's limit rung holds the geometry crown.
+Determinism note: v19 spot-check reproduced c689f2a5145001de byte-exact ACROSS
+the container restart (process death + rebirth) — survival proof added to the
+cross-seat and cross-arch proofs. Morning composition: s65536 × TBITS-28.
