@@ -122,6 +122,36 @@ keeps deeper contexts paying, confirming the earlier "diminishing returns" was
 corpus size, not model ceiling. Deeper k (9, 10) and the word-model/SSE variant
 (cm3) are measured in the sections below as they complete.
 
+## Trained glyph vocabularies (1024 / 4096) — the "glyphs aren't English" test
+
+Question: does a LARGER trained glyph vocabulary (not a 256-byte alphabet) lower
+the honest total on real text? Each glyph is a trained symbol that can swallow
+several characters, so **bits-per-glyph** looks low — but that is measured over
+fewer symbols. The honest number is **bits per ORIGINAL character** (total bits ÷
+original bytes), which a reversible re-tokenization cannot lower below the source
+entropy (formula 5 / data-processing inequality). Tokenizers trained with
+sentencepiece unigram-LM; the id→bytes table is shipped and counted as the
+dictionary; SHA-256 restore uses only that shipped table. 1M slice, k=7.
+
+| representation | glyphs | bits/glyph | chars/glyph | payload | dict | total | BPC_CHAR | restore |
+|---|---|---|---|---|---|---|---|---|
+| raw bytes V=256 | 1,000,000 | 2.194 | 1.00 | 261,617 | 0 | 274,279 | **2.1942** | OK |
+| unigram V=1024 | 741,119 | 2.889 | 1.35 | 267,604 | 3,154 | 288,524 | 2.3082 | OK |
+| unigram V=4096 | 342,573 | 6.448 | 2.92 | 276,093 | 25,276 | 319,135 | 2.5531 | OK |
+
+Finding (honest, and it is a NEGATIVE result kept in full): a bigger trained glyph
+vocabulary did **not** beat raw bytes on the honest per-character total — it made
+it **worse** (2.1942 → 2.3082 → 2.5531). Two measured reasons: (1) bits-per-glyph
+rises with vocabulary (2.889 → 6.448) because each glyph carries more, which is
+*packing*, not compression; (2) the shipped vocabulary grows fast (3,154 → 25,276
+bytes) while the payload barely moves (267,604 → 276,093). cm2's bitwise context
+model already exploits sub-symbol structure, so a glyph layer mostly duplicates
+what the mixer does while adding dictionary cost. This is the representation
+invariance of the floor made concrete: changing the "coat" (bits/glyph) never
+lowers bits/original-char below entropy. Had any glyph total dived toward zero on
+this distinct text, that would have been the dictionary smuggling content — it did
+not; every total stayed honestly in the 2.2–2.6 band with the dictionary charged.
+
 ## Ladder (identical 1M slice, total-counted bpc)
 
 ```

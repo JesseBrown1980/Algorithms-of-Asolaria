@@ -89,9 +89,13 @@ def run(path, kind, param, k):
     ok = hashlib.sha256(body).hexdigest() == sha_in
     decoder_b = os.path.getsize(os.path.abspath("cm2_asolaria.py")) + os.path.getsize(os.path.abspath(__file__))
     payload = len(comp); total = payload + dict_b + decoder_b
+    chars_per_glyph = N / len(seq)
+    bits_per_glyph = payload * 8 / len(seq)          # looks LOW; measured over fewer symbols
+    bpc_char = total * 8 / N                          # the HONEST number: per original byte
     line = (f"glyph {kind:7s} V={V:5d} k={k} glyphs={len(seq):7d} "
             f"payload={payload:7d} dict={dict_b:6d} decoder={decoder_b} "
-            f"total={total:7d}  bpc_total={total*8/N:.4f}  "
+            f"total={total:7d}  bits/glyph={bits_per_glyph:.3f} chars/glyph={chars_per_glyph:.2f}  "
+            f"BPC_CHAR={bpc_char:.4f}  "
             f"restore={'OK' if ok else 'FAIL'}  tok={tok_s:.0f}s enc={enc_s:.0f}s dec={dec_s:.0f}s")
     print(line, flush=True)
     with open("glyph-sweep.log", "a") as f:
