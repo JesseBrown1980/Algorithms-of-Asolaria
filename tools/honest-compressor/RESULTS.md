@@ -580,3 +580,17 @@ the "rainbow gradient" benefit is captured better by DISCRETE stacked resolution
 (coarse+fine hard sectors) than by a continuous fade. The stack already is the rainbow.
 Live untested arm: stack using V2's run/boundary sectors instead of uniform — could
 beat 1.8990 by combining the two measured-good things.
+
+## stackRB — stacked cubes with run/boundary sectors (two measured-good things combined)
+
+The stack subdivides by V2's run/boundary axis (which beat uniform) instead of a hash:
+L6 = class(last), L12 = class×(same-as-prev), L24 = class×(2-bit boundary state).
+
+| config | 1 MB | 10 MB |
+|---|---|---|
+| stacked-uniform (6+12+24) | 2.0746 | 1.8990 |
+| **stackRB (run/boundary)** | **2.0701** | **1.8961** |
+
+Wins at both scales (−0.0045 @1M, −0.0029 @10MB). Combining stacking + the better
+subdivision feature works, as predicted. 100 MB run launched as crown challenger
+(crown = stacked-uniform 1.7953). Lossless, deterministic, above the floor.
