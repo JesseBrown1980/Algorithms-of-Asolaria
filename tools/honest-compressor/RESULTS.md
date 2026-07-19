@@ -425,3 +425,26 @@ Monotone down as corpus grows — more data, warmer deep contexts, lower bpc, ex
 as predicted. 1.8187 bpc on enwik8 is an honest, reproducible CPU number (well under
 gzip/zstd/xz/bzip2); the Hutter record region (~1.0) still needs the GPU-trained
 predictor the spec scopes out. Nothing below entropy; every byte counted.
+
+## Multi-field context test — "test the idea, don't disregard it" (measured negatives)
+
+Tested two extra predictor fields on the deterministic baseline (1M, k=7, baseline
+2.0804), byte-exact, SHA-gated. Both were REJECTED by measurement — kept honestly:
+
+| field added | 1M k7 bpc | vs 2.0804 | verdict |
+|---|---|---|---|
+| prime-lag sparse contexts (paths 3,5,7) | 2.0943 | +0.014 worse | rejected |
+| digit-position context (shadow-targeted) | 2.0907 | +0.010 worse | rejected |
+
+Why (the real finding): the tuned model is already tight. (1) The dense orders 1..k
+already SEE bytes at lag 3/5/7 — a sparse skip there is a *subset* of existing info,
+pure redundancy. (2) Every new mixer input dilutes the mix across 100% of bytes to
+chase gains on a few % (digits are 2.2% of the stream, often near-random IDs/ISBNs);
+the dilution costs more than the gain. Naive field-addition is not free.
+
+Consequence: more parallel fields (6, 12, 48) won't change this verdict — the
+bottleneck isn't field COUNT, it's that undifferentiated fields dilute a mixer that
+already captures the information. The honest lever is a **context-gated two-layer
+mixer** (a field that fires only where it is relevant — the real "moving flashlight"),
+not more always-on contexts. That is the next real build. Nothing here shipped; the
+canonical cm3ti (2.0804 / 1.8043) is unchanged.
