@@ -516,3 +516,18 @@ last byte's sector row with the previous byte's 1:1 (dot = 4w + 2·w2[s1] + 2·w
 sectors → finer wheel → gradient, at the softest tested blend — measured, lossless,
 deterministic. Cross-check requested from the container seat (expected f3d45412…).
 Next: single-stream enwik9 champion run (the current prize corpus).
+
+## CROWN LEAP: v8+TBITS26 = 1.6805 bpc on enwik8 (2026-07-19, Phase 0 pays at scale)
+
+Table-bits sweep (ROADMAP Phase 0): TBITS 23→26 relieves hash collisions, gain GROWS
+with corpus (−0.021 @1MB → −0.066 @10MB → −0.111 @100MB stacked with the 24-way wheel).
+
+| arm @100MB k=10 | payload | total bpc | comp_sha | restore |
+|---|---|---|---|---|
+| v6 rainbow-12-even tb23 (prior crown) | 22,379,104 | 1.7918 | f3d45412c9a82568 | OK |
+| **v8 24-way + TBITS=26 (NEW CROWN)** | **20,987,880** | **1.6805** | 4ac88955567940be | OK |
+
+Now inside the ROADMAP Phase-4 projection band (1.60–1.68) with only Phase 0 + the
+wheel landed. Gap to 2006 prize baseline (1.466): 0.21. Source: rust/variants/tb26.rs
+(v8_r24.rs with TBITS=26). enwik9: v6-tb23 baseline run in flight (seals as first
+prize-corpus receipt); champion re-run with the new crown config follows overnight.
