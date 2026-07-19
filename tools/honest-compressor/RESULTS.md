@@ -122,6 +122,24 @@ keeps deeper contexts paying, confirming the earlier "diminishing returns" was
 corpus size, not model ceiling. Deeper k (9, 10) and the word-model/SSE variant
 (cm3) are measured in the sections below as they complete.
 
+## cm3: word model + SSE chain (the CPU next step, measured — positive result)
+
+Finding #5 called the next CPU-honest step "SSE chains and a word model, not more
+order depth." cm3 = cm2 + two added context inputs (current-word hash, previous+
+current-word hash) + a second chained APM/SSE stage keyed on (match-length, node
+byte). Same honesty gates; self-contained decoder charged.
+
+| model | k | payload | dict | decoder | total | bpc_total | restore | vs cm2 same k |
+|---|---|---|---|---|---|---|---|---|
+| cm2 | 7 | 261,617 | 0 | 12,662 | 274,279 | 2.1942 | OK | — |
+| **cm3** | 7 | 250,452 | 0 | 14,828 | 265,280 | **2.1222** | OK | **−0.072** |
+
+The word model + SSE stage lowered the honest total by 0.072 bpc at matched k —
+a real improvement, and now the best measured number on the 1M slice (below cm2's
+own best of 2.1850 at k=8). Confirms the forward call: the CPU road past cm2 is
+better modeling (secondary estimation + word-level context), not deeper orders,
+and needs no GPU. ~1.0 bpc still requires a GPU-trained predictor (out of scope).
+
 ## Trained glyph vocabularies (1024 / 4096) — the "glyphs aren't English" test
 
 Question: does a LARGER trained glyph vocabulary (not a 256-byte alphabet) lower
