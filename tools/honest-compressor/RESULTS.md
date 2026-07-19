@@ -531,3 +531,11 @@ Now inside the ROADMAP Phase-4 projection band (1.60–1.68) with only Phase 0 +
 wheel landed. Gap to 2006 prize baseline (1.466): 0.21. Source: rust/variants/tb26.rs
 (v8_r24.rs with TBITS=26). enwik9: v6-tb23 baseline run in flight (seals as first
 prize-corpus receipt); champion re-run with the new crown config follows overnight.
+
+## Crown again: v8+TBITS27 = 1.6584 bpc enwik8 (2026-07-19 evening)
+
+Table law third confirmation: tb27 ≈ flat at 1 MB (−273 B) but −0.0221 at 100 MB.
+payload 20,710,481 · total 20,729,444 · comp_sha de5122afca0db106 · restore OK.
+Day's crown arc: 1.8043 → 1.7918 → 1.6805 → **1.6584** (−0.146 in one day).
+Combined model (vc26: +URL field on crown base) screened −0.0054 @1 MB, 10 MB
+confirm in flight; tb28 probe queued for the enwik9 champion config.
