@@ -179,6 +179,30 @@ lossless with the decoder charged — vs xz -9 2.3329, bzip2 -9 2.3537, cm2 2.12
 Every rung here is the *model* getting sharper on CPU; the total stays above the
 entropy floor and no glyph/transform trick is involved.
 
+## Rust port + depth at scale (10 MB): breaks below 2.0 bpc
+
+The pure-Python codec is ~500 s/MB-pair, too slow past a few MB. `rust/cm3t.rs`
+is a dependency-free `rustc` port of the tuned cm3t model (same logistic mixer,
+word model, 2-stage SSE at trust [0.05,0.10], match model, binary arithmetic
+coder), ~40× faster. It reproduces the Python payload near-exactly (1M k=7:
+Rust payload 244,215 vs Python 244,202 — 13 bytes, float-rounding in the coder)
+and passes the SHA restore gate. Decoder charge = the .rs source (17,514 bytes).
+
+Depth-at-scale, 10 MB distinct slice (sha adea6c0b, 99.994% unique 200B blocks;
+baselines gzip 2.9104, zstd 2.2450, bzip2 2.3397, xz 2.1933):
+
+| k | payload | decoder | total | bpc_total | restore |
+|---|---|---|---|---|---|
+| 7 | 2,395,824 | 17,514 | 2,413,338 | 1.9307 | OK |
+| **10** | 2,391,939 | 17,514 | 2,409,453 | **1.9276** | OK |
+| 12 | 2,398,526 | 17,514 | 2,416,040 | 1.9328 | OK |
+
+Depth keeps paying to k=10 (past the 1M knee), then reverses at k=12 — the knee
+moves outward with corpus size, exactly as predicted. Trend across scale at the
+useful-k frontier: 1M 2.0678 → 2.2M 2.0426 → **10M 1.9276**. The honest total
+broke below 2.0 bpc on distinct text, well under xz (2.1933). Still CPU-only,
+lossless, decoder charged, above the entropy floor.
+
 ## Trained glyph vocabularies (1024 / 4096) — the "glyphs aren't English" test
 
 Question: does a LARGER trained glyph vocabulary (not a 256-byte alphabet) lower
