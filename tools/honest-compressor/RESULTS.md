@@ -536,3 +536,20 @@ squash. Not one resolution — all at once. New best at every scale:
 Multi-resolution beats any single granularity — coarse cubes give warm/robust stats,
 fine cubes give specificity, summing lets each contribute where confident. Below 1.90
 at 10 MB. 100 MB running as crown challenger (crown = combo 1.7996). Lossless, above floor.
+
+## Capacity-sharing test (add 48-cube to the stack) — measured negative
+
+Hypothesis (antipodal/capacity-sharing): warm coarse cubes might let a fine 48-cube
+survive where standalone-48 starved. Tested naively (stack 6+12+24+48):
+
+| config | 1 MB | 10 MB |
+|---|---|---|
+| stack 6+12+24 | 2.0746 | 1.8990 |
+| stack 6+12+24+48 | 2.0800 | 1.9094 |
+
+REJECTED: the 48-cube dilutes even with coarse backing, and the gap WIDENS at 10 MB
+(not a cold-start — active harm). The stack saturates at 6+12+24; the "sphere is the
+cliff" holds. (Caveat: the summed-mixer normalization shift wasn't retuned for 5 mixers;
+but the widening-with-scale gap indicates real dilution, not just miscalibration.)
+Note: naive stacking ≠ the explicit antipodal table-tying (share slow tables, keep fast
+mixer) — that distinct mechanism is untested and remains a live pre-registerable screen.
