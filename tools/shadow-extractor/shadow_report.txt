@@ -1,0 +1,24 @@
+SHADOW EXTRACTOR — hot-region report (cm3ti k=10, enwik8 10MB distinct slice)
+N=10000000  mean=1.895 bits/byte  median=0.870  p95=6.630  max=34.18
+
+byte-class     share   mean_bits   %of_total_bits
+  letters            71.6%   1.973      74.6%
+  other-punct         6.3%   2.932       9.8%
+  whitespace         14.9%   0.776       6.1%
+  markup <>&[]{}|="   5.7%   1.971       5.9%
+  digits              2.2%   3.420       4.0%
+  high-byte (UTF-8)   0.6%   3.541       1.0%
+
+top hot 256B windows (where the model burns), with 200B excerpts:
+
+  [5.74 b/B @ 8900864] ss]] website: [http://memory.loc.gov/cgi-bin/query/D?papr:8:./temp/~ammem_6OV4::@@@mdb=mcc,gottscho,detr,nfor,wpa,aap,cwar,bbpix,cowellbib,calbkbib,consrvbib,bdsbib,dag,fsaall,gmd,pan,vv,presp,varstg,
+
+  [5.36 b/B @ 1041152] craft.[http://www.ipfsaph.org/servlet/CDSServlet?status=ND1jdGh0dHB3d3dmYW9vcmdhb3NpcGZzYXBoaW5mb3JtYXRpb25zb3VyY2VldS5FVVJMRVgzMjAwMEwwMDc1JjY9ZW4mMzM9Zm9ybWFsX3RleHQmMzc9aW5mbw~~]  Although the tong
+
+  [5.15 b/B @ 9164544]  still busy without baseball]  *[http://rds.yahoo.com/S=2766679/K=Bob+Costas+September+10%2C+2001/v=2/SID=e/TID=F562_74/l=WS1/R=1/IPC=us/SHE=0/H=3/;_ylt=Ar8eesvxTUdG5SSQ7hy35EpXNyoA/SIG=12hr4e3l7/EXP=
+
+  [4.87 b/B @ 0] either 192 or 239 people were killed trying to cross&lt;ref&gt;http://www.dailysoft.com/berlinwall/history/facts_01.htm&lt;/ref&gt;&lt;ref&gt;http://www.die-berliner-mauer.de/en/fakten.html&lt;/ref&gt
+
+  [4.74 b/B @ 2695680] Ã¡ hvÃ­tt at jafnat er til Baldrs brÃ¡r. Ãat er allra grasa hvÃ­tast, ok Ã¾ar eptir mÃ¡ttu marka fegrÃ° hans bÃ¦Ã°i Ã¡ hÃ¡r ok Ã¡ lÃ­ki. Hann er vitrastr Ã¡sa ok fegrst talaÃ°r ok lÃ­knsamastr. En sÃ
+
+  [4.63 b/B @ 2641152] gi sagt Ã¾at at guÃ°in gerÃ°u brÃº til himins af jÃ¶rÃ°u, ok heitir BifrÃ¶st? Hana muntu sÃ©t hafa, kann vera at Ã¾at kallir Ã¾Ãº regnboga. Hon er meÃ° Ã¾rim litum ok mjÃ¶k sterk ok ger meÃ° list ok k
