@@ -534,8 +534,11 @@ squash. Not one resolution — all at once. New best at every scale:
 | **stacked cubes (6+12+24)** | **2.0746** | **1.8990** |
 
 Multi-resolution beats any single granularity — coarse cubes give warm/robust stats,
-fine cubes give specificity, summing lets each contribute where confident. Below 1.90
-at 10 MB. 100 MB running as crown challenger (crown = combo 1.7996). Lossless, above floor.
+fine cubes give specificity, summing lets each contribute where confident. Below 1.90 at 10 MB. **100 MB CONFIRMED: stacked cubes = 1.7953 bpc** on full enwik8
+(comp_sha 213a6aeb, restore OK), beating combo (1.7996) — the NEW CROWN. Crown
+progression, all from the color-sector idea: 1.8043 → 1.8020 (6-sector) → 1.7996
+(combo) → **1.7953 (stacked 6+12+24)**. Multi-resolution content gating is the record.
+Lossless, deterministic, above the entropy floor — better MODELING, never below it.
 
 ## Capacity-sharing test (add 48-cube to the stack) — measured negative
 
