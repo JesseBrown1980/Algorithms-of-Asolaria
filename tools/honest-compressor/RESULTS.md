@@ -556,3 +556,5 @@ cliff" holds. (Caveat: the summed-mixer normalization shift wasn't retuned for 5
 but the widening-with-scale gap indicates real dilution, not just miscalibration.)
 Note: naive stacking ≠ the explicit antipodal table-tying (share slow tables, keep fast
 mixer) — that distinct mechanism is untested and remains a live pre-registerable screen.
+
+_Stacked crown determinism gate CLOSED: byte-identical x86_64 == aarch64 (probe comp_sha b5a25fce), lossless — all three gates pass._
