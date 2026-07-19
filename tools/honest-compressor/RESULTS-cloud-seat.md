@@ -154,3 +154,25 @@ total 20,703,275 · comp_sha 1465313e7acaf59e · restore OK. URL gain shrinks wi
 scale (−0.0054/−0.0034/−0.0021 at 1M/10M/100M) but stays net-positive. Source:
 generated chain on rust/cm3ti_combo.rs (see variants receipt). Day arc:
 1.8043 → 1.7918 → 1.6805 → 1.6584 → 1.6563.
+
+## 4096-wheel + primed-law screens (2026-07-19 ~20:50 UTC)
+
+**v13 s4096** — Jesse's 4ⁿ ladder rung: sector = last_byte(256) × 16 boundary
+states (cls(lb2)×2 + same-class bit; 12 of 16 used), partner row one step back.
+- 1MB k7: payload 238,739 (**−1,130 vs anchor**, comp_sha f365fdf05ac9ff00) —
+  pre-registered cold-start prediction WRONG, it wins even cold.
+- 10MB k10: payload 2,311,093 (**−19,660 / −0.0157 bpc vs baseline 2,330,753**,
+  comp_sha 31ca395032cfbb93) — biggest sector-geometry step at 10MB to date.
+  → promoted; 100MB crown challenge launched.
+
+**v14 primed** — the sphere-law mechanism ("everything from one bit, given the
+shared law"): both sides warm the model on a shared prior before bit one; prior
+charged raw to total.
+- Identity gate: prior=0 reproduces anchor payload 239,869 byte-exact
+  (comp_sha 53ad10066c34ac66). Patch sound.
+- prior = enwik8[20M..21M] (disjoint): payload 228,295 (**−11,574, −4.8%**,
+  comp_sha 55e5ec67d1b03b36). Total loses at 1MB under honest charging
+  (prior = 1MB); verdict deferred to the 10MB decay measurement (running).
+Sphere-law demo, same hour: lawful 1MB → 414 B payload (64200e637c869bbe);
+random 1MB → 1,003,218 B (d83febf780e58374); enwik 1MB → 239,869. Cost =
+deviation from shared law; the asymptote the ladder climbs.
