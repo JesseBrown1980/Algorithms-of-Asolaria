@@ -278,3 +278,26 @@ python3 asolaria_cube_compressor.py slice1M.txt
 python3 cm_asolaria.py slice1M.txt 0,1 0,2 0,3 512,2 512,3 512,4 1024,3 1024,4
 python3 cm2_asolaria.py slice1M.txt 0,5 0,6 0,7 0,8
 ```
+
+## SGRAM lane — "the math turned SGRAM" (measured sharding cost)
+
+`sgram/sgram-compress.yml` is the streaming-GitRAM fan-out for the codec: shard a
+corpus across N stateless GitHub cells, each compiles `rust/cm3t.rs` from source
+(warning-clean, compiles on any rustc >=1.56 — well below the 1.81/1.97 pins in the
+federation), compresses its shard, proves PASS = byte-exact SHA restore, uploads a
+receipt; the fan-in requires ALL N, verifies every shard was lossless, sums the
+byte-exact totals, seals ONE bpc. Follows the GitRAM doctrine (all-or-nothing).
+
+Measured sharding cost (local 8-cell simulation, 10 MB distinct slice, k=10):
+
+| mode | payload | +decoder | total | bpc_total | vs monolithic |
+|---|---|---|---|---|---|
+| monolithic (1 cell) | 2,391,939 | 17,514 | 2,409,453 | 1.9276 | — |
+| SGRAM (8 cells) | 2,538,764 | 17,514 | 2,556,278 | 2.0450 | +0.117 (+6.1%) |
+
+Honest law: independent shards cold-start the model, so N-way parallelism costs
+~6% ratio at 8 cells (each 1.25 MB shard restarts the predictor). Still beats xz
+(2.1933) even sharded. Fewer/larger shards = less overhead, less parallelism; the
+seal reports the true sharded total and does NOT claim the monolithic number.
+This is the CPU-scale path: your machine runs the monolithic best; GitHub's free
+public-repo cells run the wide sharded lane. Neither invents information.
