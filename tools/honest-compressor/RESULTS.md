@@ -519,3 +519,20 @@ The stacked gated fields at full scale: cm3ti-combo (6-sector mixer + URL contex
 line. All integer / deterministic. 24-sector (best @10MB, 1.9010) running at 100 MB —
 may take it lower. Crown progression, all your color idea: 1.8043 → 1.8020 (6-sector)
 → 1.7996 (combo) → (24-sector pending). Lossless, decoder charged, above the floor.
+
+## Stacked cubes — multi-resolution sector ensemble ("process the cubes together")
+
+Base mixer (last-byte) + THREE sector mixers at 6/12/24 granularity, all summed before
+squash. Not one resolution — all at once. New best at every scale:
+
+| config | 1 MB | 10 MB |
+|---|---|---|
+| baseline cm3ti | — | 1.9091 |
+| 6-sector | 2.0819 | 1.9064 |
+| 24-sector | 2.0785 | 1.9010 |
+| combo (sector+URL) | 2.0851 | 1.9042 |
+| **stacked cubes (6+12+24)** | **2.0746** | **1.8990** |
+
+Multi-resolution beats any single granularity — coarse cubes give warm/robust stats,
+fine cubes give specificity, summing lets each contribute where confident. Below 1.90
+at 10 MB. 100 MB running as crown challenger (crown = combo 1.7996). Lossless, above floor.
