@@ -198,3 +198,26 @@ charge for the prior: projected ~40–60k saved at 1GB vs 1MB charged.
 VERDICT: mechanism confirmed, accounting negative — primed-law closed under
 raw-prior charging at all measured scales. Door reopens only if a
 compressed/tiny prior bends the savings-per-charged-byte curve above 1.0.
+
+## GEOMETRY CROWN: 4096-wheel @100MB = 1.7738 (2026-07-19 21:25 UTC)
+
+cm3ti-s4096 k=10 N=100,000,000 payload=22,153,139 decoder_src=18,737
+total=22,171,876 **bpc_total=1.7738** restore=OK comp_sha=7fd8487859fbf938
+enc=950s dec=915s. Beats container's rainbow-48 (1.7822) by 0.0084 at the same
+small tables (TBITS 23). The 4ⁿ wheel (256×16, temporal partner row) wins at
+1MB, 10MB, and 100MB — Jesse's call, my cold-start prediction wrong at every
+scale. Next composition: s4096 × TBITS-28 tables.
+
+## Optical-bench screens: absorption spectrum + colored mirror (21:35 UTC)
+
+**v15 absorb** (per-class learning rates [16,14,14,15,15,15] on mixer B):
+1MB 239,587 (−282, marginal, f49ad8c361dd5228); 10MB 2,330,457 (−296 only,
+−0.0002 bpc, 6ee9edcaba3851fa) — win does NOT scale. CLOSED (marginal).
+**v15b** steeper spectrum [17,13,13,15,15,16]: 240,051 @1MB — worse. The
+response spectrum is nearly flat around >>15; the dial was already right.
+**v16 mirror** (sector-keyed third APM, 24 curves): 1MB 239,938 (+69,
+bec04aad1445b7c7); 10MB 2,331,499 (+746, 82c49cd7999a03fa) — more data made it
+worse, not better: the third mirror re-refines what mirrors 1+2 already refined.
+CLOSED both scales.
+Bench summary: geometry (4096-wheel) and capacity (tables) pay; rate-spectrum
+and extra mirrors don't — the existing dials were already at their optima.
