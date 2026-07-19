@@ -172,6 +172,12 @@ Confirmed at scale (k=7):
 | cm3 (orig trust) | 1M | 2.1222 | OK | prior best 1M |
 | **cm3t[0.05,0.1]** | 1M | **2.0731** | OK | tuned, −0.049, new 1M best |
 | cm3 (orig trust) | 2.2M distinct | 2.0703 | OK | generalizes, beats cm2 2.1265 & xz 2.3329 |
+| **cm3t[0.05,0.1]** | 2.2M distinct | **2.0426** | OK | tuned, −0.028, project best on distinct text |
+
+Best-on-distinct summary: on 2.2 MB of 100%-unique text, cm3t reaches 2.0426 bpc
+lossless with the decoder charged — vs xz -9 2.3329, bzip2 -9 2.3537, cm2 2.1265.
+Every rung here is the *model* getting sharper on CPU; the total stays above the
+entropy floor and no glyph/transform trick is involved.
 
 ## Trained glyph vocabularies (1024 / 4096) — the "glyphs aren't English" test
 
