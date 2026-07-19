@@ -189,3 +189,12 @@ Scale curve for the same code (v6): 1MB 2.0688 → 10MB 1.8796 → 100MB 1.7918 
 This is the deterministic, decoder-charged, restore-verified baseline every
 future enwik9 champion run measures against. vc28 100MB confirm launched
 (prediction on record: 1.640 ± 0.002).
+
+**v14 primed @10MB k10** (1MB prior): payload 2,311,328 (comp_sha
+e9ae8570ed83591e) vs unprimed 2,330,753 → saving 19,425 B. Absolute saving
+GREW with scale (11.6k@1MB → 19.4k@10MB) — decay prediction wrong — but the
+curve's shape (sub-linear growth) can never cross the honest 1,000,000 B
+charge for the prior: projected ~40–60k saved at 1GB vs 1MB charged.
+VERDICT: mechanism confirmed, accounting negative — primed-law closed under
+raw-prior charging at all measured scales. Door reopens only if a
+compressed/tiny prior bends the savings-per-charged-byte curve above 1.0.
