@@ -510,3 +510,12 @@ granularity exists and grows with corpus (the sphere = 1 sample/sector = zero st
 10 MB with 1.9010. Finer helps to ~24 then plateaus (48 ≥ 24 at 1M) — the
 specificity-vs-starvation tradeoff, drawn by measurement. 24-sector is the new 100 MB
 challenger. The optimum will move outward at 1 GB (more data earns finer sectors).
+
+## CROWN below 1.80 — cm3ti-combo (sector+URL) = 1.7996 bpc on enwik8
+
+The stacked gated fields at full scale: cm3ti-combo (6-sector mixer + URL context) =
+**1.7996 bpc** on 100 MB enwik8 (comp_sha e066f9fc…, restore OK), below sector-only
+(1.8020) and the original deterministic crown (1.8043). First config under the 1.80
+line. All integer / deterministic. 24-sector (best @10MB, 1.9010) running at 100 MB —
+may take it lower. Crown progression, all your color idea: 1.8043 → 1.8020 (6-sector)
+→ 1.7996 (combo) → (24-sector pending). Lossless, decoder charged, above the floor.
