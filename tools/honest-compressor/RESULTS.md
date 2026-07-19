@@ -331,3 +331,25 @@ limit. What it buys: bit-identical output on any platform/language, which (a) ma
 the SGRAM fan-out provably correct across heterogeneous runners and (b) is required
 for a Hutter-style submission (deterministic decode). Determinism first, ratio-tune
 second. Still lossless, decoder charged, above the entropy floor.
+
+## 100 MB — full enwik8 (the Hutter Prize corpus itself)
+
+The 100 MB test IS enwik8, the canonical Hutter benchmark. Rust cm3t (float), k=10:
+
+| N | payload | decoder | total | bpc_total | restore | enc | dec |
+|---|---|---|---|---|---|---|---|
+| 100,000,000 | 22,715,887 | 17,514 | 22,733,401 | **1.8187** | OK | 883s | 933s |
+
+Depth-at-scale, the whole thesis in one column (useful-k frontier, total bpc):
+
+```
+1 MB        2.0678
+2.2 MB      2.0426
+10 MB       1.9276
+100 MB      1.8187   <- full enwik8, lossless, decoder charged
+```
+
+Monotone down as corpus grows — more data, warmer deep contexts, lower bpc, exactly
+as predicted. 1.8187 bpc on enwik8 is an honest, reproducible CPU number (well under
+gzip/zstd/xz/bzip2); the Hutter record region (~1.0) still needs the GPU-trained
+predictor the spec scopes out. Nothing below entropy; every byte counted.
