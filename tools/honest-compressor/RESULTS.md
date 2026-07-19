@@ -635,3 +635,44 @@ same .rs) both print payload=239869 comp_sha=53ad10066c34ac66 on the 1 MB k=7 an
 
 Lossless (restore=OK, SHA-verified round trip), deterministic, above the entropy floor,
 decoder source counted in the total. The measurement is the referee.
+
+## NEW CROWN: rainbow-48 (separated fine wheel) = 1.7822 bpc on enwik8 — the ladder pays
+
+The two-way ladder experiment (combined vs separated, Jesse's multi-resolution sphere):
+one generalized codec `cm3ti_rbladder.rs`, mode selected by RB_MODE env
+(12=champion-anchor / 24 / 48 / c2=12+24 / c3=12+24+48 pyramid). Mode 12 byte-reproduces
+the rainbow-12 champion exactly (payload 239869, comp_sha 53ad1006 @1M k=7) — harness proven.
+
+Screens (payload bytes @1M k=7; bpc_total @10MB k=10):
+| mode | 1 MB | 10 MB |
+|---|---|---|
+| 12 (champion) | 239869 | 1.8900 |
+| 24 | 239191 | 1.8608 |
+| **48** | **238716** | **1.8566** |
+| c2 | 239214 | 1.8611 |
+| c3 | 238740 | 1.8569 |
+
+Verdict at both scales: every rung beats the champion; SEPARATED narrowly beats COMBINED;
+48 leads. (c3 skipped at 100MB — screened behind 48 at both scales.)
+
+100 MB (k=10, RB_MODE=48):
+```
+cm3ti-rbladder[48] k=10 N=100000000 payload=22256212 decoder_src=20981 total=22277193
+bpc_total=1.7822 restore=OK comp_sha=61f113278737466f enc=844s dec=835s
+```
+Beats rainbow-12's 1.7918 by 0.0096 bpc (120,667 counted bytes) — largest single crown step.
+Progression: 1.8043 → 1.8020 → 1.7996 → 1.7953 → 1.7918 → **1.7822**.
+
+Determinism: x86_64 and aarch64 (qemu, same .rs) byte-match on the 1M anchor
+(payload 238716, comp_sha c1059d37117e112c).
+
+Measured negatives kept honestly (1M/10MB payload gaps vs 48-neighbor):
+- 48a boundary-complement partner (s^7): +1008 @1M, +7884 @10MB — inversion weaker than time
+- 48o wheel-antipode partner ((s+24)%48): +332 @1M, +2912 @10MB — gap narrows ~15%/decade,
+  cannot catch neighbor by enwik10 scale. "Inverted points are already known" is refuted;
+  temporal adjacency remains the strongest sector glue.
+
+Lossless, deterministic, above the entropy floor, decoder source counted. The even 2-row
+blend is what makes the fine wheel trainable: 48 sectors under the blend are one warm
+gradient, not 48 cold tables — the gradiated-sphere intuition, in the only form that
+survives measurement.
