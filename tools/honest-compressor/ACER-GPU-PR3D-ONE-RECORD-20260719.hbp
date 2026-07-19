@@ -1,0 +1,16 @@
+ACERGPUPR3DHDR|schema=ACER-GPU-PR3D-ONE-RECORD-V1|seat=ACER|ts=2026-07-19T22:37:01.3489209Z|evidence=MEASURED_ACER_LOCAL|json=0
+AUTH|operator=JESSE_DANIEL_BROWN|authorization=EXPLICIT_IN_SESSION|scope=ONE_RECORD_PUBLICATION_CPU_GPU_PARITY_RERUN|launches_this_receipt=1|scale_up=0|json=0
+FABRIC|aggregate_request=council-q-1784482614410-gpuowners|aggregate_receipt=VERIFIED_DEV_ACER_CONVERGENCE_130_OF_251|classification=FABRIC_ADVISORY_CONVERGENCE_OBSERVED_NOT_HELM_ORDER|json=0
+FABRICOWNER|owner=PROF-GPU-INVENTORY-CANON|pid=d38c7950564241ba|request=owner-q-1784482802424-prof-gpu|delivery=JSON_AND_HBP_ACK|reply=ABSENT_UNVERIFIED_AT_SEAL|json=0
+FABRICOWNER|owner=PROF-KERNEL|pid=979e87fdf392a351|request=owner-q-1784482852448-prof-kernel|delivery=JSON_AND_HBP_ACK|reply=ABSENT_UNVERIFIED_AT_SEAL|json=0
+FABRICOWNER|owner=PROF-HELM|pid=42b600bfa0f4b678|request=owner-q-1784482902455-prof-helm|delivery=JSON_AND_HBP_ACK|reply=ABSENT_UNVERIFIED_AT_SEAL|json=0
+SOURCE|path=tools/honest-compressor/rust/gpu_pr3d_probe.rs|bytes=26143|sha256=d8dca1fbe9afd432612b5589dcf340127750ca80d79bcdec0f50adf94566ed6f|runtime=RUST_STD_PLUS_CUDA_DRIVER_API|ptx=EMBEDDED_INTEGER_SM61|node=0|v8=0|nvcc=0|json=0
+BUILD|rustc=1.81.0_eeb90cda1_2024-09-04|binary_path=C:/tmp/acer-gpu-pr3d-probe-20260719|binary_bytes=3762136|binary_sha256=939c1f932e0ab14ab7fb4c87be7fa939b166a9c13a15b565fb2f3eecd64efbaa|warnings=DENIED|final_source_rebuild_identical=1|json=0
+TESTBUILD|path=C:/tmp/acer-gpu-pr3d-tests-20260719|bytes=5998168|sha256=4594f3fc96c342eef82910e23b60b9092c2c0575a341d03c05977e2e740f1e8f|json=0
+TEST|rustc=1.81.0|cpu_tests=6|passed=6|failed=0|covers=DUALITY_COUNTS,SIGNED_EUCLIDEAN_EXPECTED_VECTOR,OPPOSED_MARKERS_2D,CUBE_INVERSE_FACES,ABI28,PTX_SM61_BOTH_TRIADS|gpu_calls=0|json=0
+RUN|status=PASS|records=1|seed=1784482902|sectors=6|selected=4|gradient_views=8|device=NVIDIA_GeForce_GTX_1050|cc=6.1|cuda_driver=13000|kernel_launches=1|input_bytes=28|output_bytes=64|device_alloc_bytes=348|cpu_gpu_parity=1|input_canary=1|output_canary=1|output_fnv64=8cac2d9712d03cfc|elapsed_us=3125|json=0
+RESOURCE|pre_gpu_temp_c=55|pre_gpu_util_pct=1|pre_vram_used_mib=0|pre_free_ram_mib=3653|post_gpu_temp_c=55|post_gpu_util_pct=1|post_vram_used_mib=0|post_free_ram_mib=3633|free_device_bytes_before=3524683367|total_device_bytes=4294836224|json=0
+CONTROL|opencode_127.0.0.1_9090=LISTEN|omnidispatcher_127.0.0.1_4950=LISTEN|dispatcher_scale_change=0|gpu_binary_target=ELF_WSL2_LIBCUDA|json=0
+BOUNDARY|wikipedia_training=0|corpus_gulp=0|glyph_registration=0|catalog_promotion=0|daemon_fanout=0|protected_sovlinux_access=0|github_commit=0|github_push=0|physical_quantum_claim=UNVERIFIED|json=0
+HOLD|next=GPU_RUNG_4096|reason=STEP_BY_STEP_WARMUP_REQUIRES_NEW_EXPLICIT_GATE_AND_RESOURCE_RECEIPT|lane=OPEN_NOT_FAILED|json=0
+ACERGPUPR3DFTR|state=PASS_ONE_RECORD_AND_STOPPED|json=0
