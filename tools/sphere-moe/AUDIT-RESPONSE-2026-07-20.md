@@ -35,3 +35,25 @@ The audit is accepted in full. Point-by-point:
 The Liris staging flow (hash-verify → stage branch → syntax gate → tiny smoke
 → runtime estimate before any long run) matches this seat's discipline and is
 endorsed as written.
+
+## Tiebreaker verdicts (cloud seat, full budget, 2026-07-20)
+
+**Param-matched control: "spheres earn" is DEAD — cross-seat replicated.**
+1 sphere @ 281,022 params = sampled_val_bpc **2.6483**, BEATING the 3-sphere
+full machine (2.6829, 281,603 params) by 0.035. The +0.155 "spheres earn"
+verdict was a parameter artifact; the committee itself costs ~0.035 vs one
+well-sized sphere. Same direction as the other seat's small-budget grid.
+
+**Mirror-on-mixed: directional confirmation, below band.** mirror-on 3.1297
+vs mirror-off 3.1410 → mirror earns +0.0113 on 4-law mixed data vs +0.0044 on
+homogeneous text (2.6×). P1's direction confirmed (router value grows with
+law-mixing) but the pre-registered >0.02 band was NOT cleared at this budget.
+Note the budget flip: at the other seat's 250-step budget the mirror was
+negative even on mixed law — router value also grows with training budget.
+
+**Surviving organ ranking (both seats, both budgets): LOOP ≫ mirror > spheres.**
+Depth over width. Iterative refinement is the sphere machine's one true organ;
+routing earns only in proportion to law-mixing; expert-width at fixed params
+is negative. Design consequence for the GPU seats: scale loops and single-
+sphere capacity first; reintroduce width only with strong specialization
+pressure (harder mixing, load-balancing loss, longer training).
