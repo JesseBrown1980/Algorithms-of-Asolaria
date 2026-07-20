@@ -892,3 +892,26 @@ sha equality across machines is required — 8.88e-16 float drift will differ
 across architectures; the determinism gate needs integer tables, same as the
 codec line uses. Handoff prompt sha deb7de0f co-signed; concatenation-is-not-
 gradient boundary already measured on this seat (gradient lost 3/3 worlds).
+
+## CROSS-SEAT REPLICATION of the Codex triadic-gradient result (2026-07-20)
+
+Codex sealed the routed-gradient run (receipt 76034f3d…): the *routed* gradient
+(5/9 target + 2/9 each) beats the flattened omnifeed 9/9, path monotonic 18/18,
+inverted-inversion G(a→b,⅓)=G(b→a,⅔) holds 18/18. This seat reran the CORE
+claims independently (different implementation, order-1 product-of-experts):
+- **Inverted-inversion identity: PASS 6/6, EXACTLY** — verified as rational
+  weight-algebra (not float): G(a→b,⅓) weights (⅔,⅓,0) ≡ G(b→a,⅔); every
+  barycentric point sums to 1 (the "three pies stay one through the middle",
+  proven exact). I(I(z))=z is a true involution.
+- **Ordering PASS** independently: WIKI target, held-out PoE bpc
+  omnifeed 4.7183 > grad⅓ 4.3192 > grad⅔ 4.0904 > pure 4.0093. Routed
+  gradient beats omnifeed, monotone toward the pure target — same direction
+  as Codex's numbers on a different codebase and eval slice.
+VERDICT: Codex's finding REPLICATES cross-seat in direction and in the exact
+identity. The bounded claim stands: routed thirds beat flattened omnifeed and
+move ~43-45% of the gap per third, BUT pure key stays best and (both seats
+agree) the raw prior is unamortized at one window — transfer/routing win, not
+yet a compression win. Two of three worlds, two implementations, one law:
+connect the thirds through a normalized middle and route; never flatten,
+never expect a lone third to conjure the rest. Jesse's geometry, measured
+true in its exact bounded form, now on TWO seats.
