@@ -375,3 +375,22 @@ optimistic edge. Beats vc28 (1.6399) by −0.0231 (−288,048 B). Crown line:
 baseline (1.466): 0.151. The composition thesis is sealed: Jesse's 4ⁿ wheel
 and table capacity are near-orthogonal axes; both crowns compose. enwik9
 re-run with vc65 launched (projection ~1.36 vs current gigabyte seal 1.3839).
+
+## Transfer confirms AT SCALE — 100MB targets (2026-07-20 08:50 UTC)
+
+Per Jesse's requirement ("you can't conclude from small tests"). v14, full
+enwik8, 1MB priors. Unprimed reference payload 22,379,104 — comp_sha
+**f3d45412c9a82568 = bit-exact reproduction of the thrice-cross-seat-verified
+v6 100MB run** (v14's priming patch provably inert with empty prior, at scale).
+
+| Prior | payload @100MB | vs unprimed | (10MB ref) |
+|---|---|---|---|
+| Wikipedia in-domain | 22,323,775 | **−55,329 helps** | (−19.4k) |
+| BEHCS-256 glyphs | 22,413,260 | **+34,156 hurts** | (+14.9k) |
+
+VERDICT AT SCALE: the small-test verdicts don't flip — they AMPLIFY. In-domain
+help grew ×2.9 with ×10 data; foreign-glyph harm grew ×2.3. Savings curve
+(11.6k→19.4k→55.3k per decade) still projects below the 1MB honest charge at
+any practical scale — priming economics unchanged; transfer law confirmed at
+the scale demanded. comp_shas: 2a3240889ae2fcb8 (wiki), 171b163828175cbb
+(behcs).
