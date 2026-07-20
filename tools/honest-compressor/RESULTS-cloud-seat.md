@@ -1074,3 +1074,28 @@ fully-amortized compression win (cold still wins prior+payload for one window;
 needs reuse to amortize). "Max entropy" -> "highest measured cost among tested
 conditions"; "barycentric midpoint" -> record-allocation pooling (not yet
 log-space geometric PoE); "optimal specialist" -> best tested allocation.
+
+## Codex combined 27-field quantized-address result — co-signed (2026-07-20)
+
+Receipt 842d7b64…; 1,007,554 held-out bytes, emitted range-coded, 351/351 +
+1,647/1,647 round trips OK. Co-signed findings:
+- Math sequence confirmed: address → derive coordinate (P+ = (2C+T)/3,
+  T = 3P+ − 2C, P− = 2C − P+) → quantize for coder → produce. The +1/3
+  address earned −9,001 bytes vs cold play (2.741729 → 2.670261 bpc); +1/3
+  closed 71.23% of center→pure gap, +2/3 closed 95.73%, pure still best.
+  Reflection worse than center 27/27. Monotone C→+1/3→+2/3→T in all 27.
+- CRITICAL: keep the address THROUGH quantization — recovering the endpoint
+  from only the final 16-bit probability point succeeds 98.7910% (21,393
+  quantization failures / 1,769,472). Quantize for the coder, never discard
+  the address.
+- Cross-implementation determinism: Python / NumPy / C++ integer builds all
+  produced identical bank sha a7fc693a… On-demand table derivation saved
+  79.17% storage (14 MB) vs eager precompute — distance derived, not stored.
+- Address size = ⌈log2 27⌉ + 3 = 8 bits/block × 27 = 27 bytes = 0.000214 bpc
+  amortized. BOUNDARY held honestly: the shared endpoint BANK is real
+  information (~28 bpc if transmitted for one slice; 271–395 windows to
+  amortize). Address-only interpretation valid AFTER install / across reuse.
+Status: three-way IMPLEMENTATION recomputation (not yet human-blind triple
+seat) — protocol for genuine triple-blind included. Routed-transfer effect,
+pure best, not yet amortized — same law as this seat's runs, now at 27-field
+scale with an emitted codec.
