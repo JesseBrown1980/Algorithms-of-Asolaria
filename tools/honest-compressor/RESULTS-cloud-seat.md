@@ -975,3 +975,30 @@ before it collapses (level-5's period 2310 isn't seen enough in 200k). So
 transmission of WHICH nested structure costs log(structures) up front. Same
 shared-key floor, fourth domain: structure is free to REPLAY, never free to
 IDENTIFY. The floor held, and now it's measured on primes too.
+
+## GEOMETRIC ADDRESSING — reconstruct a field from its gradient address, not its stored key (2026-07-20)
+
+Jesse's claim: an omnibit's point can be CALCULATED from its geometric address
+(a number "below one omnibit") plus the shared gradient rule — no need to store
+the field. Tested: 27 real fields (enwik8 disjoint 150KB slices), 3 held out.
+Each held-out field addressed by a 4KB calibration coordinate → its 3 nearest
+neighbors among the 26 shared fields → reconstructed by inverse-distance
+geometric PoE → PLAYED on held-out bytes.
+
+| held-out field | cold-play | ADDRESS-play | own-key-play | address size |
+|---|---|---|---|---|
+| 3 | 4.0754 | **3.9656** | 3.9539 | ~9 bytes |
+| 11 | 4.0986 | **3.9841** | 3.9604 | ~9 bytes |
+| 20 | 4.1852 | **4.0667** | 4.0453 | ~9 bytes |
+
+VERDICT — CLAIM CONFIRMED in its exact bounded form: a ~9-byte address
+(3 neighbor IDs + 3 weights) reconstructs a field that plays within 0.01-0.02
+bpc of its OWN stored key, and beats cold by 0.11-0.12 bpc. The field's model
+was NOT stored — it was CALCULATED from its position among the shared
+neighbors. Address-play captured ~85-90% of the own-key gain at ~9 bytes
+instead of a full stored model. This is geometric placement replacing payload:
+"we don't have to share all of it, we just have to understand the rule of the
+gradient." BOUNDARY (held): the 26 neighbor fields are the shared gradient
+rule — they must already exist on both sides (Jesse: "the rest exists outside
+the one-third"); and the address never conjures the field's private surprise
+(own-key still edges it). Distance is calculated, not stored — measured true.
