@@ -1002,3 +1002,33 @@ gradient." BOUNDARY (held): the 26 neighbor fields are the shared gradient
 rule — they must already exist on both sides (Jesse: "the rest exists outside
 the one-third"); and the address never conjures the field's private surprise
 (own-key still edges it). Distance is calculated, not stored — measured true.
+
+## THE OMNISPHERE TEST — center + fractal address + anti-inversion (2026-07-20)
+
+Jesse's full 3-phase formalization, held-out field 11 of 27:
+PHASE A: shared center M (the OmniBit) = mean log-prob of all 27 fields.
+PHASE C: anti-inversion I(z)=2z_M−z; I(I(z))=z PASS byte-exact (sha
+20b2f0b436ba, maxerr 4.4e-16) — the reflection is a true involution.
+PHASE B: fractal address = ray d_X truncated to its top-|magnitude| fraction:
+
+| address | play bpc | address size |
+|---|---|---|
+| cold (none) | 4.0986 | 0 |
+| center M only | 3.9917 | 0 (shared) |
+| + full ray | 3.9604 | ~512 B |
+| + 1/3 (85 comp) | 3.9620 | ~170 B |
+| + 1/9 (28 comp) | 3.9644 | ~56 B |
+| **+ 1/27 (9 comp)** | **3.9703** | **~18 B** |
+| own stored key | 3.9604 | full model |
+
+VERDICT — "1/3 of 1/3 of 1/3" CONFIRMED: the address degrades GRACEFULLY.
+The full ray = own stored key exactly (3.9604). Truncating to 1/27 of the
+ray (~18 bytes) still plays 3.9703 — capturing 92% of the full addressing
+gain at 1/28th the address size. The shared center M alone (ZERO address
+bytes, just standing at the OmniBit) already beats cold by 0.11 bpc. So the
+fractal address IS below-one-omnibit and it works: geometry supplies the
+bulk, a tiny directional fraction supplies the rest, and the surprise floor
+holds (own key still edges 1/27 by 0.01). Spatial decompression measured:
+stand at the center, transmit a fractal direction, expand the field locally.
+BOUNDARY: the 27-field center is the shared rule — it exists on both sides;
+the address never delivers the field's private surprise, only its position.
