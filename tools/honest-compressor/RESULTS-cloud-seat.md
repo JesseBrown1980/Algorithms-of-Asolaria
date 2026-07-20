@@ -489,3 +489,29 @@ Pre-registration outcomes:
 All 12 restore=OK. Geometry verdict: radiated spheres with single-law keys =
 real and strong (YELLOW −89%); rainbow center = weak, mixture-taxed;
 external mirrors = measured harm. Build accordingly.
+
+## Law-descent grid: the white room splits by law, then descends (2026-07-20)
+
+Fleet corpus split by content class, each colored sphere keyed with a pure
+disjoint slice of its own law. Payloads (v14, k7):
+
+| law | files | cold | own key | verdict |
+|---|---|---|---|---|
+| prose (.md) | 652 | 204,644 | **192,743 (−5.8%)** | WINS — comparable to wiki's −4.8% |
+| data (.json/.hbp) | 530 | 196,523 | **191,188 (−2.7%)** | WINS |
+| code (all langs) | 762 | **182,542** | 184,018 (+0.8%) | LOSES — "code" is a family of laws |
+| rust only (.rs) | 81 | 120,293 | 120,013 (−0.2%) | ≈TIE — see below |
+
+Two laws sharpened:
+1. **Laws nest.** Corpus → class → language: each descent flipped losers
+   toward winners (blue mixed −1.4% → prose/data wins). The classifier must
+   descend until slices are self-similar. (Code needs per-language split.)
+2. **Online learning cannibalizes priming** (the rust tie, my strong-win
+   pre-registration BROKEN): a highly self-similar test corpus warms itself
+   in its first files — cold was already 1.47 bpc — leaving the key almost
+   nothing to add (−280 B). Key value = shared law MINUS law the test
+   teaches itself early. Priors pay on single-law domains with high internal
+   variety (wiki, prose); they are redundant on self-repeating domains
+   (rust variants) and poison on mixed domains (raw fleet).
+All arms restore=OK. The colored-sphere build rule, final measured form:
+one sphere per NESTED law, keyed only where the domain cannot self-prime.
