@@ -1122,3 +1122,15 @@ the largest single known-unapplied gain remaining on the road to the record.
 NEXT: fold the word model into the cm3ti mixer as a co-designed context
 (word-ID prediction alongside the byte contexts), screen 1MB→100MB, then the
 alphabet rides the crown stack. Phase A of the roadmap is open.
+
+## GIGABYTE SEALED: vc65 = 1.3645 bpc on the full enwik9 (2026-07-20)
+
+cm3ti-vc65-fullstack k=10 N=1,000,000,000 payload=170,545,862 decoder_src=20,029
+total=170,565,891 **bpc_total=1.3645** restore=OK comp_sha=c35dc7550332a891
+enc=10967s dec=10389s (~5.9 h, single core). Landed UNDER the projection band
+(~1.36) and beats the prior gigabyte seal (vc28m 1.3839) by −0.0194 / −2.4 MB.
+The 65,536-wheel composition carried to the full billion bytes. Survived three
+container restarts via relaunch; every attempt byte-identical by construction.
+Yardsticks (enwik9): 2006-era enwik8 baseline 1.466 CLEARED; 2006 first-prize
+ratio (paq8hp5) ~1.37 CLEARED on a 10x-larger corpus; enwik9 record
+(fx2-cmix) 0.886 — gap now 0.479. The weekend's final crown.
