@@ -317,3 +317,25 @@ BEHCS sets are identifier languages (naming law for the fabric), not
 statistical models of English; as enwik priors they hurt. Scale confirms
 (100MB targets) queued post-champion per Jesse's scale requirement; GB-scale
 grid + enwik10 SGRAM campaign specced in session plan.
+
+## GGUF catalog + WRT screen — the real-alphabet first contact (2026-07-20 02:20 UTC)
+
+Built per Jesse's spec: hyper-dense 2D catalog, 4,096 in-domain words (carved
+from enwik8[20M:30M]), rows = 16B word | 8B fnv1a64 PID (the 8-byte root atom,
+same primitive as the codec's table hashes) | code | freq. Serialized as GGUF
+v3 (131,296 B, mmap-able — the "stubbed rooms on disk" layout). Reversible
+WRT transform: 16 verified-unused prefixes × 256 codes; REVERSIBLE=True gate
+passed; raw text shrank 2,260,612 B (23%).
+
+Screen @10MB k=10: payload on transformed stream = 2,341,964 (comp_sha
+4398d8b7cdbc8f79) vs untransformed 2,330,753 → **payload +11,211 WORSE even
+before the +131k catalog charge. Arm total ≈ 2,493k vs baseline 2,349k: LOSES
+by ~144k.** CLOSED at this scale for this codec.
+
+The honest history lesson this seals: Ratushnyak's dictionary won because
+paq8h's models were CO-DESIGNED for the transformed stream. A dictionary alone
+subtracts raw bytes but destroys the morphology (shared prefixes/suffixes) our
+order-k contexts feed on — opaque 2-byte codes cost more than they save. The
+real alphabet pays only when Phase-2 models SPEAK it (word-ID contexts reading
+the catalog directly), not as a bolt-on transform. Catalog machinery (GGUF,
+PID-addressed, reversibility-gated) is built, pushed, and ready for that.
