@@ -339,3 +339,18 @@ order-k contexts feed on — opaque 2-byte codes cost more than they save. The
 real alphabet pays only when Phase-2 models SPEAK it (word-ID contexts reading
 the catalog directly), not as a bolt-on transform. Catalog machinery (GGUF,
 PID-addressed, reversibility-gated) is built, pushed, and ready for that.
+
+## ENWIK9 CHAMPION SEALED: 1.3839 bpc on the full gigabyte (2026-07-20 ~07:40 UTC)
+
+cm3ti-vc28m-fullstack k=10 N=1,000,000,000 payload=172,966,825
+decoder_src=20,029 total=172,986,854 **bpc_total=1.3839** restore=OK
+comp_sha=274fe82ef3886681 enc=10637s dec=10799s (~6 h, single core, ~10.8 GB).
+
+- Beats the pre-registered prediction band (1.42–1.46) — better than predicted.
+- vs yesterday's baseline (v6, 1.5719): **−0.188 bpc, −23.5 MB** on the same
+  corpus, one day of measured steps apart.
+- Yardsticks: 2006 enwik8 baseline 1.466 — CLEARED. 2006 first-prize winner
+  (paq8hp5) ≈ 1.37 — within 0.014, on a corpus 10× larger. enwik9 record
+  (fx2-cmix) 0.886 — gap now 0.498.
+- The whole gigabyte reconstructs byte-perfect from 173 MB. Survived three
+  container restarts via relaunch; determinism spot-checks held throughout.
