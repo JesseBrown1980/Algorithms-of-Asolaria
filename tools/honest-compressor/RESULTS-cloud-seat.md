@@ -915,3 +915,33 @@ yet a compression win. Two of three worlds, two implementations, one law:
 connect the thirds through a normalized middle and route; never flatten,
 never expect a lone third to conjure the rest. Jesse's geometry, measured
 true in its exact bounded form, now on TWO seats.
+
+## Predictor vs Actual — the gradient PLAYED, not just predicted (2026-07-20)
+
+Jesse's ask: use the routed gradient and report predictor (frozen mix) vs
+actual (played: seed from mix, then learn causally during the test). WIKI
+held-out, order-1. Lower bpc better.
+
+| arm | predictor (frozen) | actual (played) | gain from playing |
+|---|---|---|---|
+| omnifeed (⅓ each) | 4.7183 | 4.0061 | +0.7122 |
+| gradient ⅓ | 4.3192 | 3.9609 | +0.3583 |
+| gradient ⅔ | 4.0904 | 3.9257 | +0.1647 |
+| pure key | 4.0093 | **3.9047** | +0.1046 |
+| cold (no prior) | — | 3.9618 | baseline |
+
+THE FINDING Jesse asked to see: **playing collapses the gap.** The predictor
+ranks the arms far apart (4.72→4.01, spread 0.71); once PLAYED, they compress
+into a narrow band (4.01→3.90, spread 0.10) — because online learning during
+the test overwrites most of the prior within ~120k bytes. Consequences:
+1. The worse the predictor, the MORE playing helps (omnifeed +0.71, pure
+   +0.10) — the machine repairs a bad start faster than a good one, so
+   played-bpc is far more forgiving than frozen-bpc.
+2. **Only pure key and gradient-⅔ actually BEAT cold-play (3.9618)** when
+   played; omnifeed (4.0061) and gradient-⅓ (3.9609≈cold) do NOT clear the
+   no-prior baseline once the machine is allowed to learn. The predictor's
+   ordering OVERSTATES how much any prior is worth in practice.
+3. Pure key wins both columns; the gradient's real value is graceful
+   degradation (its played-bpc stays close to pure even from a worse start),
+   not beating the specialist. Confirms the transfer-not-yet-compression
+   verdict at the level that matters — actual played bytes, not predicted.
