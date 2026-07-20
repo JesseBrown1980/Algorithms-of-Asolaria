@@ -874,3 +874,21 @@ connection is the common process, not the common cosmos. And it is never
 free reconstruction: even the best cross-source key left WIKI-A needing
 228,609 of its own bytes. Contact with the other dataset reveals I(A;B)
 bits of connection; it never conjures the surprise. Both halves sha'd.
+
+## Codex handoff pre-check: the double-inversion identity gate PASSES (2026-07-20)
+
+Before the one-third math seat (Codex) spins up, this seat verified the
+load-bearing gate the prompt makes mandatory: I(I(z)) = z for the geometric
+center construction in log-prob space. Built order-1 distributions for wiki/
+fleet/gradient (110 shared contexts), formed z_M = (zA+zB+zC)/3, the +1/3 ray
+z = z_M + (1/3)d_A, and the reflect-through-center inversion I(z)=2z_M − z.
+Result: forward-third sha16 926de813e45282b3 == I(I(forward)) sha16
+926de813e45282b3, max|Δ| = 8.88e-16 (float epsilon). IDENTITY GATE PASS.
+The reflect-through-center operator is a true involution — Codex's build may
+proceed on this construction; if its implementation cannot reproduce a
+byte-exact round trip, the discrepancy is in its code, not the math. Note
+for Codex: quantize log-tables to fixed point (not float) if byte-exact
+sha equality across machines is required — 8.88e-16 float drift will differ
+across architectures; the determinism gate needs integer tables, same as the
+codec line uses. Handoff prompt sha deb7de0f co-signed; concatenation-is-not-
+gradient boundary already measured on this seat (gradient lost 3/3 worlds).
