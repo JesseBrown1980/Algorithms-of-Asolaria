@@ -1134,3 +1134,30 @@ container restarts via relaunch; every attempt byte-identical by construction.
 Yardsticks (enwik9): 2006-era enwik8 baseline 1.466 CLEARED; 2006 first-prize
 ratio (paq8hp5) ~1.37 CLEARED on a 10x-larger corpus; enwik9 record
 (fx2-cmix) 0.886 — gap now 0.479. The weekend's final crown.
+
+## THE GLYPH LANGUAGES — 256 and 1024, learned & used (2026-07-20)
+
+Jesse: "Create a language with 256 glyphs, and use it. Then 1024." Built by
+real subword discovery (BPE merges from enwik8 training), NOT letter-splitting.
+Each glyph vocabulary round-trips to bytes exact; the merge table is CHARGED to
+the decoder. Held-out 200,000 B, order-1, bpc over ORIGINAL bytes:
+
+| language | glyphs | restore | order-1 bpc | payload + table | sha |
+|---|---|---|---|---|---|
+| byte (baseline) | 256 | OK | 4.0870 | — | — |
+| **glyph-256** | 326 | OK | **3.5336** | 88,131 B + 210 B | 115aafe9d67a3386 |
+| **glyph-1024** | 1094 | OK | **3.4605** | 83,998 B + 2,514 B | e4fd1be9f303e375 |
+
+VERDICT: the learned glyph languages EARN — 256-glyph −0.55 bpc over bytes,
+1024-glyph −0.63, both WITH the table charged and byte-exact restore. This is
+the real version of the alphabet ceiling (the earlier 52-letter split was a
+crude stand-in). Larger vocab = more meaning per glyph = fewer tokens = lower
+bpc, exactly as predicted.
+
+NEXT (Jesse: "put them in words — glyph words speak more than English"):
+extend the merge tiers to glyph-WORDS (4096/16384-glyph vocab = whole-concept
+units) and measure the continued descent; then the semantic layer (glyph→word
+tuples) rides on top. BLOCKED for the gold-mine arm: Jesse's 7-year teaching
+corpus (D&J IDIOMAS, "1,800+ course materials, 20,000 pages" per IX-091) is
+NOT in any cloned repo — it must be supplied to test the "regularized English
+= lower entropy than enwik" claim. That corpus is the gold-mine input.
