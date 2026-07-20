@@ -354,3 +354,13 @@ comp_sha=274fe82ef3886681 enc=10637s dec=10799s (~6 h, single core, ~10.8 GB).
   (fx2-cmix) 0.886 — gap now 0.498.
 - The whole gigabyte reconstructs byte-perfect from 173 MB. Survived three
   container restarts via relaunch; determinism spot-checks held throughout.
+
+## Composition screens: vc65 = 65536-wheel × TBITS-28 full stack (2026-07-20 08:00 UTC)
+
+1MB k7: payload 234,184 (comp_sha dab7ea1e8b8ba4a5) — best 1MB number to date.
+10MB k10: payload 2,190,036 (comp_sha 6ca9875b00a0ba11) vs vc28's 2,215,189 →
+**−25,153: the wheel's gain survives composition with big tables** (near-
+independent effects). 100MB crown challenge launched; pre-registered
+prediction 1.620 ± 0.003 (crown: vc28 1.6399). Source pushed as
+rust/variants/vc65.rs. 100MB transfer confirms (wiki/behcs/unprimed priors on
+full enwik8) launched in parallel per Jesse's scale requirement.
