@@ -394,3 +394,24 @@ help grew ×2.9 with ×10 data; foreign-glyph harm grew ×2.3. Savings curve
 any practical scale — priming economics unchanged; transfer law confirmed at
 the scale demanded. comp_shas: 2a3240889ae2fcb8 (wiki), 171b163828175cbb
 (behcs).
+
+## The three-sphere machine-count test — Jesse's rule of holes, corrected form, MEASURED (2026-07-20)
+
+Corpus: 1MB, three drifting color-laws (letters/digits/symbols, drift every 30
+blocks) under deterministic keyed rotation (R→Y→B, 64B blocks) — Jesse's three
+gradiated spheres around a static omega, time folded into the key.
+
+| Machine | payload | vs enwik ordering |
+|---|---|---|
+| 3-wheel (v10) | **5,798 WINS** | (loses on enwik) |
+| 12-wheel (v6) | 5,985 | (wins on enwik) |
+| 4096-wheel (v13) | 6,225 | (wins bigger on enwik) |
+
+The ordering INVERTS with the data's law-count: the 3-machine wins exactly
+when the data has three laws. Total collapse 1MB → 5,798 B (0.046 bpc): the
+keyed rotation rode free (shared-key theorem), machines paid only for the
+gradients (drift-is-information theorem). Machine-count accounting sealed:
+3 machines + key (rotation free, mirror/anti-spheres free by bijection,
+omega +1 only if it has state). Law of Machines P2 confirmed in both
+directions: rooms must match the corpus's law-count — too many rooms is
+measured harm on simple law, too few is measured harm on language.
