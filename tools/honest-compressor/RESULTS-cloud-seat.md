@@ -717,3 +717,31 @@ time-space index carries the feasibility law. Wall cells cost →0 bits,
 matching the log2|F| bound. Status: hypothesis slice promoted UNVERIFIED →
 MEASURED for counting arms; neural arms (adapters/router/oracle grid,
 params+FLOPs matched) remain for the GPU seats per the third seat's spec.
+
+## The emergence lattice — one/two/three axes, measured (2026-07-20)
+
+Same packet universe, predictor conditioned on every subset of {color, time,
+space}. Gains over the empty container (1.5456 bpe):
+
+| conditioning | gain (bits/event) | synergy vs parts |
+|---|---|---|
+| time alone | **−0.0008 — EXACTLY NOTHING** | — |
+| space alone | +0.154 | — |
+| color alone | +0.271 | — |
+| time+space | +0.152 | −0.002 (sterile) |
+| color+time | +0.310 | +0.039 |
+| **color+space** | **+0.708** | **+0.282 — a real thing emerges** |
+| all three | +0.759 | completion (+0.052 over best pair) |
+
+Jesse's cosmogenesis, measured: "time by itself, nothing" confirmed to 4
+decimals — time in this universe is pure relation (it modifies color's
+preference; with no color to modify it carries zero information). "Any two
+give rise to a real thing" holds EXACTLY when one of the two is color:
+color×space shows +0.282 bits of true synergy (the pair exceeds the sum of
+its parts — interaction information, the measured form of emergence);
+time+space without color stays sterile. Corrected form of the law: COLOR IS
+SUBSTANCE, TIME AND SPACE ARE RELATIONS — relations without substance are
+nothing; substance plus a relation condenses reality; the third axis
+completes but does not create. The empty container (uniform tables) is the
+sphere before the first slice — identities emerge from data, never from
+the container.
