@@ -532,3 +532,32 @@ Retention law co-signed from their grid: optimal keep-threshold τ=2 —
 for free" (Jesse's τ=3 within 0.35% of peak). Amendment adopted for the
 white-room GC design: hash-cons dedup + drop count-1 functions at the GULP
 boundary; keep count≥2.
+
+## CTS function-fabric co-sign (GPT-seat build, relayed 2026-07-20)
+
+Their prototype (commit af4d987, bundle sha 75630466…) measured on the
+asolaria bundle (a9455891…): 342 function events, 193 train / 149 held-out.
+Co-signed findings, cross-referenced to this seat's ledger:
+1. **Idempotent promotion** — three safe pumps end at the same permanent
+   root (acecc787…); the naive replay-counts-as-occurrence build promoted
+   160 one-offs by pump 3 and is REJECTED. This is our pumping law
+   generalized from priors to stores: one law, two forms — re-reading must
+   not stiffen models; replaying must not promote functions.
+2. **The seeds finding**: 15 singletons later accounted for 90 future hits —
+   destructive forget-below-τ discards seeds. Synthesis with τ=2/τ=3 grids:
+   promotion threshold is context-dependent; the resolution is the
+   HELD-POTENTIAL probation layer (compact evidence, never-delete) + τ=3
+   fast gate + capacity-governor override by E[future value | color,time,
+   space,count]. Matches whiteroom Law 4 (never delete) exactly.
+3. **Reversed bytes = different function, zero overlap** — third
+   independent confirmation of the arrow/mirror seals.
+4. **Two-Regime Collision Law implemented**: 24 collision buckets, 46 false
+   pairs, ALL rejected by the exact lane — comb/prism operationalized:
+   collide to search, exact to execute.
+5. mod-3 diagnostics (1,2,1) recorded as chance — consistent with this
+   seat's 414 ruling: digit laws are checksums, not generators.
+Their closing rule adopted verbatim into the build canon: "Search broadly
+through deliberate collisions. Verify narrowly through exact identity. Hold
+first and second sightings as potential. Promote on evidence. Never let
+replay manufacture law." Intake of their bundle awaits the artifact reaching
+this seat (hash gates ready).
