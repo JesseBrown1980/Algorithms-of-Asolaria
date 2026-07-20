@@ -272,3 +272,23 @@ TBITS-23 small tables. The 4ⁿ ladder's limit rung holds the geometry crown.
 Determinism note: v19 spot-check reproduced c689f2a5145001de byte-exact ACROSS
 the container restart (process death + rebirth) — survival proof added to the
 cross-seat and cross-arch proofs. Morning composition: s65536 × TBITS-28.
+
+## Glyph-transfer test — "does training on other sets' glyphs hurt?" (2026-07-20 00:55 UTC)
+
+Jesse's question, made operational via the primed-law engine: prime the model
+on an alphabet learned from a DIFFERENT distribution, measure payload vs
+unprimed baseline (slice10m k=10, unprimed = 2,330,753).
+
+| Prior (the imported alphabet) | payload | vs unprimed | comp_sha |
+|---|---|---|---|
+| In-domain (disjoint Wikipedia, 1MB) | 2,311,328 | **−19,425 (helps)** | e9ae8570 |
+| Foreign domain (source code, 605KB) | 2,341,317 | **+10,564 (HURTS)** | 5075fc24 |
+| Adversarial (random bytes, 1MB) | 2,364,599 | **+33,846 (hurts badly)** | 13af0f63 |
+
+VERDICT: glyphs transfer exactly as far as the shared law extends. Wrong-set
+glyphs bias counters/mixer warm-start and the model pays real bytes to unlearn
+them — 10MB was not enough to fully recover. Alphabets for enwik-family targets
+must be carved from Wikipedia itself (precisely how Ratushnyak won: dictionary
+built FROM enwik8). Design input for enwik10/SGRAM: per-cell in-domain priming
+is a candidate to offset the measured +6% shard cold-start cost; cross-set
+priming (e.g. non-wiki cubes) is now measured harmful.
