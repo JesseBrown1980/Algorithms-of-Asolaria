@@ -745,3 +745,28 @@ nothing; substance plus a relation condenses reality; the third axis
 completes but does not create. The empty container (uniform tables) is the
 sphere before the first slice — identities emerge from data, never from
 the container.
+
+## The 27-cell identity lattice — functions world (this seat's third, 2026-07-20)
+
+Each axis at 3 resolutions (off/coarse/fine): color = ∅/cls6/byte256,
+time = ∅/run-bit/4-state, space = ∅/line-start/col8. All 27 cells sealed on
+fleet1m (empty container 5.4899 bpb). Full grid in receipt; the findings:
+
+1. **BEST = (color fine, time fine, space OFF): +1.6109** — not the full
+   triple. At (2,2,2) fine space SUBTRACTS (−0.1424): with color+time fully
+   resolved, extra rooms fragment 1MB of data — the room-count law living
+   inside the identity lattice.
+2. **Subsumption detected to 4 decimals**: space-coarse (line-start) adds
+   +0.0000 exactly once color is fine — because prev-byte=newline IS the
+   line-start; the fine color axis already contains the coarse space axis.
+   Identities that duplicate another axis's information add exactly zero.
+3. **Axis worth is context-dependent** (the lattice is non-additive): space
+   earns +0.218 when color is off, 0 when color is fine; each identity's
+   value depends on what the others already resolve.
+4. Color dominates this world (substance again): fine color alone +1.3975;
+   time adds +0.06..0.15; 8-arm addendum: functions world shows REDUNDANCY
+   (subadditive pairs) where the synthetic world showed SYNERGY — emergence
+   is a property of the world, not the lattice.
+The 27-identity law, measured form: identities emerge where they add law,
+contribute zero where they duplicate, and subtract where they exceed the
+data's support. For sharing with the other seats' thirds.
