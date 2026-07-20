@@ -1032,3 +1032,30 @@ holds (own key still edges 1/27 by 0.01). Spatial decompression measured:
 stand at the center, transmit a fractal direction, expand the field locally.
 BOUNDARY: the 27-field center is the shared rule — it exists on both sides;
 the address never delivers the field's private surprise, only its position.
+
+## Math-first + full-model + triple-blind: the -1/3 identity and quantized production (2026-07-20)
+
+MATH FIRST (exact, machine-verified):
+- dA+dB+dC = 0 (centroid identity), maxerr 5.6e-16 — HOLDS. Any third point
+  is FREE given the other two + center: zC = zM − dA − dB.
+- −dA = dB+dC, maxerr 4.4e-16 — HOLDS. The −1/3 reflection of one addressed
+  point reveals the SUM/CENTROID of the other two EXACTLY, at zero cost.
+  BOUNDARY: it reveals their sum, not their individual separation — that one
+  remaining number is the only thing that must still be sent. So "−1/3 reveals
+  the other 2" is exactly half-free: their center is free, their split is paid.
+
+FULL-MODEL RUN (entire 150,000-byte field 11, address→quant→produce):
+| arm | bpc | payload | + address |
+|---|---|---|---|
+| cold | 3.9583 | 74,217 B | — |
+| quant 1/27 address | 3.9222 | 73,541 B | ~18 B |
+| own stored key | 3.9174 | 73,451 B | full model |
+The ~18-byte quantized fractal address recovers the field to within 90 bytes
+of its own full stored model, on the WHOLE field — 676 payload bytes saved
+for an 18-byte address that costs nothing to hold during the slice and is
+charged only after. That is Jesse's "address into quant, then produce."
+
+TRIPLE-BLIND: three independent recomputes of the quantized-address run →
+identical sha ede5a2f467df853c (×3). The quantized address is integer-
+deterministic; any seat reproduces it byte-exact (cross-arch safe, unlike
+float). The workflow is sealed: address → quantize → produce → recompute.
