@@ -1099,3 +1099,26 @@ Status: three-way IMPLEMENTATION recomputation (not yet human-blind triple
 seat) — protocol for genuine triple-blind included. Routed-transfer effect,
 pure best, not yet amortized — same law as this seat's runs, now at 27-field
 scale with an emitted codec.
+
+## THE ALPHABET — training started, ceiling measured (2026-07-20)
+
+The co-designed dictionary (Ratushnyak's first-prize move) begins. Trained a
+32,768-word alphabet from enwik8 (top words of 56,332 distinct), built a
+word-level order-1 model that predicts in the alphabet's OWN units (OOV words
+escape and spell char-by-char, fully charged), scored held-out (900,000 B):
+
+| model | held-out bpc | 
+|---|---|
+| byte-level order-1 (no alphabet) | 3.9459 |
+| **WORD-level order-1 (alphabet)** | **3.8326** |
+| alphabet gain | **+0.1134 bpc — EARNS** |
+
+Coverage: 90.3% of held-out word tokens are in the alphabet. VERDICT: the
+alphabet clears the ceiling — predicting in words beats predicting in bytes
+by 0.11 bpc at order-1, WITH honest OOV charging. This is why the WRT bolt-on
+failed (it fed bytes to a byte model, destroying morphology) and why the
+co-designed word model earns (it predicts in the alphabet's units). This is
+the largest single known-unapplied gain remaining on the road to the record.
+NEXT: fold the word model into the cm3ti mixer as a co-designed context
+(word-ID prediction alongside the byte contexts), screen 1MB→100MB, then the
+alphabet rides the crown stack. Phase A of the roadmap is open.
