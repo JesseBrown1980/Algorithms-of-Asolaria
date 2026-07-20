@@ -945,3 +945,33 @@ the test overwrites most of the prior within ~120k bytes. Consequences:
    degradation (its played-bpc stays close to pure even from a worse start),
    not beating the specialist. Confirms the transfer-not-yet-compression
    verdict at the level that matters — actual played bytes, not predicted.
+
+## Nested-prime compression boundary — the audit's claim, measured (2026-07-20)
+
+Co-signed the Codex dynamic-audit (receipt 76034f3d…) with one referee flag:
+its α=1.00 frozen number (2.8010 < play 2.8105) uses RETROSPECTIVE oracle
+stats (image says so) — in strictly-causal play, playing always beats frozen
+(this seat: pure key +0.1046). Historian's artifact, correctly labeled.
+
+The audit's "⅓ of ⅓ … of ⅓ of a bit" nested-prime claim, turned into a
+receipt. Sequences fully determined by n nested prime-modular rules
+(period = primorial), adaptive order-1/2 learners, strictly causal:
+
+| levels | period | deterministic bpc (o1/o2) | random control |
+|---|---|---|---|
+| 1 | 2 | 0.0256 | 8.1503 |
+| 2 | 6 | 0.0647 | 8.1503 |
+| 3 | 30 | 0.2355 | 8.1503 |
+| 4 | 210 | 0.9375 | 8.1503 |
+| 5 | 2310 | 3.72 / 3.27 | 8.1503 |
+
+VERDICT: the audit is RIGHT with its boundary made exact. Deterministic
+nested-prime structure IS near-free (level-1 = 0.026 bpc, ~300x below random)
+— known irreversible structure carries almost no surprise, exactly as
+claimed. BUT the cost scales with the PERIOD the learner must first observe:
+bpc climbs as the primorial grows because the model pays to LEARN the rule
+before it collapses (level-5's period 2310 isn't seen enough in 200k). So
+"⅓ of ⅓ …" → 0 is TRUE only once the structure is shared/learned; the
+transmission of WHICH nested structure costs log(structures) up front. Same
+shared-key floor, fourth domain: structure is free to REPLAY, never free to
+IDENTIFY. The floor held, and now it's measured on primes too.
