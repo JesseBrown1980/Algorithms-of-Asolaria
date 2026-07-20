@@ -415,3 +415,24 @@ gradients (drift-is-information theorem). Machine-count accounting sealed:
 omega +1 only if it has state). Law of Machines P2 confirmed in both
 directions: rooms must match the corpus's law-count — too many rooms is
 measured harm on simple law, too few is measured harm on language.
+
+## FLEET-VERIFIED: the Law of Machines room-count claim (2026-07-20)
+
+Cross-seat replication complete on independent 3-law corpora:
+- This seat (gentle laws, keyed rotation): 3-wheel 5,798 < 12-wheel 5,985 <
+  4096-wheel 6,225 — smallest adequate machine wins.
+- Other seat (hard laws: XOR drift + quadratic): 12-wheel 70,573 < 48-wheel
+  71,229 < 4096 75,954, omega 212,669 — mid machine wins, palace heats empty
+  rooms, minimal machine pays triple.
+Both orderings: room-count must match law-count; the crown loses on few-law
+data; the law-count of the DATA (not geometry) sets the machine. Their honest
+miss folded in: "lawful" is a spectrum — laws that keep moving keep costing
+(tracking rent ∝ law velocity). Graduated from observation to FLEET-VERIFIED.
+
+Corollary (Jesse's scaling mantra, measured form): in the un-charged fabric
+regime, an ever-growing rule base keeps earning exactly as long as incoming
+data keeps carrying new law — our own receipts: tables 23→28 never turned,
+wheels 12→65,536 never turned on enwik, scale curve 2.07→1.57 per 1MB→1GB.
+The Hutter frame is the bounded dual (fixed corpus, charged decoder → forces
+efficiency); the fabric frame is the unbounded dual (open data, uncharged
+storage → forces scale). Same identity, two budgets.
