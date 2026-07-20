@@ -645,3 +645,19 @@ operator's. The adaptive governor converged to the same 53 promotions as
 τ=2 until it beats it on held-out repositories (this seat lacks deep
 multi-repo histories; flagged as the remaining unmet condition, with
 copy-lineage caveat standing).
+
+## Prequential receipt shipped — REPORTED figures now independently auditable (2026-07-20)
+
+Per the third seat's claims-gate: tools/honest-compressor/function-memory/
+prequential_sim.py (executable, deterministic) + prequential-receipt.json
+(sha16 299ac31dede60f92). Figures reproduce exactly: τ=2 +215,388 / τ=3
++191,451 / τ=5 +180,760 / governor +215,278. The receipt answers the
+auditor's specific request: promotion sets τ=2 vs governor are EQUAL (53=53)
+with exactly ONE promotion-time disagreement — the governor promoted one
+object later, which is the entire 110-byte gap. Convention fixed in the
+receipt header: delayed promotion; triggering occurrence raw; the third
+occurrence is the first post-confirmation reuse opportunity. Governor extra
+state charged 0 and flagged (must be charged in production). All audit
+refinements adopted: source-cluster counting, HELD_RECOVERABLE→HOT→COLD
+states, replay-ledger alternatives, and the frozen-governor graduation
+protocol as the next gate. vc65 remains RUNNING/PROJECTED until sealed.
