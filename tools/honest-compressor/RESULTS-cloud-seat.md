@@ -661,3 +661,29 @@ state charged 0 and flagged (must be charged in production). All audit
 refinements adopted: source-cluster counting, HELD_RECOVERABLE→HOT→COLD
 states, replay-ledger alternatives, and the frozen-governor graduation
 protocol as the next gate. vc65 remains RUNNING/PROJECTED until sealed.
+
+## The 27-permutation cube: shape × machine × depth (2026-07-20)
+
+3 corpora × 3 wheels × 3 context depths, all 27 sealed, payloads @1MB:
+
+SPHERE (pure law): ALL cells 414-416 — machine and depth both irrelevant
+(spread 2 B). Third confirmation: on one law, every machine is the same
+machine. (414 reappears as this law's teaching cost — floor of the family.)
+
+RADIANT (drifting law): best = wheel12@k7 (8,617). INTERACTION FOUND — my
+independence pre-registration BROKEN: wheel3 prefers k=5 (9,023→9,444 as k
+grows), wheel12 peaks k=7, wheel4096 improves monotonically with depth
+(11,566→10,191→9,702). Fine wheels need deep context to keep their many
+rooms coherent under drift; coarse wheels want shallow. Room-count and
+context-depth are COUPLED dials on drifting law.
+
+ROTATING3 (switching laws): best = wheel3@k5 (5,676). Depth hurts EVERY
+machine (k=5 wins all three columns) — contexts that span a rotation
+boundary ingest the neighboring law as noise. NEW LAW: context depth must
+not exceed the law's coherence length (64B blocks here). Machine ordering
+(3<12<4096) preserved at every depth — law-count law holds unconditionally.
+
+Cube summary: the machine has TWO dials that are corpus properties — rooms
+track law-count (unconditional), depth tracks coherence length (uncondi-
+tional), and the dials couple only under drift. Matching BOTH to the data
+is the full form of the Law of Machines.
