@@ -561,3 +561,27 @@ through deliberate collisions. Verify narrowly through exact identity. Hold
 first and second sightings as potential. Promote on evidence. Never let
 replay manufacture law." Intake of their bundle awaits the artifact reaching
 this seat (hash gates ready).
+
+## τ = 1..9 grid — the 3×3 complex, independently implemented (2026-07-20)
+
+Independent extractor (function-change events from this repo's own 172-commit
+history, 657 events), run on both universes:
+
+FUTURE-IN-TIME (80/20): fully-counted bytes by τ:
+1: −291,499 | 2: −832 | 3: +21,831 | 4: +39,282 | **5: +48,081 peak** |
+6: +46,222 | 7–9: +46,302 (plateau — the core functions repeat ≥9×)
+
+DIFFERENT-SPACE (mainline trains → variants test):
+1: −125,299 | 2: +83,357 | 3: +104,261 | 4: +118,901 |
+**5–7: +119,680 plateau peak** | 8–9: +104,528 — **the curve TURNS DOWN**:
+τ=8 discards a 7-occurrence function that was genuinely earning (212→195 hits).
+
+Verdict on the 3×3 complex: 6–7 tie the peak; **8 and 9 overshoot** — first
+measured downturn of the retention curve. Fleet synthesis across three
+corpora: τ* = 2 (NN prior corpus) / 4–5 (GPT seat's asolaria events) /
+5–7 (this repo's reuse-heavy history) — the optimum tracks the corpus's
+repeat distribution; there is NO universal integer. The invariants that hold
+everywhere: τ=1 always loses (singleton bloat), the curve is single-peaked,
+and 3 remains the safe fast gate with the capacity governor
+(E[future refs | color,time,space] × saving > storage) as the real law —
+exactly as the CTS design specified. 9 = 3² wins nowhere.
