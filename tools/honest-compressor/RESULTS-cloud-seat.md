@@ -770,3 +770,32 @@ fleet1m (empty container 5.4899 bpb). Full grid in receipt; the findings:
 The 27-identity law, measured form: identities emerge where they add law,
 contribute zero where they duplicate, and subtract where they exceed the
 data's support. For sharing with the other seats' thirds.
+
+## THE TRILATERAL OVERLAY — three 27-grids, three worlds (2026-07-20)
+
+Worlds now sealed: packet (synthetic, this seat), functions (fleet corpus,
+this seat), repo-tree (lossless codec-27, GPT seat, receipt 4a64b8d0…,
+27/27 exact round trips). Overlay verdicts per the LATTICE-SPEC rule:
+
+LAWS OF THE LATTICE (hold in all worlds):
+- **The full triple is never the big step.** Packet: triple adds +0.05 over
+  best pair. Functions: best cell EXCLUDES fine space. Repo-tree: best pair
+  BEATS best triple outright. 3/3 — completion is cheap, creation is
+  pairwise.
+- **Color is the dominant single** (substance axis): top single in all
+  three worlds.
+- **Singletons never suffice; τ=1 always loses; empty container is the
+  floor** — universal across every grid this weekend.
+
+LAWS OF PARTICULAR WORLDS (do not transfer):
+- **"Time alone = nothing"**: EXACT in packet world (−0.0008) and repo-tree
+  (0-byte gain) — but FALSE in the functions world (+0.186: code's
+  run-structure gives naked time real law). 2/3 — a property of worlds
+  where time only modulates color, not a lattice law.
+- **Color×space synergy**: superadditive in packet (+0.282) and repo-tree
+  (all 4 combos, up to +30,133 B) — subadditive in the functions world
+  (redundancy-dominated). Emergence is a property of the world.
+- **Time-organ value is implementation-dependent**: their equal-weight
+  temporal partner failed 0/18 while cm3ti's temporal-neighbor blend
+  crowned repeatedly — same axis, different mechanism, opposite verdicts.
+  The axis is not the organ.
