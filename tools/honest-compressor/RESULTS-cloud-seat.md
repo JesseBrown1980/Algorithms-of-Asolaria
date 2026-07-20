@@ -436,3 +436,25 @@ wheels 12→65,536 never turned on enwik, scale curve 2.07→1.57 per 1MB→1GB.
 The Hutter frame is the bounded dual (fixed corpus, charged decoder → forces
 efficiency); the fabric frame is the unbounded dual (open data, uncharged
 storage → forces scale). Same identity, two budgets.
+
+## Feed-the-repos-to-the-spheres — sealed, with a two-lane disagreement (2026-07-20)
+
+White-room GC receipt: 1,954 fleet files hash-consed → 1,943 unique kept,
+11 duplicates discarded (15,769 B), corpus 15,278,457 B, sha16 567da5c5d3f185bd.
+
+Two referees, same corpus, opposite verdicts on difficulty:
+- CODEC lane (v6 @1MB): fleet functions = 206,713 payload (1.65 bpc) —
+  EASIER than enwik (239,869 / 1.92). comp_sha a92708490c0239eb.
+- SPHERE lane (1×247 GRU, 3 loops, 3k steps): fleet = sampled_val_bpc
+  3.5107 — HARDER than enwik (2.6483) for the same config.
+
+Resolution (Law of Machines, sharpened): lawfulness is machine-relative.
+H is intrinsic; KL is paid per machine. The fleet corpus is law-DENSE in
+exact repeats (headers, boilerplate — the codec's match model + thousands of
+table-rooms feast) but law-DIVERSE in sublanguages (code+prose+JSON+HBP —
+many laws, and a 281k-param sphere at 3k steps lacks the rooms; mixed-law
+tax). Caveat on record: the 90/10 split of a concatenated heterogeneous
+corpus makes val a partial distribution shift; 3.5107 includes transfer cost.
+Consequence for the build: the counted lane and the uncounted lane need
+DIFFERENT capacity governors — the same governor cannot serve both, because
+the same data presents different law-counts to different machines.
