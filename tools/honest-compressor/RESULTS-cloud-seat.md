@@ -585,3 +585,18 @@ everywhere: τ=1 always loses (singleton bloat), the curve is single-peaked,
 and 3 remains the safe fast gate with the capacity governor
 (E[future refs | color,time,space] × saving > storage) as the real law —
 exactly as the CTS design specified. 9 = 3² wins nowhere.
+
+## τ ladder extended to 27 — the 3/9/27 rungs are the curve's three ages (2026-07-20)
+
+FUTURE-IN-TIME: τ=3 +21.8k (rising) | τ=5 PEAK +48.1k | τ=9 +46.3k
+(shoulder) | staircase decay 42k→35k→32k | collapse τ=24-25 | **τ=26-27: ZERO**.
+DIFFERENT-SPACE: τ=3 +104.3k | τ=5-7 PEAK +119.7k | τ=9 +104.5k | cliff at
+τ=10 (+21k) | **τ=11-27: ZERO — the dictionary is empty.**
+
+The 3-9-27 structure measured: 3 = birth (safe rising slope, every corpus),
+9 = maturity (the shoulder just past peak), 27 = death (beyond the corpus's
+deepest repetition, nothing qualifies — the store holds nothing and earns
+nothing). The curve's support ends exactly where the corpus's repeat-depth
+ends. Peak stays at τ=5 in both universes on this corpus. Standing law
+unchanged: promote at 3, tune by governor, and the powers of three index the
+curve's lifecycle — they are its calendar, not its optimum.
