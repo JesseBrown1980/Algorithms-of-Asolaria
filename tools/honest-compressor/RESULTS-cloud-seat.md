@@ -823,3 +823,28 @@ CROSS-DOMAIN SUBSUMPTION GRAPH (two full matrices in hand, text pending):
   their full grid under LATTICE-SPEC.
 Sequencing answer on record: subsumption graph FIRST (done — zero cost);
 next-config 1GB run waits for vc65's seal (~2h) for RAM and config input.
+
+## The omnifeed test — "feed everything" is not a key (2026-07-20)
+
+One prior built from ALL eight worlds (⅛ each: wiki, repos, gradient, sphere,
+rgb, glyphs, code, chaos), PLAYED (not looked at) against four worlds:
+
+| world | cold | omni-fed | own pure key (ref) |
+|---|---|---|---|
+| WIKI | 239,869 | 240,550 (+681 HARM) | 228,295 (−11,574) |
+| GRADIENT | 8,617 | 8,790 (+173 HARM) | 915 (−7,702) |
+| FLEET | 206,713 | 210,118 (+3,405 HARM) | (blue +2,826) |
+| SPHERE | 414 | 431 (+17 HARM) | ≈414 |
+
+4/4 harm — even though the omni key CONTAINS each target's own law as ⅛.
+Jesse's third-rule, measured: the matched fraction never sees its world
+without the foreign majority riding along, and priors don't route. Paired
+with the other seat's matched-prior play (+7.0% on held-out fleet data,
+comp_shas 8ae592f9/d7224c3b), the composition law is complete in both
+directions in one day: PLAY a machine on data whose law it learned — it
+earns; feed it everything — every world taxes it. Matched-key composition
+YES; omnifeed universal-key NO. Same mechanism, same engine, both sha'd.
+Also co-signed from the other seat: g:256:64:8 stays a CANDIDATE (screens
+recorded, no 100MB seal on recycling hardware — no seal, no crown), and the
+conditional-4th-axis law (word axis helps impoverished cubes, hurts the full
+triple) enters the ledger as measured.
