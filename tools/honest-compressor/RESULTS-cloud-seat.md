@@ -848,3 +848,29 @@ Also co-signed from the other seat: g:256:64:8 stays a CANDIDATE (screens
 recorded, no 100MB seal on recycling hardware — no seal, no crown), and the
 conditional-4th-axis law (word axis helps impoverished cubes, hurts the full
 triple) enters the ledger as measured.
+
+## The connection, quantified — 3x3 cross-prime transfer matrix (2026-07-20)
+
+Jesse's claim: datasets from genuinely different sources share projectable
+law because all drawn from one universe. Tested as mutual information —
+every real source played against every source's key (payload, cold in []):
+
+| test \ key | wiki-A' | wiki-B' | code(fleet) |
+|---|---|---|---|
+| WIKI-A [239,869] | **−11,574** | **−11,260** | +5,143 (harm) |
+| WIKI-B [253,835] | **−11,946** | **−12,989** | +5,339 (harm) |
+| CODE [206,713]  | +6,569 (harm) | +6,532 (harm) | **−7,174** |
+
+THE MEASURED VERDICT: your claim is HALF right, and the half that's right is
+profound. Wiki-A and wiki-B are DIFFERENT SOURCES (articles 50 MB apart,
+zero shared text) — yet each other's key saves ~11k, nearly as much as the
+own-source key. Two independently-drawn samples of natural English DO share
+transferable law: I(A;B) is large and positive within a domain. That is the
+"connection none can see alone" — real, measured, cross-source. BUT it stops
+at the domain wall: wiki<->code transfer is NEGATIVE both directions. Shared
+universe does NOT mean shared law across ALL sources — it means shared law
+across sources drawn from the SAME GENERATIVE PROCESS (English). The
+connection is the common process, not the common cosmos. And it is never
+free reconstruction: even the best cross-source key left WIKI-A needing
+228,609 of its own bytes. Contact with the other dataset reveals I(A;B)
+bits of connection; it never conjures the surprise. Both halves sha'd.
