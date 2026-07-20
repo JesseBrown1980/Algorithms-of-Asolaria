@@ -56,6 +56,8 @@ struct Model {
     w2: Vec<i32>,     // mixer B: concatenated per-level sector tables (rainbow ladder)
     rows: Vec<usize>, rweight: Vec<i64>, sshift: u32, basew: i64,
     lvl_off: Vec<usize>, lvl_size: Vec<usize>, sects: Vec<usize>, wtot: usize,
+    apm3: Vec<u16>, a3: (usize, i32, i32), mirror12: usize, cls_now: usize,
+    use_mirror: bool, use_absorb: bool,
     apm: Vec<u16>,    // 1024*33, prob*16 fixed (0..4095)
     apm2: Vec<u16>,
     hist: Vec<i32>,
@@ -99,6 +101,7 @@ impl Model {
             "48" => (vec![48], vec![2,2], 4, 19),          // separated finest
             "48a" => (vec![49], vec![2,2], 4, 19),         // 48-way, partner = boundary-complement (s^7)
             "48o" => (vec![50], vec![2,2], 4, 19),         // 48-way, partner = wheel-antipode ((s+24)%48)
+            "4k" | "4km" | "4ka" | "4kma" => (vec![4096], vec![2,2], 4, 19), // 4096-way: lastbyte*16 + 4 boundary bits
             "c2" => (vec![12,24], vec![2,2,2,2], 8, 20),   // combined two-level
             "c3" => (vec![12,24,48], vec![2,2,1,1,1,1], 8, 20), // combined pyramid, coarse-heavy
             _ => panic!("bad RB_MODE"),
@@ -107,6 +110,10 @@ impl Model {
         let mut acc = 0usize;
         for i in 0..lvl_size.len() { lvl_off[i] = acc; acc += lvl_size[i]; }
         let wtot = acc; let nrows = rowp.len();
+        let use_mirror = mode == "4km" || mode == "4kma";  // colored third mirror (APM keyed by 12-way sector)
+        let use_absorb = mode == "4ka" || mode == "4kma";  // absorption spectrum (per-class adaptation rates)
+        let mut apm3 = vec![0u16; 12 * 33];
+        for c in 0..12 { for j in 0..33 { let d = ((j as i32) - 16) * 128; apm3[c*33+j] = tb.squash(d) as u16; } }
         Model {
             k, b, nin, tb,
             t: (0..k).map(|_| vec![32768u16; TSIZE]).collect(),
@@ -119,6 +126,7 @@ impl Model {
             w2: vec![(0.3 * 65536.0) as i32; (b as usize * wtot) * nin],
             rows: vec![0usize; nrows], rweight: rowp, sshift, basew,
             lvl_off, lvl_size, sects: vec![0usize; nrows], wtot,
+            apm3, a3: (0,0,0), mirror12: 0, cls_now: 0, use_mirror, use_absorb,
             apm, apm2,
             hist: Vec::new(), mpos: HashMap::new(),
             match_ptr: -1, match_len: 0,
@@ -158,8 +166,11 @@ impl Model {
         let pb3=if n>2{self.hist[n-3] as i32}else{0};
         let pb4=if n>3{self.hist[n-4] as i32}else{0};
         let pb5=if n>4{self.hist[n-5] as i32}else{0};
+        let pb6=if n>5{self.hist[n-6] as i32}else{0};
         let c0=cls6(lb); let c1=cls6(pb2); let c2c=cls6(pb3); let c3c=cls6(pb4); let c4c=cls6(pb5);
         let b1=(c1==c0) as usize; let b2=(c2c==c1) as usize; let b3=(c3c==c2c) as usize; let b4=(c4c==c3c) as usize;
+        let b5=(cls6(pb6)==c4c) as usize;
+        self.mirror12 = c0*2 + b1; self.cls_now = c0;
         let mut ri = 0usize;
         for li in 0..self.lvl_size.len() {
             let (sa, sb) = match self.lvl_size[li] {
@@ -168,6 +179,7 @@ impl Model {
                 48 => (c0*8+b1*4+b2*2+b3, c1*8+b2*4+b3*2+b4),
                 49 => { let s=c0*8+b1*4+b2*2+b3; (s, s^7) },
                 50 => { let s=c0*8+b1*4+b2*2+b3; (s, (s+24)%48) },
+                4096 => ((lb as usize & 255)*16 + b1*8+b2*4+b3*2+b4, (pb2 as usize & 255)*16 + b2*8+b3*4+b4*2+b5),
                 _ => (0,0),
             };
             self.sects[ri] = self.lvl_off[li] + sa; ri += 1;
@@ -232,6 +244,11 @@ impl Model {
         let (pa2, s2) = Model::apm_apply(&self.tb, &self.apm2, actx2, p_s1);
         self.a2 = (s2.0, s2.1, p_s1);
         let mut p = (pa2 + p_s1 * 3) >> 2;
+        if self.use_mirror {
+            let (pa3, s3) = Model::apm_apply(&self.tb, &self.apm3, self.mirror12, p);
+            self.a3 = (s3.0, s3.1, p);
+            p = (pa3 + p * 3) >> 2;
+        }
         if p < 1 { p = 1; } if p > 65534 { p = 65534; }
         p
     }
@@ -241,7 +258,10 @@ impl Model {
         let err = (bit << 16) - self.p_pre;      // scaled error (p in 0..4095 ~ <<12? use 4096)
         for i in 0..self.nin {
             self.w[self.wrow + i] += (self.st[i] * err) >> 14;
-            for r in 0..self.rweight.len() { self.w2[self.rows[r] + i] += (self.st[i] * err) >> 15; }
+            let sh: i32 = if self.use_absorb {
+                match self.cls_now { 0 => 15, 2 => 15, _ => 14 }  // letters/space steady, bursty classes fast
+            } else { 15 };
+            for r in 0..self.rweight.len() { self.w2[self.rows[r] + i] += (self.st[i] * err) >> sh; }
         }
         for o in 1..=k {
             let idx = self.idxs[o - 1]; let nn = self.tn[o - 1][idx] as usize;
@@ -266,6 +286,12 @@ impl Model {
         let lo = self.apm2[b2] as i32; let hi = self.apm2[b2 + 1] as i32;
         self.apm2[b2] = (lo + (((g - lo) * (128 - w2)) >> 12)).clamp(1, 65534) as u16;
         self.apm2[b2 + 1] = (hi + (((g - hi) * w2) >> 12)).clamp(1, 65534) as u16;
+        if self.use_mirror {
+            let (b3, w3, _) = self.a3;
+            let lo = self.apm3[b3] as i32; let hi = self.apm3[b3 + 1] as i32;
+            self.apm3[b3] = (lo + (((g - lo) * (128 - w3)) >> 12)).clamp(1, 65534) as u16;
+            self.apm3[b3 + 1] = (hi + (((g - hi) * w3) >> 12)).clamp(1, 65534) as u16;
+        }
         if self.match_bit >= 0 && self.match_bit != bit { self.match_ptr = -1; self.match_len = 0; }
     }
 
