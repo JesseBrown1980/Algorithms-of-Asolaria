@@ -364,3 +364,14 @@ independent effects). 100MB crown challenge launched; pre-registered
 prediction 1.620 ± 0.003 (crown: vc28 1.6399). Source pushed as
 rust/variants/vc65.rs. 100MB transfer confirms (wiki/behcs/unprimed priors on
 full enwik8) launched in parallel per Jesse's scale requirement.
+
+## NEW OVERALL CROWN: vc65 = 1.6168 @100MB (2026-07-20 08:35 UTC)
+
+cm3ti-vc65-fullstack k=10 N=100,000,000 payload=20,190,425 decoder_src=20,029
+total=20,210,454 **bpc_total=1.6168** restore=OK comp_sha=8cb3553185bb5ef5
+enc=977s dec=1004s. Prediction band 1.620±0.003 — landed at/just past the
+optimistic edge. Beats vc28 (1.6399) by −0.0231 (−288,048 B). Crown line:
+1.8043 → 1.7918 → 1.6805 → 1.6584 → 1.6563 → 1.6399 → **1.6168**. Gap to 2006
+baseline (1.466): 0.151. The composition thesis is sealed: Jesse's 4ⁿ wheel
+and table capacity are near-orthogonal axes; both crowns compose. enwik9
+re-run with vc65 launched (projection ~1.36 vs current gigabyte seal 1.3839).
