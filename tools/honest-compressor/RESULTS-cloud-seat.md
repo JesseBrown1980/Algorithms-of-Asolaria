@@ -515,3 +515,20 @@ Two laws sharpened:
    (rust variants) and poison on mixed domains (raw fleet).
 All arms restore=OK. The colored-sphere build rule, final measured form:
 one sphere per NESTED law, keyed only where the domain cannot self-prime.
+
+## Pumping law CROSS-SEAT REPLICATED + retention law co-signed (2026-07-20)
+
+This seat's replication (v14, slice1m, k7): pump1 228,295 → pump2 (key×2)
+230,964 (+2,669) → pump3 (×2 + reversed) 235,389 (+4,425 more). Matches the
+other seat's 226,408 → 230,992 → 234,204 in direction and shape on an
+independent implementation. FLEET LAW: one clean read of the key, then live
+data — the first reading teaches, the second stiffens (count-maturation =
+the tracking theorem's learning-rate stiffening, measured), the reversed
+third adds anti-law (re-confirms the arrow-of-time seal: backwards English
+is a foreign language).
+
+Retention law co-signed from their grid: optimal keep-threshold τ=2 —
+"once is an accident, twice is a function; three is confirmation you get
+for free" (Jesse's τ=3 within 0.35% of peak). Amendment adopted for the
+white-room GC design: hash-cons dedup + drop count-1 functions at the GULP
+boundary; keep count≥2.
