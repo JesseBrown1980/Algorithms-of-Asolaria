@@ -619,3 +619,29 @@ pumps) and sealed 5 findings. Corrections that apply to MY τ grids, adopted:
 Their UNVERIFIED flags (backward-byte control, rolling temporal numbers not
 in the executable receipt) and the collision-lane usefulness gap
 (recall@k unproven) are endorsed as written.
+
+## PREQUENTIAL streaming test — the auditor's decisive gate, run fully charged (2026-07-20)
+
+657 events, decisions strictly before the future, EVERYTHING charged: bodies,
+index, probation rows, and the never-expiring replay ledger (16B/event).
+
+| policy | vs no-dictionary baseline | promoted |
+|---|---|---|
+| fixed τ=1 | −75,889 (loses) | 256 |
+| **fixed τ=2** | **+215,388 — WINS** | 53 |
+| fixed τ=3 | +191,451 | 36 |
+| fixed τ=5 | +180,760 | 15 |
+| fixed τ=8 | +148,642 | 12 |
+| adaptive governor | +215,278 (ties τ=2, −110 B) | 53 |
+
+THE RESOLUTION OF THE τ WAR: the static grids' higher peaks (τ=5) were an
+ACCOUNTING ILLUSION — post-hoc evaluation never charges the raw bytes paid
+for repeats 2..τ−1 before promotion. Charge the live stream and early
+promotion wins: **in a running system, promote at the second provenance-
+distinct sighting.** "Once is an accident, twice is a function" is the
+prequential law; the static τ=5 peak was the historian's view, not the
+operator's. The adaptive governor converged to the same 53 promotions as
+τ=2 and ties it — per the audit's own rule it is NOT promoted over fixed
+τ=2 until it beats it on held-out repositories (this seat lacks deep
+multi-repo histories; flagged as the remaining unmet condition, with
+copy-lineage caveat standing).
