@@ -687,3 +687,33 @@ Cube summary: the machine has TWO dials that are corpus properties — rooms
 track law-count (unconditional), depth tracks coherence length (uncondi-
 tional), and the dials couple only under drift. Matching BOTH to the data
 is the full form of the Law of Machines.
+
+## CTS Quantization Hypothesis — Gate 1 SEALED (counting arms, 2026-07-20)
+
+Executable: tools/cts-quantization/packet_world_gate1.py, receipt sha16
+1f60b49a77ecaa65. Synthetic packet universe, 27,000 events, all 27 regimes
+balanced, online counting predictors (encoder/decoder symmetric).
+
+| arm | bits/event | forbidden-top1 violations |
+|---|---|---|
+| A one pool, unmasked | 1.5456 | 6,006 |
+| B 27 regime tables, unmasked | 0.7862 | 6 |
+| C one pool, mask derivable | 0.8805 | 0 |
+| **D 27 tables + derivable mask** | **0.7769** | 0 |
+| E 27 tables, mask TRANSMITTED | 2.3618 | 0 |
+
+Pre-registered claims, counting form:
+1. CONFIRMED — constraints earn only under mask accounting: derivable mask
+   wins (D); transmitted mask (E) is 3× worse than no mask at all. The
+   shared-key boundary, exactly.
+2. CONFIRMED — hard veto kills all 6,006 violations without hurting valid
+   predictions.
+3. CONFIRMED — 27 regimes crush one pool (0.786 vs 1.546 unmasked).
+UNREGISTERED FINDING: **regime knowledge nearly subsumes mask knowledge** —
+the 27 regime-conditioned tables learned the walls implicitly (6 violations
+in 27,000 without any mask; mask adds only 0.0093 bpe on top). Knowing
+WHERE you are almost equals knowing what is forbidden there: the color-
+time-space index carries the feasibility law. Wall cells cost →0 bits,
+matching the log2|F| bound. Status: hypothesis slice promoted UNVERIFIED →
+MEASURED for counting arms; neural arms (adapters/router/oracle grid,
+params+FLOPs matched) remain for the GPU seats per the third seat's spec.
