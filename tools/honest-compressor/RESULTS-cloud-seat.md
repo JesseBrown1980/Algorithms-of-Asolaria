@@ -799,3 +799,27 @@ LAWS OF PARTICULAR WORLDS (do not transfer):
   temporal partner failed 0/18 while cm3ti's temporal-neighbor blend
   crowned repeatedly — same axis, different mechanism, opposite verdicts.
   The axis is not the organ.
+
+## Packet-world 27 sealed + the cross-domain subsumption graph (2026-07-20)
+
+Packet 27-lattice (same seed universe as Gate 1): BEST = (color-fine,
+time-COARSE, space-fine) +0.7634 — again NOT the full triple. Automated edge
+extraction found 11 SUBSUMED edges (|Δ|<0.003) and 1 DILUTES edge: every
+time-fine upgrade is subsumed (the run-bit carries all of time's usable law
+at this scale); (2,1,2)→(2,2,2) = −0.0040.
+
+CROSS-DOMAIN SUBSUMPTION GRAPH (two full matrices in hand, text pending):
+- UNIVERSAL: the optimum always sacrifices at least one fine axis
+  (functions sacrifices SPACE, packet sacrifices TIME) — the law is "never
+  the full triple"; WHICH axis is sacrificed is the world's signature.
+- UNIVERSAL: exact-zero subsumption edges exist in every world (information
+  containment is structural).
+- DOMAIN-SPECIFIC: time-fine is subsumed in packet (9/9 edges) but EARNS in
+  functions (+0.149) — code has substantive time, packets have relational
+  time. Matches the text seat's report that time LEADS on natural language.
+- Quotient lattice K = |L/~| under subsumption: packet K=18 (time levels
+  1≡2 collapse), functions K≈24 (space collapses only under fine color).
+  K is a measured complexity signature of each world; text world's K pends
+  their full grid under LATTICE-SPEC.
+Sequencing answer on record: subsumption graph FIRST (done — zero cost);
+next-config 1GB run waits for vc65's seal (~2h) for RAM and config input.
