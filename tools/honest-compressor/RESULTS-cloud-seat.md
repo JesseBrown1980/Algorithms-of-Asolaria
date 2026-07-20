@@ -458,3 +458,34 @@ corpus makes val a partial distribution shift; 3.5107 includes transfer cost.
 Consequence for the build: the counted lane and the uncounted lane need
 DIFFERENT capacity governors — the same governor cannot serve both, because
 the same data presents different law-counts to different machines.
+
+## The colored-sphere / rainbow-omni / mirror grid — 12 arms sealed (2026-07-20)
+
+Jesse's geometry, measured: 3 domains (RED=wiki slice1m, BLUE=repos fleet1m,
+YELLOW=gradient grad1m) × 4 warm-ups (cold / own-color key / rainbow ⅓+⅓+⅓ /
+mirror = complement of the color). v14 primed engine, 1MB, k7. Payloads:
+
+| domain | cold | own key | rainbow | mirror |
+|---|---|---|---|---|
+| RED (wiki) | 239,869 | **228,295 (−11,574)** | 236,145 (−3,724) | 245,433 (+5,564) |
+| BLUE (repos) | **206,713** | 209,539 (+2,826) | 210,439 | 211,965 |
+| YELLOW (gradient) | 8,617 | **915 (−89%)** | 9,053 (+436) | 10,151 |
+
+Pre-registration outcomes:
+1. "Own color wins its domain": RED ✓ (replicates the cross-seat −11.5k),
+   YELLOW ✓ spectacularly (the key nearly unlocks the whole lawful domain),
+   BLUE ✗ — the repos are NOT one color: a disjoint slice of a heterogeneous
+   corpus is partially foreign to itself; even the own-key is net negative.
+   Sharpened law: **a color is a LAW, not a corpus.**
+2. "Rainbow lands between cold and specialist everywhere": RED ✓ only.
+   On BLUE and YELLOW the rainbow fell BELOW cold — a mixture key pays full
+   price for its foreign thirds; the omnisphere cannot freely recalculate
+   its colors, it only earns where the domain overlaps its mixture. The
+   mixture theorem's log-K bound applies to MODELS mixed at runtime, not to
+   PRIORS baked before bit one — priors don't get to route.
+3. "Mirrors (inverted inversion, complement-warmed) fail": ✓✓✓ swept — the
+   mirror was the WORST arm in all three domains. A complement cannot
+   conjure the missing color; inversion carries only what it contains.
+All 12 restore=OK. Geometry verdict: radiated spheres with single-law keys =
+real and strong (YELLOW −89%); rainbow center = weak, mixture-taxed;
+external mirrors = measured harm. Build accordingly.
