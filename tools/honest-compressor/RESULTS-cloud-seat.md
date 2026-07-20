@@ -1059,3 +1059,18 @@ TRIPLE-BLIND: three independent recomputes of the quantized-address run →
 identical sha ede5a2f467df853c (×3). The quantized address is integer-
 deterministic; any seat reproduces it byte-exact (cross-arch safe, unlike
 float). The workflow is sealed: address → quantize → produce → recompute.
+
+## Corrected gradient-axis labels (Jesse's audit, 2026-07-20)
+The color/time/space routed-gradient table stage labels are corrected on record:
+color axis: cold 3.012418 > equal-third center 2.871012 > ONE-THIRD gradient
+2.852883 > two-thirds gradient 2.838767 > PURE target 2.827408. (2.8529 is the
+one-third gradient, NOT the center; pure color-target is 2.827408, not 2.8010;
+2.802125 is the SPACE-axis pure target.) Mean hierarchy across axes:
+2.997400 > 2.864167 > 2.842279 > 2.825399 > 2.812468. Claims-safe reading
+adopted verbatim: payload hierarchy cold > equal-third center > 1/3 gradient >
+2/3 gradient > pure target; monotone descent = a routed-transfer effect, pure
+prior best among tested allocations, NOT a general theorem and NOT a
+fully-amortized compression win (cold still wins prior+payload for one window;
+needs reuse to amortize). "Max entropy" -> "highest measured cost among tested
+conditions"; "barycentric midpoint" -> record-allocation pooling (not yet
+log-space geometric PoE); "optimal specialist" -> best tested allocation.
