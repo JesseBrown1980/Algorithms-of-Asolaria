@@ -292,3 +292,28 @@ must be carved from Wikipedia itself (precisely how Ratushnyak won: dictionary
 built FROM enwik8). Design input for enwik10/SGRAM: per-cell in-domain priming
 is a candidate to offset the measured +6% shard cold-start cost; cross-set
 priming (e.g. non-wiki cubes) is now measured harmful.
+
+## BEHCS glyph-language transfer arms (2026-07-20 01:50 UTC)
+
+Jesse's four trained sets (behcs-64 → bechs-256 → bechs-1024 → HYPER-BECHS)
+tested as priors per his directive. Authentic glyph stream generated with the
+canonical GLYPH-GENESIS.js from asolaria-behcs-256 (sha256→8-symbol sentences);
+doctrine prior = concatenated BEHCS/hyper-bechs markdown. Target slice10m k=10,
+unprimed baseline 2,330,753. Full transfer spectrum:
+
+| Prior | size | payload | vs unprimed | comp_sha |
+|---|---|---|---|---|
+| Wikipedia (in-domain) | 1MB | 2,311,328 | **−19,425** | e9ae8570 |
+| BEHCS doctrine prose | 143KB | 2,333,509 | +2,756 | d21d0129 |
+| Source code | 605KB | 2,341,317 | +10,564 | 5075fc24 |
+| **BEHCS-256 glyph stream** | 1MB | 2,345,617 | **+14,864** | 82641908 |
+| Random bytes | 1MB | 2,364,599 | +33,846 | 13af0f63 |
+
+Notes: my pre-registered band for the glyph stream (+25k..+35k, near-random)
+was too pessimistic — it landed at +14.9k, between code and random, because
+the GRAMMAR (spacing, 8-char tokens, sentence shape) is real learnable law
+even though the sha256 symbol cores are lawless by construction. VERDICT: the
+BEHCS sets are identifier languages (naming law for the fabric), not
+statistical models of English; as enwik priors they hurt. Scale confirms
+(100MB targets) queued post-champion per Jesse's scale requirement; GB-scale
+grid + enwik10 SGRAM campaign specced in session plan.
