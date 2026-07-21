@@ -1,0 +1,17 @@
+=== 'A FRACTION PREDICTS EVERYTHING' — direct test on UNSEEN Wikipedia ===
+trained on: 2,000,000 B (a fraction)   |   test: 3,000 UNSEEN bytes
+
+PRE-REGISTERED: prediction good, but EXACT reproduction costs ~entropy (~1.8 bpc),
+                and a tiny seed cannot pin the exact unseen bytes.
+
+MEASURED:
+  top-1 prediction correct on unseen : 83.7% of bytes  (the model DOES predict well)
+  bits to reproduce unseen EXACTLY   : 6,325 bits = 791 B   (2.1082 bpc)
+  a 'fraction of a rhyme' seed is     : ~4 bytes
+  4 bytes can address at most         : 2^32 outcomes; the unseen chunk is 1 of 2^24,000
+
+VERDICT: the model predicts the unseen text well (~84%), which LOWERS the
+  cost — but to get it back EXACTLY you must still store 791 B of residual
+  (2.11 bpc). That residual IS the information the fraction did not contain.
+  A 4-byte seed indexes 2^32 things; the exact unseen chunk is one of 2^24,000.
+  Prediction: yes. Exact reproduction from a fraction: no — by the count itself.
