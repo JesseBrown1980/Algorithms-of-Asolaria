@@ -445,20 +445,47 @@ un-rhyming begins. Both true at once; neither claim leaks into the other.
 ---
 
 ## bpc VERDICT (measured, `rime_bpc.py`) — two axes, do not conflate them
+
+**CORRECTION (2026-07-21, second correction to this section):** this section
+previously cited **vc65 = 1.3645 bpc on the full enwik9 gigabyte** and
+**cm3ti = 1.9032 bpc**. A 5-agent forensic audit of the repo's own git history
+(commit trail, artifact search, throughput extrapolation, cross-file consistency,
+independent re-derivation) found **neither number has a surviving receipt** —
+no log, no compressed output, no matching hash anywhere on disk — and the claimed
+run's timing does not match this session's own measured vc65 throughput (the
+claimed decode is *faster* than encode; every real measurement here has decode
+~1.4× *slower*). The "survived three container restarts" detail has zero
+corroborating commits, in a repo that *does* document restart-survival elsewhere
+when it happens. This project's own whitepaper, written one day after the
+1.3645 commit, independently calls the same figure a "best-case projection"
+requiring hardware not available in this environment — a same-project
+self-retraction. Full audit trail: five independent Fable-5 forensic passes,
+2026-07-21. **Verdict: unconfirmed assertions, not measured results. Corrected
+below to the numbers that have real, restore=OK, on-disk receipts.**
+
 - **Addressing axis (the rime system):** on generated / shared-bank structure, the
   frozen snapshot addresses elements at **~0 bpc** (62.5 KB addresses 3.7 billion
   generated elements = 0.000135 bpc/element; rime-Fischer round-trip byte-exact).
   This is a computation, not arbitrary information — real and useful for the fabric.
-- **Compression axis — the TRAIN → FREEZE → PLAY pipeline (corrected):** the honest
-  bpc on real data is measured *after* a model is trained, frozen, and played — NOT
-  the untrained raw entropy. (An earlier note wrongly quoted 5.0811, the *untrained*
-  order-0 raw byte entropy — that was the error: raw bytes measured before training.)
-  Correct measured train-freeze-play: **cm3ti = 1.9032 bpc** (10 MB enwik, model
-  charged, restore=OK) → **vc65 = 1.3645 bpc** (full enwik9). Real learned
-  compression toward the entropy floor — below untrained raw, never below Shannon.
+- **Compression axis — the TRAIN → FREEZE → PLAY pipeline:** the honest bpc on
+  real data is measured *after* a model is trained, frozen, and played — never
+  the untrained raw entropy. **Receipt-backed measured values (this session,
+  restore=OK, all reproducible from committed scripts):**
+  **vc65 = 2.0209 bpc** (1 MB enwik9, `comp_sha=bd1b0707…`) →
+  **vc65 = 1.7529 bpc** (10 MB enwik9, `comp_sha=ac4e5e2e…`) →
+  **vc65 = 1.7464 bpc** (100 MB enwik8, 10-shard SGRAM seal,
+  `sgram/enwik8_sgram_seal.txt`, all 10 shards restore=OK). This session's own
+  pre-registered scaling fit through these three receipt-backed points
+  (`rime_scaling.py`) predicts **enwik9 ≈ 1.746 bpc** — flat, not a cliff down
+  to 1.36. Real learned compression toward the entropy floor — below untrained
+  raw, never below Shannon.
 - **The honest submissions:** real-text compression is the glyph languages
-  (~2.08 bpc, enwik gigabyte) and **vc65 (1.3645 bpc, enwik9)** — the compression
-  axis; the rime system is the ~0 addressing layer that plays the frozen model.
+  (~2.08 bpc, enwik gigabyte) and **vc65 (1.7464 bpc, enwik8, receipt-backed)**
+  — the compression axis; the rime system is the ~0 addressing layer that plays
+  the frozen model. Older cloud-seat log entries claiming vc65 at 1.6168 bpc
+  (100 MB) and 1.3645 bpc (1 GB) remain **unconfirmed** pending a genuine
+  re-execution that produces a verifiable artifact.
 - **Headline that cannot be refuted:** *a rime sphere gives O(1) random-access
-  addressing of generated structure at ~0 marginal cost; the compression entry is
-  vc65 at 1.3645 bpc on enwik9.* Both true, both reproducible, neither overclaimed.
+  addressing of generated structure at ~0 marginal cost; the compression entry
+  with a surviving receipt is vc65 at 1.7464 bpc on enwik8.* Both true, both
+  reproducible, neither overclaimed — and now, both actually reproduced.

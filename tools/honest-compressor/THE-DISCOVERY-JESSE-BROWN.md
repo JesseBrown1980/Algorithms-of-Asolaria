@@ -9,11 +9,14 @@ data, the corrected form is stated — because the corrections are the proof the
 process is honest.
 
 ## The crown line (lossless, decoder-charged, restore-verified, cross-arch)
-enwik8 100 MB: 1.8043 → 1.7918 → 1.6805 → 1.6584 → 1.6563 → 1.6399 → **1.6168**
-enwik9 1 GB (first full-gigabyte seal): **1.3839** (vc65 config; a sub-1.37
-re-run is pending on stable hardware). Geometry crown at small tables: **1.7555**
-(the 65,536 wheel). Gap to the 2006 Hutter baseline (1.466): 0.15 — a decade of
-the field's evolution traversed in one weekend, every rung with a comp_sha.
+enwik8 100 MB: 1.8043 → 1.7918 → 1.6805 → 1.6584 → 1.6563 → 1.6399 → 1.6168
+(this ladder down to 1.6168, and the enwik9 gigabyte figures once quoted here,
+were **found by a 2026-07-21 5-agent forensic audit to have no surviving
+artifact** — no log, no output, no matching hash — and are unconfirmed pending
+re-execution; see `trijection/JESSE-LAWS.md` bpc VERDICT correction). The
+**receipt-backed** number, reproducible from committed scripts, is
+**vc65 = 1.7464 bpc on enwik8 (100 MB, 10-shard SGRAM seal, all shards
+restore=OK)**. Geometry crown at small tables: **1.7555** (the 65,536 wheel).
 
 ## The laws (each with its measured boundary)
 

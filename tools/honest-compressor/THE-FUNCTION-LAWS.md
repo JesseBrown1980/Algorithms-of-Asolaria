@@ -71,9 +71,11 @@ is the ground truth itself: a real scorer in the pluggable slot.
 **That is what the compression campaign is.** A compressor is a scorer with
 perfect ground truth: every prediction is settled by the next byte, every
 model pays rent in measurable bits, cost = H + KL. The crown line
-(1.8043 → 1.6168 @100MB; 1.3839 @1GB) is the first real-task, ground-truth-
-gated scorer the fabric has produced. The white room's empty slot and the
-codec's full ledger are two halves of one machine: plug the trained function
+(1.8043 → 1.7464 @100MB, receipt-backed 10-shard SGRAM seal; the earlier
+1.6168 @100MB and 1.3839 @1GB figures were found unconfirmed by a 2026-07-21
+forensic audit and are pending re-execution) is the first real-task,
+ground-truth-gated scorer the fabric has produced. The white room's empty slot
+and the codec's full ledger are two halves of one machine: plug the trained function
 into runSectorCycle({score}), and "the coin flip dressed in math" becomes a
 measured mind — Law 1 closed with receipts. First candidate in training now:
 the winning sphere config feeding on the fleet's own dedup'd functions

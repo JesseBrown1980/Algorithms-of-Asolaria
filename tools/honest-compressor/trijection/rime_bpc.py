@@ -63,7 +63,7 @@ def main():
     print("    ADDRESSING architecture (like the 540-byte dashboard) — real and useful.")
     print("  * On ARBITRARY data: bpc = entropy. It is rate-1.0 re-relation, NOT a")
     print("    sub-entropy compressor. Compression of real text still belongs to the")
-    print("    glyph languages (~2.08 bpc) and vc65 (1.3645 bpc) — a different axis.")
+    print("    glyph languages (~2.08 bpc) and vc65 (1.7464 bpc, enwik8, receipt-backed) — a different axis.")
     print("  Two axes. The rime system is the ADDRESSING axis, not the compression axis.")
 
 if __name__ == "__main__":

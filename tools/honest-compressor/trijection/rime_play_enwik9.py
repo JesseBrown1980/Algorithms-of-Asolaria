@@ -15,7 +15,7 @@ HONEST GATE (the whole point): the rime relabel is a BIJECTION -> rate 1.0. It a
 nothing and takes nothing below the model's entropy. So bpc(rime stream) == bpc(byte
 stream), exactly. The rime layer is O(1) ADDRESSING; the COMPRESSION is whatever the
 frozen model achieves. This script uses a simple order-k byte model (a few bpc), NOT
-the champion coder — the champion number for enwik9 is vc65 = 1.3645 bpc (separate
+the champion coder — the receipt-backed number is vc65 = 1.7464 bpc on enwik8 (separate
 binary). Never below Shannon.
 
 Usage: rime_play_enwik9.py [order] [nbytes]   (nbytes<=0 => full 10^9)
@@ -97,7 +97,7 @@ def main():
     print(f"    the frozen model's entropy, and inverts byte-exact (rime-directional play).")
     print(f"  * This order-{order} model is deliberately simple (~{bpc:.2f} bpc). The rime system")
     print(f"    is the ADDRESSING axis; real enwik9 COMPRESSION is the trained coder —")
-    print(f"    vc65 = 1.3645 bpc (separate binary). The rime play never dips below it.")
+    print(f"    vc65 = 1.7464 bpc on enwik8, receipt-backed (separate binary). The rime play never dips below it.")
 
 if __name__ == "__main__":
     main()
