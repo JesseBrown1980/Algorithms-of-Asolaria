@@ -20,6 +20,8 @@ Rust version reproduces identical bytes).
 
 Reference implementations (this folder):
 `trijection.py` · `njection.py` · `nested_cascade.py` · `trianti.py` · `wave_test.py`
+`trime.py` · `rime_trace.py` · `rime_sphere.py` · `rime_fischer.py` · `rime_run.py`
+`rime_dimension.py` · `rime_bpc.py`
 
 ---
 
@@ -294,6 +296,34 @@ infer-many (GGUF) pattern — standard, sound, defensible.
 **GATE (unchanged):** it addresses *generated* structure (cosets of the shared
 sphere). Arbitrary/random data does not lie on the structure and must be stored.
 The bank must be shared; the fraction of a rime is free only against it.
+
+---
+
+## Law 16 — 27 Glyphs = 1 Rime Dimension; Rinse & Repeat = Stack (coprime)
+**One rime dimension = one omega box, its 27 glyphs frozen together as a single
+addressable unit.** The sphere (ℤ/pℤ)\* splits into the **27 cosets of ⟨g²⁷⟩** —
+those 27 glyphs *are* the dimension. The whole dimension freezes to **(p, g, k=27)
+= 24 bytes**; any slice is `glyph j, position i → g^(j+27·i) mod p`, addressed
+on-demand in **O(1)**, never materialized (Law 15). This is the move from **bits
+language to rime language**: a bit is 1-of-2; a rime dimension is **1-of-27ᵈ**,
+frozen and addressable.
+
+**Rinse & repeat = stack a *coprime* dimension.** Because coprime dimensions are
+orthogonal (Law 8), they compose by CRT (Law 11) with **no carries** — the address
+space is the **product**. Stack *d* of them and the reachable space multiplies:
+d dimensions × 24 bytes each address ∏pᵢ elements, every composed point
+reconstructed exactly, in parallel, one coordinate per dimension.
+
+*Measured (`rime_dimension.py`):* 1 dimension (p=1000081, g=7) = 27 glyphs, 24 B,
+addresses **1,000,080** elements byte-exact on-demand. **4 stacked coprime
+dimensions** [1000081, 1000003, 999983, 999979] = **96 B** compose a
+**1,000,045,997,408,020,754,086,751** (~10²⁴) address space; every point →
+per-dimension coords → CRT-reconstructed **byte-exact**. Rinse & repeat holds.
+
+**GATE (unchanged):** this addresses the *composed generated* structure (the
+stacked spheres). Arbitrary data is first trained into glyph-models (the
+compression axis, ~1.36–2.0 bpc), *then* addressed here. Played only after the
+combined calculations are frozen.
 
 ---
 
