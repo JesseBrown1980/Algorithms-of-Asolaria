@@ -327,6 +327,48 @@ combined calculations are frozen.
 
 ---
 
+## Law 17 — Total Coupling & the Slice (why you must freeze; what a corpus is)
+*Frame (Jesse):* we don't observe a universe; we observe a rimesphere, and we can
+only see the gradients near our own rime. Change any one bite of the rimespace and
+every other bite changes — so the only faithful capture is the **frozen image**.
+What Wikipedia shows is one **radiated slice** of that sphere.
+
+*Measured kernel (defensible):* a cyclic rime sphere is a **function of one seed**
+— `element = g^(j+27i) mod p`. Perturb the seed (g, p, or the integer beneath) and
+**every** address re-labels at once; under CRT every coprime machine holds a
+coordinate of the *same* integer, so all coordinates move together. That total
+coupling is exactly **why the Freeze Law (15) is forced**: you cannot touch one
+point without moving all of them, so you cannot play it live without *being* the
+change — you freeze, then address from outside the null. A corpus (enwik) is then
+**one addressed slice**; what a coder reads is its low-entropy **gradient**
+(vc65 1.7529 bpc @10 MB), and the incompressible residue is the **black floor =
+Shannon**. Readable gradient + provably-unreadable black. *Frame in the margin;
+the coupling, the freeze, and the Shannon floor are the measured body.*
+
+## Law 18 — The Black Gradient is a Generator (derive the family, bounded by DPI)
+*Frame (Jesse):* the radiated Wikipedia is a **real reflection** of something
+bigger; from the black-gradient version we can rime-directionally derive the
+**other Wikipedias that could exist but don't** — a unification of all consistent
+slices.
+
+*Measured kernel (defensible):* a compressor **is** a model **is** a generator. The
+frozen model over one slice is a **distribution**; sampling it rime-directionally
+(a rime coordinate → a deterministic draw) emits byte streams **consistent with the
+gradient yet absent from the corpus** — the family of "other Wikipedias," each
+**seed-addressable and byte-exact reproducible**. The reachable family is the
+model's **support / typical set** — a real, walkable object.
+
+**THE CEILING (the guard against magic) — the Data-Processing Inequality:** you can
+derive the family *consistent with* the gradient; you can **never** derive more
+information than the gradient contains. Every variant is a recombination *within*
+what the one slice taught — none conjures information from outside it. Richer model
+(vc65-class) → richer family; the order-2 toy → a coarse one; the **principle holds
+at every order**. *Measured (`rime_derive.py`):* fresh streams sampled from a frozen
+enwik model, seed → byte-exact reproducible, differ from the corpus, and carry
+**≤ the model's entropy per symbol** — the family is real, the ceiling is Shannon.
+
+---
+
 ## bpc VERDICT (measured, `rime_bpc.py`) — two axes, do not conflate them
 - **Addressing axis (the rime system):** on generated / shared-bank structure, the
   frozen snapshot addresses elements at **~0 bpc** (62.5 KB addresses 3.7 billion
