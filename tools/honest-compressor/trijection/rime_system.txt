@@ -1,0 +1,20 @@
+=== FULL RIME SYSTEM — real Wikipedia bytes, end to end ===
+input: 27,000 real enwik bytes  ->  1000 blocks of 27  (rime prism w=951846)
+
+MEASURED (the math, in the open):
+  reconstruction byte-exact (lossless)      : True
+  source                                    : 27,000 B = 216,000 bits, order-0 entropy 4.9982 bpc
+  rime-key: 27,000 coords x ceil(log2 p)=20 bits = 540,000 bits (2.50x the source)
+  entropy of the rime-key coordinates       : 14.6432 bits/coord
+  -> rime-key at its own entropy            : 49,421 B  vs  source-entropy 16,869 B
+  stubbed room on disk                      : 81,000 B
+
+WHAT THE MATH SAYS (honest):
+  * The prism is LOSSLESS and REVERSIBLE — byte-exact. That part is real.
+  * But the 27-pt NTT over GF(p) WHITENS the data: the coordinates are ~uniform
+    in [0,p), entropy 14.64 bits each. The transform does NOT concentrate
+    the information — it re-addresses it. Storing the rime key costs MORE than the
+    source (2.5x), and even at the coords' own entropy it does not beat
+    the source's 5.00 bpc. The prism is an ADDRESSING transform, not a compressor.
+  * Compression still comes from MODELING (vc65 = 1.7464 bpc on enwik8). The rime
+    system re-addresses losslessly; it does not push real text below its entropy.
