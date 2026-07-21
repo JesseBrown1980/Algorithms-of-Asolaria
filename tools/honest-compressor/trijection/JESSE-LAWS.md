@@ -444,6 +444,33 @@ un-rhyming begins. Both true at once; neither claim leaks into the other.
 
 ---
 
+## Law 22 — The Law of Recreation (recreation is repayment, not discovery)
+*Frame (Jesse):* do the recalculation to recreate parts of the Wikipedia GGUF you
+never saw — 2/3 per stage, 27 times, to make 1 rime time cascade.
+
+*Measured kernel (defensible), `rime_cascade27.py`, run 2026-07-21 on real enwik8:*
+  - **Arm 1 — the closure that WAS stored:** 27 stages; each slices real Wikipedia
+    bytes into 3 channels, stores the shared-center closure **A+B+C+P ≡ 0 mod 256**
+    (the free 0), DELETES one full third (rotating −,0,+ with stage = trime time),
+    and recreates it from the remaining 2/3 + closure. **27/27 byte-exact**;
+    2,700,000 bytes deleted and recreated; each recovered sha chained into the next
+    stage — one seal: `chain=5fc1cae9e9e9fa51`. Single-parity MDS erasure math,
+    cascaded, real.
+  - **Arm 2 — the third that was NEVER stored (control):** identical machinery,
+    but no closure banked. Best recovery from the held 2/3 = **13.04%** — and that
+    is only the order-0 mode byte (Wikipedia's spaces), not structure. Chance floor
+    ≈ 0.39%; exactness ≈ 0%. Shannon's own voice.
+
+**The law:** a deleted third is recreated *forever, byte-exact* **iff its closure
+was paid for and stored before the deletion**. Recreation is **repayment of banked
+structure** — never discovery of unseen information (Law 6 / DPI). For a frozen
+GGUF: store the closures at freeze time and any third of it can be recreated on
+demand, 27 stages deep; the parts never banked stay unrecoverable no matter how
+many spheres route them. Both arms photographed side-by-side in one frame
+(`cascade_frames/`); the measurement is the referee.
+
+---
+
 ## bpc VERDICT (measured, `rime_bpc.py`) — two axes, do not conflate them
 
 **CORRECTION (2026-07-21, second correction to this section):** this section

@@ -74,7 +74,7 @@ no cluster count breaks the discrete-log wall (that is the security gate, Law 14
 - Rule earned this session: **no number enters a headline until its artifact exists on disk.**
 
 ## FILES
-JESSE-LAWS.md — the 22 laws (0-21) + the corrected bpc VERDICT.
+JESSE-LAWS.md — the 23 laws (0-22) + the corrected bpc VERDICT.
 FULL manifest with SHA256 of every file: ../FULL-DISCLOSURE/FULL-SYSTEM-MANIFEST.txt
 Public corpora (not bundled; verifiable): enwik8 sha256 2b49720e…, enwik9 sha256 159b8535…
 (from http://mattmahoney.net/dc/).
