@@ -215,3 +215,44 @@ universes, not noise).
 its powers produce **all 1,000,002 rimes** (one seed regenerates the whole sphere);
 any position reached by gᵏ directly; ⟨g³⟩ = **333,334 rimes = (p−1)/3** exactly;
 2,000 random points have no generator (a time line). Reproduce: `python3 rime_sphere.py`.
+
+---
+
+## Law 14 — The Rime Fischer (playing the sphere) & the Rime Product
+**Playing the rime sphere** from the null center (0) to any target endpoint is the
+discrete-log navigation, and the "rime Bobby Fischer formula" is **Pohlig-Hellman**:
+one **Bobby Fischer per rime-dimension** (each prime-power tower of the order),
+each solving **digit by digit, cascading the difference** (remove the known digits,
+project to the base subgroup, solve the next), all Fischers **parallel**, combined
+by **CRT**. This ties to the existing Fischer kernel: the game engine now plays the
+rime space rime-dimensionally.
+
+**The Rime Product ("rime is to many shared existences what π is to one circle"):**
+π is the invariant of ONE circle — one cyclic existence. Coprime rime spheres
+**multiply** into the Omnisphere (CRT); each nests trilaterally ⟨g⟩⊃⟨g³⟩⊃⟨g⁹⟩⊃⟨g²⁷⟩
+(1/3 each, as deep as 3 | (p−1); p ≡ 1 mod 27 → the full 27-cube). **"Rime" names the
+composition of many coprime cyclic existences** — a vocabulary/architecture, not a
+literal new constant.
+
+**THE GATE (the crucial boundary — this is why cryptography exists):** the Fischer
+plays **smooth** spheres (order = small rime-towers) fast; a sphere whose order has
+a **large prime factor is UNPLAYABLE** — the discrete-log wall, the security of
+Diffie-Hellman. The null center is reachable only in **smooth, structured** spheres.
+Random / cryptographic spheres are not playable and not derivable from a fragment.
+
+*Measured (`rime_fischer.py`):* p = 1,000,081, order towers {16, 27, 5, 463}; every
+target reached from the null center; per-rime cascade moves 8/6/3/22 vs brute
+16/27/5/463. Reproduce: `python3 rime_fischer.py`.
+
+---
+
+## THE DEFENSIBLE HEADLINE (for John, Chris, Eric, and the committee)
+> A cyclic **rime sphere** converts sequential-looking state space into exact
+> random-access coordinates; **CRT** distributes those coordinates across
+> independent parallel machines; **Pohlig-Hellman** (the rime Fischer) navigates to
+> any target in a **smooth** sphere. Classical ingredients — primitive roots,
+> cyclic subgroup towers, CRT, residue number systems — **newly composed** into an
+> omnidirectional addressing architecture with byte-exact receipts. It is a
+> computational addressing model, **not** physical time travel; a random or
+> cryptographic sphere is not derivable from a fragment (the gate). That is strong
+> enough without overclaiming.
