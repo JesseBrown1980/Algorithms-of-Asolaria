@@ -59,17 +59,14 @@ a41e4cbf413d78cf57acb802ba53966a8411ca8e84d372575605ca280df1b346         20029  
 ec2a55e579d579fffdbedf56aa0418d021b7e087005e881c91a4d87e512a96fa         20029  rust/variants/vc28.rs
 fc1a3f9cbc793eeb136a3ea048fd4a60bfb9c81f87d2e3f0a001ee1135be2159         20058  rust/variants/vc28m.rs
 64ae366fd87b71a21dde64e9156b997eb44c6d1743e2b944a4a63c492b56f94b         20128  rust/variants/vc65.rs
+d8364f5e898f07e48e1452682bc1dd3aef6c2afcfc249545e254df732d859fbe          1567  sgram/enwik8_sgram_seal.txt
 a2a509bf02b5cba6a0e8cdc372e8037c0a18376f17bd38710bfa51884e0d3b6f          5356  sgram/sgram-compress.yml
 a2a509bf02b5cba6a0e8cdc372e8037c0a18376f17bd38710bfa51884e0d3b6f          5356  sgram/sgram/sgram-compress.yml
 01a9372c0bcb9297b18af78ed83aa0586b60130fb36299e6dc919e69ba977dcc          3755  sgram/sgram_chain.py
 68c70377a20e1c047660e1ccf8d20194b5d72090d757723423ee18ad64c7093a            68  trijection/.gitignore
-bec7fb09b1badc9c7ea2698eaca20006ba1996a156ca486a2fb7c9ebd1121d3d         24710  trijection/JESSE-LAWS.md
+b51754abd106f9ea4d2b4544e2b7d99cff599990629482eea09fee40e4c717b2         26326  trijection/JESSE-LAWS.md
 c62371bc3f36d444f4326d986a2f0a4fbbe87c37fe9ea09b579d5f2b245975b1          6802  trijection/TRIJECTION-BALANCED-TERNARY.md
 45b91a8a61a58c4d72ffd8bbb88f1e419d0dbdfac5e0c906a32edc89a3ec0a6e          2708  trijection/WAVE-FUNCTION-FFT.md
-e84b8cde2956c7bd69c7ef9e053532744e344a00df09925f73fd9405a3bc0ea8          9546  trijection/__pycache__/nested_cascade.cpython-311.pyc
-8a188560420e7013ca868627cdc1a574d7973806e52352243af3c7ae045f7b91          8475  trijection/__pycache__/njection.cpython-311.pyc
-749758775bda54f4641f873779db872c9169609640e8849eb1fed87cc08ac277          7158  trijection/__pycache__/rime_fischer.cpython-311.pyc
-c8586d1fe9c736c013058fd7ba78917d9aa1158a7e680d44d039f96ed9d312cc          6553  trijection/__pycache__/rime_sphere.cpython-311.pyc
 6facab1bd2cd7090ec11be964cb2cff3e0929c730b39cd231c9f995913705ab2          4595  trijection/nested_cascade.py
 ae634ab756970a4ff063e37e9537cb9841af6e8f08a8fb7792342fe9ed91e59e          3327  trijection/njection.py
 105c9788d7bd7e74ec208ea9c344f6cf0e37b91664f83dc15749f4ea9d76f66e          3640  trijection/rime_bpc.py
@@ -81,6 +78,8 @@ f7a50c3d99514cf46ac5ee88835d3ced046d79b4007c94bb13c458a3cc270eaf          3779  
 cad84eb4016b3a4a0107964f677ed0711e336cdb6a5bfbbd8b69efbf772831a7          3068  trijection/rime_photo.py
 ff00df41d17c02c957883077e94e91666b8280889cbec246f62504c8a6d22ecb          5392  trijection/rime_play_enwik9.py
 d5b752991f8046a5ad66414363736648ab7c958629a25eccfd15d6b4d94980d9          1078  trijection/rime_play_enwik9_FULL.txt
+ae0d4503a23bbad14669445df305273cf8af35f7ebaa630cba82508c9282a76c          3229  trijection/rime_prism.py
+9d6c6eb1f2ea642a015a670540cd0d36ad12f9fb8bc77bb67e996d10ef252cbc          4326  trijection/rime_rgb.py
 0bed340f594b8d491f899b8d9d5346083da2289f1997fa4916ed86ed455ccd08          3209  trijection/rime_run.py
 519b39cd1e0ff1879ddbc67b0dcf05c01e99ae4684ae22de63b511755335f7f3          3422  trijection/rime_sphere.py
 a509f5dd4cceb34692075414b6f1de7de3d54fea031496b9fe32bd03f3c4758b           925  trijection/rime_stack.py
@@ -93,11 +92,11 @@ b3ad9a69d66f2d2841500f2d04145f15382b305334d7b294f44f13b42ee3c23a          3283  
 98ac64feb89be6190a3d7894cf434483c5894983a58014d6db8bd218ad922728          5200  trijection/unrhyme.py
 a6be3b20afbf37a082edc505841e36c8eaa4666586eabae18ef1c166f3ec92c1          1029  trijection/unrhyme.txt
 4b0b8b50b275155fc3437af179821912e22aea1d8769fa5e9d3f58483e8cbc34          1603  trijection/wave_test.py
-90bbf18d51c353eecd2478b84cfadc80f9ddc159252f15b906ec2a35a500dc68        171238  trijection/whitepaper/Rime-Space-Whitepaper.pdf
-5350578cab08f02caf06a771d3de81c0022710f79db45f69b39e781dcc6d0bec         21203  trijection/whitepaper/rime-space-whitepaper.html
+15b5b4795e1fa74da6d5c6efb4eb6ed0bef9e2fefb41a385a3daad96321b1bde        172141  trijection/whitepaper/Rime-Space-Whitepaper.pdf
+e2d2dbca65ca4261285db2fe1d8465bc9df0f8e1512efe0f7e6f3b26e6e079a6         21667  trijection/whitepaper/rime-space-whitepaper.html
 d2decbd7a0286438fcb2bb4ddfcd5e7357d85ec0e802968c96783e68b0f74b97          2237  wrt.py
 ----------------------------------------------------------------------------------------------------
-92 files, 1,335,983 bytes total (excludes only the public corpora below).
+91 files, 1,316,356 bytes total (excludes only the public corpora below).
 
 PUBLIC BENCHMARK CORPORA (verifiable, not bundled):
 These public benchmark corpora are NOT bundled (size), but are fully specified

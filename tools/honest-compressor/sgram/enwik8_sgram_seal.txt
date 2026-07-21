@@ -1,0 +1,20 @@
+-rw-r--r-- 1 root root 100000000 Jul 18 23:47 enwik8
+=== SGRAM CHAIN (local seat) — ride 100,000,000 B as 10 waves, order-10 ===
+corpus=/tmp/claude-0/-home-user/9ebd6119-d7ee-5c30-a062-d04210f7bc39/scratchpad/enwik8  codec=vc65  decoder_src=/home/user/Algorithms-of-Asolaria/tools/honest-compressor/rust/variants/vc65.rs
+
+wave   0/10: PASS  bytes=10,000,000  payload=2,171,064  bpc=1.7369  sha=5985c81c39d927ae
+wave   1/10: PASS  bytes=10,000,000  payload=2,190,036  bpc=1.7520  sha=c4e72b593400564d
+wave   2/10: PASS  bytes=10,000,000  payload=2,205,308  bpc=1.7642  sha=adea6c0b9428129b
+wave   3/10: PASS  bytes=10,000,000  payload=2,137,489  bpc=1.7100  sha=c569b36ec278b17d
+wave   4/10: PASS  bytes=10,000,000  payload=2,192,290  bpc=1.7538  sha=0b3aae0c908599da
+wave   5/10: PASS  bytes=10,000,000  payload=2,195,014  bpc=1.7560  sha=ee14b39037470372
+wave   6/10: PASS  bytes=10,000,000  payload=2,187,828  bpc=1.7503  sha=63d2358c916f2f8a
+wave   7/10: PASS  bytes=10,000,000  payload=2,164,468  bpc=1.7316  sha=2b74aea3c9ef9707
+wave   8/10: PASS  bytes=10,000,000  payload=2,219,782  bpc=1.7758  sha=2e3e8e01c3635978
+wave   9/10: PASS  bytes=10,000,000  payload=2,146,675  bpc=1.7173  sha=10c136c4dc9db600
+
+SGRAM SEAL: shards=10 corpus_bytes=100,000,000 payload_sum=21,809,954 decoder=20128 total=21,830,082
+  sealed bpc_total = 1.7464   (SHARDED — conservative screen)
+  +~6% cold-start overhead is REAL and included; monolithic single-stream
+  would be LOWER. This is a screen, not the monolithic Hutter number.
+  all shards byte-exact (restore=OK): True

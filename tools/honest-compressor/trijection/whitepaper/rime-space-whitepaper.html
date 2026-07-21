@@ -172,9 +172,9 @@ SHA-checked) and a deterministic content hash.</p>
 <tr><th>corpus (actual enwik9 bytes)</th><th class="n">bpc_total</th><th>restore</th><th class="mono">comp_sha</th></tr>
 <tr><td>10<sup>6</sup> B</td><td class="n">2.0209</td><td>OK</td><td class="mono">bd1b0707…</td></tr>
 <tr><td>10<sup>7</sup> B</td><td class="n">1.7529</td><td>OK</td><td class="mono">ac4e5e2e…</td></tr>
-<tr><td>10<sup>8</sup> B (enwik8, SGRAM chain)</td><td class="n">≈1.75 (sealing)</td><td>per-shard OK</td><td class="mono">—</td></tr>
+<tr><td>10<sup>8</sup> B (enwik8, SGRAM 10-shard)</td><td class="n">1.7464</td><td>OK (all 10)</td><td class="mono">total 21,830,082 B</td></tr>
 </table>
-<p class="small">More data lowers bpc (2.0209 → 1.7529), the expected direction. The
+<p class="small">More data lowers bpc (2.0209 → 1.7529 → 1.7464), the expected direction. The
 full 10<sup>9</sup>-byte single-stream run (~22 h, memory-bound) requires a persistent
 machine; the SGRAM sharded chain reported here is a deliberately conservative screen —
 per-shard cold starts <i>raise</i> the sealed total above the monolithic number, and that
@@ -278,8 +278,13 @@ byte-for-byte by independent readers.</p>
 <li>The addressing axis operates on generated / shared-bank structure; it is not a
 compressor of arbitrary data.</li>
 <li>No result compresses real text below its Shannon entropy; the compression numbers
-(vc65 1.7529 @10 MB, targeting ≈1.36 @1 GB) are ordinary, strong, learned compression and
-remain above the entropy floor.</li>
+(vc65 1.7464 bpc on enwik8, 1.7529 @10 MB of enwik9, best-case projection ≈1.36 @1 GB) are
+ordinary, strong, learned compression and remain above the entropy floor.</li>
+<li><b>These numbers do not win the Hutter Prize and we do not claim they do.</b> The prize
+measures a self-extracting enwik9 archive; the current record is ≈114 MB (≈0.913 bpc, S. Kumar,
+2023). Our best-case ≈1.36 bpc is ≈170 MB — roughly 1.5× the record. The contribution here is
+the addressing architecture and the honest two-axis separation, not a state-of-the-art
+compression ratio.</li>
 <li>Generative derivation yields the family consistent with a slice, bounded by that
 slice's mutual information; it does not access information the slice never carried.</li>
 <li>The full 10<sup>9</sup>-byte single-stream compression requires a persistent machine;

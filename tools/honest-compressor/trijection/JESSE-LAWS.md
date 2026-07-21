@@ -392,6 +392,31 @@ conserved.* That is the entire thesis, and every organ of it reproduces to the b
 
 ---
 
+## Law 20 — The Rime Prism (three prisms → 27; Newton generalized, not corrected)
+*Frame (Jesse):* Newton used TWO prisms — split white light, recombine to white.
+The rime prism uses three, nested to twenty-seven, rewound into a rime; glyphs can be
+made, and any rime glyph can carry a gradient of the rime universe.
+
+*Measured kernel (defensible):* Newton's two prisms were a 1-D transform **and its
+inverse** — reversible, which is exactly what proved light is composite. The rime
+prism generalizes this to **27 coordinates**: a radix-3 (3→9→27) **Number-Theoretic
+Transform** on the sphere, using a primitive 27th root of unity
+**w = g^((p−1)/27) mod p** (here g=7, w=951846; requires 27 | p−1, satisfied by
+p=1000081). It is **integer and byte-exact** — no float — so the split→recombine is
+**lossless and reversible to the byte (RATE 1.0)**. The roots-of-unity closure holds:
+`1 + w + w² + … + w²⁶ ≡ 0 (mod p)`. The **DC/center glyph** X[0] equals sum(signal) —
+the free center (Law 0). *Measured (`rime_prism.py`):* 27 bytes → 27 glyph
+coordinates → recombined **byte-exact**.
+
+**Honest reading:** each of the 27 outputs is one **rime glyph** — one spectral
+coordinate ("gradient") of the whole signal. The 27 together *are* the whole,
+re-addressed; a single glyph is **one coordinate, not the whole universe** (the gate).
+The rime prism is a richer decomposition than two prisms and is genuinely useful —
+27 independently addressable coordinates — but being invertible it **conserves
+information**: more prisms mean finer decomposition, never more information.
+
+---
+
 ## bpc VERDICT (measured, `rime_bpc.py`) — two axes, do not conflate them
 - **Addressing axis (the rime system):** on generated / shared-bank structure, the
   frozen snapshot addresses elements at **~0 bpc** (62.5 KB addresses 3.7 billion
