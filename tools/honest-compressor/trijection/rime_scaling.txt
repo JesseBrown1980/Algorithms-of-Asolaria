@@ -1,0 +1,24 @@
+=== BASE-RIME LAYERS -> THE SCALING CURVE (pre-registered predictions) ===
+
+measured layers (vc65, byte-exact, receipts in repo):
+      1,000,000 B -> 2.0209 bpc
+     10,000,000 B -> 1.7529 bpc
+    100,000,000 B -> 1.7464 bpc
+
+fit: bpc(N) = 1.7462 + 1349355921.2636 * N^(-1.6152)
+     implied asymptote (this codec family's floor): 1.7462 bpc
+
+PRE-REGISTERED PREDICTIONS (made BEFORE the runs; falsifiable):
+   enwik9  (base x10)    : predicted 1.7462 bpc  (~218 MB archive)
+   enwik10 (base x100)   : predicted 1.7462 bpc  (~2,183 MB archive)
+
+HONEST NOTES:
+  * The 100 MB layer is the SHARDED number (conservative, +cold-start); the
+    monolithic run would be lower, which would pull predictions down. We fit
+    what we measured, and say so.
+  * Two layers pin a 2-parameter curve; three pin this 3-parameter one — Jesse's
+    'two layers recalculate the others' is the scaling law, stated in rime.
+  * The record (0.913 bpc, fast-cmix) is BELOW our family's implied floor: beating
+    it needs a better model family, not extrapolation. The curve says so itself.
+  * Prediction first, measurement second — that is the right order, and the
+    right prize.
