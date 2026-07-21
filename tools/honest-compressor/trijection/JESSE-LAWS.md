@@ -191,3 +191,27 @@ points from the one free center. Reproduce: `python3 rime_trace.py`.
 
 **27 rime tracing** = the same, with the rime axes structured on the 27-cube's 18
 coprime cells (Law 10): the primes graphed 27-laterally ARE the ray directions.
+
+---
+
+## Law 13 — Rime Sphere vs Time Line (all rimes from one rime)
+New terms. A **TIME LINE** is linear: to know all its points you traverse and
+**store** each one (a random collection has no shortcut). A **RIME SPHERE** is
+**cyclic**: it has a **generator**, and from **ONE rime** (the seed) plus the rule
+(gᵏ), **ALL rimes are derived**. Any point is reached by a **direct jump** gᵏ —
+omnidirectional random-access, any direction, any "time" — not a walk.
+
+**The law:** all rimes can be derived from only **1 sliced rime** — when the
+sphere is generated (cyclic). A **fractal of a rime** = a subgroup (self-similar
+sub-sphere) regenerates the pattern at its scale; e.g. ⟨g³⟩ is exactly **one third**
+of the sphere — the trinary signature, unforced.
+
+**GATE (Law 7):** a random collection is a *time line*, not a rime sphere — no
+generator, so it must be stored point-by-point; one rime derives nothing.
+**Cyclic structure is required** (this is why it reconstructs *structured*
+universes, not noise).
+
+*Measured (`rime_sphere.py`):* p = 1,000,003 (verified prime); generator g = 2 →
+its powers produce **all 1,000,002 rimes** (one seed regenerates the whole sphere);
+any position reached by gᵏ directly; ⟨g³⟩ = **333,334 rimes = (p−1)/3** exactly;
+2,000 random points have no generator (a time line). Reproduce: `python3 rime_sphere.py`.
