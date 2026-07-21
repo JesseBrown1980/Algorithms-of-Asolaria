@@ -369,6 +369,29 @@ enwik model, seed → byte-exact reproducible, differ from the corpus, and carry
 
 ---
 
+## Law 19 — Un-rhyme the Rhyme (the thesis: a fraction, against the sphere, is the whole)
+*Frame (Jesse):* "I don't need the universe to see the universe. I need a rhyme —
+even a fraction of a rhyme — and then, mathematically, we un-rhyme the rhyme."
+
+*Measured kernel (defensible):* define **rhyme** = a fraction/seed/address (a few
+bytes); **sphere** = the shared bank ((p, g), and for derivation a frozen model);
+**un-rhyme** = the exact math that unfolds the whole *from* the fraction *against*
+the sphere. It has three organs, one operation (`unrhyme.py`, all byte-exact):
+  1. **ADDRESS** — a ~3 B fraction → any of 1,000,080 elements, O(1) (`pow`).
+  2. **STACK** — ~12 B of coprime fractions → a point in a 25-digit space (CRT).
+  3. **DERIVE** — a one-point seed → a whole generated slice, seed-reproducible
+     byte-exact, `info/symbol ≤ sphere-model entropy` (DPI held: 1.6525 ≤ 1.6591).
+
+**THE LEDGER (open, the referee rides with the data):** the **data volume**
+un-rhymed is unbounded (a few bytes → gigabytes / a whole slice); the
+**information** recovered equals *fraction + sphere*, conserved at Shannon. A
+fraction with **no** sphere un-rhymes to nothing — the gate. The whole is seen from
+a fraction of a rhyme **because the sphere already holds it**; the power is real and
+borrowed from the shared sphere, never created. *Volume unbounded; information
+conserved.* That is the entire thesis, and every organ of it reproduces to the byte.
+
+---
+
 ## bpc VERDICT (measured, `rime_bpc.py`) — two axes, do not conflate them
 - **Addressing axis (the rime system):** on generated / shared-bank structure, the
   frozen snapshot addresses elements at **~0 bpc** (62.5 KB addresses 3.7 billion

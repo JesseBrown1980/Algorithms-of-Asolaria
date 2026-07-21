@@ -1,0 +1,17 @@
+=== UN-RHYME THE RHYME — a fraction of a rhyme, against the sphere, is the whole ===
+
+(1) ADDRESS : fraction=424242 (~3 B) -> element 306868   byte-exact=True
+    3 B in un-rhymes to any of 1,000,080 elements, O(1).
+
+(2) STACK   : 4 coprime fractions [678196, 114829, 129301, 747496]
+    un-rhyme (CRT) -> 711774549851291522258589   byte-exact=True
+    ~12 B of fractions un-rhyme to a point in a 25-digit space.
+
+(3) DERIVE  : seed fraction=500018 (one sphere point) -> a whole slice:
+    b'<media Asteroit]] or \xe2\x86\xb5 key are told from the San Football cate fears arguesting, Jr.]] surface high-risks of elegration for tack, Neil Arthur Scient'
+    same seed reproduces byte-exact = True
+    info/symbol 1.6525 bpc  <=  sphere-model entropy 1.6591 bpc  (DPI held: True)
+
+LEDGER (honest, open): DATA volume un-rhymed is unbounded; INFORMATION recovered
+= fraction + sphere, conserved at Shannon. A fraction with no sphere -> nothing.
+The whole is seen from a fraction of a rhyme — because the sphere already holds it.
