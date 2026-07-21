@@ -165,3 +165,29 @@ exact from its 3 residues. Coprimality → orthogonality → compounding.
 units of (Z/27Z)* — the addressable structure; the center (multiples of 3) is the
 free null. Primes graphed 27-laterally ARE the orthogonal addressing lattice that
 makes the reductions compound (Law 8) and lets any machine see any other (Law 11).
+
+---
+
+## Law 12 — Rime Tracing (the Law of Rimes)
+Ray tracing casts light rays from an eye to render a scene. **Rime tracing casts
+address-rays from the center (0) through the coprime (trime) lattice to
+reconstruct any endpoint in the Omnisphere** — omnidirectionally, byte-exact.
+
+- **Rime address** = an endpoint's residues, one per coprime rime axis (the rays).
+- **Rime trace** = CRT reconstruction of the endpoint from its rimes, from center 0.
+- **Omnidirectional** = every endpoint in the product space is reachable and exact.
+- **Embarrassingly parallel** = residue arithmetic has **no carry between axes**
+  (Law 8 orthogonality made computational): each rime is an independent ray, so
+  add/multiply compute per-axis in parallel and CRT combines them. *This is why
+  any machine sees any other* (Law 11) — and why it is fast.
+- **Every stack of rimes is the base of the next**: the product of one level's
+  coprime rimes is the modulus of the next Omnisphere — nested rime tracing.
+- **The center (0) is shared/free**; only the rime (the address) is paid (Law 0).
+
+*Measured:* 5 coprime rimes {27,25,23,29,31} → an Omnisphere of **13,956,975**
+endpoints, all reconstructed byte-exact from their rimes; (a+b) and (a·b) verified
+via independent per-rime arithmetic (no carries); 23.7 bits addresses all ~14M
+points from the one free center. Reproduce: `python3 rime_trace.py`.
+
+**27 rime tracing** = the same, with the rime axes structured on the 27-cube's 18
+coprime cells (Law 10): the primes graphed 27-laterally ARE the ray directions.
