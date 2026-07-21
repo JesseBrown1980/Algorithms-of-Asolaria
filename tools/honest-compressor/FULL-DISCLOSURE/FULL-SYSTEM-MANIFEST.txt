@@ -1,0 +1,106 @@
+RIME SPACE — FULL SYSTEM MANIFEST (SHA256 of EVERY file, nothing omitted)
+Operator: Jesse Daniel Brown.  Generated for full disclosure — no file withheld.
+Root: tools/honest-compressor/  (Algorithms-of-Asolaria, branch claude/repo-movement-ifzeru)
+====================================================================================================
+SHA256                                                                   BYTES  PATH
+----------------------------------------------------------------------------------------------------
+20080f82656ceda993751679aeb423533f418f0b413de66c649ec7dfa02d5456          1239  BRIDGE-RECEIPT.md
+b38ba33463a986e5b8e42be90ef96c5621270100f2c2ebb0bc64b7c560591f77          5031  HONEST-SPEC.md
+f6c0fb0f4ea0f553bdf35619d0b3e2b27c5afbe61192d2106afab2cab3c03375         70568  RESULTS-cloud-seat.md
+637d3a177ac5e5809ac5559779d29a941ffa77106ef66cf734706cadd65dfe80         38906  RESULTS.md
+8735f0a5edf188089e1c395dd268d3603924fe2619731432a354785d85153994          4276  ROADMAP.md
+4a7eba36c1a9fd07330e643ddffb98153d680fb934f1673ea0ef3187fc70365c          4026  THE-DISCOVERY-JESSE-BROWN.md
+7ac1b939074f18fc13aaea04a80cee91e65a648581f1a403bcedd9dff46d9b90          5056  THE-FUNCTION-LAWS.md
+91611377e870fd2d6f7daa9583d895ad63ac8e5c391bfbad330b980134754b9a          4932  THE-LAW-OF-MACHINES.md
+35eafbbd33b9b6bf5034dca9a07ee1353d455ca11a2e81289e92fb31c071a69c          5441  asolaria_cube_compressor.py
+9e81420bae182a6ec609aab88eeb8c05133d07d5c8e65e0916abee3fb55d9787        131296  catalog/catalog.gguf
+e5c57d53063826982cf58d4112545b71a5b614b71d1d021418d127ccdb994957         12662  cm2_asolaria.py
+2010cca40d66654414a70fc4f33787bd050e8fbfe2c124a8e3a4481136302807         14828  cm3_asolaria.py
+aee8087bcfc570f76dd92bd8796607b7bf60f8e434cc7063e9cf52b8bbd25a3e         14931  cm3t_asolaria.py
+cee42b8153034428b83694215ad445f789f69b52e979acf52f4cfdb72bc58614          9138  cm_asolaria.py
+f45b016bc42c557c318e242b3c50b8b3db32f230b8659ed863693ef25b351e4c          3244  ensemble_screen.py
+299ac31dede60f924275b6325d7837ec8290c85d35f4d6d653d4e5b249572e25         34511  function-memory/prequential-receipt.json
+3b11343d456b2657a710fdf9fe98718e8d6726336b020cd0efeecc8d4aaf9719          5316  function-memory/prequential_sim.py
+5328b417ee2dea0d77bc6a15f06ffb5f332d878b0198b2f69a8c58261ecdc931          1454  glyph-enwik9/glyph_enwik9_results.json
+1bd1dbf64913e83f07155a87cf555d1355f0441cc1f792d203d6cc88ac8279ae          9385  glyph-enwik9/glyph_invent.py
+39f48abcf277f745a495d63d5f2f51dc198ba586e3b1e7bfc33aed71ada38f92          5104  glyph_test.py
+8f352bce8d2aadb93832acd0993b5356a2b47366db4a29bf31da9507f062f9bd          1563  omega_cube.py
+a0aca0cc75dd066806e8c45b53d918693820aae6ccfdf053d09d4b953b0ca43a          1563  run_config.py
+ec7a2594d8f2eab93202c705e2c42a4637dd41df1bcad7e38386c058fc6e6948          1869  rust/RUN-ENWIK9.md
+cda48da87dd0ad58aa9f8e1c3ac6effb621613afccfdcf54a76a0e21dceb5a3a         17514  rust/cm3t.rs
+2ccf73bfc309930a0f114206b8208a226663dd181dc1018874f81ca6fdc08ecb         17401  rust/cm3ti.rs
+125a7793710cde37bdd925eb2d3551e01903fe3d9b7090bce9d9fca3c901d33b         19255  rust/cm3ti_combo.rs
+3722c08c554e807485cd2e9dee6e427a665fc336bac72f8a70c3d3920e0a5bc3         18756  rust/cm3ti_rainbow12.rs
+eeab848d94782e40ca0b3d0848808d705dd1c6a0a12b280f92c92fff5d61ffac         22663  rust/cm3ti_rbladder.rs
+ee29e1dbb6d9a1da3a4153eaf5446fda887d08feec04686b7e79f73eca5f46ad         18213  rust/cm3ti_sector.rs
+052dd75ae99af59a6f61d1aa34d509a6605ebaf3264e16c9d35e443313c2f21d         18589  rust/cm3ti_stack.rs
+a4d33c8b589b94b0402d7947f06598e33b00d3abd3a9ab6e7914480a7a98e5a8         18658  rust/cm3ti_stack_1g.rs
+0bc0804a09f24d7b4025eb39b695c97a872d61ee2c9846def4e1c54e8f305d94         18651  rust/cm3ti_stackrb.rs
+8867315ba6262823530fbc539b19ad7b3d7273a0b3f2a2ab533ae42edbe1c29d          2132  rust/variants/RECEIPT-RAINBOW.md
+9fa2aacc43ca13b575d5ab81b1b16a301c2419e2bd8e35ab985048ec6da85877         18963  rust/variants/tb26.rs
+a9e329320010e8759e1126a397491519c8e367cafd1fa86c223db454d7207b6f         18963  rust/variants/tb27.rs
+1d73d5bcd1fbd526f3afe03c62c5267ba6a9ee3b0a589af587f76ac7398712f7         18963  rust/variants/tb28.rs
+22328ba1a35a96b6a051dbb6093bd785c6f3ea4201f166bf36bc0ddf8a399baf         18797  rust/variants/v13_s4096.rs
+8b76bc2f3b4748dc6393e8e259f7ac669c1ca37277a01ae8c3d28c4814274bac         19350  rust/variants/v14_primed.rs
+ed44cf449833a4e7031796f79adb4880274ac68fc6041c51de3159d0dd17e2ca         18874  rust/variants/v15_absorb.rs
+37d71dfcdfee4a1269d4c113ee9981b81c4fb5e52fdb455c6ea32295385b0bb2         19381  rust/variants/v16_mirror.rs
+ecc8a64268820b107b9f013cb7a81c750c825f97b0ee60b2994ea8770861be24         18836  rust/variants/v17_s1024.rs
+bbffc3dad963791b179a193f2a0d21025b57bbd3b0e0e09da7ef14d372ba0407         18842  rust/variants/v18_s16384.rs
+13e42853099d1ff45e5234297bb871e92e6db67a00c8231b1c2ba53e5ac3937e         18797  rust/variants/v19_s65536.rs
+0ad5869a5e3c32beeb5e6bb2342558dfc2cc82ecbd2b02291730228b950aa836         18572  rust/variants/v3_rainbow.rs
+d8294afb9af875fd531e25ee647e2c5c498a2ec7824bcb4c8418b061d12c616a         18744  rust/variants/v4_rainbow12.rs
+12365d33ac97dc29dd0a4bfc863a2feee0c9e43528038e562581bcb3ec823277         18742  rust/variants/v5_tight.rs
+9241a20a5d9b54dadb5f0713d1d71bc08be933f19907294fb2d28b7615ce970f         18737  rust/variants/v6_even.rs
+ddb723ccd6f0eaf236efde1e391f4a8bca027bacaf7bee7b5b350b6e7cb5df74         18752  rust/variants/v7_nbr.rs
+ab135fe26a03a22ba3b2ddda6d0555a5548accf5f69a3ab6e511c415de0d2d23         18971  rust/variants/v8_r24.rs
+7e5a875fe5a18d175b6d0f89cdb8765467ec08b2e39cd0a534c2b2e5ea5090b6         19287  rust/variants/v9_r48.rs
+8d086e92ca0aa71187964f63e97acc241ca4cb291081ebe70bbf39b009d745db         20028  rust/variants/vc26.rs
+a41e4cbf413d78cf57acb802ba53966a8411ca8e84d372575605ca280df1b346         20029  rust/variants/vc27.rs
+ec2a55e579d579fffdbedf56aa0418d021b7e087005e881c91a4d87e512a96fa         20029  rust/variants/vc28.rs
+fc1a3f9cbc793eeb136a3ea048fd4a60bfb9c81f87d2e3f0a001ee1135be2159         20058  rust/variants/vc28m.rs
+64ae366fd87b71a21dde64e9156b997eb44c6d1743e2b944a4a63c492b56f94b         20128  rust/variants/vc65.rs
+a2a509bf02b5cba6a0e8cdc372e8037c0a18376f17bd38710bfa51884e0d3b6f          5356  sgram/sgram-compress.yml
+a2a509bf02b5cba6a0e8cdc372e8037c0a18376f17bd38710bfa51884e0d3b6f          5356  sgram/sgram/sgram-compress.yml
+01a9372c0bcb9297b18af78ed83aa0586b60130fb36299e6dc919e69ba977dcc          3755  sgram/sgram_chain.py
+68c70377a20e1c047660e1ccf8d20194b5d72090d757723423ee18ad64c7093a            68  trijection/.gitignore
+bec7fb09b1badc9c7ea2698eaca20006ba1996a156ca486a2fb7c9ebd1121d3d         24710  trijection/JESSE-LAWS.md
+c62371bc3f36d444f4326d986a2f0a4fbbe87c37fe9ea09b579d5f2b245975b1          6802  trijection/TRIJECTION-BALANCED-TERNARY.md
+45b91a8a61a58c4d72ffd8bbb88f1e419d0dbdfac5e0c906a32edc89a3ec0a6e          2708  trijection/WAVE-FUNCTION-FFT.md
+e84b8cde2956c7bd69c7ef9e053532744e344a00df09925f73fd9405a3bc0ea8          9546  trijection/__pycache__/nested_cascade.cpython-311.pyc
+8a188560420e7013ca868627cdc1a574d7973806e52352243af3c7ae045f7b91          8475  trijection/__pycache__/njection.cpython-311.pyc
+749758775bda54f4641f873779db872c9169609640e8849eb1fed87cc08ac277          7158  trijection/__pycache__/rime_fischer.cpython-311.pyc
+c8586d1fe9c736c013058fd7ba78917d9aa1158a7e680d44d039f96ed9d312cc          6553  trijection/__pycache__/rime_sphere.cpython-311.pyc
+6facab1bd2cd7090ec11be964cb2cff3e0929c730b39cd231c9f995913705ab2          4595  trijection/nested_cascade.py
+ae634ab756970a4ff063e37e9537cb9841af6e8f08a8fb7792342fe9ed91e59e          3327  trijection/njection.py
+105c9788d7bd7e74ec208ea9c344f6cf0e37b91664f83dc15749f4ea9d76f66e          3640  trijection/rime_bpc.py
+6ec31662a1c6f314f2fd97c5d62c8ffbf59cc31b2e7c781c988c842df9600af6          3105  trijection/rime_codec.py
+f366a3c74a405cf523955c0b74d90def95792dec8a2d645636704d01baa67d91          4896  trijection/rime_derive.py
+bcdba819cb507496686424e65d2a48009fd5c0074710aecbb55615efc0c2479d          1168  trijection/rime_derive.txt
+f7a50c3d99514cf46ac5ee88835d3ced046d79b4007c94bb13c458a3cc270eaf          3779  trijection/rime_dimension.py
+945340f5c130d9eb099e4bcea23c93ba94d54adde64e29022028beeebf124b47          4067  trijection/rime_fischer.py
+cad84eb4016b3a4a0107964f677ed0711e336cdb6a5bfbbd8b69efbf772831a7          3068  trijection/rime_photo.py
+ff00df41d17c02c957883077e94e91666b8280889cbec246f62504c8a6d22ecb          5392  trijection/rime_play_enwik9.py
+d5b752991f8046a5ad66414363736648ab7c958629a25eccfd15d6b4d94980d9          1078  trijection/rime_play_enwik9_FULL.txt
+0bed340f594b8d491f899b8d9d5346083da2289f1997fa4916ed86ed455ccd08          3209  trijection/rime_run.py
+519b39cd1e0ff1879ddbc67b0dcf05c01e99ae4684ae22de63b511755335f7f3          3422  trijection/rime_sphere.py
+a509f5dd4cceb34692075414b6f1de7de3d54fea031496b9fe32bd03f3c4758b           925  trijection/rime_stack.py
+ecc23b9a431df5dcbe35de4dd81cf0d988d2f520b91c16636e85b02803670a54          3114  trijection/rime_trace.py
+6f43249ec10c2aa37884fcf16e89e5bff2b279f27f4fdac3ab1181dbd2c5c6f4          4367  trijection/think_in_time.py
+0be92c6815b02da95fb3b6e9a422fb99316e53c977f5f0369a2075a13a9d0630          6493  trijection/think_in_time_2700.log
+211249a55152a80da9da04f5fff1decb8d8c0bd61c1ca6ed19a498ad4b8caa0f          3736  trijection/trianti.py
+58ded0d950d05339a729280fbcc2b497807eed8183b4f96f551b84a6818c82aa          6308  trijection/trijection.py
+b3ad9a69d66f2d2841500f2d04145f15382b305334d7b294f44f13b42ee3c23a          3283  trijection/trime.py
+98ac64feb89be6190a3d7894cf434483c5894983a58014d6db8bd218ad922728          5200  trijection/unrhyme.py
+a6be3b20afbf37a082edc505841e36c8eaa4666586eabae18ef1c166f3ec92c1          1029  trijection/unrhyme.txt
+4b0b8b50b275155fc3437af179821912e22aea1d8769fa5e9d3f58483e8cbc34          1603  trijection/wave_test.py
+90bbf18d51c353eecd2478b84cfadc80f9ddc159252f15b906ec2a35a500dc68        171238  trijection/whitepaper/Rime-Space-Whitepaper.pdf
+5350578cab08f02caf06a771d3de81c0022710f79db45f69b39e781dcc6d0bec         21203  trijection/whitepaper/rime-space-whitepaper.html
+d2decbd7a0286438fcb2bb4ddfcd5e7357d85ec0e802968c96783e68b0f74b97          2237  wrt.py
+----------------------------------------------------------------------------------------------------
+92 files, 1,335,983 bytes total (excludes only the public corpora below).
+
+PUBLIC BENCHMARK CORPORA (verifiable, not bundled):
+These public benchmark corpora are NOT bundled (size), but are fully specified
+by SHA256 so any auditor can obtain the identical bytes from http://mattmahoney.net/dc/ :
+  enwik8  100,000,000 B  sha256=2b49720ec4d78c3c9fabaee6e4179a5e997302b3a70029f30f2d582218c024a8
+  enwik9  1,000,000,000 B  sha256=159b85351e5f76e60cbe32e04c677847a9ecba3adc79addab6f4c6c7aa3744bc
