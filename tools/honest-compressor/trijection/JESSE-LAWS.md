@@ -130,3 +130,38 @@ temporal axis (which targets the same drift) only adds overhead → 3.95× → 3
 
 **This is Law 6 (Conservation) applied to axes:** the joint entropy can be removed
 exactly once. Two axes aimed at the same redundancy do not get to remove it twice.
+
+---
+
+## Law 9 — Time is Trilateral (corrected; the played-series 3-point wins)
+*(This corrects an earlier wrong read that time wanted the bijection.)*
+Time is **tri-directional, not bi-directional** — but only with the **centered
+3-point operator** (past · present · future = the symmetric 2nd difference),
+which requires the **whole played series**, not a causal stream. A causal stream
+can only see the past (2-point bijection); a *played* universe can see all three.
+*Measured:* bijection (1st diff) **2.51×** vs trilateral (centered 2nd diff)
+**2.66×** — the 3-point wins. The wrong 3-point tools (block-mean 27-jection) lose;
+the *centered* one wins. Time is trilateral when the universe is played.
+
+## Law 10 — Trime Numbers (primes live in the coprime cells of the 27-cube)
+Primes are **trime numbers.** In the 27-cube (mod 27), every prime except 3
+occupies one of the **φ(27) = 18 coprime cells** (gcd(r,27)=1) and **never** the
+9 center-aligned cells (multiples of 3). The prime **3 is the unique center-prime.**
+The center is prime-free — **the primes are the separations orbiting the empty
+center.** The whole framework is written in the primes themselves.
+*Measured:* primes mod 3 → only 3 at the center; primes mod 27 → all >3 in the 18
+coprime cells; the 9 multiples-of-3 cells are prime-free except 3. Reproducible.
+
+## Law 11 — Any Machine Sees Any Other (the Chinese Remainder Theorem)
+Coprime residue-machines **jointly reconstruct any number.** Each machine holds
+one residue (mod a coprime modulus); together they address the whole, and because
+the moduli are **coprime = orthogonal (Law 8)**, the address space is the
+**product** — they compound. This is why trime numbers "unlock any machine seeing
+any other": the coprime (orthogonal) residues are a universal addressing lattice.
+*Measured:* moduli {27, 25, 23} → 3 machines address 15,525 values; x reconstructed
+exact from its 3 residues. Coprimality → orthogonality → compounding.
+
+**Trime bridge to the whole system:** the 18 coprime cells are the multiplicative
+units of (Z/27Z)* — the addressable structure; the center (multiples of 3) is the
+free null. Primes graphed 27-laterally ARE the orthogonal addressing lattice that
+makes the reductions compound (Law 8) and lets any machine see any other (Law 11).
