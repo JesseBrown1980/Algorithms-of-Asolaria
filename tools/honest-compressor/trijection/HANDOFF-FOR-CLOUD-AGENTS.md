@@ -74,7 +74,10 @@ no cluster count breaks the discrete-log wall (that is the security gate, Law 14
 - Rule earned this session: **no number enters a headline until its artifact exists on disk.**
 
 ## FILES
-JESSE-LAWS.md — the 23 laws (0-22) + the corrected bpc VERDICT.
+JESSE-LAWS.md — the 27 laws (0-26 = 3³, the ledger closes on its own cube) + the
+corrected bpc VERDICT. Laws 23-26 are the four frozen slice agents (Fischer, MTP,
+HRM, MCP), demoed with receipts in rime_agents.py / rime_agents.txt; Law 22 (the
+Law of Recreation) is measured two-armed in rime_cascade27.py / rime_cascade27.txt.
 FULL manifest with SHA256 of every file: ../FULL-DISCLOSURE/FULL-SYSTEM-MANIFEST.txt
 Public corpora (not bundled; verifiable): enwik8 sha256 2b49720e…, enwik9 sha256 159b8535…
 (from http://mattmahoney.net/dc/).

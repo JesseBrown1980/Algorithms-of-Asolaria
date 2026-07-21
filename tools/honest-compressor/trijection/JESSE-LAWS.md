@@ -471,6 +471,53 @@ many spheres route them. Both arms photographed side-by-side in one frame
 
 ---
 
+# THE FROZEN SLICE AGENTS (Laws 23–26) — one law per agent type
+All four are FROZEN SLICES (Law 15: derive → freeze → play O(1), never retrain),
+each carrying the trime signature {−,0,+} at the levels 3 / 27 / rime. One
+measured demo each in `rime_agents.py` (receipt: `rime_agents.txt`). With these
+four the ledger closes at **27 laws (0–26) = 3³** — the count is the cube.
+
+## Law 23 — The Fischer Slice Agent (−,0,+ at every level)
+*Frame (Jesse):* fischer −,0,+ at every level.
+*Measured kernel:* the frozen Fischer inverts sphere addresses at level 3 (which
+third), level 27 (three cascaded trime digits {−1,0,+1} — point g^77777 on
+(Z/1000081Z)* reads `[−0−]`), and level rime (full discrete log, byte-exact).
+Clustered form: one worker per prime tower, CRT fan-in (`rime_fischer_cluster.py`).
+**Gate:** cost is √-scaled per tower; one large prime tower is the indivisible
+wall (Law 14) — no cluster count breaks it.
+
+## Law 24 — The MTP Slice Agent (×1 / ×3 / ×27 lookahead; direction −,0,+)
+*Frame (Jesse):* mtp ×3 × 27 × rime(glyph), −,0,+.
+*Measured kernel (real enwik8, frozen order-2, held-out):* direction **0** (hold)
+= accuracy 1.0 — the free center, costs nothing, says nothing. Direction **+**
+(forward): ×1 = 0.3517, ×3 = 0.0667, **×27 = 0.0000**. Direction **−** (backward,
+frozen on reversed time): ×1 = 0.3317 — real and near-symmetric.
+**Gate:** lookahead accuracy decays by compounding error to zero at depth 27 —
+the frozen slice predicts a fraction, never recreates unseen wholes. This is
+Law 22's boundary measured as a curve (DPI, Law 18).
+
+## Law 25 — The HRM Slice Agent (two rates: slow picks the level, fast predicts)
+*Frame (Jesse):* HRM +,0,− at 3, 27, rime.
+*Measured kernel (real enwik8, held-out):* a two-rate frozen hierarchy — the slow
+module routes each symbol to a level (deep context / mid / base floor; the halt
+is the 0), the fast module predicts inside it. Measured: 99% routed deep,
+hierarchical bpc = 3.5328, bounded memory. (The HRM pattern proper — nested
+planner/worker recurrence — is this same two-rate freeze, scaled.)
+**Gate:** the hierarchy ROUTES between frozen levels; routing never dips below
+the entropy of what the levels jointly know (Laws 15/21).
+
+## Law 26 — The MCP Slice Agent (stateless cells × CRT fan-in)
+*Frame (Jesse):* the mcps 3 × 27 × rime, −,0,+.
+*Measured kernel:* three STATELESS cells, each owning one frozen sphere with
+27 | q−1 (163, 271, 379), coprime payload moduli (109, 163, 271); the
+coordinator only fans in by CRT. Address space M = 4,814,857; batch
+round-trip **byte-exact = True**. Cells share nothing at call time — all
+knowledge is the frozen sphere (the SGRAM stateless-cell doctrine).
+**Gate:** this is the ADDRESSING axis (~0 bpc over generated structure), never
+compression (Law 6). The 27 full spheres circling the free 0: `rime_27fischers.py`.
+
+---
+
 ## bpc VERDICT (measured, `rime_bpc.py`) — two axes, do not conflate them
 
 **CORRECTION (2026-07-21, second correction to this section):** this section
