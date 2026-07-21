@@ -1,0 +1,22 @@
+=== TRIME-SETS ON THE OMEGA SPHERE (trime digits drive the address) ===
+sphere (Z/1000081Z)*  g=7   3^3=27 | (p-1)=1000080  ->  37040 = depth-3 tower base
+
+the 27 trime-sets (d2 d1 d0 in {-,0,+}) -> omega-sphere point:
+  +00  value  +9  ->  sphere point 350367
+  000  value  +0  ->  sphere point 1
+  -00  value  -9  ->  sphere point 244963
+  +++  value +13  ->  sphere point 163046
+  ---  value -13  ->  sphere point 340821
+  +-+  value  +7  ->  sphere point 823543
+
+  27 trime-sets -> 27 distinct sphere points (all unique: True)
+  the 0-center (0,0,0) -> g^0 = 1  (the free center, Law 0)
+
+TRIME-SET CLOSURE — two trime-sets + free center determine the third:
+  A=+9 B=+3 center=+0 -> third value -12 (true -12); sphere point match=True  exact=True
+  A=+12 B=+1 center=+0 -> third value -13 (true -13); sphere point match=True  exact=True
+  A=+8 B=+3 center=+0 -> third value -11 (true -11); sphere point match=True  exact=True
+
+  all thirds (value AND sphere point) recovered byte-exact: True
+  trime digits -> trime-set -> omega-sphere point, and 2-of-3 closes the triangle.
+  Trinary throughout; the center is free; the paid part is the 1-of-3 remainder.
