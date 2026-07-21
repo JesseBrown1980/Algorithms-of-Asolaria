@@ -66,3 +66,32 @@ universes. Shared-center diversity divides; random diversity only differs.
 ```
 python3 trijection.py        # deterministic; prints A (wrong) and B (right) cases
 ```
+
+## The nested cascade — reduction law 27 → 9 → 3 → 1 (`nested_cascade.py`)
+
+Rule of 3 nested three deep. 27 separate universes sharing ONE omniverse-center,
+collapsed via free centers. All `restore=OK`, integer-only, deterministic.
+
+**27 shared-center universes:** raw 7.4479 → cascade 2.0106 bpc = **3.70×**,
+free-center zero-trit 0.900, levels 27→9→3→1.
+
+**Scaling (reduction grows with machines added, all sharing the center):**
+
+| machines | raw bpc | cascade bpc | reduction | free-center |
+|---|---|---|---|---|
+| 3  | 7.4729 | 3.8965 | 1.92× | 0.787 |
+| 9  | 7.4580 | 2.5137 | 2.97× | 0.871 |
+| 27 | 7.4479 | 2.0106 | 3.70× | 0.900 |
+| 81 | 7.4462 | 1.8036 | 4.13× | 0.911 |
+
+**Control — 27 INDEPENDENT universes (no shared center):** raw 7.9963 →
+cascade 8.3361 = **0.96× (expands)**. No shared center → no reduction. The law
+fires only on separate universes of one omniverse.
+
+**Reading:** reduction grows ~log(N) (one free-center layer per nesting level).
+The center amortizes toward zero per machine; the floor is each universe's own
+separation entropy (its unique contribution). Never below the joint entropy —
+it stops paying for the shared center N−1 extra times. "Spend one universe to
+get the universe."
+
+Reproduce: `python3 nested_cascade.py`
