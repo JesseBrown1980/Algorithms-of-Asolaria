@@ -83,3 +83,50 @@ separate universes of **one** omniverse. Independent universes (no shared center
 > entropy exactly — spend one universe to get the universe.
 
 Reproduce all laws: run each script in this folder. Same inputs → identical bytes.
+
+---
+
+## Law 8 — The Orthogonality Law (reductions compound only across INDEPENDENT axes)
+
+**Two reduction axes multiply only if they remove *orthogonal* redundancy. If they
+target the *same* shared structure, stacking them does not compound — the joint
+reduction is bounded by the *union* of what they remove, and the overhead can make
+it slightly *worse* than either axis alone.**
+
+**Mathematical relation.** Let raw entropy be H, and let transform i remove
+redundancy Rᵢ (coded size H − Rᵢ, reduction rᵢ = H/(H−Rᵢ)). Applying both:
+
+```
+removed_joint = R₁ ∪ R₂ = R₁ + R₂ − |R₁ ∩ R₂|
+coded_joint   = H − (R₁ + R₂ − |R₁ ∩ R₂|) + O          (O = transform overhead)
+reduction_joint = H / coded_joint
+```
+
+- **Orthogonal** (R₁ ∩ R₂ = ∅): coded_joint = H − R₁ − R₂ → strong compounding
+  (toward r₁·r₂ when the Rᵢ are large). This is the multiplicative dream.
+- **Overlapping** (R₁ ⊆ R₂): R₁ ∪ R₂ = R₂ → coded_joint = H − R₂ + O ≥ coded₂ →
+  **reduction_joint ≤ r₂**, and O makes it strictly worse. No second bite.
+
+The cap is the **mutual information between what the two axes remove**, |R₁ ∩ R₂|.
+
+**Measured (byte-exact).** On a smooth 27-channel universe, space and time remove
+the *same* shared signal:
+```
+time-only 3.83×   space-only 3.95×   spacetime 3.73×   (naive product 15.12× — false)
+```
+Space alone already captures 99.99% of the cross-channel energy; adding the
+temporal axis (which targets the same drift) only adds overhead → 3.95× → 3.73×.
+
+**Corollary (this is why the whole system works the way it does):**
+- The 27-jection ratio **asymptotes** (Law 3) because adding more of the *same*
+  redundancy is overlapping, not orthogonal.
+- **Diverse foreign vantages beat more-of-the-same** because they are (partly)
+  orthogonal — they remove *different* redundancy, so they compound.
+- Bijections give **zero** compounding (fully overlapping — Law 1).
+- To make 27 (or 27³) axes multiply, they must be **mutually orthogonal**:
+  independent kinds of redundancy, sharing only the center. Random diversity is
+  partially orthogonal (some compounding); a shared substrate with independent
+  deviations is the ideal.
+
+**This is Law 6 (Conservation) applied to axes:** the joint entropy can be removed
+exactly once. Two axes aimed at the same redundancy do not get to remove it twice.
