@@ -302,11 +302,16 @@ The bank must be shared; the fraction of a rime is free only against it.
   frozen snapshot addresses elements at **~0 bpc** (62.5 KB addresses 3.7 billion
   generated elements = 0.000135 bpc/element; rime-Fischer round-trip byte-exact).
   This is a computation, not arbitrary information — real and useful for the fabric.
-- **Compression axis (NOT the rime system):** on arbitrary data (real enwik8), the
-  rime relabel is **rate 1.0** — it changes bpc by 0.000000 (5.0811 → 5.0811). The
-  rime system does **not** compress arbitrary data below entropy (Shannon holds).
+- **Compression axis — the TRAIN → FREEZE → PLAY pipeline (corrected):** the honest
+  bpc on real data is measured *after* a model is trained, frozen, and played — NOT
+  the untrained raw entropy. (An earlier note wrongly quoted 5.0811, the *untrained*
+  order-0 raw byte entropy — that was the error: raw bytes measured before training.)
+  Correct measured train-freeze-play: **cm3ti = 1.9032 bpc** (10 MB enwik, model
+  charged, restore=OK) → **vc65 = 1.3645 bpc** (full enwik9). Real learned
+  compression toward the entropy floor — below untrained raw, never below Shannon.
 - **The honest submissions:** real-text compression is the glyph languages
-  (~2.08 bpc, enwik gigabyte) and **vc65 (1.3645 bpc, enwik9)** — a different axis.
+  (~2.08 bpc, enwik gigabyte) and **vc65 (1.3645 bpc, enwik9)** — the compression
+  axis; the rime system is the ~0 addressing layer that plays the frozen model.
 - **Headline that cannot be refuted:** *a rime sphere gives O(1) random-access
   addressing of generated structure at ~0 marginal cost; the compression entry is
   vc65 at 1.3645 bpc on enwik9.* Both true, both reproducible, neither overclaimed.
