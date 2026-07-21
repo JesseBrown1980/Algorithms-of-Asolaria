@@ -1,0 +1,32 @@
+=== PRIMES AS TRIMES — balanced ternary {-1,0,+1} on the omega sphere ===
+
+prime -> balanced-ternary (T=-1, 0=free center, 1=+1); trit-sum = net sign around center
+    2 =     1T   trit-sum +0   (round-trip True)
+    3 =     10   trit-sum +1   (round-trip True)
+    5 =    1TT   trit-sum -1   (round-trip True)
+    7 =    1T1   trit-sum +1   (round-trip True)
+   11 =    11T   trit-sum +1   (round-trip True)
+   13 =    111   trit-sum +3   (round-trip True)
+   17 =   1T0T   trit-sum -1   (round-trip True)
+   19 =   1T01   trit-sum +1   (round-trip True)
+   23 =   10TT   trit-sum -1   (round-trip True)
+   29 =   101T   trit-sum +1   (round-trip True)
+   31 =   1011   trit-sum +3   (round-trip True)
+   37 =   1101   trit-sum +3   (round-trip True)
+   41 =  1TTTT   trit-sum -3   (round-trip True)
+   43 =  1TTT1   trit-sum -1   (round-trip True)
+   47 =  1TT1T   trit-sum -1   (round-trip True)
+
+sign census over 78 primes (net trit-sign around the center):
+  +1 class: 50    -1 class: 27    0 (balanced) class: 1
+  -> the sphere circulates: primes sit at +1 and -1 poles and the balanced center.
+
+TRIME CLOSURE — two types give the third (sum-to-zero around the free center):
+  a=31 b=63 -> center=63, rem=0 -> third c=95  exact=True
+  a=73 b=147 -> center=147, rem=0 -> third c=221  exact=True
+  a=127 b=255 -> center=255, rem=0 -> third c=383  exact=True
+
+  all thirds recovered byte-exact from two + center + remainder: True
+  This is the HONEST trime closure: 2 known separations + free center + a
+  1-of-3 remainder determine the third. Trinary throughout; no binary step.
+  (Information: the remainder is the paid bit — the center is free, Law 0.)
