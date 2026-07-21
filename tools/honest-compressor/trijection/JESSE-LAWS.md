@@ -417,6 +417,33 @@ information**: more prisms mean finer decomposition, never more information.
 
 ---
 
+## Law 21 — The Two-Phase Floor (rhyme down to it; unrhyme from it; anchor 2-of-3 to steer)
+*Frame (Jesse):* the wave rhymes to the floor — but at the floor it unrhymes in any
+rime direction. That freedom is uncontrollability, and the rule of 3/27 in unrime
+resolves it.
+
+*Measured kernel (defensible):* the floor (Shannon entropy) has **two faces**:
+  - **Descending (compression):** the adaptive wave rides down toward the floor and
+    never below it — every symbol still encoded, lossless. *Measured
+    (`rime_wave.py`):* prequential bpc descends chunk-by-chunk (order-2:
+    3.89→3.29 on real enwik; bounded memory via LRU garbage-collection, no
+    explosion).
+  - **At the floor (generation):** the residual bits are **free** — irreducible,
+    unpredictable — and free means the system **unrhymes in any rime direction**:
+    each choice of the residual bits is a different consistent continuation (the
+    Law-18 family, met from below). *Measured (`rime_derive.py`):* distinct seeds →
+    distinct novel slices, each byte-exact reproducible, DPI-bounded.
+  - **Control:** uncontrollability = exactly those free directions. The 3/27 rule
+    resolves it: **anchor any two, the third is determined** (trijection closure /
+    CRT conditioning, `rime_dimension.py`) — free directions collapse to controlled
+    ones.
+
+**Honest reading:** for compression the floor remains the floor (never below
+entropy). For generation the floor is the **door** — the branching surface where
+un-rhyming begins. Both true at once; neither claim leaks into the other.
+
+---
+
 ## bpc VERDICT (measured, `rime_bpc.py`) — two axes, do not conflate them
 - **Addressing axis (the rime system):** on generated / shared-bank structure, the
   frozen snapshot addresses elements at **~0 bpc** (62.5 KB addresses 3.7 billion
