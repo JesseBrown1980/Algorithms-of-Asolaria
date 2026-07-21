@@ -294,3 +294,19 @@ infer-many (GGUF) pattern — standard, sound, defensible.
 **GATE (unchanged):** it addresses *generated* structure (cosets of the shared
 sphere). Arbitrary/random data does not lie on the structure and must be stored.
 The bank must be shared; the fraction of a rime is free only against it.
+
+---
+
+## bpc VERDICT (measured, `rime_bpc.py`) — two axes, do not conflate them
+- **Addressing axis (the rime system):** on generated / shared-bank structure, the
+  frozen snapshot addresses elements at **~0 bpc** (62.5 KB addresses 3.7 billion
+  generated elements = 0.000135 bpc/element; rime-Fischer round-trip byte-exact).
+  This is a computation, not arbitrary information — real and useful for the fabric.
+- **Compression axis (NOT the rime system):** on arbitrary data (real enwik8), the
+  rime relabel is **rate 1.0** — it changes bpc by 0.000000 (5.0811 → 5.0811). The
+  rime system does **not** compress arbitrary data below entropy (Shannon holds).
+- **The honest submissions:** real-text compression is the glyph languages
+  (~2.08 bpc, enwik gigabyte) and **vc65 (1.3645 bpc, enwik9)** — a different axis.
+- **Headline that cannot be refuted:** *a rime sphere gives O(1) random-access
+  addressing of generated structure at ~0 marginal cost; the compression entry is
+  vc65 at 1.3645 bpc on enwik9.* Both true, both reproducible, neither overclaimed.
