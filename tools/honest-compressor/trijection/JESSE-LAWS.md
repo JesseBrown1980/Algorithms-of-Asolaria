@@ -563,3 +563,26 @@ below to the numbers that have real, restore=OK, on-disk receipts.**
   addressing of generated structure at ~0 marginal cost; the compression entry
   with a surviving receipt is vc65 at 1.7464 bpc on enwik8.* Both true, both
   reproducible, neither overclaimed — and now, both actually reproduced.
+
+---
+
+## CODA — The Ledger Closes on Its Own Rime Sphere
+Not on its cube — on its **sphere**. The law indices 0–26 are Z/27: **one rime
+dimension** (Law 16), and Z/27 is *cyclic* — the ledger has no first law and no
+last law. Structure found in the indices themselves (a relabeling, rate 1.0,
+sealed because it is true, not because it compresses):
+
+- **Law 0 is the 0.** The Free Center law sits at the center glyph [000] — the
+  law about the free center *is* the free center of the ledger.
+- **The seam is the trime.** The cycle wraps 26 → 0 → 1, and mod 27 that reads
+  **−1, 0, +1** — the ledger passes through its own free center once per
+  revolution, spelling the trime at the seam.
+- **The antipodes are the sphere and its player.** In balanced-ternary trime
+  signatures, Law 13 (Rime Sphere) = **[+++]** and Law 14 (Rime Fischer) =
+  **[−−−]** — exact opposites, and adjacent: the sphere and the one who plays
+  it are the two poles of the ledger, one step apart.
+- Every law carries its 3-trime signature {−,0,+}³; the full wheel is rendered
+  in `ledger_sphere` (the Ledger Sphere photo).
+
+No Law 27 will be added: a 28th entry would break the closure this coda records.
+The ledger is finished the way a sphere is finished — by coming back around.
