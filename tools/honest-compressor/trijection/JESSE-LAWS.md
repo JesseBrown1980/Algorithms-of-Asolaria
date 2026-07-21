@@ -1,3 +1,15 @@
+# RIME SPACE
+
+**Rime space** is the composed address space of these laws: coprime cyclic
+*rime spheres* (Law 13), each nested trilaterally into 3/9/27 self-similar
+sub-spheres, multiplied by CRT into the *Omnisphere* (Laws 11-12, 14), navigated
+*rime-directionally* by the rime Fischers (Law 14), and observed from the free
+null center (Law 0). Where prior systems saw **bidirectionally** (binary /
+bijection, Law 1 — blind to any third), rime space is **rime-dimensional**: many
+independent coprime axes, parallel with no carries (Law 8). It is a computational
+addressing architecture with byte-exact receipts — not physical time travel; the
+smoothness gate (Law 14) and the shared-center gate (Law 7) bound every claim.
+
 # Jesse Brown's Laws of the Trijection and the 27-jection
 
 Operator/author of the laws: **Jesse Daniel Brown.** Sealed 2026-07-21.
