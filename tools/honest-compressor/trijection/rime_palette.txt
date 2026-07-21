@@ -1,0 +1,22 @@
+=== RIME PALETTE FILES (red/green/blue) — references on disk, derived on demand ===
+
+  red  : reference file 160 B  addresses a 2,000-B slice  sha=00bc33aaba0bc8a9…
+  green: reference file 162 B  addresses a 2,000-B slice  sha=6abf5f266311aad0…
+  blue : reference file 161 B  addresses a 2,000-B slice  sha=2df05a62fe7a91cc…
+
+PLAY (address on demand from the reference files only):
+  red  : re-derived from 160 B reference -> byte-exact=True
+  green: re-derived from 162 B reference -> byte-exact=True
+  blue : re-derived from 161 B reference -> byte-exact=True
+
+CENTER room written: 2,000 B  (R+G+B mod 256 — the free center)
+TRIJECTION CLOSURE — delete any one color; recover it from the other two + center:
+  lost red   -> recovered from green+blue+center: byte-exact=True
+  lost green -> recovered from red+blue+center: byte-exact=True
+  lost blue  -> recovered from red+green+center: byte-exact=True
+
+HONEST LEDGER: each palette file is a FRACTION (160 B) that addresses its
+slice against the shared bank (the frozen model) — Law 15. The center is the
+grand center (Law 0); any two colors + center determine the third — the
+trijection closure, physical on disk. 2-of-3 recovery is parity (erasure code):
+real, byte-exact, and information-conserving (the center room paid for it).
