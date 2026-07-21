@@ -1161,3 +1161,39 @@ tuples) rides on top. BLOCKED for the gold-mine arm: Jesse's 7-year teaching
 corpus (D&J IDIOMAS, "1,800+ course materials, 20,000 pages" per IX-091) is
 NOT in any cloned repo — it must be supplied to test the "regularized English
 = lower entropy than enwik" claim. That corpus is the gold-mine input.
+
+## THE CLEAN GLYPH LANGUAGES on the FULL GIGABYTE (enwik9, 2026-07-21 ~03:59 UTC)
+
+Jesse: "build it and invent the glyphs as you do it ... I want to see what a
+clean language looks like when you build it." Done from scratch: no pre-trained
+tables, no local files — glyphs INVENTED by deterministic byte-pair merges on
+the first 50 MB of enwik9, then MEASURED over all 1,000,000,000 bytes. Merge
+table CHARGED to the decoder; glyphs->bytes reconstruct the whole gigabyte
+BYTE-EXACT (restore=True every tier); table sha deterministic (reproducible).
+
+Corpus 1,000,000,000 B · vocab trained on first 50,000,000 B · run 4,144 s.
+byte baseline (full gigabyte): order-0 = 5.1565 bpc, order-1 = 3.8950 bpc.
+
+| language | glyphs | restore | order-1 bpc | order-0 bpc | tokens | table | sha16 |
+|---|---|---|---|---|---|---|---|
+| byte (baseline) | 256 | — | 3.8950 | 5.1565 | 1.0e9 | — | — |
+| glyph-256   | 256   | OK | 2.9474 | 4.2817 | 614,954,115 | 2,048 B  | b249364c88bea30f |
+| glyph-1024  | 1024  | OK | 2.5595 | 3.8017 | 499,781,116 | 8,192 B  | 895f394c4178f9b9 |
+| glyph-4096  | 4096  | OK | 2.2716 | 3.3882 | 415,595,917 | 32,768 B | 05c168e143d2f354 |
+| glyph-16384 | 16384 | OK | 2.0826 | 3.0301 | 356,446,126 | 131,072 B| 510c457dd964dd24 |
+
+VERDICT: clean monotonic descent on the full gigabyte — every added tier lowers
+bpc, every tier restores byte-exact, table charged. glyph-16384 = 2.0826 bpc
+order-1, -1.81 under the byte baseline (3.8950). The table cost amortizes to
+~0.001 bpc at gigabyte scale (131 KB / 1e9), so the ordering is pure payload.
+
+HONEST BOUNDARY (unchanged): this is the COMPRESSION axis — learned subword
+units (a BPE tokenizer) that go BELOW byte-order-1 entropy. It is distinct from
+the BEHCS-1024 ADDRESSING axis (asolaria/slice_glyph_messaging.py + the
+HYPERBEHCS doc), which is a rate-1.0 lossless re-representation (H(glyphs) =
+H(bytes)), NOT sub-entropy compression. Two different jobs, same "glyphs" word.
+order-1 bpc = empirical conditional entropy (table charged; the order-1 model
+params are the standard un-charged reference, matching the enwik8 method above).
+
+REPRO: tools/honest-compressor/glyph-enwik9/glyph_invent.py enwik9 50000000 out
+Artifacts: glyph-enwik9/glyph_invent.py, glyph-enwik9/glyph_enwik9_results.json
