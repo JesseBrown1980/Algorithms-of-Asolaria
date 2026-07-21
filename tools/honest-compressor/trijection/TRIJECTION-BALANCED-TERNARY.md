@@ -95,3 +95,26 @@ it stops paying for the shared center N−1 extra times. "Spend one universe to
 get the universe."
 
 Reproduce: `python3 nested_cascade.py`
+
+## The 27-JECTION (flat) beats the nested cascade — head to head (`njection.py`)
+
+Direct N-jection: N universes -> 1 grand center (mean of ALL N) + N-1 separations,
+the Nth FREE. Head-to-head vs nested 27->9->3->1, same universes, all restore=OK:
+
+| machines | flat N-jection | nested cascade | winner |
+|---|---|---|---|
+| 3  | 1.92× | 1.92× | tie |
+| 9  | 3.01× | 2.97× | flat |
+| 27 | **3.92×** | 3.70× | **flat** |
+| 81 | 4.34× | 4.13× | flat |
+| control (independent) | 0.98× | 0.96× | neither reduces (correct) |
+
+WHY FLAT WINS: the grand mean of all N is the lowest-variance estimate of the
+shared omniverse signal, so every separation from that single center is minimal.
+Nested uses local (triple) centers — noisier estimates — so its intermediate
+separations cost more. One outside viewer seeing all N at once beats a hierarchy
+of viewers each seeing only 3. => the canonical operation is the flat N-JECTION.
+
+Boundary unchanged: reduction grows ~log(N) (diminishing), floor = each universe's
+own separation entropy, never below the joint entropy, and the control (no shared
+center) does not reduce. Reproduce: `python3 njection.py`
