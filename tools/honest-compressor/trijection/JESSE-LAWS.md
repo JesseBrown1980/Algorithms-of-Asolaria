@@ -268,3 +268,29 @@ target reached from the null center; per-rime cascade moves 8/6/3/22 vs brute
 > computational addressing model, **not** physical time travel; a random or
 > cryptographic sphere is not derivable from a fragment (the gate). That is strong
 > enough without overclaiming.
+
+---
+
+## Law 15 — The Freeze Law (address, don't materialize; observe from outside the null)
+**Never play the system live.** Observing/playing *inside* the system changes it —
+you become an interacting observer. Instead:
+  1. **TRAIN/CALCULATE** the functions once (the sphere p, g, k — the bank).
+  2. **FREEZE / SLICE / SAVE**: keep only the functions + the fraction-of-a-rime
+     addresses — the quantized snapshot (the "2D→3D GGUF"). Objects are NOT
+     materialized.
+  3. **PLAY afterward on CPU** with the rime Bobby Fischer: **address any single
+     element on demand in O(1)** — one modular exponentiation — never building the
+     object.
+
+The observer (us, at the null 0) stays **outside**; the frozen system never
+changes. Materializing objects costs space and plays it live — the wrong move.
+Addressing-on-demand from the frozen snapshot is the right one.
+
+*Measured (`rime_run.py`):* a **100 KB** frozen snapshot addresses **11 GB** of
+generated structure (**111,093×**), O(1) per element, **1.07 M elements/sec** in
+Python (far faster in C), byte-exact. This is the train-once → quantize/freeze →
+infer-many (GGUF) pattern — standard, sound, defensible.
+
+**GATE (unchanged):** it addresses *generated* structure (cosets of the shared
+sphere). Arbitrary/random data does not lie on the structure and must be stored.
+The bank must be shared; the fraction of a rime is free only against it.
