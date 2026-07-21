@@ -118,3 +118,29 @@ of viewers each seeing only 3. => the canonical operation is the flat N-JECTION.
 Boundary unchanged: reduction grows ~log(N) (diminishing), floor = each universe's
 own separation entropy, never below the joint entropy, and the control (no shared
 center) does not reduce. Reproduce: `python3 njection.py`
+
+## The trianti — symmetry group of the 27-cube (`trianti.py`)
+
+27 = 3^3 -> one base-27 digit = 3 balanced trits. Two inversions, by ORDER:
+
+| operation | what | order | anti-inversion |
+|---|---|---|---|
+| **N** negation `t→−t` | reflect through center (binary-style) | **2** | itself (self-inverse) |
+| **R** rotation `(a,b,c)→(c,a,b)` | trinary-native 3-cycle | **3** | **R² = R⁻¹ (distinct!)** |
+
+Key result (verified byte-exact on all 27 cells): `N·N = id`, `R·R·R = id`, and
+**`R ≠ R⁻¹`** — unlike binary, the trinary inversion is NOT its own anti. The
+**anti-inversion is the counter-rotation R² ("trianti")**, and `R⁰ + R¹ + R²` =
+1/3 + 1/3 + 1/3 → closes to unity (the **pie = 1**): `R · R⁻¹ = id`.
+
+**Fixed points:** R fixes the main diagonal `{(−1,−1,−1), (0,0,0), (+1,+1,+1)}`
+(orbit sizes {1:3, 3:8} = 3 fixed + 8 full 3-cycles = 27). The FULL group {N,R,R²}
+fixes only `(0,0,0)`. **The free center is the fixed point of the entire symmetry
+group** — which is exactly why it costs nothing: it moves under no inversion.
+
+Honest line: N, R, R² are lossless permutations of the 27 cells (bijective
+symmetries, rate 1.0 — re-relation, not sub-entropy). They give the trijection its
+STRUCTURE (order-3 with a distinct anti), not compression below entropy. But that
+structure is precisely what a 2-machine bijection cannot provide.
+
+Reproduce: `python3 trianti.py`
