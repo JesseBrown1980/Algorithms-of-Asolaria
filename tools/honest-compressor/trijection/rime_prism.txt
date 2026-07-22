@@ -1,0 +1,15 @@
+=== THE RIME PRISM (3->9->27 NTT over the rime sphere; integer, byte-exact) ===
+sphere (Z/1000081Z)*  g=7   primitive 27th root w=g^37040 mod p = 951846
+radix-3 nested: 27 = 3^3   (Newton: 2 prisms 1-D; rime: 27 coordinates)
+
+  1 + w + w^2 + ... + w^26  (mod p) = 0   (roots-of-unity closure, like 1+w+w^2=0)
+
+  signal (27 bytes)      : [60, 109, 101, 100, 105, 97, 119, 105, 107, 105, 32, 120, 109, 108, 110, 115, 61, 34, 104, 116, 116, 112, 58, 47, 47, 119, 119]
+  27 rime glyphs (coords): [2535, 904558, 404369, 823367, 224097, 717267] ... (27 spectral coordinates)
+  DC / center glyph X[0]  = 2535  =  sum(signal) mod p = 2535  (the FREE CENTER, Law 0)
+  recombined (inverse)    : [60, 109, 101, 100, 105, 97, 119, 105, 107, 105, 32, 120, 109, 108, 110, 115, 61, 34, 104, 116, 116, 112, 58, 47, 47, 119, 119]
+  BYTE-EXACT round-trip   : True   (lossless, reversible -> RATE 1.0)
+
+  Each glyph is ONE rime gradient of the whole; the 27 together are the whole,
+  re-addressed, information conserved. Any rime glyph can carry a gradient of the
+  signal — but one glyph is one coordinate, not the whole universe (the gate).

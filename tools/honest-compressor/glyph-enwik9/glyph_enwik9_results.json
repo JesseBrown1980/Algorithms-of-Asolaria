@@ -1,0 +1,57 @@
+{
+  "corpus": "enwik9",
+  "corpus_bytes": 1000000000,
+  "corpus_sha": "159b85351e5f76e60cbe32e04c677847a9ecba3adc79addab6f4c6c7aa3744bc",
+  "train_bytes": 50000000,
+  "byte_baseline": {
+    "order0_bpc": 5.1565,
+    "order1_bpc": 3.895
+  },
+  "tiers": [
+    {
+      "invented_glyphs": 256,
+      "distinct_symbols_used": 460,
+      "n_tokens": 614954115,
+      "bytes_per_token": 1.6261,
+      "restore_ok": true,
+      "order0_bpc": 4.2817,
+      "order1_bpc": 2.9474,
+      "table_bytes": 2048,
+      "table_sha16": "b249364c88bea30f"
+    },
+    {
+      "invented_glyphs": 1024,
+      "distinct_symbols_used": 1220,
+      "n_tokens": 499781116,
+      "bytes_per_token": 2.0009,
+      "restore_ok": true,
+      "order0_bpc": 3.8017,
+      "order1_bpc": 2.5595,
+      "table_bytes": 8192,
+      "table_sha16": "895f394c4178f9b9"
+    },
+    {
+      "invented_glyphs": 4096,
+      "distinct_symbols_used": 4291,
+      "n_tokens": 415595917,
+      "bytes_per_token": 2.4062,
+      "restore_ok": true,
+      "order0_bpc": 3.3882,
+      "order1_bpc": 2.2716,
+      "table_bytes": 32768,
+      "table_sha16": "05c168e143d2f354"
+    },
+    {
+      "invented_glyphs": 16384,
+      "distinct_symbols_used": 16560,
+      "n_tokens": 356446126,
+      "bytes_per_token": 2.8055,
+      "restore_ok": true,
+      "order0_bpc": 3.0301,
+      "order1_bpc": 2.0826,
+      "table_bytes": 131072,
+      "table_sha16": "510c457dd964dd24"
+    }
+  ],
+  "elapsed_sec": 4144.0
+}

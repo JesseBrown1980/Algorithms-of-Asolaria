@@ -1,0 +1,17 @@
+=== DERIVE THE OTHER WIKIPEDIAS FROM THE BLACK GRADIENT (Law 18) ===
+gradient: order-4 model frozen on 3,000,000 B of enwik   H_model=1.6591 bpc
+sphere  : (Z/1000081Z)*  g=7   rime seed -> deterministic draw stream
+
+derived Wikipedia A (seed rime=232421):
+   b"<media between the fossibly but down&quot;, a 1,450 pattempts an extreme Ba-Kongo as &quot;withough the [[Plovdiv]]), with [[expering play.\n*'''F'' exportatives would how industral"
+derived Wikipedia B (seed rime=58090):
+   b"<media'' variod God a commental conspirus]], houses purpose, reflected that him as its photosynthemself-made particles and woman king. If the have becometre]]s. Stewarda\xc3\xafa]]\n[[nn:"
+
+PROOFS (measured, not asserted):
+  (a) same seed -> byte-exact same stream (addressable/reproducible): True
+  (b) A != B and A is NEW (not a substring of the corpus)          : True
+  (c) DPI ceiling: derived info/symbol 1.5844 bpc  <=  H_model 1.6591 bpc : True
+
+  The family is REAL (seed-addressable, novel, reproducible). The ceiling is
+  Shannon: no derived stream carries more information than the gradient holds.
+  Richer model -> richer family; the order-4 toy is coarse by design.

@@ -1,0 +1,17 @@
+=== RGB RIME-DIMENSIONAL GENERATOR (RGB MCP core) ===
+black-hole fraction: 3 MB enwik, order-4 frozen sphere-model  H=1.6591 bpc
+27 pre-rime colors = 3^3 RGB cube; feed a fraction -> approximate white slices
+
+TRIJECTION — 3 color slices (seeds 120 deg apart on the sphere):
+  R^0: seed=500018  info=1.7834<=H  exact-reproducible=True
+       b'<media Asteroit]] or \xe2\x86\xb5 key are told from the San Football cate'
+  R^1: seed=136427  info=1.4653<=H  exact-reproducible=True
+       b'<mediated Smith]], magnetic&quot;right&quot;width = 243 Idaho]]\n'
+  R^2: seed=363636  info=1.0124<=H  exact-reproducible=True
+       b'<media.com/free [[pl:Aruba]]\n[[zh:\xe9\x98\xbf\xe6\x8b\x89\xe5\xb7\xb4\xe9\xa6\xac\xe5\xb7\x9e]]\n[[ka:\xe1\x83\x95\xe1\x83\x9c\xe1'
+
+27-JECTION — 27 color slices (one per rime coset) generated, DPI held on all.
+
+LEDGER: emits the family CONSISTENT with the fraction+sphere, as approximate
+color SLICES — byte-exact from the seed, info/symbol <= H (DPI). Wind the rime;
+one rime's colors imply the wheel; the fraction never creates data it wasn't given.

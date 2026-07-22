@@ -1,0 +1,4 @@
+# transient run logs / caches (not source)
+*.log
+__pycache__/
+*.pyc

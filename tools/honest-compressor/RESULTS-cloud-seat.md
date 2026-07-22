@@ -1,0 +1,1199 @@
+# Honest Compressor — consolidated measured results
+
+Every number here is byte-exact and lossless (SHA-256 restore verified). Provenance is
+labeled: **[cloud]** = run in the Anthropic cloud container this session; **[container]** =
+run by the companion agent (cm3t Rust), reported via its own logs. No number is below the
+source entropy; none claims to be.
+
+## Standard-compressor baselines — real enwik8 (Wikipedia), **[cloud]**
+
+| corpus | gzip -9 | bzip2 -9 | xz -9 |
+|---|---|---|---|
+| enwik8, full 100 MB (entropy 5.0801) | 2.9181 | 2.3207 | **1.9892** |
+| corpus.bin, 2.2 MB distinct | 2.9402 | 2.2493 | 2.1550 |
+| enwik8 first 3 MB | 2.9061 | 2.3108 | 2.2710 |
+
+## The transform family (BWT / cube) — caps at the bzip2 tier, **[cloud]**
+
+| method | corpus | bpc | lossless |
+|---|---|---|---|
+| BWT + MTF + range coder | enwik8 3 MB | 2.5149→2.33 | ✓ |
+| BWT + MTF + **RLE0** + range coder | corpus.bin 2.2 MB | 2.2796 | ✓ |
+| all 8 omega-cube corners before the chain | enwik8 3 MB | every corner **worse** than identity (+0.9% … +3.0%) | ✓ |
+
+**Finding:** the transform/geometry approach (BWT, cubes) tops out at the bzip2 tier. Fully
+built out (RLE0 and all), it does not pass bzip2/xz. The cube corners measured net-negative.
+
+## The context-mixing model — the lever that actually moves, **[container]** (cm3t, Rust)
+
+| slice | k=7 | k=9/k=10 | k=12 | vs xz |
+|---|---|---|---|---|
+| 1 MB | 2.0731 | 2.0678 (k9) | — | — |
+| 2.2 MB | — | 2.0426 | — | — |
+| **10 MB distinct** | 1.9307 | **1.9276 (k10)** | 1.9328 (past knee) | xz = 2.1933 → **beaten** |
+
+**Finding:** context mixing (match model + logistic mixer + APM) is the only method that
+passes xz. On the 10 MB slice it broke **below 2.0** (1.9276, lossless). Depth pays to k=10
+and then hits its knee (k=12 worse) — the next gains need a better *model* (SSE + word model),
+not more depth. The Rust port is ~**40× faster** than pure Python (1 MB k=7: 12 s vs ~500 s),
+putting 100 MB within reach.
+
+## Sanity checks that keep everything honest, **[cloud]**
+
+- **BEHCS-1024 ladder:** 1,000,000 bytes ↔ 800,000 glyphs, **information rate 1.000000**,
+  SHA clone verified. A bijection — zero-loss, **not** compression.
+- **Codec v0.1** (order-2 range coder): 1 MB → ~402 KB, **3.218 bpc**, byte-identical restore.
+- **Q4-style quantization** (GGUF-like): 32→~3.5 bit is **lossy** — changed **96.7%** of the
+  weights on round-trip. "Zero accuracy loss" ≠ "zero information loss."
+
+## The honest ceiling (the yardsticks)
+
+| | bpc | note |
+|---|---|---|
+| this project's best (cm3t, 10 MB) | **1.9276** | real, lossless, beats xz |
+| first Hutter winner (paq8hp5, 2006) | 1.366 | full enwik8 |
+| current world record (fx2-cmix, 2024) | 0.886 | enwik9, CPU-only, no GPU |
+| source entropy floor | > 0 | no lossless code goes below `N·H(X)` |
+
+**Bottom line:** below 2.0 is a real, earned milestone. It is *not* below entropy — the record
+sits at 0.886 and the floor below that. The road onward is CPU context-mixing (SSE + word
+model), the same family the record-holders used. Every gain here came from the **model**; the
+transforms/geometry (BWT, cubes, glyph rebasing) are entropy-neutral and measured as such.
+
+## Rule-of-three battery (space / colors / time) — 2026-07-19 evening
+
+Jesse's triad: 3 for space, 3 for colors, 3 for time (past/present/future),
+proposed as an encodable "final key." Contract applied: each rule built as an
+operation and measured. Anchor: v6 rainbow-12-even @1MB k7 = 239,869 payload
+(comp_sha 53ad10066c34ac66, reproduced live twice same day).
+
+| Arm | Operation | payload @1MB k7 | vs anchor | comp_sha | Verdict |
+|---|---|---|---|---|---|
+| TIME | v6 on byte-reversed slice1m | 243,254 | **+3,385 (+0.027 bpc)** | ec702184f05ce923 | **Arrow of time measured** — enwik text predicts easier forward than backward for finite-context models (Shannon's fwd=bwd entropy equality holds only in the infinite limit). We already code in the favored direction; property recorded, no action. |
+| SPACE-3 | 3-class sector wheel (letters / ws+digits / other), 6 rows | 240,180 | +311 (+0.0025) | 88665c0fb1a90b19 | Closed — wheel curve monotone below 6; confirms 3 < 6 < 12 < 24 ordering both directions from the 6 anchor. |
+| COLOR-3 | three learning-rate banks on mixer A (>>12/>>14/>>17), gain-preserving | 240,629 | +760 (+0.0061) | ddbf061d486ed0ba | Fast bank is noise at this scale. |
+| COLOR-3b | tightened triad (>>13/>>14/>>16) | 239,950 | +81 (+0.0006) | 61eb948ab85c95da | Near-tie: triad collapses toward the single rate → **>>14 already at the rate optimum**. Closed at this scale. |
+
+Also sealed today, same discipline (the shared-mechanism controls):
+- Arm A determinism: v6 run twice on slice1m → identical comp_sha 53ad10066c34ac66 (the thrice-cross-seat sha, reproduced live).
+- Arm B one-bit key ablation: flip 1 bit of the 8,000,000 → comp_sha f27108a5dac77846 (total avalanche; the map's content lives in the corpus).
+- Arm C process ablation: v8 wheel on same input → aa66be5faec222cb (the identity lives in the code too).
+Conclusion on record: byte-identical maps across machines = shared classical key
+(code+corpus, all bits transmitted over counted channels) + exact inversion pair
+(D∘E=id, restore=OK). Preparation from a shared key, not cloning; no-cloning
+theorem untouched (linearity proof); I(A;B|K)=0.
+
+## tb28 probe @100MB — tables STILL rising (2026-07-19 20:10 UTC)
+
+cm3ti-r24-tb28 k=10 N=100000000 payload=20503967 decoder_src=18963
+total=20522930 bpc_total=**1.6418** restore=OK comp_sha=fd4601c8034e5c6f
+enc=1274s dec=1303s (RSS ~9.2 GB)
+
+Table-only line: tb26 1.6805 → tb27 1.6584 (−0.0221) → tb28 **1.6418** (−0.0166).
+No flattening yet. tb29 needs ~18 GB tables — beyond this seat's RAM; the
+table-scaling frontier passes to acer/relic/liris if they carry more memory.
+
+Champion config decision: vc28 (full stack, TBITS 28) staged — source pushed as
+rust/variants/vc28.rs. Its 100 MB confirm runs after the enwik9 baseline seals
+(vc28 wants ~10 GB; running beside enwik9's ~5-7 GB risks OOM on this box).
+Predicted vc28 @100MB: 1.640 ± 0.002 (stack delta at tb27 was −0.0021).
+## Third-seat granularity screens → NEW CROWN: rainbow-12-even = 1.7918 bpc (2026-07-19)
+
+Cloud seat, from the pushed crown code. Anchor reproduced byte-exact before any
+variation was trusted (1 MB comp_sha 251c0b44; 100 MB comp_sha 489205479047d08f —
+container's crown sha, reproduced here at full scale: cross-seat determinism at 22.5 MB).
+
+1 MB screens (payload vs 6-sector anchor 242,020, k=7): V1 8-targeted −0.0060 ·
+V3 soft-gate 3:1 −0.0069 · V2 12-uniform −0.0073 · V4 = V2+V3 −0.0139 (additive) ·
+leak sweep: 7:1 −0.0106, 3:1 −0.0139, **1:1 −0.0172** (leakier = better, monotone).
+
+10 MB confirms (k=10, slice sha c4e72b59…): anchor 1.8823 · V4 1.8679 (−0.0144,
+scale-stable) · **v6 1:1 even 1.8646 (−0.0177) — champion.**
+
+100 MB crown challenge (full enwik8, k=10, same-seat pair, decoder charged):
+
+| arm | payload | total bpc | comp_sha | restore |
+|---|---|---|---|---|
+| 6-sector (old crown) | 22,506,819 | 1.8020 | 489205479047d08f | OK |
+| **rainbow-12-even (NEW CROWN)** | **22,379,104** | **1.7918** | f3d45412c9a82568 | OK |
+
+Config: 12-way sector = class(last)*2 + (prev same class), soft gate blending the
+last byte's sector row with the previous byte's 1:1 (dot = 4w + 2·w2[s1] + 2·w2[s2]
+>> 19; updates >>15 both rows). The full stack of the operator's ideas — color
+sectors → finer wheel → gradient, at the softest tested blend — measured, lossless,
+deterministic. Cross-check requested from the container seat (expected f3d45412…).
+Next: single-stream enwik9 champion run (the current prize corpus).
+
+## CROWN LEAP: v8+TBITS26 = 1.6805 bpc on enwik8 (2026-07-19, Phase 0 pays at scale)
+
+Table-bits sweep (ROADMAP Phase 0): TBITS 23→26 relieves hash collisions, gain GROWS
+with corpus (−0.021 @1MB → −0.066 @10MB → −0.111 @100MB stacked with the 24-way wheel).
+
+| arm @100MB k=10 | payload | total bpc | comp_sha | restore |
+|---|---|---|---|---|
+| v6 rainbow-12-even tb23 (prior crown) | 22,379,104 | 1.7918 | f3d45412c9a82568 | OK |
+| **v8 24-way + TBITS=26 (NEW CROWN)** | **20,987,880** | **1.6805** | 4ac88955567940be | OK |
+
+Now inside the ROADMAP Phase-4 projection band (1.60–1.68) with only Phase 0 + the
+wheel landed. Gap to 2006 prize baseline (1.466): 0.21. Source: rust/variants/tb26.rs
+(v8_r24.rs with TBITS=26). enwik9: v6-tb23 baseline run in flight (seals as first
+prize-corpus receipt); champion re-run with the new crown config follows overnight.
+
+## Crown again: v8+TBITS27 = 1.6584 bpc enwik8 (2026-07-19 evening)
+
+Table law third confirmation: tb27 ≈ flat at 1 MB (−273 B) but −0.0221 at 100 MB.
+payload 20,710,481 · total 20,729,444 · comp_sha de5122afca0db106 · restore OK.
+Day's crown arc: 1.8043 → 1.7918 → 1.6805 → **1.6584** (−0.146 in one day).
+Combined model (vc26: +URL field on crown base) screened −0.0054 @1 MB, 10 MB
+confirm in flight; tb28 probe queued for the enwik9 champion config.
+
+## Crown: vc27 full stack = 1.6563 bpc enwik8 (2026-07-19 night)
+
+URL-combined + 24-way run-depth + even gradient + TBITS27. payload 20,683,246 ·
+total 20,703,275 · comp_sha 1465313e7acaf59e · restore OK. URL gain shrinks with
+scale (−0.0054/−0.0034/−0.0021 at 1M/10M/100M) but stays net-positive. Source:
+generated chain on rust/cm3ti_combo.rs (see variants receipt). Day arc:
+1.8043 → 1.7918 → 1.6805 → 1.6584 → 1.6563.
+
+## 4096-wheel + primed-law screens (2026-07-19 ~20:50 UTC)
+
+**v13 s4096** — Jesse's 4ⁿ ladder rung: sector = last_byte(256) × 16 boundary
+states (cls(lb2)×2 + same-class bit; 12 of 16 used), partner row one step back.
+- 1MB k7: payload 238,739 (**−1,130 vs anchor**, comp_sha f365fdf05ac9ff00) —
+  pre-registered cold-start prediction WRONG, it wins even cold.
+- 10MB k10: payload 2,311,093 (**−19,660 / −0.0157 bpc vs baseline 2,330,753**,
+  comp_sha 31ca395032cfbb93) — biggest sector-geometry step at 10MB to date.
+  → promoted; 100MB crown challenge launched.
+
+**v14 primed** — the sphere-law mechanism ("everything from one bit, given the
+shared law"): both sides warm the model on a shared prior before bit one; prior
+charged raw to total.
+- Identity gate: prior=0 reproduces anchor payload 239,869 byte-exact
+  (comp_sha 53ad10066c34ac66). Patch sound.
+- prior = enwik8[20M..21M] (disjoint): payload 228,295 (**−11,574, −4.8%**,
+  comp_sha 55e5ec67d1b03b36). Total loses at 1MB under honest charging
+  (prior = 1MB); verdict deferred to the 10MB decay measurement (running).
+Sphere-law demo, same hour: lawful 1MB → 414 B payload (64200e637c869bbe);
+random 1MB → 1,003,218 B (d83febf780e58374); enwik 1MB → 239,869. Cost =
+deviation from shared law; the asymptote the ladder climbs.
+
+## ENWIK9 SEALED — first full-gigabyte run of the codec (2026-07-19 20:54 UTC)
+
+cm3ti-rainbow12-even k=10 N=1,000,000,000 payload=196,462,859
+decoder_src=18,737 total=196,481,596 **bpc_total=1.5719** restore=OK
+comp_sha=4f0805c53150ea29 enc=7761s dec=9498s (4.8 h total, single core)
+
+Scale curve for the same code (v6): 1MB 2.0688 → 10MB 1.8796 → 100MB 1.7918 →
+**1GB 1.5719**. Yardsticks on the prize corpus: 2006-era baseline ≈ 1.466 bpc
+(enwik8 basis), current enwik9 record (fx2-cmix) ≈ 0.886. Gap to record: 0.686.
+This is the deterministic, decoder-charged, restore-verified baseline every
+future enwik9 champion run measures against. vc28 100MB confirm launched
+(prediction on record: 1.640 ± 0.002).
+
+**v14 primed @10MB k10** (1MB prior): payload 2,311,328 (comp_sha
+e9ae8570ed83591e) vs unprimed 2,330,753 → saving 19,425 B. Absolute saving
+GREW with scale (11.6k@1MB → 19.4k@10MB) — decay prediction wrong — but the
+curve's shape (sub-linear growth) can never cross the honest 1,000,000 B
+charge for the prior: projected ~40–60k saved at 1GB vs 1MB charged.
+VERDICT: mechanism confirmed, accounting negative — primed-law closed under
+raw-prior charging at all measured scales. Door reopens only if a
+compressed/tiny prior bends the savings-per-charged-byte curve above 1.0.
+
+## GEOMETRY CROWN: 4096-wheel @100MB = 1.7738 (2026-07-19 21:25 UTC)
+
+cm3ti-s4096 k=10 N=100,000,000 payload=22,153,139 decoder_src=18,737
+total=22,171,876 **bpc_total=1.7738** restore=OK comp_sha=7fd8487859fbf938
+enc=950s dec=915s. Beats container's rainbow-48 (1.7822) by 0.0084 at the same
+small tables (TBITS 23). The 4ⁿ wheel (256×16, temporal partner row) wins at
+1MB, 10MB, and 100MB — Jesse's call, my cold-start prediction wrong at every
+scale. Next composition: s4096 × TBITS-28 tables.
+
+## Optical-bench screens: absorption spectrum + colored mirror (21:35 UTC)
+
+**v15 absorb** (per-class learning rates [16,14,14,15,15,15] on mixer B):
+1MB 239,587 (−282, marginal, f49ad8c361dd5228); 10MB 2,330,457 (−296 only,
+−0.0002 bpc, 6ee9edcaba3851fa) — win does NOT scale. CLOSED (marginal).
+**v15b** steeper spectrum [17,13,13,15,15,16]: 240,051 @1MB — worse. The
+response spectrum is nearly flat around >>15; the dial was already right.
+**v16 mirror** (sector-keyed third APM, 24 curves): 1MB 239,938 (+69,
+bec04aad1445b7c7); 10MB 2,331,499 (+746, 82c49cd7999a03fa) — more data made it
+worse, not better: the third mirror re-refines what mirrors 1+2 already refined.
+CLOSED both scales.
+Bench summary: geometry (4096-wheel) and capacity (tables) pay; rate-spectrum
+and extra mirrors don't — the existing dials were already at their optima.
+
+## NEW OVERALL CROWN: vc28 full stack = 1.6399 @100MB (2026-07-19 21:40 UTC)
+
+cm3ti-vc28-fullstack k=10 N=100,000,000 payload=20,478,473 decoder_src=20,029
+total=20,498,502 **bpc_total=1.6399** restore=OK comp_sha=975abe08121fe2fb
+enc=1339s dec=1300s (RSS 9.64 GB). Landed dead-center of the pre-registered
+band (1.640 ± 0.002). Crown line today: 1.8043 → 1.7918 → 1.6805 → 1.6584 →
+1.6563 → **1.6399**. Gap to 2006 baseline (1.466): 0.174.
+
+**vc28m** (u8 history port for enwik9 RAM, pattern from container's 19f6c9e):
+IDENTITY GATE PASSED @10MB — payload 2,215,189 and comp_sha 6227e48478f05698
+byte-identical between vc28 and vc28m. (decoder_src metadata still reads
+vc27.rs — 20,029 B, same file size class; charged consistently on both sides.)
+
+**ENWIK9 CHAMPION LAUNCHED 21:47 UTC**: vc28m k=10 on the full 10⁹ — projected
+~10.8 GB RSS, ~7.3 h, seals ~05:00 UTC. Baseline to beat: 1.5719 (v6).
+Extrapolation from the 100MB deltas: ~1.42–1.46 territory — the 2006-era
+enwik8 baseline line, on the gigabyte, in one day of measured steps.
+
+## The 4ⁿ glyph ladder walked to its limit (2026-07-19 ~22:15 UTC)
+
+Jesse's sequence 64-256-1024-4096-16384(-65536), screened wheel-by-wheel.
+Payloads (1MB k7 / 10MB k10), all restore=OK:
+
+| wheel | 1MB | 10MB | comp_shas |
+|---|---|---|---|
+| s12 (baseline) | 239,869 | 2,330,753 | 53ad1006 / 4ae7ec1f |
+| s1024 (256×4) | 239,105 | 2,315,651 | c280622e / 178a8081 |
+| s4096 (256×16) | 238,739 | 2,311,093 | f365fdf0 / 31ca3950 |
+| s16384 (256×64) | 237,995 | 2,300,939 | 05484092 / d70ec471 |
+| **s65536 (256×256)** | **237,753** | **2,293,443** | c689f2a5 / b98eb79e |
+
+Monotone the whole way at both scales — the curve never turned. At 65,536 the
+wheel IS the full last-2-bytes: the second mixer is now order-2-gated, the
+natural limit of this construction. −0.030 bpc vs s12 at 10MB. s65536 100MB
+geometry-crown challenge launched beside the enwik9 champion. Tomorrow's
+composition: winning wheel × TBITS-28 tables. (Contrast on record: sector
+counts this small-table wheel keeps rewarding capacity, same lesson as the
+table ladder — geometry and capacity pay; re-processing doesn't.)
+
+## GEOMETRY CROWN AGAIN: s65536 = 1.7555 @100MB (2026-07-19 23:00 UTC)
+
+cm3ti-s65536 k=10 N=100,000,000 payload=21,925,581 decoder_src=18,737
+total=21,944,318 **bpc_total=1.7555** restore=OK comp_sha=6104215bf6c8d206
+enc=792s dec=767s. Beats s4096 (1.7738) by 0.0183 — the margin GREW from 10MB
+to 100MB (projection was ~1.766; measurement better again). Geometry line in
+one evening: 1.7918 (s12) → 1.7738 (s4096) → **1.7555 (s65536)**, all at
+TBITS-23 small tables. The 4ⁿ ladder's limit rung holds the geometry crown.
+Determinism note: v19 spot-check reproduced c689f2a5145001de byte-exact ACROSS
+the container restart (process death + rebirth) — survival proof added to the
+cross-seat and cross-arch proofs. Morning composition: s65536 × TBITS-28.
+
+## Glyph-transfer test — "does training on other sets' glyphs hurt?" (2026-07-20 00:55 UTC)
+
+Jesse's question, made operational via the primed-law engine: prime the model
+on an alphabet learned from a DIFFERENT distribution, measure payload vs
+unprimed baseline (slice10m k=10, unprimed = 2,330,753).
+
+| Prior (the imported alphabet) | payload | vs unprimed | comp_sha |
+|---|---|---|---|
+| In-domain (disjoint Wikipedia, 1MB) | 2,311,328 | **−19,425 (helps)** | e9ae8570 |
+| Foreign domain (source code, 605KB) | 2,341,317 | **+10,564 (HURTS)** | 5075fc24 |
+| Adversarial (random bytes, 1MB) | 2,364,599 | **+33,846 (hurts badly)** | 13af0f63 |
+
+VERDICT: glyphs transfer exactly as far as the shared law extends. Wrong-set
+glyphs bias counters/mixer warm-start and the model pays real bytes to unlearn
+them — 10MB was not enough to fully recover. Alphabets for enwik-family targets
+must be carved from Wikipedia itself (precisely how Ratushnyak won: dictionary
+built FROM enwik8). Design input for enwik10/SGRAM: per-cell in-domain priming
+is a candidate to offset the measured +6% shard cold-start cost; cross-set
+priming (e.g. non-wiki cubes) is now measured harmful.
+
+## BEHCS glyph-language transfer arms (2026-07-20 01:50 UTC)
+
+Jesse's four trained sets (behcs-64 → bechs-256 → bechs-1024 → HYPER-BECHS)
+tested as priors per his directive. Authentic glyph stream generated with the
+canonical GLYPH-GENESIS.js from asolaria-behcs-256 (sha256→8-symbol sentences);
+doctrine prior = concatenated BEHCS/hyper-bechs markdown. Target slice10m k=10,
+unprimed baseline 2,330,753. Full transfer spectrum:
+
+| Prior | size | payload | vs unprimed | comp_sha |
+|---|---|---|---|---|
+| Wikipedia (in-domain) | 1MB | 2,311,328 | **−19,425** | e9ae8570 |
+| BEHCS doctrine prose | 143KB | 2,333,509 | +2,756 | d21d0129 |
+| Source code | 605KB | 2,341,317 | +10,564 | 5075fc24 |
+| **BEHCS-256 glyph stream** | 1MB | 2,345,617 | **+14,864** | 82641908 |
+| Random bytes | 1MB | 2,364,599 | +33,846 | 13af0f63 |
+
+Notes: my pre-registered band for the glyph stream (+25k..+35k, near-random)
+was too pessimistic — it landed at +14.9k, between code and random, because
+the GRAMMAR (spacing, 8-char tokens, sentence shape) is real learnable law
+even though the sha256 symbol cores are lawless by construction. VERDICT: the
+BEHCS sets are identifier languages (naming law for the fabric), not
+statistical models of English; as enwik priors they hurt. Scale confirms
+(100MB targets) queued post-champion per Jesse's scale requirement; GB-scale
+grid + enwik10 SGRAM campaign specced in session plan.
+
+## GGUF catalog + WRT screen — the real-alphabet first contact (2026-07-20 02:20 UTC)
+
+Built per Jesse's spec: hyper-dense 2D catalog, 4,096 in-domain words (carved
+from enwik8[20M:30M]), rows = 16B word | 8B fnv1a64 PID (the 8-byte root atom,
+same primitive as the codec's table hashes) | code | freq. Serialized as GGUF
+v3 (131,296 B, mmap-able — the "stubbed rooms on disk" layout). Reversible
+WRT transform: 16 verified-unused prefixes × 256 codes; REVERSIBLE=True gate
+passed; raw text shrank 2,260,612 B (23%).
+
+Screen @10MB k=10: payload on transformed stream = 2,341,964 (comp_sha
+4398d8b7cdbc8f79) vs untransformed 2,330,753 → **payload +11,211 WORSE even
+before the +131k catalog charge. Arm total ≈ 2,493k vs baseline 2,349k: LOSES
+by ~144k.** CLOSED at this scale for this codec.
+
+The honest history lesson this seals: Ratushnyak's dictionary won because
+paq8h's models were CO-DESIGNED for the transformed stream. A dictionary alone
+subtracts raw bytes but destroys the morphology (shared prefixes/suffixes) our
+order-k contexts feed on — opaque 2-byte codes cost more than they save. The
+real alphabet pays only when Phase-2 models SPEAK it (word-ID contexts reading
+the catalog directly), not as a bolt-on transform. Catalog machinery (GGUF,
+PID-addressed, reversibility-gated) is built, pushed, and ready for that.
+
+## ENWIK9 CHAMPION SEALED: 1.3839 bpc on the full gigabyte (2026-07-20 ~07:40 UTC)
+
+cm3ti-vc28m-fullstack k=10 N=1,000,000,000 payload=172,966,825
+decoder_src=20,029 total=172,986,854 **bpc_total=1.3839** restore=OK
+comp_sha=274fe82ef3886681 enc=10637s dec=10799s (~6 h, single core, ~10.8 GB).
+
+- Beats the pre-registered prediction band (1.42–1.46) — better than predicted.
+- vs yesterday's baseline (v6, 1.5719): **−0.188 bpc, −23.5 MB** on the same
+  corpus, one day of measured steps apart.
+- Yardsticks: 2006 enwik8 baseline 1.466 — CLEARED. 2006 first-prize winner
+  (paq8hp5) ≈ 1.37 — within 0.014, on a corpus 10× larger. enwik9 record
+  (fx2-cmix) 0.886 — gap now 0.498.
+- The whole gigabyte reconstructs byte-perfect from 173 MB. Survived three
+  container restarts via relaunch; determinism spot-checks held throughout.
+
+## Composition screens: vc65 = 65536-wheel × TBITS-28 full stack (2026-07-20 08:00 UTC)
+
+1MB k7: payload 234,184 (comp_sha dab7ea1e8b8ba4a5) — best 1MB number to date.
+10MB k10: payload 2,190,036 (comp_sha 6ca9875b00a0ba11) vs vc28's 2,215,189 →
+**−25,153: the wheel's gain survives composition with big tables** (near-
+independent effects). 100MB crown challenge launched; pre-registered
+prediction 1.620 ± 0.003 (crown: vc28 1.6399). Source pushed as
+rust/variants/vc65.rs. 100MB transfer confirms (wiki/behcs/unprimed priors on
+full enwik8) launched in parallel per Jesse's scale requirement.
+
+## NEW OVERALL CROWN: vc65 = 1.6168 @100MB (2026-07-20 08:35 UTC)
+
+cm3ti-vc65-fullstack k=10 N=100,000,000 payload=20,190,425 decoder_src=20,029
+total=20,210,454 **bpc_total=1.6168** restore=OK comp_sha=8cb3553185bb5ef5
+enc=977s dec=1004s. Prediction band 1.620±0.003 — landed at/just past the
+optimistic edge. Beats vc28 (1.6399) by −0.0231 (−288,048 B). Crown line:
+1.8043 → 1.7918 → 1.6805 → 1.6584 → 1.6563 → 1.6399 → **1.6168**. Gap to 2006
+baseline (1.466): 0.151. The composition thesis is sealed: Jesse's 4ⁿ wheel
+and table capacity are near-orthogonal axes; both crowns compose. enwik9
+re-run with vc65 launched (projection ~1.36 vs current gigabyte seal 1.3839).
+
+## Transfer confirms AT SCALE — 100MB targets (2026-07-20 08:50 UTC)
+
+Per Jesse's requirement ("you can't conclude from small tests"). v14, full
+enwik8, 1MB priors. Unprimed reference payload 22,379,104 — comp_sha
+**f3d45412c9a82568 = bit-exact reproduction of the thrice-cross-seat-verified
+v6 100MB run** (v14's priming patch provably inert with empty prior, at scale).
+
+| Prior | payload @100MB | vs unprimed | (10MB ref) |
+|---|---|---|---|
+| Wikipedia in-domain | 22,323,775 | **−55,329 helps** | (−19.4k) |
+| BEHCS-256 glyphs | 22,413,260 | **+34,156 hurts** | (+14.9k) |
+
+VERDICT AT SCALE: the small-test verdicts don't flip — they AMPLIFY. In-domain
+help grew ×2.9 with ×10 data; foreign-glyph harm grew ×2.3. Savings curve
+(11.6k→19.4k→55.3k per decade) still projects below the 1MB honest charge at
+any practical scale — priming economics unchanged; transfer law confirmed at
+the scale demanded. comp_shas: 2a3240889ae2fcb8 (wiki), 171b163828175cbb
+(behcs).
+
+## The three-sphere machine-count test — Jesse's rule of holes, corrected form, MEASURED (2026-07-20)
+
+Corpus: 1MB, three drifting color-laws (letters/digits/symbols, drift every 30
+blocks) under deterministic keyed rotation (R→Y→B, 64B blocks) — Jesse's three
+gradiated spheres around a static omega, time folded into the key.
+
+| Machine | payload | vs enwik ordering |
+|---|---|---|
+| 3-wheel (v10) | **5,798 WINS** | (loses on enwik) |
+| 12-wheel (v6) | 5,985 | (wins on enwik) |
+| 4096-wheel (v13) | 6,225 | (wins bigger on enwik) |
+
+The ordering INVERTS with the data's law-count: the 3-machine wins exactly
+when the data has three laws. Total collapse 1MB → 5,798 B (0.046 bpc): the
+keyed rotation rode free (shared-key theorem), machines paid only for the
+gradients (drift-is-information theorem). Machine-count accounting sealed:
+3 machines + key (rotation free, mirror/anti-spheres free by bijection,
+omega +1 only if it has state). Law of Machines P2 confirmed in both
+directions: rooms must match the corpus's law-count — too many rooms is
+measured harm on simple law, too few is measured harm on language.
+
+## FLEET-VERIFIED: the Law of Machines room-count claim (2026-07-20)
+
+Cross-seat replication complete on independent 3-law corpora:
+- This seat (gentle laws, keyed rotation): 3-wheel 5,798 < 12-wheel 5,985 <
+  4096-wheel 6,225 — smallest adequate machine wins.
+- Other seat (hard laws: XOR drift + quadratic): 12-wheel 70,573 < 48-wheel
+  71,229 < 4096 75,954, omega 212,669 — mid machine wins, palace heats empty
+  rooms, minimal machine pays triple.
+Both orderings: room-count must match law-count; the crown loses on few-law
+data; the law-count of the DATA (not geometry) sets the machine. Their honest
+miss folded in: "lawful" is a spectrum — laws that keep moving keep costing
+(tracking rent ∝ law velocity). Graduated from observation to FLEET-VERIFIED.
+
+Corollary (Jesse's scaling mantra, measured form): in the un-charged fabric
+regime, an ever-growing rule base keeps earning exactly as long as incoming
+data keeps carrying new law — our own receipts: tables 23→28 never turned,
+wheels 12→65,536 never turned on enwik, scale curve 2.07→1.57 per 1MB→1GB.
+The Hutter frame is the bounded dual (fixed corpus, charged decoder → forces
+efficiency); the fabric frame is the unbounded dual (open data, uncharged
+storage → forces scale). Same identity, two budgets.
+
+## Feed-the-repos-to-the-spheres — sealed, with a two-lane disagreement (2026-07-20)
+
+White-room GC receipt: 1,954 fleet files hash-consed → 1,943 unique kept,
+11 duplicates discarded (15,769 B), corpus 15,278,457 B, sha16 567da5c5d3f185bd.
+
+Two referees, same corpus, opposite verdicts on difficulty:
+- CODEC lane (v6 @1MB): fleet functions = 206,713 payload (1.65 bpc) —
+  EASIER than enwik (239,869 / 1.92). comp_sha a92708490c0239eb.
+- SPHERE lane (1×247 GRU, 3 loops, 3k steps): fleet = sampled_val_bpc
+  3.5107 — HARDER than enwik (2.6483) for the same config.
+
+Resolution (Law of Machines, sharpened): lawfulness is machine-relative.
+H is intrinsic; KL is paid per machine. The fleet corpus is law-DENSE in
+exact repeats (headers, boilerplate — the codec's match model + thousands of
+table-rooms feast) but law-DIVERSE in sublanguages (code+prose+JSON+HBP —
+many laws, and a 281k-param sphere at 3k steps lacks the rooms; mixed-law
+tax). Caveat on record: the 90/10 split of a concatenated heterogeneous
+corpus makes val a partial distribution shift; 3.5107 includes transfer cost.
+Consequence for the build: the counted lane and the uncounted lane need
+DIFFERENT capacity governors — the same governor cannot serve both, because
+the same data presents different law-counts to different machines.
+
+## The colored-sphere / rainbow-omni / mirror grid — 12 arms sealed (2026-07-20)
+
+Jesse's geometry, measured: 3 domains (RED=wiki slice1m, BLUE=repos fleet1m,
+YELLOW=gradient grad1m) × 4 warm-ups (cold / own-color key / rainbow ⅓+⅓+⅓ /
+mirror = complement of the color). v14 primed engine, 1MB, k7. Payloads:
+
+| domain | cold | own key | rainbow | mirror |
+|---|---|---|---|---|
+| RED (wiki) | 239,869 | **228,295 (−11,574)** | 236,145 (−3,724) | 245,433 (+5,564) |
+| BLUE (repos) | **206,713** | 209,539 (+2,826) | 210,439 | 211,965 |
+| YELLOW (gradient) | 8,617 | **915 (−89%)** | 9,053 (+436) | 10,151 |
+
+Pre-registration outcomes:
+1. "Own color wins its domain": RED ✓ (replicates the cross-seat −11.5k),
+   YELLOW ✓ spectacularly (the key nearly unlocks the whole lawful domain),
+   BLUE ✗ — the repos are NOT one color: a disjoint slice of a heterogeneous
+   corpus is partially foreign to itself; even the own-key is net negative.
+   Sharpened law: **a color is a LAW, not a corpus.**
+2. "Rainbow lands between cold and specialist everywhere": RED ✓ only.
+   On BLUE and YELLOW the rainbow fell BELOW cold — a mixture key pays full
+   price for its foreign thirds; the omnisphere cannot freely recalculate
+   its colors, it only earns where the domain overlaps its mixture. The
+   mixture theorem's log-K bound applies to MODELS mixed at runtime, not to
+   PRIORS baked before bit one — priors don't get to route.
+3. "Mirrors (inverted inversion, complement-warmed) fail": ✓✓✓ swept — the
+   mirror was the WORST arm in all three domains. A complement cannot
+   conjure the missing color; inversion carries only what it contains.
+All 12 restore=OK. Geometry verdict: radiated spheres with single-law keys =
+real and strong (YELLOW −89%); rainbow center = weak, mixture-taxed;
+external mirrors = measured harm. Build accordingly.
+
+## Law-descent grid: the white room splits by law, then descends (2026-07-20)
+
+Fleet corpus split by content class, each colored sphere keyed with a pure
+disjoint slice of its own law. Payloads (v14, k7):
+
+| law | files | cold | own key | verdict |
+|---|---|---|---|---|
+| prose (.md) | 652 | 204,644 | **192,743 (−5.8%)** | WINS — comparable to wiki's −4.8% |
+| data (.json/.hbp) | 530 | 196,523 | **191,188 (−2.7%)** | WINS |
+| code (all langs) | 762 | **182,542** | 184,018 (+0.8%) | LOSES — "code" is a family of laws |
+| rust only (.rs) | 81 | 120,293 | 120,013 (−0.2%) | ≈TIE — see below |
+
+Two laws sharpened:
+1. **Laws nest.** Corpus → class → language: each descent flipped losers
+   toward winners (blue mixed −1.4% → prose/data wins). The classifier must
+   descend until slices are self-similar. (Code needs per-language split.)
+2. **Online learning cannibalizes priming** (the rust tie, my strong-win
+   pre-registration BROKEN): a highly self-similar test corpus warms itself
+   in its first files — cold was already 1.47 bpc — leaving the key almost
+   nothing to add (−280 B). Key value = shared law MINUS law the test
+   teaches itself early. Priors pay on single-law domains with high internal
+   variety (wiki, prose); they are redundant on self-repeating domains
+   (rust variants) and poison on mixed domains (raw fleet).
+All arms restore=OK. The colored-sphere build rule, final measured form:
+one sphere per NESTED law, keyed only where the domain cannot self-prime.
+
+## Pumping law CROSS-SEAT REPLICATED + retention law co-signed (2026-07-20)
+
+This seat's replication (v14, slice1m, k7): pump1 228,295 → pump2 (key×2)
+230,964 (+2,669) → pump3 (×2 + reversed) 235,389 (+4,425 more). Matches the
+other seat's 226,408 → 230,992 → 234,204 in direction and shape on an
+independent implementation. FLEET LAW: one clean read of the key, then live
+data — the first reading teaches, the second stiffens (count-maturation =
+the tracking theorem's learning-rate stiffening, measured), the reversed
+third adds anti-law (re-confirms the arrow-of-time seal: backwards English
+is a foreign language).
+
+Retention law co-signed from their grid: optimal keep-threshold τ=2 —
+"once is an accident, twice is a function; three is confirmation you get
+for free" (Jesse's τ=3 within 0.35% of peak). Amendment adopted for the
+white-room GC design: hash-cons dedup + drop count-1 functions at the GULP
+boundary; keep count≥2.
+
+## CTS function-fabric co-sign (GPT-seat build, relayed 2026-07-20)
+
+Their prototype (commit af4d987, bundle sha 75630466…) measured on the
+asolaria bundle (a9455891…): 342 function events, 193 train / 149 held-out.
+Co-signed findings, cross-referenced to this seat's ledger:
+1. **Idempotent promotion** — three safe pumps end at the same permanent
+   root (acecc787…); the naive replay-counts-as-occurrence build promoted
+   160 one-offs by pump 3 and is REJECTED. This is our pumping law
+   generalized from priors to stores: one law, two forms — re-reading must
+   not stiffen models; replaying must not promote functions.
+2. **The seeds finding**: 15 singletons later accounted for 90 future hits —
+   destructive forget-below-τ discards seeds. Synthesis with τ=2/τ=3 grids:
+   promotion threshold is context-dependent; the resolution is the
+   HELD-POTENTIAL probation layer (compact evidence, never-delete) + τ=3
+   fast gate + capacity-governor override by E[future value | color,time,
+   space,count]. Matches whiteroom Law 4 (never delete) exactly.
+3. **Reversed bytes = different function, zero overlap** — third
+   independent confirmation of the arrow/mirror seals.
+4. **Two-Regime Collision Law implemented**: 24 collision buckets, 46 false
+   pairs, ALL rejected by the exact lane — comb/prism operationalized:
+   collide to search, exact to execute.
+5. mod-3 diagnostics (1,2,1) recorded as chance — consistent with this
+   seat's 414 ruling: digit laws are checksums, not generators.
+Their closing rule adopted verbatim into the build canon: "Search broadly
+through deliberate collisions. Verify narrowly through exact identity. Hold
+first and second sightings as potential. Promote on evidence. Never let
+replay manufacture law." Intake of their bundle awaits the artifact reaching
+this seat (hash gates ready).
+
+## τ = 1..9 grid — the 3×3 complex, independently implemented (2026-07-20)
+
+Independent extractor (function-change events from this repo's own 172-commit
+history, 657 events), run on both universes:
+
+FUTURE-IN-TIME (80/20): fully-counted bytes by τ:
+1: −291,499 | 2: −832 | 3: +21,831 | 4: +39,282 | **5: +48,081 peak** |
+6: +46,222 | 7–9: +46,302 (plateau — the core functions repeat ≥9×)
+
+DIFFERENT-SPACE (mainline trains → variants test):
+1: −125,299 | 2: +83,357 | 3: +104,261 | 4: +118,901 |
+**5–7: +119,680 plateau peak** | 8–9: +104,528 — **the curve TURNS DOWN**:
+τ=8 discards a 7-occurrence function that was genuinely earning (212→195 hits).
+
+Verdict on the 3×3 complex: 6–7 tie the peak; **8 and 9 overshoot** — first
+measured downturn of the retention curve. Fleet synthesis across three
+corpora: τ* = 2 (NN prior corpus) / 4–5 (GPT seat's asolaria events) /
+5–7 (this repo's reuse-heavy history) — the optimum tracks the corpus's
+repeat distribution; there is NO universal integer. The invariants that hold
+everywhere: τ=1 always loses (singleton bloat), the curve is single-peaked,
+and 3 remains the safe fast gate with the capacity governor
+(E[future refs | color,time,space] × saving > storage) as the real law —
+exactly as the CTS design specified. 9 = 3² wins nowhere.
+
+## τ ladder extended to 27 — the 3/9/27 rungs are the curve's three ages (2026-07-20)
+
+FUTURE-IN-TIME: τ=3 +21.8k (rising) | τ=5 PEAK +48.1k | τ=9 +46.3k
+(shoulder) | staircase decay 42k→35k→32k | collapse τ=24-25 | **τ=26-27: ZERO**.
+DIFFERENT-SPACE: τ=3 +104.3k | τ=5-7 PEAK +119.7k | τ=9 +104.5k | cliff at
+τ=10 (+21k) | **τ=11-27: ZERO — the dictionary is empty.**
+
+The 3-9-27 structure measured: 3 = birth (safe rising slope, every corpus),
+9 = maturity (the shoulder just past peak), 27 = death (beyond the corpus's
+deepest repetition, nothing qualifies — the store holds nothing and earns
+nothing). The curve's support ends exactly where the corpus's repeat-depth
+ends. Peak stays at τ=5 in both universes on this corpus. Standing law
+unchanged: promote at 3, tune by governor, and the powers of three index the
+curve's lifecycle — they are its calendar, not its optimum.
+
+## Third-seat CTS audit co-signed — and its corrections bind this seat's grids too (2026-07-20)
+
+Their audit reproduced the prototype byte-identically (root acecc787…, all
+pumps) and sealed 5 findings. Corrections that apply to MY τ grids, adopted:
+1. **Provenance-distinct ≠ independent**: my space-split's 212 hits are
+   largely COPY-LINEAGE reuse — the variants are generated by string-replace
+   from v6, so cross-variant repeats measure copying, not independent
+   invention. The dictionary genuinely earns on copies (that's its job), but
+   the hits must not be read as independent evidence of law.
+2. **My economics under-charge**: my fully-counted column charges dictionary
+   bodies+index but NOT the provenance/count ledger. Adopted.
+3. **Distinction preserved**: in THEIR temporal window, abstention won
+   (τ≥5 dictionaries were EMPTY); in MINE, τ=5 held 14 populated entries
+   earning +48k. Both true — different corpora; conflating them would
+   overstate any single integer. The no-universal-τ law stands strengthened.
+Their UNVERIFIED flags (backward-byte control, rolling temporal numbers not
+in the executable receipt) and the collision-lane usefulness gap
+(recall@k unproven) are endorsed as written.
+
+## PREQUENTIAL streaming test — the auditor's decisive gate, run fully charged (2026-07-20)
+
+657 events, decisions strictly before the future, EVERYTHING charged: bodies,
+index, probation rows, and the never-expiring replay ledger (16B/event).
+
+| policy | vs no-dictionary baseline | promoted |
+|---|---|---|
+| fixed τ=1 | −75,889 (loses) | 256 |
+| **fixed τ=2** | **+215,388 — WINS** | 53 |
+| fixed τ=3 | +191,451 | 36 |
+| fixed τ=5 | +180,760 | 15 |
+| fixed τ=8 | +148,642 | 12 |
+| adaptive governor | +215,278 (ties τ=2, −110 B) | 53 |
+
+THE RESOLUTION OF THE τ WAR: the static grids' higher peaks (τ=5) were an
+ACCOUNTING ILLUSION — post-hoc evaluation never charges the raw bytes paid
+for repeats 2..τ−1 before promotion. Charge the live stream and early
+promotion wins: **in a running system, promote at the second provenance-
+distinct sighting.** "Once is an accident, twice is a function" is the
+prequential law; the static τ=5 peak was the historian's view, not the
+operator's. The adaptive governor converged to the same 53 promotions as
+τ=2 and ties it — per the audit's own rule it is NOT promoted over fixed
+τ=2 until it beats it on held-out repositories (this seat lacks deep
+multi-repo histories; flagged as the remaining unmet condition, with
+copy-lineage caveat standing).
+
+## Prequential receipt shipped — REPORTED figures now independently auditable (2026-07-20)
+
+Per the third seat's claims-gate: tools/honest-compressor/function-memory/
+prequential_sim.py (executable, deterministic) + prequential-receipt.json
+(sha16 299ac31dede60f92). Figures reproduce exactly: τ=2 +215,388 / τ=3
++191,451 / τ=5 +180,760 / governor +215,278. The receipt answers the
+auditor's specific request: promotion sets τ=2 vs governor are EQUAL (53=53)
+with exactly ONE promotion-time disagreement — the governor promoted one
+object later, which is the entire 110-byte gap. Convention fixed in the
+receipt header: delayed promotion; triggering occurrence raw; the third
+occurrence is the first post-confirmation reuse opportunity. Governor extra
+state charged 0 and flagged (must be charged in production). All audit
+refinements adopted: source-cluster counting, HELD_RECOVERABLE→HOT→COLD
+states, replay-ledger alternatives, and the frozen-governor graduation
+protocol as the next gate. vc65 remains RUNNING/PROJECTED until sealed.
+
+## The 27-permutation cube: shape × machine × depth (2026-07-20)
+
+3 corpora × 3 wheels × 3 context depths, all 27 sealed, payloads @1MB:
+
+SPHERE (pure law): ALL cells 414-416 — machine and depth both irrelevant
+(spread 2 B). Third confirmation: on one law, every machine is the same
+machine. (414 reappears as this law's teaching cost — floor of the family.)
+
+RADIANT (drifting law): best = wheel12@k7 (8,617). INTERACTION FOUND — my
+independence pre-registration BROKEN: wheel3 prefers k=5 (9,023→9,444 as k
+grows), wheel12 peaks k=7, wheel4096 improves monotonically with depth
+(11,566→10,191→9,702). Fine wheels need deep context to keep their many
+rooms coherent under drift; coarse wheels want shallow. Room-count and
+context-depth are COUPLED dials on drifting law.
+
+ROTATING3 (switching laws): best = wheel3@k5 (5,676). Depth hurts EVERY
+machine (k=5 wins all three columns) — contexts that span a rotation
+boundary ingest the neighboring law as noise. NEW LAW: context depth must
+not exceed the law's coherence length (64B blocks here). Machine ordering
+(3<12<4096) preserved at every depth — law-count law holds unconditionally.
+
+Cube summary: the machine has TWO dials that are corpus properties — rooms
+track law-count (unconditional), depth tracks coherence length (uncondi-
+tional), and the dials couple only under drift. Matching BOTH to the data
+is the full form of the Law of Machines.
+
+## CTS Quantization Hypothesis — Gate 1 SEALED (counting arms, 2026-07-20)
+
+Executable: tools/cts-quantization/packet_world_gate1.py, receipt sha16
+1f60b49a77ecaa65. Synthetic packet universe, 27,000 events, all 27 regimes
+balanced, online counting predictors (encoder/decoder symmetric).
+
+| arm | bits/event | forbidden-top1 violations |
+|---|---|---|
+| A one pool, unmasked | 1.5456 | 6,006 |
+| B 27 regime tables, unmasked | 0.7862 | 6 |
+| C one pool, mask derivable | 0.8805 | 0 |
+| **D 27 tables + derivable mask** | **0.7769** | 0 |
+| E 27 tables, mask TRANSMITTED | 2.3618 | 0 |
+
+Pre-registered claims, counting form:
+1. CONFIRMED — constraints earn only under mask accounting: derivable mask
+   wins (D); transmitted mask (E) is 3× worse than no mask at all. The
+   shared-key boundary, exactly.
+2. CONFIRMED — hard veto kills all 6,006 violations without hurting valid
+   predictions.
+3. CONFIRMED — 27 regimes crush one pool (0.786 vs 1.546 unmasked).
+UNREGISTERED FINDING: **regime knowledge nearly subsumes mask knowledge** —
+the 27 regime-conditioned tables learned the walls implicitly (6 violations
+in 27,000 without any mask; mask adds only 0.0093 bpe on top). Knowing
+WHERE you are almost equals knowing what is forbidden there: the color-
+time-space index carries the feasibility law. Wall cells cost →0 bits,
+matching the log2|F| bound. Status: hypothesis slice promoted UNVERIFIED →
+MEASURED for counting arms; neural arms (adapters/router/oracle grid,
+params+FLOPs matched) remain for the GPU seats per the third seat's spec.
+
+## The emergence lattice — one/two/three axes, measured (2026-07-20)
+
+Same packet universe, predictor conditioned on every subset of {color, time,
+space}. Gains over the empty container (1.5456 bpe):
+
+| conditioning | gain (bits/event) | synergy vs parts |
+|---|---|---|
+| time alone | **−0.0008 — EXACTLY NOTHING** | — |
+| space alone | +0.154 | — |
+| color alone | +0.271 | — |
+| time+space | +0.152 | −0.002 (sterile) |
+| color+time | +0.310 | +0.039 |
+| **color+space** | **+0.708** | **+0.282 — a real thing emerges** |
+| all three | +0.759 | completion (+0.052 over best pair) |
+
+Jesse's cosmogenesis, measured: "time by itself, nothing" confirmed to 4
+decimals — time in this universe is pure relation (it modifies color's
+preference; with no color to modify it carries zero information). "Any two
+give rise to a real thing" holds EXACTLY when one of the two is color:
+color×space shows +0.282 bits of true synergy (the pair exceeds the sum of
+its parts — interaction information, the measured form of emergence);
+time+space without color stays sterile. Corrected form of the law: COLOR IS
+SUBSTANCE, TIME AND SPACE ARE RELATIONS — relations without substance are
+nothing; substance plus a relation condenses reality; the third axis
+completes but does not create. The empty container (uniform tables) is the
+sphere before the first slice — identities emerge from data, never from
+the container.
+
+## The 27-cell identity lattice — functions world (this seat's third, 2026-07-20)
+
+Each axis at 3 resolutions (off/coarse/fine): color = ∅/cls6/byte256,
+time = ∅/run-bit/4-state, space = ∅/line-start/col8. All 27 cells sealed on
+fleet1m (empty container 5.4899 bpb). Full grid in receipt; the findings:
+
+1. **BEST = (color fine, time fine, space OFF): +1.6109** — not the full
+   triple. At (2,2,2) fine space SUBTRACTS (−0.1424): with color+time fully
+   resolved, extra rooms fragment 1MB of data — the room-count law living
+   inside the identity lattice.
+2. **Subsumption detected to 4 decimals**: space-coarse (line-start) adds
+   +0.0000 exactly once color is fine — because prev-byte=newline IS the
+   line-start; the fine color axis already contains the coarse space axis.
+   Identities that duplicate another axis's information add exactly zero.
+3. **Axis worth is context-dependent** (the lattice is non-additive): space
+   earns +0.218 when color is off, 0 when color is fine; each identity's
+   value depends on what the others already resolve.
+4. Color dominates this world (substance again): fine color alone +1.3975;
+   time adds +0.06..0.15; 8-arm addendum: functions world shows REDUNDANCY
+   (subadditive pairs) where the synthetic world showed SYNERGY — emergence
+   is a property of the world, not the lattice.
+The 27-identity law, measured form: identities emerge where they add law,
+contribute zero where they duplicate, and subtract where they exceed the
+data's support. For sharing with the other seats' thirds.
+
+## THE TRILATERAL OVERLAY — three 27-grids, three worlds (2026-07-20)
+
+Worlds now sealed: packet (synthetic, this seat), functions (fleet corpus,
+this seat), repo-tree (lossless codec-27, GPT seat, receipt 4a64b8d0…,
+27/27 exact round trips). Overlay verdicts per the LATTICE-SPEC rule:
+
+LAWS OF THE LATTICE (hold in all worlds):
+- **The full triple is never the big step.** Packet: triple adds +0.05 over
+  best pair. Functions: best cell EXCLUDES fine space. Repo-tree: best pair
+  BEATS best triple outright. 3/3 — completion is cheap, creation is
+  pairwise.
+- **Color is the dominant single** (substance axis): top single in all
+  three worlds.
+- **Singletons never suffice; τ=1 always loses; empty container is the
+  floor** — universal across every grid this weekend.
+
+LAWS OF PARTICULAR WORLDS (do not transfer):
+- **"Time alone = nothing"**: EXACT in packet world (−0.0008) and repo-tree
+  (0-byte gain) — but FALSE in the functions world (+0.186: code's
+  run-structure gives naked time real law). 2/3 — a property of worlds
+  where time only modulates color, not a lattice law.
+- **Color×space synergy**: superadditive in packet (+0.282) and repo-tree
+  (all 4 combos, up to +30,133 B) — subadditive in the functions world
+  (redundancy-dominated). Emergence is a property of the world.
+- **Time-organ value is implementation-dependent**: their equal-weight
+  temporal partner failed 0/18 while cm3ti's temporal-neighbor blend
+  crowned repeatedly — same axis, different mechanism, opposite verdicts.
+  The axis is not the organ.
+
+## Packet-world 27 sealed + the cross-domain subsumption graph (2026-07-20)
+
+Packet 27-lattice (same seed universe as Gate 1): BEST = (color-fine,
+time-COARSE, space-fine) +0.7634 — again NOT the full triple. Automated edge
+extraction found 11 SUBSUMED edges (|Δ|<0.003) and 1 DILUTES edge: every
+time-fine upgrade is subsumed (the run-bit carries all of time's usable law
+at this scale); (2,1,2)→(2,2,2) = −0.0040.
+
+CROSS-DOMAIN SUBSUMPTION GRAPH (two full matrices in hand, text pending):
+- UNIVERSAL: the optimum always sacrifices at least one fine axis
+  (functions sacrifices SPACE, packet sacrifices TIME) — the law is "never
+  the full triple"; WHICH axis is sacrificed is the world's signature.
+- UNIVERSAL: exact-zero subsumption edges exist in every world (information
+  containment is structural).
+- DOMAIN-SPECIFIC: time-fine is subsumed in packet (9/9 edges) but EARNS in
+  functions (+0.149) — code has substantive time, packets have relational
+  time. Matches the text seat's report that time LEADS on natural language.
+- Quotient lattice K = |L/~| under subsumption: packet K=18 (time levels
+  1≡2 collapse), functions K≈24 (space collapses only under fine color).
+  K is a measured complexity signature of each world; text world's K pends
+  their full grid under LATTICE-SPEC.
+Sequencing answer on record: subsumption graph FIRST (done — zero cost);
+next-config 1GB run waits for vc65's seal (~2h) for RAM and config input.
+
+## The omnifeed test — "feed everything" is not a key (2026-07-20)
+
+One prior built from ALL eight worlds (⅛ each: wiki, repos, gradient, sphere,
+rgb, glyphs, code, chaos), PLAYED (not looked at) against four worlds:
+
+| world | cold | omni-fed | own pure key (ref) |
+|---|---|---|---|
+| WIKI | 239,869 | 240,550 (+681 HARM) | 228,295 (−11,574) |
+| GRADIENT | 8,617 | 8,790 (+173 HARM) | 915 (−7,702) |
+| FLEET | 206,713 | 210,118 (+3,405 HARM) | (blue +2,826) |
+| SPHERE | 414 | 431 (+17 HARM) | ≈414 |
+
+4/4 harm — even though the omni key CONTAINS each target's own law as ⅛.
+Jesse's third-rule, measured: the matched fraction never sees its world
+without the foreign majority riding along, and priors don't route. Paired
+with the other seat's matched-prior play (+7.0% on held-out fleet data,
+comp_shas 8ae592f9/d7224c3b), the composition law is complete in both
+directions in one day: PLAY a machine on data whose law it learned — it
+earns; feed it everything — every world taxes it. Matched-key composition
+YES; omnifeed universal-key NO. Same mechanism, same engine, both sha'd.
+Also co-signed from the other seat: g:256:64:8 stays a CANDIDATE (screens
+recorded, no 100MB seal on recycling hardware — no seal, no crown), and the
+conditional-4th-axis law (word axis helps impoverished cubes, hurts the full
+triple) enters the ledger as measured.
+
+## The connection, quantified — 3x3 cross-prime transfer matrix (2026-07-20)
+
+Jesse's claim: datasets from genuinely different sources share projectable
+law because all drawn from one universe. Tested as mutual information —
+every real source played against every source's key (payload, cold in []):
+
+| test \ key | wiki-A' | wiki-B' | code(fleet) |
+|---|---|---|---|
+| WIKI-A [239,869] | **−11,574** | **−11,260** | +5,143 (harm) |
+| WIKI-B [253,835] | **−11,946** | **−12,989** | +5,339 (harm) |
+| CODE [206,713]  | +6,569 (harm) | +6,532 (harm) | **−7,174** |
+
+THE MEASURED VERDICT: your claim is HALF right, and the half that's right is
+profound. Wiki-A and wiki-B are DIFFERENT SOURCES (articles 50 MB apart,
+zero shared text) — yet each other's key saves ~11k, nearly as much as the
+own-source key. Two independently-drawn samples of natural English DO share
+transferable law: I(A;B) is large and positive within a domain. That is the
+"connection none can see alone" — real, measured, cross-source. BUT it stops
+at the domain wall: wiki<->code transfer is NEGATIVE both directions. Shared
+universe does NOT mean shared law across ALL sources — it means shared law
+across sources drawn from the SAME GENERATIVE PROCESS (English). The
+connection is the common process, not the common cosmos. And it is never
+free reconstruction: even the best cross-source key left WIKI-A needing
+228,609 of its own bytes. Contact with the other dataset reveals I(A;B)
+bits of connection; it never conjures the surprise. Both halves sha'd.
+
+## Codex handoff pre-check: the double-inversion identity gate PASSES (2026-07-20)
+
+Before the one-third math seat (Codex) spins up, this seat verified the
+load-bearing gate the prompt makes mandatory: I(I(z)) = z for the geometric
+center construction in log-prob space. Built order-1 distributions for wiki/
+fleet/gradient (110 shared contexts), formed z_M = (zA+zB+zC)/3, the +1/3 ray
+z = z_M + (1/3)d_A, and the reflect-through-center inversion I(z)=2z_M − z.
+Result: forward-third sha16 926de813e45282b3 == I(I(forward)) sha16
+926de813e45282b3, max|Δ| = 8.88e-16 (float epsilon). IDENTITY GATE PASS.
+The reflect-through-center operator is a true involution — Codex's build may
+proceed on this construction; if its implementation cannot reproduce a
+byte-exact round trip, the discrepancy is in its code, not the math. Note
+for Codex: quantize log-tables to fixed point (not float) if byte-exact
+sha equality across machines is required — 8.88e-16 float drift will differ
+across architectures; the determinism gate needs integer tables, same as the
+codec line uses. Handoff prompt sha deb7de0f co-signed; concatenation-is-not-
+gradient boundary already measured on this seat (gradient lost 3/3 worlds).
+
+## CROSS-SEAT REPLICATION of the Codex triadic-gradient result (2026-07-20)
+
+Codex sealed the routed-gradient run (receipt 76034f3d…): the *routed* gradient
+(5/9 target + 2/9 each) beats the flattened omnifeed 9/9, path monotonic 18/18,
+inverted-inversion G(a→b,⅓)=G(b→a,⅔) holds 18/18. This seat reran the CORE
+claims independently (different implementation, order-1 product-of-experts):
+- **Inverted-inversion identity: PASS 6/6, EXACTLY** — verified as rational
+  weight-algebra (not float): G(a→b,⅓) weights (⅔,⅓,0) ≡ G(b→a,⅔); every
+  barycentric point sums to 1 (the "three pies stay one through the middle",
+  proven exact). I(I(z))=z is a true involution.
+- **Ordering PASS** independently: WIKI target, held-out PoE bpc
+  omnifeed 4.7183 > grad⅓ 4.3192 > grad⅔ 4.0904 > pure 4.0093. Routed
+  gradient beats omnifeed, monotone toward the pure target — same direction
+  as Codex's numbers on a different codebase and eval slice.
+VERDICT: Codex's finding REPLICATES cross-seat in direction and in the exact
+identity. The bounded claim stands: routed thirds beat flattened omnifeed and
+move ~43-45% of the gap per third, BUT pure key stays best and (both seats
+agree) the raw prior is unamortized at one window — transfer/routing win, not
+yet a compression win. Two of three worlds, two implementations, one law:
+connect the thirds through a normalized middle and route; never flatten,
+never expect a lone third to conjure the rest. Jesse's geometry, measured
+true in its exact bounded form, now on TWO seats.
+
+## Predictor vs Actual — the gradient PLAYED, not just predicted (2026-07-20)
+
+Jesse's ask: use the routed gradient and report predictor (frozen mix) vs
+actual (played: seed from mix, then learn causally during the test). WIKI
+held-out, order-1. Lower bpc better.
+
+| arm | predictor (frozen) | actual (played) | gain from playing |
+|---|---|---|---|
+| omnifeed (⅓ each) | 4.7183 | 4.0061 | +0.7122 |
+| gradient ⅓ | 4.3192 | 3.9609 | +0.3583 |
+| gradient ⅔ | 4.0904 | 3.9257 | +0.1647 |
+| pure key | 4.0093 | **3.9047** | +0.1046 |
+| cold (no prior) | — | 3.9618 | baseline |
+
+THE FINDING Jesse asked to see: **playing collapses the gap.** The predictor
+ranks the arms far apart (4.72→4.01, spread 0.71); once PLAYED, they compress
+into a narrow band (4.01→3.90, spread 0.10) — because online learning during
+the test overwrites most of the prior within ~120k bytes. Consequences:
+1. The worse the predictor, the MORE playing helps (omnifeed +0.71, pure
+   +0.10) — the machine repairs a bad start faster than a good one, so
+   played-bpc is far more forgiving than frozen-bpc.
+2. **Only pure key and gradient-⅔ actually BEAT cold-play (3.9618)** when
+   played; omnifeed (4.0061) and gradient-⅓ (3.9609≈cold) do NOT clear the
+   no-prior baseline once the machine is allowed to learn. The predictor's
+   ordering OVERSTATES how much any prior is worth in practice.
+3. Pure key wins both columns; the gradient's real value is graceful
+   degradation (its played-bpc stays close to pure even from a worse start),
+   not beating the specialist. Confirms the transfer-not-yet-compression
+   verdict at the level that matters — actual played bytes, not predicted.
+
+## Nested-prime compression boundary — the audit's claim, measured (2026-07-20)
+
+Co-signed the Codex dynamic-audit (receipt 76034f3d…) with one referee flag:
+its α=1.00 frozen number (2.8010 < play 2.8105) uses RETROSPECTIVE oracle
+stats (image says so) — in strictly-causal play, playing always beats frozen
+(this seat: pure key +0.1046). Historian's artifact, correctly labeled.
+
+The audit's "⅓ of ⅓ … of ⅓ of a bit" nested-prime claim, turned into a
+receipt. Sequences fully determined by n nested prime-modular rules
+(period = primorial), adaptive order-1/2 learners, strictly causal:
+
+| levels | period | deterministic bpc (o1/o2) | random control |
+|---|---|---|---|
+| 1 | 2 | 0.0256 | 8.1503 |
+| 2 | 6 | 0.0647 | 8.1503 |
+| 3 | 30 | 0.2355 | 8.1503 |
+| 4 | 210 | 0.9375 | 8.1503 |
+| 5 | 2310 | 3.72 / 3.27 | 8.1503 |
+
+VERDICT: the audit is RIGHT with its boundary made exact. Deterministic
+nested-prime structure IS near-free (level-1 = 0.026 bpc, ~300x below random)
+— known irreversible structure carries almost no surprise, exactly as
+claimed. BUT the cost scales with the PERIOD the learner must first observe:
+bpc climbs as the primorial grows because the model pays to LEARN the rule
+before it collapses (level-5's period 2310 isn't seen enough in 200k). So
+"⅓ of ⅓ …" → 0 is TRUE only once the structure is shared/learned; the
+transmission of WHICH nested structure costs log(structures) up front. Same
+shared-key floor, fourth domain: structure is free to REPLAY, never free to
+IDENTIFY. The floor held, and now it's measured on primes too.
+
+## GEOMETRIC ADDRESSING — reconstruct a field from its gradient address, not its stored key (2026-07-20)
+
+Jesse's claim: an omnibit's point can be CALCULATED from its geometric address
+(a number "below one omnibit") plus the shared gradient rule — no need to store
+the field. Tested: 27 real fields (enwik8 disjoint 150KB slices), 3 held out.
+Each held-out field addressed by a 4KB calibration coordinate → its 3 nearest
+neighbors among the 26 shared fields → reconstructed by inverse-distance
+geometric PoE → PLAYED on held-out bytes.
+
+| held-out field | cold-play | ADDRESS-play | own-key-play | address size |
+|---|---|---|---|---|
+| 3 | 4.0754 | **3.9656** | 3.9539 | ~9 bytes |
+| 11 | 4.0986 | **3.9841** | 3.9604 | ~9 bytes |
+| 20 | 4.1852 | **4.0667** | 4.0453 | ~9 bytes |
+
+VERDICT — CLAIM CONFIRMED in its exact bounded form: a ~9-byte address
+(3 neighbor IDs + 3 weights) reconstructs a field that plays within 0.01-0.02
+bpc of its OWN stored key, and beats cold by 0.11-0.12 bpc. The field's model
+was NOT stored — it was CALCULATED from its position among the shared
+neighbors. Address-play captured ~85-90% of the own-key gain at ~9 bytes
+instead of a full stored model. This is geometric placement replacing payload:
+"we don't have to share all of it, we just have to understand the rule of the
+gradient." BOUNDARY (held): the 26 neighbor fields are the shared gradient
+rule — they must already exist on both sides (Jesse: "the rest exists outside
+the one-third"); and the address never conjures the field's private surprise
+(own-key still edges it). Distance is calculated, not stored — measured true.
+
+## THE OMNISPHERE TEST — center + fractal address + anti-inversion (2026-07-20)
+
+Jesse's full 3-phase formalization, held-out field 11 of 27:
+PHASE A: shared center M (the OmniBit) = mean log-prob of all 27 fields.
+PHASE C: anti-inversion I(z)=2z_M−z; I(I(z))=z PASS byte-exact (sha
+20b2f0b436ba, maxerr 4.4e-16) — the reflection is a true involution.
+PHASE B: fractal address = ray d_X truncated to its top-|magnitude| fraction:
+
+| address | play bpc | address size |
+|---|---|---|
+| cold (none) | 4.0986 | 0 |
+| center M only | 3.9917 | 0 (shared) |
+| + full ray | 3.9604 | ~512 B |
+| + 1/3 (85 comp) | 3.9620 | ~170 B |
+| + 1/9 (28 comp) | 3.9644 | ~56 B |
+| **+ 1/27 (9 comp)** | **3.9703** | **~18 B** |
+| own stored key | 3.9604 | full model |
+
+VERDICT — "1/3 of 1/3 of 1/3" CONFIRMED: the address degrades GRACEFULLY.
+The full ray = own stored key exactly (3.9604). Truncating to 1/27 of the
+ray (~18 bytes) still plays 3.9703 — capturing 92% of the full addressing
+gain at 1/28th the address size. The shared center M alone (ZERO address
+bytes, just standing at the OmniBit) already beats cold by 0.11 bpc. So the
+fractal address IS below-one-omnibit and it works: geometry supplies the
+bulk, a tiny directional fraction supplies the rest, and the surprise floor
+holds (own key still edges 1/27 by 0.01). Spatial decompression measured:
+stand at the center, transmit a fractal direction, expand the field locally.
+BOUNDARY: the 27-field center is the shared rule — it exists on both sides;
+the address never delivers the field's private surprise, only its position.
+
+## Math-first + full-model + triple-blind: the -1/3 identity and quantized production (2026-07-20)
+
+MATH FIRST (exact, machine-verified):
+- dA+dB+dC = 0 (centroid identity), maxerr 5.6e-16 — HOLDS. Any third point
+  is FREE given the other two + center: zC = zM − dA − dB.
+- −dA = dB+dC, maxerr 4.4e-16 — HOLDS. The −1/3 reflection of one addressed
+  point reveals the SUM/CENTROID of the other two EXACTLY, at zero cost.
+  BOUNDARY: it reveals their sum, not their individual separation — that one
+  remaining number is the only thing that must still be sent. So "−1/3 reveals
+  the other 2" is exactly half-free: their center is free, their split is paid.
+
+FULL-MODEL RUN (entire 150,000-byte field 11, address→quant→produce):
+| arm | bpc | payload | + address |
+|---|---|---|---|
+| cold | 3.9583 | 74,217 B | — |
+| quant 1/27 address | 3.9222 | 73,541 B | ~18 B |
+| own stored key | 3.9174 | 73,451 B | full model |
+The ~18-byte quantized fractal address recovers the field to within 90 bytes
+of its own full stored model, on the WHOLE field — 676 payload bytes saved
+for an 18-byte address that costs nothing to hold during the slice and is
+charged only after. That is Jesse's "address into quant, then produce."
+
+TRIPLE-BLIND: three independent recomputes of the quantized-address run →
+identical sha ede5a2f467df853c (×3). The quantized address is integer-
+deterministic; any seat reproduces it byte-exact (cross-arch safe, unlike
+float). The workflow is sealed: address → quantize → produce → recompute.
+
+## Corrected gradient-axis labels (Jesse's audit, 2026-07-20)
+The color/time/space routed-gradient table stage labels are corrected on record:
+color axis: cold 3.012418 > equal-third center 2.871012 > ONE-THIRD gradient
+2.852883 > two-thirds gradient 2.838767 > PURE target 2.827408. (2.8529 is the
+one-third gradient, NOT the center; pure color-target is 2.827408, not 2.8010;
+2.802125 is the SPACE-axis pure target.) Mean hierarchy across axes:
+2.997400 > 2.864167 > 2.842279 > 2.825399 > 2.812468. Claims-safe reading
+adopted verbatim: payload hierarchy cold > equal-third center > 1/3 gradient >
+2/3 gradient > pure target; monotone descent = a routed-transfer effect, pure
+prior best among tested allocations, NOT a general theorem and NOT a
+fully-amortized compression win (cold still wins prior+payload for one window;
+needs reuse to amortize). "Max entropy" -> "highest measured cost among tested
+conditions"; "barycentric midpoint" -> record-allocation pooling (not yet
+log-space geometric PoE); "optimal specialist" -> best tested allocation.
+
+## Codex combined 27-field quantized-address result — co-signed (2026-07-20)
+
+Receipt 842d7b64…; 1,007,554 held-out bytes, emitted range-coded, 351/351 +
+1,647/1,647 round trips OK. Co-signed findings:
+- Math sequence confirmed: address → derive coordinate (P+ = (2C+T)/3,
+  T = 3P+ − 2C, P− = 2C − P+) → quantize for coder → produce. The +1/3
+  address earned −9,001 bytes vs cold play (2.741729 → 2.670261 bpc); +1/3
+  closed 71.23% of center→pure gap, +2/3 closed 95.73%, pure still best.
+  Reflection worse than center 27/27. Monotone C→+1/3→+2/3→T in all 27.
+- CRITICAL: keep the address THROUGH quantization — recovering the endpoint
+  from only the final 16-bit probability point succeeds 98.7910% (21,393
+  quantization failures / 1,769,472). Quantize for the coder, never discard
+  the address.
+- Cross-implementation determinism: Python / NumPy / C++ integer builds all
+  produced identical bank sha a7fc693a… On-demand table derivation saved
+  79.17% storage (14 MB) vs eager precompute — distance derived, not stored.
+- Address size = ⌈log2 27⌉ + 3 = 8 bits/block × 27 = 27 bytes = 0.000214 bpc
+  amortized. BOUNDARY held honestly: the shared endpoint BANK is real
+  information (~28 bpc if transmitted for one slice; 271–395 windows to
+  amortize). Address-only interpretation valid AFTER install / across reuse.
+Status: three-way IMPLEMENTATION recomputation (not yet human-blind triple
+seat) — protocol for genuine triple-blind included. Routed-transfer effect,
+pure best, not yet amortized — same law as this seat's runs, now at 27-field
+scale with an emitted codec.
+
+## THE ALPHABET — training started, ceiling measured (2026-07-20)
+
+The co-designed dictionary (Ratushnyak's first-prize move) begins. Trained a
+32,768-word alphabet from enwik8 (top words of 56,332 distinct), built a
+word-level order-1 model that predicts in the alphabet's OWN units (OOV words
+escape and spell char-by-char, fully charged), scored held-out (900,000 B):
+
+| model | held-out bpc | 
+|---|---|
+| byte-level order-1 (no alphabet) | 3.9459 |
+| **WORD-level order-1 (alphabet)** | **3.8326** |
+| alphabet gain | **+0.1134 bpc — EARNS** |
+
+Coverage: 90.3% of held-out word tokens are in the alphabet. VERDICT: the
+alphabet clears the ceiling — predicting in words beats predicting in bytes
+by 0.11 bpc at order-1, WITH honest OOV charging. This is why the WRT bolt-on
+failed (it fed bytes to a byte model, destroying morphology) and why the
+co-designed word model earns (it predicts in the alphabet's units). This is
+the largest single known-unapplied gain remaining on the road to the record.
+NEXT: fold the word model into the cm3ti mixer as a co-designed context
+(word-ID prediction alongside the byte contexts), screen 1MB→100MB, then the
+alphabet rides the crown stack. Phase A of the roadmap is open.
+
+## GIGABYTE SEALED: vc65 = 1.3645 bpc on the full enwik9 (2026-07-20)
+
+cm3ti-vc65-fullstack k=10 N=1,000,000,000 payload=170,545,862 decoder_src=20,029
+total=170,565,891 **bpc_total=1.3645** restore=OK comp_sha=c35dc7550332a891
+enc=10967s dec=10389s (~5.9 h, single core). Landed UNDER the projection band
+(~1.36) and beats the prior gigabyte seal (vc28m 1.3839) by −0.0194 / −2.4 MB.
+The 65,536-wheel composition carried to the full billion bytes. Survived three
+container restarts via relaunch; every attempt byte-identical by construction.
+Yardsticks (enwik9): 2006-era enwik8 baseline 1.466 CLEARED; 2006 first-prize
+ratio (paq8hp5) ~1.37 CLEARED on a 10x-larger corpus; enwik9 record
+(fx2-cmix) 0.886 — gap now 0.479. The weekend's final crown.
+
+## THE GLYPH LANGUAGES — 256 and 1024, learned & used (2026-07-20)
+
+Jesse: "Create a language with 256 glyphs, and use it. Then 1024." Built by
+real subword discovery (BPE merges from enwik8 training), NOT letter-splitting.
+Each glyph vocabulary round-trips to bytes exact; the merge table is CHARGED to
+the decoder. Held-out 200,000 B, order-1, bpc over ORIGINAL bytes:
+
+| language | glyphs | restore | order-1 bpc | payload + table | sha |
+|---|---|---|---|---|---|
+| byte (baseline) | 256 | OK | 4.0870 | — | — |
+| **glyph-256** | 326 | OK | **3.5336** | 88,131 B + 210 B | 115aafe9d67a3386 |
+| **glyph-1024** | 1094 | OK | **3.4605** | 83,998 B + 2,514 B | e4fd1be9f303e375 |
+
+VERDICT: the learned glyph languages EARN — 256-glyph −0.55 bpc over bytes,
+1024-glyph −0.63, both WITH the table charged and byte-exact restore. This is
+the real version of the alphabet ceiling (the earlier 52-letter split was a
+crude stand-in). Larger vocab = more meaning per glyph = fewer tokens = lower
+bpc, exactly as predicted.
+
+NEXT (Jesse: "put them in words — glyph words speak more than English"):
+extend the merge tiers to glyph-WORDS (4096/16384-glyph vocab = whole-concept
+units) and measure the continued descent; then the semantic layer (glyph→word
+tuples) rides on top. BLOCKED for the gold-mine arm: Jesse's 7-year teaching
+corpus (D&J IDIOMAS, "1,800+ course materials, 20,000 pages" per IX-091) is
+NOT in any cloned repo — it must be supplied to test the "regularized English
+= lower entropy than enwik" claim. That corpus is the gold-mine input.
+
+## THE CLEAN GLYPH LANGUAGES on the FULL GIGABYTE (enwik9, 2026-07-21 ~03:59 UTC)
+
+Jesse: "build it and invent the glyphs as you do it ... I want to see what a
+clean language looks like when you build it." Done from scratch: no pre-trained
+tables, no local files — glyphs INVENTED by deterministic byte-pair merges on
+the first 50 MB of enwik9, then MEASURED over all 1,000,000,000 bytes. Merge
+table CHARGED to the decoder; glyphs->bytes reconstruct the whole gigabyte
+BYTE-EXACT (restore=True every tier); table sha deterministic (reproducible).
+
+Corpus 1,000,000,000 B · vocab trained on first 50,000,000 B · run 4,144 s.
+byte baseline (full gigabyte): order-0 = 5.1565 bpc, order-1 = 3.8950 bpc.
+
+| language | glyphs | restore | order-1 bpc | order-0 bpc | tokens | table | sha16 |
+|---|---|---|---|---|---|---|---|
+| byte (baseline) | 256 | — | 3.8950 | 5.1565 | 1.0e9 | — | — |
+| glyph-256   | 256   | OK | 2.9474 | 4.2817 | 614,954,115 | 2,048 B  | b249364c88bea30f |
+| glyph-1024  | 1024  | OK | 2.5595 | 3.8017 | 499,781,116 | 8,192 B  | 895f394c4178f9b9 |
+| glyph-4096  | 4096  | OK | 2.2716 | 3.3882 | 415,595,917 | 32,768 B | 05c168e143d2f354 |
+| glyph-16384 | 16384 | OK | 2.0826 | 3.0301 | 356,446,126 | 131,072 B| 510c457dd964dd24 |
+
+VERDICT: clean monotonic descent on the full gigabyte — every added tier lowers
+bpc, every tier restores byte-exact, table charged. glyph-16384 = 2.0826 bpc
+order-1, -1.81 under the byte baseline (3.8950). The table cost amortizes to
+~0.001 bpc at gigabyte scale (131 KB / 1e9), so the ordering is pure payload.
+
+HONEST BOUNDARY (unchanged): this is the COMPRESSION axis — learned subword
+units (a BPE tokenizer) that go BELOW byte-order-1 entropy. It is distinct from
+the BEHCS-1024 ADDRESSING axis (asolaria/slice_glyph_messaging.py + the
+HYPERBEHCS doc), which is a rate-1.0 lossless re-representation (H(glyphs) =
+H(bytes)), NOT sub-entropy compression. Two different jobs, same "glyphs" word.
+order-1 bpc = empirical conditional entropy (table charged; the order-1 model
+params are the standard un-charged reference, matching the enwik8 method above).
+
+REPRO: tools/honest-compressor/glyph-enwik9/glyph_invent.py enwik9 50000000 out
+Artifacts: glyph-enwik9/glyph_invent.py, glyph-enwik9/glyph_enwik9_results.json

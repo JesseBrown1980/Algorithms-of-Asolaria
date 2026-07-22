@@ -1,0 +1,1372 @@
+{
+ "baseline_no_dict_total": 823557,
+ "charges": {
+  "index": 64,
+  "ledger_entry": 16,
+  "probation_row": 32,
+  "ref": 16
+ },
+ "convention": "delayed-promotion: triggering occurrence raw; third occurrence = first monetizable reuse",
+ "events": 657,
+ "policies": {
+  "adaptive_governor": {
+   "governor_extra_state_charged": 0,
+   "note": "governor params are 3 integers; charged 0 here \u2014 flagged, must be charged in production",
+   "promoted": 53,
+   "promotions": [
+    {
+     "count_at_promotion": 2,
+     "event_idx": 69,
+     "hash": "fc59346c8b7e606f",
+     "len": 715,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "78a4b7701f41",
+      "path": "tools/honest-compressor/cm2_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 78,
+     "hash": "da2bb4f212978b90",
+     "len": 335,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 79,
+     "hash": "5513dd924ac459be",
+     "len": 321,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 80,
+     "hash": "72673c7054bb8d4c",
+     "len": 203,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 82,
+     "hash": "e9be75d08fa55942",
+     "len": 386,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 83,
+     "hash": "7e89cc2b733f6d3d",
+     "len": 444,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 137,
+     "hash": "aef18c2915a4f3c4",
+     "len": 2067,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 138,
+     "hash": "f911efbf3d3ca7b2",
+     "len": 1789,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 139,
+     "hash": "95025f01f7946f46",
+     "len": 1286,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 140,
+     "hash": "399e1ad4a52b1cce",
+     "len": 420,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 141,
+     "hash": "812f9693ed5de8cb",
+     "len": 2175,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 142,
+     "hash": "b25d13b289d59b73",
+     "len": 1845,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 143,
+     "hash": "fc73536dc975ff78",
+     "len": 968,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 145,
+     "hash": "2e48d1b4dd2bff18",
+     "len": 487,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 146,
+     "hash": "1b234d5245c61348",
+     "len": 211,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 147,
+     "hash": "b80800687c68faa8",
+     "len": 197,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 148,
+     "hash": "075c3d30dc3c070c",
+     "len": 629,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 150,
+     "hash": "bbc91b64a7dc917c",
+     "len": 467,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 151,
+     "hash": "81fe0babbfc7ef21",
+     "len": 510,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 152,
+     "hash": "8d0cc6b430bee770",
+     "len": 2238,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 4,
+     "event_idx": 179,
+     "hash": "049184e5ccfb818b",
+     "len": 71,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "a424103b6f84",
+      "path": "tools/honest-compressor/rust/cm3ti_combo.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 188,
+     "hash": "2c6d87bdaa130305",
+     "len": 1518,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "01dea5b25976",
+      "path": "tools/honest-compressor/glyph_test.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 189,
+     "hash": "5c7b2a6696155266",
+     "len": 1821,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "abd1baecb564",
+      "path": "tools/honest-compressor/glyph_test.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 190,
+     "hash": "417214bebebab91b",
+     "len": 2020,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 191,
+     "hash": "081cfed6d8c37658",
+     "len": 1695,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 192,
+     "hash": "e96520f94204eefb",
+     "len": 2173,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 193,
+     "hash": "ae9436891229d401",
+     "len": 1817,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 194,
+     "hash": "3408801e43b57092",
+     "len": 487,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 195,
+     "hash": "2c82ab716ad2d8cd",
+     "len": 629,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 196,
+     "hash": "0f96945a644283d0",
+     "len": 1073,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 203,
+     "hash": "c7e2fefc39afa2de",
+     "len": 1077,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "dcad94024319",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 224,
+     "hash": "c4392f8cbf62b8ea",
+     "len": 2440,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "19f6c9e1de99",
+      "path": "tools/honest-compressor/rust/cm3ti_stack_1g.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 225,
+     "hash": "398bee9ed2cc2e63",
+     "len": 1931,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "19f6c9e1de99",
+      "path": "tools/honest-compressor/rust/cm3ti_stack_1g.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 236,
+     "hash": "533d32f9beb1c1bb",
+     "len": 2176,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "462ac0036ef2",
+      "path": "tools/honest-compressor/rust/cm3ti_stackrb.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 237,
+     "hash": "5d3e532cc2a49e46",
+     "len": 1935,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "462ac0036ef2",
+      "path": "tools/honest-compressor/rust/cm3ti_stackrb.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 271,
+     "hash": "407e14a622d62a29",
+     "len": 2221,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/tb26.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 276,
+     "hash": "7dac2271d25a0d61",
+     "len": 1976,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/tb26.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 304,
+     "hash": "bd42546a8ff00977",
+     "len": 1917,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v4_rainbow12.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 308,
+     "hash": "d65d7da045f770fe",
+     "len": 1980,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v4_rainbow12.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 321,
+     "hash": "ef78465e4010401f",
+     "len": 1955,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v5_tight.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 368,
+     "hash": "dfd265583ea5e271",
+     "len": 1917,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v8_r24.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 369,
+     "hash": "1a92f73e75a2a813",
+     "len": 2190,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v8_r24.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 371,
+     "hash": "b0f9a2ec530b7b01",
+     "len": 2419,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v8_r24.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 409,
+     "hash": "e97bee411c53f8dd",
+     "len": 1238,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc26.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 419,
+     "hash": "b3b24c5921659b93",
+     "len": 2310,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 420,
+     "hash": "27979e1fdb5ccc5f",
+     "len": 2086,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 421,
+     "hash": "5a6f013acde078c1",
+     "len": 2320,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 423,
+     "hash": "f17db2a03676b7d4",
+     "len": 2594,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 424,
+     "hash": "24645b4cd61716db",
+     "len": 2203,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 519,
+     "hash": "d470ac15435f51ac",
+     "len": 2419,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "6d805ad90793",
+      "path": "tools/honest-compressor/rust/variants/v14_primed.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 639,
+     "hash": "74a75b3a780b616b",
+     "len": 301,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "3ec907bb99c6",
+      "path": "tools/sphere-moe/sphere_moe_hrm.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 641,
+     "hash": "6d81b04fcf8f17ad",
+     "len": 2309,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "f18273b1412d",
+      "path": "tools/honest-compressor/rust/variants/vc65.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 647,
+     "hash": "fbcd4104af71da01",
+     "len": 1260,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "f18273b1412d",
+      "path": "tools/honest-compressor/rust/variants/vc65.rs"
+     }
+    }
+   ],
+   "state_bytes": {
+    "hot_bodies": 76171,
+    "index": 3392,
+    "probation": 6496,
+    "replay_ledger": 4096
+   },
+   "total": 608279,
+   "vs_baseline": 215278
+  },
+  "fixed_tau_1": {
+   "cumulative_curve": null,
+   "promoted": 256,
+   "promotions": 256,
+   "state_bytes": {
+    "hot_bodies": 436275,
+    "index": 16384,
+    "probation": 0,
+    "replay_ledger": 4096
+   },
+   "total": 899446,
+   "vs_baseline": -75889
+  },
+  "fixed_tau_2": {
+   "cumulative_curve": [
+    {
+     "event": 0,
+     "streamed_plus_state": 777
+    },
+    {
+     "event": 50,
+     "streamed_plus_state": 103050
+    },
+    {
+     "event": 100,
+     "streamed_plus_state": 171622
+    },
+    {
+     "event": 150,
+     "streamed_plus_state": 238846
+    },
+    {
+     "event": 200,
+     "streamed_plus_state": 300247
+    },
+    {
+     "event": 250,
+     "streamed_plus_state": 342103
+    },
+    {
+     "event": 300,
+     "streamed_plus_state": 382931
+    },
+    {
+     "event": 350,
+     "streamed_plus_state": 411303
+    },
+    {
+     "event": 400,
+     "streamed_plus_state": 440700
+    },
+    {
+     "event": 450,
+     "streamed_plus_state": 483353
+    },
+    {
+     "event": 500,
+     "streamed_plus_state": 502335
+    },
+    {
+     "event": 550,
+     "streamed_plus_state": 539980
+    },
+    {
+     "event": 600,
+     "streamed_plus_state": 565913
+    },
+    {
+     "event": 650,
+     "streamed_plus_state": 606959
+    },
+    {
+     "event": 656,
+     "streamed_plus_state": 608169
+    }
+   ],
+   "promoted": 53,
+   "promotions": [
+    {
+     "count_at_promotion": 2,
+     "event_idx": 69,
+     "hash": "fc59346c8b7e606f",
+     "len": 715,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "78a4b7701f41",
+      "path": "tools/honest-compressor/cm2_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 78,
+     "hash": "da2bb4f212978b90",
+     "len": 335,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 79,
+     "hash": "5513dd924ac459be",
+     "len": 321,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 80,
+     "hash": "72673c7054bb8d4c",
+     "len": 203,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 82,
+     "hash": "e9be75d08fa55942",
+     "len": 386,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 83,
+     "hash": "7e89cc2b733f6d3d",
+     "len": 444,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "5a45b5dc090f",
+      "path": "tools/honest-compressor/cm3_asolaria.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 137,
+     "hash": "aef18c2915a4f3c4",
+     "len": 2067,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 138,
+     "hash": "f911efbf3d3ca7b2",
+     "len": 1789,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 139,
+     "hash": "95025f01f7946f46",
+     "len": 1286,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 140,
+     "hash": "399e1ad4a52b1cce",
+     "len": 420,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 141,
+     "hash": "812f9693ed5de8cb",
+     "len": 2175,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 142,
+     "hash": "b25d13b289d59b73",
+     "len": 1845,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 143,
+     "hash": "fc73536dc975ff78",
+     "len": 968,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 144,
+     "hash": "049184e5ccfb818b",
+     "len": 71,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 145,
+     "hash": "2e48d1b4dd2bff18",
+     "len": 487,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 146,
+     "hash": "1b234d5245c61348",
+     "len": 211,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 147,
+     "hash": "b80800687c68faa8",
+     "len": 197,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 148,
+     "hash": "075c3d30dc3c070c",
+     "len": 629,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 150,
+     "hash": "bbc91b64a7dc917c",
+     "len": 467,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 151,
+     "hash": "81fe0babbfc7ef21",
+     "len": 510,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 152,
+     "hash": "8d0cc6b430bee770",
+     "len": 2238,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b4b430537154",
+      "path": "tools/shadow-extractor/cm3ti_instrumented.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 188,
+     "hash": "2c6d87bdaa130305",
+     "len": 1518,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "01dea5b25976",
+      "path": "tools/honest-compressor/glyph_test.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 189,
+     "hash": "5c7b2a6696155266",
+     "len": 1821,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "abd1baecb564",
+      "path": "tools/honest-compressor/glyph_test.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 190,
+     "hash": "417214bebebab91b",
+     "len": 2020,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 191,
+     "hash": "081cfed6d8c37658",
+     "len": 1695,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 192,
+     "hash": "e96520f94204eefb",
+     "len": 2173,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 193,
+     "hash": "ae9436891229d401",
+     "len": 1817,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 194,
+     "hash": "3408801e43b57092",
+     "len": 487,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 195,
+     "hash": "2c82ab716ad2d8cd",
+     "len": 629,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 196,
+     "hash": "0f96945a644283d0",
+     "len": 1073,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "d289b398e7c1",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 203,
+     "hash": "c7e2fefc39afa2de",
+     "len": 1077,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "dcad94024319",
+      "path": "tools/honest-compressor/rust/cm3ti.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 224,
+     "hash": "c4392f8cbf62b8ea",
+     "len": 2440,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "19f6c9e1de99",
+      "path": "tools/honest-compressor/rust/cm3ti_stack_1g.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 225,
+     "hash": "398bee9ed2cc2e63",
+     "len": 1931,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "19f6c9e1de99",
+      "path": "tools/honest-compressor/rust/cm3ti_stack_1g.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 236,
+     "hash": "533d32f9beb1c1bb",
+     "len": 2176,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "462ac0036ef2",
+      "path": "tools/honest-compressor/rust/cm3ti_stackrb.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 237,
+     "hash": "5d3e532cc2a49e46",
+     "len": 1935,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "462ac0036ef2",
+      "path": "tools/honest-compressor/rust/cm3ti_stackrb.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 271,
+     "hash": "407e14a622d62a29",
+     "len": 2221,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/tb26.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 276,
+     "hash": "7dac2271d25a0d61",
+     "len": 1976,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/tb26.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 304,
+     "hash": "bd42546a8ff00977",
+     "len": 1917,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v4_rainbow12.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 308,
+     "hash": "d65d7da045f770fe",
+     "len": 1980,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v4_rainbow12.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 321,
+     "hash": "ef78465e4010401f",
+     "len": 1955,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v5_tight.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 368,
+     "hash": "dfd265583ea5e271",
+     "len": 1917,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v8_r24.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 369,
+     "hash": "1a92f73e75a2a813",
+     "len": 2190,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v8_r24.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 371,
+     "hash": "b0f9a2ec530b7b01",
+     "len": 2419,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "17bbe1c5cd8c",
+      "path": "tools/honest-compressor/rust/variants/v8_r24.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 409,
+     "hash": "e97bee411c53f8dd",
+     "len": 1238,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc26.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 419,
+     "hash": "b3b24c5921659b93",
+     "len": 2310,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 420,
+     "hash": "27979e1fdb5ccc5f",
+     "len": 2086,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 421,
+     "hash": "5a6f013acde078c1",
+     "len": 2320,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 423,
+     "hash": "f17db2a03676b7d4",
+     "len": 2594,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 424,
+     "hash": "24645b4cd61716db",
+     "len": 2203,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "b6c71227d91c",
+      "path": "tools/honest-compressor/rust/variants/vc27.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 519,
+     "hash": "d470ac15435f51ac",
+     "len": 2419,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "6d805ad90793",
+      "path": "tools/honest-compressor/rust/variants/v14_primed.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 639,
+     "hash": "74a75b3a780b616b",
+     "len": 301,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "3ec907bb99c6",
+      "path": "tools/sphere-moe/sphere_moe_hrm.py"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 641,
+     "hash": "6d81b04fcf8f17ad",
+     "len": 2309,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "f18273b1412d",
+      "path": "tools/honest-compressor/rust/variants/vc65.rs"
+     }
+    },
+    {
+     "count_at_promotion": 2,
+     "event_idx": 647,
+     "hash": "fbcd4104af71da01",
+     "len": 1260,
+     "triggering_occurrence_was": "raw",
+     "triggering_provenance": {
+      "commit": "f18273b1412d",
+      "path": "tools/honest-compressor/rust/variants/vc65.rs"
+     }
+    }
+   ],
+   "state_bytes": {
+    "hot_bodies": 76171,
+    "index": 3392,
+    "probation": 6496,
+    "replay_ledger": 4096
+   },
+   "total": 608169,
+   "vs_baseline": 215388
+  },
+  "fixed_tau_3": {
+   "cumulative_curve": null,
+   "promoted": 36,
+   "promotions": 36,
+   "state_bytes": {
+    "hot_bodies": 50614,
+    "index": 2304,
+    "probation": 7040,
+    "replay_ledger": 4096
+   },
+   "total": 632106,
+   "vs_baseline": 191451
+  },
+  "fixed_tau_4": {
+   "cumulative_curve": null,
+   "promoted": 22,
+   "promotions": 22,
+   "state_bytes": {
+    "hot_bodies": 29629,
+    "index": 1408,
+    "probation": 7488,
+    "replay_ledger": 4096
+   },
+   "total": 639950,
+   "vs_baseline": 183607
+  },
+  "fixed_tau_5": {
+   "cumulative_curve": null,
+   "promoted": 15,
+   "promotions": 15,
+   "state_bytes": {
+    "hot_bodies": 16470,
+    "index": 960,
+    "probation": 7712,
+    "replay_ledger": 4096
+   },
+   "total": 642797,
+   "vs_baseline": 180760
+  },
+  "fixed_tau_6": {
+   "cumulative_curve": null,
+   "promoted": 14,
+   "promotions": 14,
+   "state_bytes": {
+    "hot_bodies": 14267,
+    "index": 896,
+    "probation": 7744,
+    "replay_ledger": 4096
+   },
+   "total": 654605,
+   "vs_baseline": 168952
+  },
+  "fixed_tau_7": {
+   "cumulative_curve": null,
+   "promoted": 14,
+   "promotions": 14,
+   "state_bytes": {
+    "hot_bodies": 14267,
+    "index": 896,
+    "probation": 7744,
+    "replay_ledger": 4096
+   },
+   "total": 668648,
+   "vs_baseline": 154909
+  },
+  "fixed_tau_8": {
+   "cumulative_curve": null,
+   "promoted": 12,
+   "promotions": 12,
+   "state_bytes": {
+    "hot_bodies": 10395,
+    "index": 768,
+    "probation": 7808,
+    "replay_ledger": 4096
+   },
+   "total": 674915,
+   "vs_baseline": 148642
+  }
+ },
+ "tau2_vs_governor": {
+  "only_governor": [],
+  "only_tau2": [],
+  "promotion_set_equal": true,
+  "promotion_time_disagreements": [
+   {
+    "gov_event": 179,
+    "hash": "049184e5ccfb818b",
+    "tau2_event": 144
+   }
+  ]
+ }
+}

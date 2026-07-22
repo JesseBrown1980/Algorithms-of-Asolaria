@@ -1,0 +1,36 @@
+{
+ "arms": {
+  "A_unmasked_pool": {
+   "bpe": 1.5456,
+   "forbidden_top1_violations": 6006,
+   "total_bits": 41730.1
+  },
+  "B_unmasked_27": {
+   "bpe": 0.7862,
+   "forbidden_top1_violations": 6,
+   "total_bits": 21226.2
+  },
+  "C_masked_derivable_pool": {
+   "bpe": 0.8805,
+   "forbidden_top1_violations": 0,
+   "total_bits": 23772.6
+  },
+  "D_masked_derivable_27": {
+   "bpe": 0.7769,
+   "forbidden_top1_violations": 0,
+   "total_bits": 20975.1
+  },
+  "E_masked_transmitted_27": {
+   "bpe": 2.3618,
+   "forbidden_top1_violations": 0,
+   "total_bits": 63769.1
+  }
+ },
+ "events": 27000,
+ "feasible_bound_bits": {
+  "boundary": 1.0,
+  "open": 1.584962500721156,
+  "wall": 0.0
+ },
+ "regimes": 27
+}

@@ -1,0 +1,27 @@
+=== RIDING THE WAVE — adaptive online prediction on real Wikipedia ===
+data: 4,000,000 real enwik bytes; bounded memory (LRU GC), prequential
+
+order-1: wave per 500KB chunk: 4.006 -> 3.909 -> 3.917 -> 3.881 -> 3.897 -> 3.880 -> 3.906 -> 3.942 ...
+          final bpc = 3.9172   (the wave DESCENDS as it learns)
+
+order-2: wave per 500KB chunk: 3.894 -> 3.465 -> 3.398 -> 3.364 -> 3.324 -> 3.292 -> 3.326 -> 3.312 ...
+          final bpc = 3.4218   (the wave DESCENDS as it learns)
+
+order-3: wave per 500KB chunk: 4.541 -> 3.767 -> 3.584 -> 3.477 -> 3.326 -> 3.270 -> 3.283 -> 3.230 ...
+          final bpc = 3.5598   (the wave DESCENDS as it learns)
+
+WHAT THE MATH SAYS (honest, corrected by Jesse — the two-phase floor):
+  * The wave is real: bpc drops as the model rides and learns. This IS how
+    cmix works, and heavier test-time modeling is the honest road from 1.75
+    toward the 0.9 record — a large specialist effort, not a free trick.
+  * The wave RHYMES DOWN TO THE FLOOR — and at the floor it changes phase.
+    Above the floor the bits are DETERMINED (predictable, cheap). AT the floor
+    the residual bits are FREE — irreducible — and free means the system
+    UNRHYMES IN ANY RIME DIRECTION: each choice of the residual bits is a
+    different consistent continuation (the Law-18 family, met from below).
+  * Uncontrollability = those free directions. The rule of 3/27 resolves it:
+    anchor any two, the third is determined (trijection/CRT conditioning) —
+    the free directions collapse to controlled ones.
+  * For COMPRESSION the floor remains the floor (every symbol still encoded,
+    lossless, never below entropy). For GENERATION the floor is the DOOR —
+    the branching surface where un-rhyming begins. Both true at once.

@@ -1,0 +1,18 @@
+=== PLAY THE FROZEN RIME SYSTEM RIME-DIRECTIONALLY vs ACTUAL enwik9 ===
+corpus   : enwik9  (1,000,000,000 B on disk)   playing 1,000,000,000 B   order-2 frozen model
+sphere   : (Z/1000081Z)*  g=7   256 symbols <-> 256 rime points (bijection, rate 1.0)
+
+PLAYED (rime-directional, frozen model, prequential):
+  bytes played        : 1,000,000,000
+  time                : 322.0s  (3.11 MB/s, pure Python)
+  rime-Fischer invert : byte-exact on first 100k points = True
+  HONEST bpc (order-2 frozen model) = 3.0788  ->  384,850,874 B
+  compression ratio   : 2.598x   (over the 1,000,000,000 real bytes)
+
+VERDICT (honest):
+  * The rime relabel is a bijection -> RATE 1.0: coding the rime addresses
+    gives the SAME bpc as coding the bytes. The rime layer adds nothing below
+    the frozen model's entropy, and inverts byte-exact (rime-directional play).
+  * This order-2 model is deliberately simple (~3.08 bpc). The rime system
+    is the ADDRESSING axis; real enwik9 COMPRESSION is the trained coder —
+    vc65 = 1.3645 bpc (separate binary). The rime play never dips below it.

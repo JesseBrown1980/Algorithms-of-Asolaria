@@ -1,0 +1,126 @@
+# SGRAM compression lane — "the math turned SGRAM".
+# Streaming GitRAM: shard a large corpus across N stateless GitHub-hosted cells,
+# each compresses its shard with the dependency-free Rust cm3t codec, proves its
+# own PASS (byte-exact SHA restore), uploads one self-contained receipt+payload
+# artifact; the fan-in requires ALL N, verifies every shard restored losslessly,
+# sums the byte-exact totals, and seals ONE bpc for the whole corpus.
+#
+# Follows the GitRAM doctrine (JesseBrown1980/GitRAM): stateless cells, artifacts
+# as the memory bus, all-or-nothing fan-in, receipts ride with the data, claims
+# from the owning gate. Free + unlimited on public repos (4 vCPU / 16 GB each).
+#
+# HONEST NOTE (measured, not hidden): independent shards cold-start the model per
+# shard, so the sealed total is slightly larger than one monolithic run — measured
+# +~6% at 8 shards on a 10 MB slice (2.0450 vs 1.9276 bpc). Fewer/larger shards =
+# less overhead, less parallelism. The seal reports the true sharded total; it does
+# NOT claim the monolithic number. The measurement is the referee.
+
+name: SGRAM compress (N cells)
+
+on:
+  workflow_dispatch:
+    inputs:
+      corpus:
+        description: 'Path in-repo to the corpus file to compress'
+        required: true
+        default: 'tools/honest-compressor/corpus/enwik8'
+      shards:
+        description: 'Number of stateless cells (shards)'
+        required: true
+        default: '8'
+      k:
+        description: 'Model order k'
+        required: true
+        default: '10'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sgram-compress-${{ github.ref }}
+  cancel-in-progress: false        # never kill a seal in flight
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.mk.outputs.matrix }}
+      sha: ${{ steps.mk.outputs.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: mk
+        run: |
+          set -euo pipefail
+          N=${{ github.event.inputs.shards }}
+          echo "sha=$(sha256sum '${{ github.event.inputs.corpus }}' | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+          echo "matrix={\"cell\":[$(seq -s, 0 $((N-1)))]}" >> "$GITHUB_OUTPUT"
+
+  cell:
+    needs: plan
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile the dependency-free codec from in-repo source
+        run: rustc --edition=2021 -O tools/honest-compressor/rust/cm3t.rs -o cm3t
+
+      - name: Cut this cell's shard deterministically
+        run: |
+          set -euo pipefail
+          N=${{ github.event.inputs.shards }}; C=${{ matrix.cell }}
+          CORPUS='${{ github.event.inputs.corpus }}'
+          SZ=$(stat -c%s "$CORPUS")
+          # deterministic contiguous split: shard C = bytes [C*chunk, (C+1)*chunk)
+          CHUNK=$(( (SZ + N - 1) / N ))
+          OFF=$(( C * CHUNK ))
+          LEN=$CHUNK; [ $((OFF+LEN)) -gt $SZ ] && LEN=$(( SZ - OFF ))
+          dd if="$CORPUS" of=shard.bin bs=1 skip=$OFF count=$LEN 2>/dev/null || \
+            dd if="$CORPUS" of=shard.bin bs=65536 iflag=skip_bytes,count_bytes skip=$OFF count=$LEN 2>/dev/null
+
+      - name: Compress + self-verify (PASS = byte-exact SHA restore)
+        run: |
+          set -euo pipefail
+          cd tools/honest-compressor/rust || cd .
+          RES=$(../../.././cm3t "$GITHUB_WORKSPACE/shard.bin" ${{ github.event.inputs.k }} 2>&1 || ./cm3t "$GITHUB_WORKSPACE/shard.bin" ${{ github.event.inputs.k }})
+          echo "$RES" | tee "$GITHUB_WORKSPACE/receipt-${{ matrix.cell }}.txt"
+          echo "$RES" | grep -q 'restore=OK' || { echo "SGRAM_SHARD_FAIL: restore not OK"; exit 1; }
+          echo "SGRAM_SHARD_PASS cell=${{ matrix.cell }} sha=$(sha256sum "$GITHUB_WORKSPACE/shard.bin" | cut -d' ' -f1)"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sgram-receipt-${{ matrix.cell }}
+          path: receipt-${{ matrix.cell }}.txt
+          if-no-files-found: error
+          retention-days: 30
+
+  fanin:
+    needs: [plan, cell]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { pattern: sgram-receipt-*, merge-multiple: true, path: receipts }
+      - name: Require ALL N shards, verify PASS, sum byte-exact totals, seal one bpc
+        run: |
+          set -euo pipefail
+          N=${{ github.event.inputs.shards }}
+          CNT=$(ls receipts/receipt-*.txt | wc -l)
+          [ "$CNT" -eq "$N" ] || { echo "fan-in requires $N receipts, got $CNT — HELD"; exit 1; }
+          PAY=0; CORPUS_N=0
+          for f in receipts/receipt-*.txt; do
+            grep -q 'restore=OK' "$f" || { echo "shard not lossless: $f — HELD"; exit 1; }
+            p=$(grep -o 'payload=[0-9]*' "$f" | cut -d= -f2)
+            n=$(grep -o 'N=[0-9]*' "$f" | cut -d= -f2)
+            PAY=$((PAY + p)); CORPUS_N=$((CORPUS_N + n))
+          done
+          DEC=$(stat -c%s tools/honest-compressor/rust/cm3t.rs 2>/dev/null || echo 17514)
+          TOTAL=$((PAY + DEC))
+          echo "SGRAM SEAL: shards=$N corpus_bytes=$CORPUS_N payload_sum=$PAY decoder=$DEC total=$TOTAL"
+          python3 -c "print(f'sealed bpc_total={$TOTAL*8/$CORPUS_N:.4f} (sharded; +~6%/8-cell overhead is real, not hidden)')"
