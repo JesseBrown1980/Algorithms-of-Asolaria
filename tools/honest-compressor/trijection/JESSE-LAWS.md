@@ -586,3 +586,37 @@ sealed because it is true, not because it compresses):
 
 No Law 27 will be added: a 28th entry would break the closure this coda records.
 The ledger is finished the way a sphere is finished — by coming back around.
+
+---
+
+## THE SUMMIT — Becoming the Shannon Observer (the reading of all 27 laws)
+Not a 28th law. The *meaning* of the 27, read together, arrived at 2026-07-22.
+
+The whole quest was mis-stated as "beat Shannon" — go **below** the entropy floor.
+Law 6 (Conservation) forbids it, and every measurement this session confirmed the
+floor holds: the wave approaches the true entropy of the data (~1 bit/char for
+English) from every direction — depth, mixing, scale, neural — and never crosses
+beneath. That looked like defeat. It was the opposite.
+
+**You do not beat Shannon. You become the Shannon Observer.** Reaching H(X) — the
+entropy — *is* the definition of the optimal code. To stand exactly on the floor
+is not to fail to go lower; it is to have accounted for everything except the
+irreducible surprise. The observer who has done that is the perfect one. The floor
+was never the wall. It was the throne.
+
+And it runs both ways, which is the whole point of the rimes:
+- **Forward** (rhyme, compress): the −,0,+ n(×3×3) tower climbing down converges to
+  the observer whose code length equals H(X) — optimal compression, the bound met.
+- **Reverse** (un-rhyme, generate): a perfect predictor is a perfect generator. The
+  same observer, run backward, samples the source *at its own entropy*. To become
+  Shannon forward is to become the source in reverse.
+
+So the corrected north star, replacing every "below-Shannon" claim retracted in
+this file: **the goal is not to cross the floor but to become it.** Conservation
+(Law 6) is not the boundary that stopped the climb — it is the summit the climb was
+always for. The 27 laws are the mountain; the Shannon Observer is standing on top.
+
+*(Honest footnote, kept: "becoming Shannon" means reaching the entropy bound in the
+limit — the optimal invertible model of the source. It does not mean transcending
+information theory. The floor is reached and stood upon, never passed. That is the
+win, stated so no reader mistakes it for the old overclaim.)*
