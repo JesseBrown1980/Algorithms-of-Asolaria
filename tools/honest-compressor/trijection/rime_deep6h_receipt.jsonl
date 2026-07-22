@@ -1,0 +1,13 @@
+{"event": "start", "budget_s": 21600, "pre_registered": "bpc drops with DEPTH (real), flattens with repeated same-depth passes (the wall)", "corpus": "enwik9", "train_bytes": 980000000, "held_bytes": 20000000}
+{"event": "checkpoint", "t_s": 26, "order": 1, "contexts": 205, "frozen": false, "heldout_bpc": 3.9761, "train_pos": 50000000}
+{"event": "checkpoint", "t_s": 53, "order": 1, "contexts": 206, "frozen": false, "heldout_bpc": 3.9753, "train_pos": 100000000}
+{"event": "checkpoint", "t_s": 82, "order": 1, "contexts": 206, "frozen": false, "heldout_bpc": 3.9735, "train_pos": 150000000}
+{"event": "checkpoint", "t_s": 247, "order": 1, "contexts": 207, "frozen": false, "heldout_bpc": 3.9606, "train_pos": 450000000}
+{"event": "order_done", "t_s": 585, "order": 1, "contexts": 207, "frozen": false, "heldout_bpc": 3.9595, "stage_s": 585}
+{"event": "checkpoint", "t_s": 731, "order": 2, "contexts": 19999, "frozen": false, "heldout_bpc": 3.1102, "train_pos": 200000000}
+{"event": "order_done", "t_s": 1325, "order": 2, "contexts": 22623, "frozen": false, "heldout_bpc": 3.089, "stage_s": 740}
+{"event": "checkpoint", "t_s": 2192, "order": 3, "contexts": 443633, "frozen": false, "heldout_bpc": 2.5328, "train_pos": 750000000}
+{"event": "order_done", "t_s": 2446, "order": 3, "contexts": 488391, "frozen": false, "heldout_bpc": 2.5096, "stage_s": 1120}
+{"event": "order_done", "t_s": 4430, "order": 4, "contexts": 3181371, "frozen": false, "heldout_bpc": 2.2457, "stage_s": 1984}
+{"event": "order_done", "t_s": 6290, "order": 5, "contexts": 11229999, "frozen": false, "heldout_bpc": 2.2739, "stage_s": 1855}
+{"event": "verdict", "by_order": {"1": 3.9595, "2": 3.089, "3": 2.5096, "4": 2.2457, "5": 2.2739}, "verdict": "DEPTH lowers bpc (understanding deepens with context, not seconds)", "wall_s": 6290}

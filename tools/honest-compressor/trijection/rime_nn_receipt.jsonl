@@ -1,0 +1,12 @@
+{"event": "start", "params": 2726144, "seq": 128, "batch": 64, "hid": 512, "layers": 2, "train_bytes": 100000000, "held_bytes": 2000000, "note": "char GRU, CPU torch, held-out bpc"}
+{"event": "eval", "t_s": 2271, "step": 2000, "heldout_bpc": 2.1652, "seen_MB": 16.4}
+{"event": "best", "step": 2000, "heldout_bpc": 2.1652}
+{"event": "eval", "t_s": 4518, "step": 4000, "heldout_bpc": 2.1075, "seen_MB": 32.8}
+{"event": "best", "step": 4000, "heldout_bpc": 2.1075}
+{"event": "eval", "t_s": 6730, "step": 6000, "heldout_bpc": 2.0867, "seen_MB": 49.2}
+{"event": "best", "step": 6000, "heldout_bpc": 2.0867}
+{"event": "eval", "t_s": 9111, "step": 8000, "heldout_bpc": 2.0375, "seen_MB": 65.5}
+{"event": "best", "step": 8000, "heldout_bpc": 2.0375}
+{"event": "eval", "t_s": 11655, "step": 10000, "heldout_bpc": 2.0431, "seen_MB": 81.9}
+{"event": "eval", "t_s": 14639, "step": 12000, "heldout_bpc": 2.0429, "seen_MB": 98.3}
+{"event": "eval", "t_s": 17937, "step": 14000, "heldout_bpc": 2.2061, "seen_MB": 114.7}

@@ -1,0 +1,10 @@
+=== 1 MB train (6,000,000 trits) ===  best = 3^13 (1,594,323-nary)  bpc 3.2145
+   3^3=27:7.6362  3^5=243:6.3811  3^6=729:5.4992  3^9:4.0110  3^12:3.3332  3^13:3.2145
+=== 6 MB train (36,000,000 trits) ===  best = 3^13  bpc 3.1034
+   3^3:7.6378  3^5:6.4161  3^6:5.5296  3^9:4.0056  3^12:3.2468  3^13:3.1034
+=== 27 MB train (162,000,000 trits) ===  best = 3^13  bpc 3.0420
+   3^3:7.6324  3^5:6.4035  3^6:5.5158  3^9:3.9805  3^12:3.1962  3^13:3.0420
+READING: within a size bpc falls per level (the wave, no wall yet at 3^13);
+across sizes every deep level drops with data (the wall recedes). Both measured.
+Compression frontier this session: order-4 2.2457 / neural 2.04 / CM 1.8091 / vc65 1.7464.
+Below 1.0 NOT reached; the wave approaches the true entropy, never below.
