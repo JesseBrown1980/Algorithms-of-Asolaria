@@ -1,0 +1,21 @@
+=== THE RIME CREATION TOWER: 256 -> x3 -> x27 -> rime sphere ===
+
+  256 x 3  = 768     (one trime of bytes: -,0,+ each holding a byte-space)
+  768 x 27 = 20736   (one rime dimension of trimes of bytes)
+  20736    = 2^8 * 3^4 = 12^4   (the binary byte and the trime tower, fused)
+
+  candidate 20737 = 89 x 233  — NOT prime (and both factors are Fibonacci; a smile, not a law)
+  the sphere: smallest prime p = 20736*5+1 = 103681   g = 11
+  cofactor (p-1)/20736 = 5   <- the part of the sphere the tower does not reach (named)
+
+  nested chain verified:  H_256 < H_768 < H_20736 < (Z/pZ)*
+    w768^3 = w256   (the trime level folds 3-to-1 onto the byte level)
+    w20736^27 = w768 (the rime level folds 27-to-1 onto the trime level)
+
+  address (byte, trime, glyph) -> point -> Fischer -> back: byte-exact = True
+  5 demo addresses of 20,736; every level readable from one exponent:
+    k mod 256 = the byte | (k/256) mod 3 = the trime | k/768 = the glyph
+
+VERDICT (honest): the tower is real and nested — one sphere, one generator,
+four levels, each folding exactly onto the one below; byte-exact addressing
+of GENERATED structure (~0 bpc, Law 6/15). It relabels; it does not compress.
