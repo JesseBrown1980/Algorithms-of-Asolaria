@@ -1,0 +1,29 @@
+[
+ {
+  "window_s": 1,
+  "elapsed_ns": 1001507211,
+  "overshoot_ns": 1507211,
+  "bytes_fed": 101000000,
+  "mb_s": 100.8480007838905,
+  "chunks_verified": 101,
+  "exact": true
+ },
+ {
+  "window_s": 3,
+  "elapsed_ns": 3000090010,
+  "overshoot_ns": 90010,
+  "bytes_fed": 302000000,
+  "mb_s": 100.66364642172852,
+  "chunks_verified": 302,
+  "exact": true
+ },
+ {
+  "window_s": 27,
+  "elapsed_ns": 27000822483,
+  "overshoot_ns": 822483,
+  "bytes_fed": 2676000000,
+  "mb_s": 99.10809204737512,
+  "chunks_verified": 2676,
+  "exact": true
+ }
+]

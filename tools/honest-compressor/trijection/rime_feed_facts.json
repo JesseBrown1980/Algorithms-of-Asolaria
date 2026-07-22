@@ -1,0 +1,8 @@
+{
+ "host": "vm",
+ "kernel": "6.18.5",
+ "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+ "cores": 4,
+ "mem_gb": 15.7,
+ "sha_engine": "2d0a43df46970925"
+}
