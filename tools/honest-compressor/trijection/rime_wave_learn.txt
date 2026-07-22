@@ -1,0 +1,19 @@
+after  1s (exact 1,006,033,505 ns): 1,759,210 waves learned  held-out 8.0819 bits/coeff  top-1 0.40%
+after  3s (exact 3,011,065,769 ns): 4,999,860 waves learned  held-out 8.0819 bits/coeff  top-1 0.40%
+after 27s (exact 27,003,229,125 ns): 46,757,950 waves learned  held-out 8.0818 bits/coeff  top-1 0.40%
+
+KEYS = (p=271, g=6, w=114)  — 9 bytes
+  unlock the transform : invert EVERY held-out block byte-exact = True
+  the gradient-0s      : DC interp err 77.34  vs AC bins 79.09  (no advantage — mod-p wraps the mean)
+  CONTROL (keys, no coeffs): 13.45% — keys unlock structure, never data
+
+SPLIT VERDICT (honest):
+  * Keys (9 bytes) invert every wave block byte-exact, forever — TRUE.
+  * "Longer runs -> more accurate glyphs" in the WAVE domain — REFUTED: 27x the
+    waves bought 0.0001 bits; the learners hit the uniform ceiling log2(271)=8.08
+    inside the first second. The prism WHITENS (Law 20): the transform moves the
+    structure out of marginal statistics before the glyphs can eat.
+  * Where the instinct IS true: the BYTE domain — the receipt-backed vc65 scaling
+    curve 2.0209 -> 1.7529 -> 1.7464 bpc (1/10/100 MB). Law of large numbers,
+    converging to the floor, never past it.
+  * Rule earned: LEARN BEFORE YOU WHITEN, NEVER AFTER.

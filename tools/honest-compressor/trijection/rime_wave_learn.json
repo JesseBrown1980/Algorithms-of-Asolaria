@@ -1,0 +1,30 @@
+{
+ "keys_bytes": 9,
+ "keys_invert_all_blocks": true,
+ "dc_interp_err": 77.34122278382581,
+ "ac_interp_err": 79.08555139752896,
+ "ctrl_keys_only": 0.1344936344936345,
+ "checkpoints": [
+  {
+   "window_s": 1,
+   "elapsed_ns": 1006033505,
+   "waves_run": 1759210,
+   "heldout_bits_per_coeff": 8.08190122651021,
+   "top1": 0.0040071040071040075
+  },
+  {
+   "window_s": 3,
+   "elapsed_ns": 3011065769,
+   "waves_run": 4999860,
+   "heldout_bits_per_coeff": 8.081854461981445,
+   "top1": 0.0039991039991039996
+  },
+  {
+   "window_s": 27,
+   "elapsed_ns": 27003229125,
+   "waves_run": 46757950,
+   "heldout_bits_per_coeff": 8.081848197925401,
+   "top1": 0.003993403993403994
+  }
+ ]
+}
