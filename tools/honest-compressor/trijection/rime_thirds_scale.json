@@ -1,0 +1,44 @@
+{
+ "thirds": [
+  {
+   "third": 0,
+   "bytes": 333333333,
+   "ns": 8363383182,
+   "exact": true
+  },
+  {
+   "third": 1,
+   "bytes": 333333333,
+   "ns": 8183863194,
+   "exact": true
+  },
+  {
+   "third": 2,
+   "bytes": 333333333,
+   "ns": 8156057606,
+   "exact": true
+  }
+ ],
+ "scaling": [
+  {
+   "bank_MB": 100,
+   "heldout_bpc": 3.0847171232284123,
+   "score_ns": 6287347682
+  },
+  {
+   "bank_MB": 300,
+   "heldout_bpc": 3.0634051127353343,
+   "score_ns": 3504039702
+  },
+  {
+   "bank_MB": 900,
+   "heldout_bpc": 3.0512652100137703,
+   "score_ns": 3193275688
+  }
+ ],
+ "ledger": {
+  "bank1_hold23_exact": true,
+  "bank1_hold13_acc": 0.14385357914385358,
+  "bank2_hold13_exact": true
+ }
+}

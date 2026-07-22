@@ -1,0 +1,54 @@
+{
+ "D1": [
+  {
+   "third": 0,
+   "slice_bytes": 12345679,
+   "ns": 310084011,
+   "exact": true
+  },
+  {
+   "third": 1,
+   "slice_bytes": 12345679,
+   "ns": 190145987,
+   "exact": true
+  },
+  {
+   "third": 2,
+   "slice_bytes": 12345679,
+   "ns": 200904376,
+   "exact": true
+  }
+ ],
+ "D2": [
+  {
+   "full_bank_MB": 100,
+   "slice_bank_MB": 3.7,
+   "slice_bpc": 3.3079073132311474,
+   "full_bpc": 3.0847,
+   "diff": 0.22320731323114718
+  },
+  {
+   "full_bank_MB": 300,
+   "slice_bank_MB": 11.1,
+   "slice_bpc": 3.187845925418704,
+   "full_bpc": 3.0634,
+   "diff": 0.12444592541870403
+  },
+  {
+   "full_bank_MB": 900,
+   "slice_bank_MB": 33.3,
+   "slice_bpc": 3.115431585510711,
+   "full_bpc": 3.0513,
+   "diff": 0.06413158551071119
+  }
+ ],
+ "D3": {
+  "full_metric": 3.0512652100137703,
+  "slice_metric": 2.9473391151119404,
+  "diff": -0.10392609490182991
+ },
+ "D4": {
+  "held_frac": 0.037037037037037035,
+  "recovered_acc": 0.13551560148166944
+ }
+}
