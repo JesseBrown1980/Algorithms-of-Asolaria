@@ -1,0 +1,8 @@
+{
+ "n": 15,
+ "rms_line": 66.77477241895554,
+ "rms_parachute": 16.033852048743807,
+ "period": 17.453292519943297,
+ "amplitude": 111.78913219705734,
+ "verdict": "PARACHUTE (drift + pendulum) wins"
+}
