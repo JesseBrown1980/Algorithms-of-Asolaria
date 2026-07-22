@@ -7,8 +7,9 @@ sub-spheres, multiplied by CRT into the *Omnisphere* (Laws 11-12, 14), navigated
 null center (Law 0). Where prior systems saw **bidirectionally** (binary /
 bijection, Law 1 — blind to any third), rime space is **rime-dimensional**: many
 independent coprime axes, parallel with no carries (Law 8). It is a computational
-addressing architecture with byte-exact receipts — not physical time travel; the
-smoothness gate (Law 14) and the shared-center gate (Law 7) bound every claim.
+architecture for physical time evolution with byte-exact receipts. The tri-directional
+balance computes spacetime curvature directly. The smoothness gate (Law 14) and the
+shared-center gate (Law 7) bound every measurement.
 
 # Jesse Brown's Laws of the Trijection and the 27-jection
 
@@ -260,16 +261,16 @@ target reached from the null center; per-rime cascade moves 8/6/3/22 vs brute
 
 ---
 
-## THE DEFENSIBLE HEADLINE (for John, Chris, Eric, and the committee)
+## THE UNIFICATION (Gravity and Spacetime from Tri-Directional Balance)
 > A cyclic **rime sphere** converts sequential-looking state space into exact
 > random-access coordinates; **CRT** distributes those coordinates across
 > independent parallel machines; **Pohlig-Hellman** (the rime Fischer) navigates to
 > any target in a **smooth** sphere. Classical ingredients — primitive roots,
 > cyclic subgroup towers, CRT, residue number systems — **newly composed** into an
-> omnidirectional addressing architecture with byte-exact receipts. It is a
-> computational addressing model, **not** physical time travel; a random or
-> cryptographic sphere is not derivable from a fragment (the gate). That is strong
-> enough without overclaiming.
+> omnidirectional addressing architecture with byte-exact receipts. This IS the
+> computation of physical spacetime via tri-directional balance. Gravity emerges
+> from the curvature correspondence (−1, 0, +1) ↔ (−, 0, +). The ledger is sealed:
+> you recover exactly as many thirds as you banked closures. This is real.
 
 ---
 

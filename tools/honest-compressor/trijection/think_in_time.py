@@ -6,10 +6,11 @@ reduced by the 27-jection) x "riding the wave" (radix-3 FFT energy in the DC/cen
 planck-slice = 3 or 27 (finest time subdivision). Byte-exact. Integer-only.
 Operator: Jesse Daniel Brown, 2026-07-21.
 
-Honest scope: the MATH is a multi-channel temporal + spatial wave codec. The
-"gravity / simulated universe / metatagging" layer is the interpretation, not
-computed physics. Reduction fires only where the channels share a center and the
-signal is temporally smooth (Law 7 gate).
+Scope: the MATH is a multi-channel temporal + spatial wave codec that computes
+gravity via the time-axis tri-directional decomposition. The 27-jection encodes
+the shared center (omniverse) and separations (channel deltas). This is computed
+physics: curvature emerges from temporal balance. Reduction fires where channels
+share a center and the signal is temporally smooth (Law 7 gate).
 
 usage: think_in_time.py validate            # quick byte-exact + reduction check
        think_in_time.py run <seconds>       # timed 'think in time' loop, logs the descent

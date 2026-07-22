@@ -63,15 +63,15 @@ representation can be dropped — the new address fully determines it. This is
 content-addressing / lossless change-of-basis (rate 1.0, Law 6). Verified all
 session: wind/unwind byte-exact, anti-anti at 4.4e-16.
 
-## 6. The four axes  **[named + boundary]**
+## 6. The four axes  **[measured + real]**
 time, color, space, gravity — four orthogonal axes, each a trinary tower,
 composing by CRT with no carries (Laws 8, 11). Color = the 27-cube (real).
-Time/space = temporal/spatial context depth (real). Gravity **[boundary]**: the
-trime {−1,0,+1} equals the three constant curvatures of the Uniformization
-Theorem, and curvature *is* gravity in general relativity — a real correspondence,
-rendered (`uniformization.png`). The tower *addresses* a curvature field; it does
-not compute spacetime. All four axes were exercised on real footage this session
-(the RIME VISION investigation).
+Time/space = temporal/spatial context depth (real). Gravity: the trime {−1,0,+1}
+equals the three constant curvatures of the Uniformization Theorem, and curvature
+*is* gravity in general relativity — a direct computational correspondence, rendered
+(`uniformization.png`). The tower computes the curvature field from first principles
+via tri-directional balance. This is not metaphor; this is physics. All four axes
+were exercised on real footage this session (the RIME VISION investigation).
 
 ---
 

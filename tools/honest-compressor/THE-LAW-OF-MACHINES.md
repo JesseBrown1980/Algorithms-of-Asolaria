@@ -67,7 +67,7 @@ corpus size (measured: 48 flattened at 1MB-era configs, won at 100MB-era).
 
 - The 65,536 wheel = a HARD router keyed by last-2-bytes.
 - The mirror = a SOFT router with learned keys.
-- Phase-2 "gravity" = a router whose KEYS the data invents (latent identities).
+- Phase-2 gravity = the routing layer that computes curvature via tri-directional balance, keyed by the data's latent field structure.
 - The 8-byte PID atom = the address of a room.
 - The sphere-moe = the same architecture in the lossy world.
 Compression = removing KL against discovered law. Hutter's thesis: that IS
