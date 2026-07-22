@@ -1,0 +1,283 @@
+{
+ "summary": {
+  "sectors": 27,
+  "total_bytes": 999999999,
+  "total_ns": 51963308516,
+  "all_1of3_exact": true,
+  "all_2of3_banked2_exact": true,
+  "all_sphere_ok": true,
+  "hold_1of3_bank1_accuracy": 0.13914393313914394
+ },
+ "sectors": [
+  {
+   "sector": 0,
+   "bytes": 37037037,
+   "ns": 3351611367,
+   "sha": "6bdc6997",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1689023,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 1,
+   "bytes": 37037037,
+   "ns": 2179225235,
+   "sha": "206f4cd1",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1660100,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 2,
+   "bytes": 37037037,
+   "ns": 2049336359,
+   "sha": "b0054808",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1672923,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 3,
+   "bytes": 37037037,
+   "ns": 1502330378,
+   "sha": "fbc8940f",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1681324,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 4,
+   "bytes": 37037037,
+   "ns": 1891367009,
+   "sha": "d0d9e785",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1683880,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 5,
+   "bytes": 37037037,
+   "ns": 1651933031,
+   "sha": "8893d579",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1699176,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 6,
+   "bytes": 37037037,
+   "ns": 1943179127,
+   "sha": "7ac0d665",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1676803,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 7,
+   "bytes": 37037037,
+   "ns": 2054554740,
+   "sha": "896a41bd",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1699624,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 8,
+   "bytes": 37037037,
+   "ns": 1858795812,
+   "sha": "387a7ac9",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1702251,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 9,
+   "bytes": 37037037,
+   "ns": 1860446974,
+   "sha": "2a840a30",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1685429,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 10,
+   "bytes": 37037037,
+   "ns": 1857431484,
+   "sha": "2a3f7ec7",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1715943,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 11,
+   "bytes": 37037037,
+   "ns": 1676975850,
+   "sha": "419c2982",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1687271,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 12,
+   "bytes": 37037037,
+   "ns": 1563732160,
+   "sha": "3624d654",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1762902,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 13,
+   "bytes": 37037037,
+   "ns": 1528839076,
+   "sha": "f59eb276",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1879932,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 14,
+   "bytes": 37037037,
+   "ns": 1641211141,
+   "sha": "814b8d44",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1867774,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 15,
+   "bytes": 37037037,
+   "ns": 1824097458,
+   "sha": "df15fef2",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1880426,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 16,
+   "bytes": 37037037,
+   "ns": 1819255708,
+   "sha": "1155d58c",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1713038,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 17,
+   "bytes": 37037037,
+   "ns": 1881342088,
+   "sha": "c4c4e8b7",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1690665,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 18,
+   "bytes": 37037037,
+   "ns": 1900541953,
+   "sha": "222b7995",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1733733,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 19,
+   "bytes": 37037037,
+   "ns": 1948362300,
+   "sha": "45af9103",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1670424,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 20,
+   "bytes": 37037037,
+   "ns": 1823469971,
+   "sha": "efbdd127",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1676730,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 21,
+   "bytes": 37037037,
+   "ns": 1771564676,
+   "sha": "b2f62a94",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1642155,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 22,
+   "bytes": 37037037,
+   "ns": 1686022144,
+   "sha": "0bc385f1",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1685013,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 23,
+   "bytes": 37037037,
+   "ns": 1706019872,
+   "sha": "0ab602c7",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1737268,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 24,
+   "bytes": 37037037,
+   "ns": 1620624364,
+   "sha": "cee35871",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1740598,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 25,
+   "bytes": 37037037,
+   "ns": 1617592050,
+   "sha": "7a6e6229",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1717698,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  },
+  {
+   "sector": 26,
+   "bytes": 37037037,
+   "ns": 1489765859,
+   "sha": "61a5d215",
+   "recover_1of3_exact": true,
+   "pair_hits_1of3": 1729208,
+   "recover_2of3_banked2_exact": true,
+   "sphere_ok": true
+  }
+ ]
+}
