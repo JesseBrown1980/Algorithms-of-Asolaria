@@ -2,9 +2,11 @@
 
 Run the Rust 1.81 crate in this directory and preserve the fixed carrier:
 
-- every axis uses exactly `-,0,+`
+- the three starting colors are red, green, and blue
+- each starting color takes a distinct `-,0,+` value
+- their product creates 27 different trit-value combinations
 - color × time × space is `3 × 3 × 3 = 27`
-- `6×6×6×6×6×12 = 93,312` is route topology over the 27-state carrier, not an alphabet
+- `6×6×6×6×6×12 = 93,312` is route topology over the 27 derived trit-value combinations, not an alphabet
 - do not introduce 256, 1024, 4096, PID, or binary glyph identities
 
 Probe the container for CUDA, Vulkan, OpenCL, SYCL, or another real GPU compute
