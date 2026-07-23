@@ -15,8 +15,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "cloud-glyph-results"
 STATES = ("-", "0", "+")
-CHANNELS = ("RED", "GREEN", "BLUE")
+FLASHLIGHTS = ("RED", "BLUE", "GREEN")
 VALUES = {"-": 0, "0": 127, "+": 255}
+MIRROR_PATH = {"-": 1, "0": 2, "+": 3}
 FONT = {
     " ": (0, 0, 0, 0, 0, 0, 0), "+": (0, 4, 4, 31, 4, 4, 0), "-": (0, 0, 0, 31, 0, 0, 0), "0": (14, 17, 19, 21, 25, 17, 14),
     "1": (4, 12, 4, 4, 4, 4, 14), "2": (14, 17, 1, 2, 4, 8, 31), "3": (30, 1, 1, 14, 1, 1, 30), "7": (31, 1, 2, 4, 8, 8, 8),
@@ -86,61 +87,76 @@ class Canvas:
 
 
 def label(t: tuple[str, str, str]) -> str:
-    return "R%s G%s B%s" % t
+    return "R%s B%s G%s" % t
+
+
+def mirror_label(t: tuple[str, str, str]) -> str:
+    return "M%d M%d M%d" % tuple(MIRROR_PATH[state] for state in t)
+
+
+def projection_rgb(t: tuple[str, str, str]) -> tuple[int, int, int]:
+    red, blue, green = t
+    return VALUES[red], VALUES[green], VALUES[blue]
 
 
 def glyph_sheet(tuples: list[tuple[str, str, str]]):
     image = Canvas(960, 720, (13, 18, 31))
-    image.text(24, 18, "RIME 27 GLYPH SHEET", (255, 220, 155), 3)
-    image.text(24, 50, "3 PARENT COLORS BRANCH TO 27 TRIT VALUES", (180, 220, 255), 2)
+    image.text(24, 18, "RIME 27 MIRROR SIGNATURES", (255, 220, 155), 3)
+    image.text(24, 50, "2-COLOR 2D SOURCE PROBED BY R B G FLASHLIGHTS", (180, 220, 255), 2)
     for index, item in enumerate(tuples):
         column, row = index % 3, index // 3
         x, y = 24 + column * 312, 82 + row * 70
-        rgb = tuple(VALUES[state] for state in item)
+        rgb = projection_rgb(item)
         image.rect(x, y, 288, 58, (35, 43, 61))
         image.rect(x + 8, y + 8, 42, 42, rgb)
         image.text(x + 62, y + 12, label(item), (255, 255, 255), 2)
-        image.text(x + 62, y + 32, "RED GREEN BLUE", (170, 190, 215), 1)
+        image.text(x + 62, y + 32, mirror_label(item), (170, 190, 215), 1)
     image.png(OUT / "rime-27-glyph-sheet.png")
 
 
 def sphere_slices(tuples: list[tuple[str, str, str]]):
     image = Canvas(1200, 760, (10, 15, 26))
-    image.text(28, 20, "RIME 27 SPHERE SLICES", (255, 220, 155), 3)
-    image.text(28, 52, "RED GREEN BLUE TRIT COORDINATES", (180, 220, 255), 2)
+    image.text(28, 20, "RIME 27 MIRROR VIEWS", (255, 220, 155), 3)
+    image.text(28, 52, "2D 2-COLOR SOURCE + R B G LIGHTS + MIRRORS 1 2 3", (180, 220, 255), 2)
     for slice_index, red in enumerate(STATES):
         cx = 205 + slice_index * 395
         image.circle(cx, 250, 150, (24, 35, 57))
         image.circle(cx, 250, 145, (17, 25, 43))
-        image.text(cx - 54, 82, "RED %s" % red, (255, 120, 120), 2)
+        image.text(cx - 72, 82, "RED LIGHT M%d" % MIRROR_PATH[red], (255, 120, 120), 2)
         group = [item for item in tuples if item[0] == red]
         for point, item in enumerate(group):
             px, py = cx - 84 + (point % 3) * 84, 174 + (point // 3) * 52
-            image.circle(px, py, 16, tuple(VALUES[state] for state in item))
+            image.circle(px, py, 16, projection_rgb(item))
             image.text(px - 34, py + 22, label(item), (240, 240, 240), 1)
     for index, item in enumerate(tuples):
         x, y = 25 + (index % 9) * 130, 465 + (index // 9) * 78
-        image.rect(x, y, 118, 65, tuple(max(28, VALUES[s] // 3) for s in item))
+        image.rect(x, y, 118, 65, tuple(max(28, value // 3) for value in projection_rgb(item)))
         image.text(x + 8, y + 12, label(item), (255, 255, 255), 1)
-        image.text(x + 8, y + 35, "R G B", (220, 225, 235), 2)
+        image.text(x + 8, y + 35, mirror_label(item), (220, 225, 235), 1)
     image.png(OUT / "rime-27-sphere-slices.png")
 
 
 def main():
-    tuples = [(red, green, blue) for red in STATES for green in STATES for blue in STATES]
+    tuples = [(red, blue, green) for red in STATES for blue in STATES for green in STATES]
     backend = gpu_backend()
     prepared = run_gpu_coordinate_kernel(backend, tuples)
     if len(prepared) != 27 or len(set(prepared)) != 27:
-        raise RuntimeError("RIME requires exactly 27 distinct red/green/blue tuples")
+        raise RuntimeError("RIME requires exactly 27 distinct RGB-flashlight/mirror signatures")
     OUT.mkdir(exist_ok=True)
     glyph_sheet(prepared)
     sphere_slices(prepared)
+    glyph_path = OUT / "rime-27-glyph-sheet.png"
+    sphere_path = OUT / "rime-27-sphere-slices.png"
+    glyph_digest = hashlib.sha256(glyph_path.read_bytes()).hexdigest()
+    sphere_digest = hashlib.sha256(sphere_path.read_bytes()).hexdigest()
     gpu_execution = 1 if backend != "UNAVAILABLE" else 0
     receipt = "\n".join((
-        "RIME-GPU-RECEIPT|schema=RIME-CLOUD-GLYPH-V1|parent_colors=red,green,blue|states=-,0,+|tuple_count=27",
+        "RIME-GPU-RECEIPT|schema=RIME-CLOUD-MIRROR-V2|source_dimensions=2|starting_colors=2|source_color_names=operator_inputs|view_count=27",
+        "PROBE|flashlights=red,blue,green|mirror_paths=1,2,3|states=-,0,+|trit_map=1:-,2:0,3:+",
         "GPU-PROBE|cuda_device=%d|kfd_device=%d|render_device=%d|compute_backend=%s|gpu_execution=%d" % (Path("/dev/nvidiactl").exists(), Path("/dev/kfd").exists(), bool(list(Path("/dev/dri").glob("renderD*"))), backend, gpu_execution),
         "COORDINATES|" + ";".join(label(item).replace(" ", "") for item in prepared),
-        "ARTIFACTS|glyph_sheet=rime-27-glyph-sheet.png|sphere_slices=rime-27-sphere-slices.png|deterministic=1",
+        "ARTIFACTS|glyph_sheet=rime-27-glyph-sheet.png|glyph_sha256=%s|sphere_slices=rime-27-sphere-slices.png|sphere_sha256=%s|deterministic=1" % (glyph_digest, sphere_digest),
+        "INTERPRETATION|anti_and_anti_anti_verses=OPERATOR_DESIGN|physical_mapping=UNVERIFIED",
         "VERDICT|status=PASS|gpu_execution=%d" % gpu_execution,
         "",
     ))

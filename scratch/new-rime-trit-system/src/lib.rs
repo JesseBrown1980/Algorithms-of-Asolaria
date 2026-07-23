@@ -7,7 +7,9 @@ pub mod wave;
 
 #[derive(Debug, Eq, PartialEq)]
 pub struct BuildReceipt {
-    pub trit_glyphs: usize,
+    pub source_dimensions: usize,
+    pub source_colors: usize,
+    pub view_signatures: usize,
     pub coordinates: usize,
     pub nest_nodes: u64,
     pub nest_depth: u8,
@@ -25,7 +27,9 @@ pub fn verify() -> Result<BuildReceipt, String> {
     let _wave_routes = wave::verify()?;
     let storage = storage::verify()?;
     Ok(BuildReceipt {
-        trit_glyphs: trit.glyphs,
+        source_dimensions: trit.source_dimensions,
+        source_colors: trit.source_colors,
+        view_signatures: trit.view_signatures,
         coordinates: trit.coordinates,
         nest_nodes: nest.nodes_per_run,
         nest_depth: nest.depth,

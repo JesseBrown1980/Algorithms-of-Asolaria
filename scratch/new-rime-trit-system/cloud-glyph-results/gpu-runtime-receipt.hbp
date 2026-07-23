@@ -1,5 +1,7 @@
-RIME-GPU-RECEIPT|schema=RIME-CLOUD-GLYPH-V1|parent_colors=red,green,blue|states=-,0,+|tuple_count=27
+RIME-GPU-RECEIPT|schema=RIME-CLOUD-MIRROR-V2|source_dimensions=2|starting_colors=2|source_color_names=operator_inputs|view_count=27
+PROBE|flashlights=red,blue,green|mirror_paths=1,2,3|states=-,0,+|trit_map=1:-,2:0,3:+
 GPU-PROBE|cuda_device=0|kfd_device=0|render_device=0|compute_backend=UNAVAILABLE|gpu_execution=0
-COORDINATES|R-G-B-;R-G-B0;R-G-B+;R-G0B-;R-G0B0;R-G0B+;R-G+B-;R-G+B0;R-G+B+;R0G-B-;R0G-B0;R0G-B+;R0G0B-;R0G0B0;R0G0B+;R0G+B-;R0G+B0;R0G+B+;R+G-B-;R+G-B0;R+G-B+;R+G0B-;R+G0B0;R+G0B+;R+G+B-;R+G+B0;R+G+B+
-ARTIFACTS|glyph_sheet=rime-27-glyph-sheet.png|sphere_slices=rime-27-sphere-slices.png|deterministic=1
+COORDINATES|R-B-G-;R-B-G0;R-B-G+;R-B0G-;R-B0G0;R-B0G+;R-B+G-;R-B+G0;R-B+G+;R0B-G-;R0B-G0;R0B-G+;R0B0G-;R0B0G0;R0B0G+;R0B+G-;R0B+G0;R0B+G+;R+B-G-;R+B-G0;R+B-G+;R+B0G-;R+B0G0;R+B0G+;R+B+G-;R+B+G0;R+B+G+
+ARTIFACTS|glyph_sheet=rime-27-glyph-sheet.png|glyph_sha256=1805a7cf18fe37a86c3882f5036b5e3adfde9f98aad242e7346d9dc27b43eacd|sphere_slices=rime-27-sphere-slices.png|sphere_sha256=5bf050edbd650a0602b90c14531d2cb08226b2e4ca8ce0bcf318fff543561a59|deterministic=1
+INTERPRETATION|anti_and_anti_anti_verses=OPERATOR_DESIGN|physical_mapping=UNVERIFIED
 VERDICT|status=PASS|gpu_execution=0

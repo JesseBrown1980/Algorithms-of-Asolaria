@@ -1,4 +1,4 @@
-use crate::trit::{ColorGlyph, RimePath, Trit};
+use crate::trit::{FlashMirrorSignature, RimePath, Trit};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum OmniStage { Mtp, Dispatcher, Router, Revolver, Omnimet, Scheduler, Hrm, OmniShannon, Gnn, ReverseGainGnn, RimeFischer }
@@ -17,8 +17,11 @@ fn prime(n: u64) -> bool {
 }
 
 pub fn verify() -> Result<OmniStats, String> {
-    let glyph = ColorGlyph { red: Trit::Negative, green: Trit::Center, blue: Trit::Positive };
-    if glyph.ordinal() >= 27 || glyph.rgb() != [0, 127, 255] { return Err("RGB projection is not trit-derived".into()); }
+    let signature = FlashMirrorSignature { red: Trit::Negative, blue: Trit::Center, green: Trit::Positive };
+    if signature.ordinal() >= 27 || signature.display_rgb() != [0, 255, 127] {
+        return Err("RGB flashlight projection is not trit-derived".into());
+    }
+    if signature.mirror_paths() != [1, 2, 3] { return Err("mirror-path mapping is not 1/2/3".into()); }
     let path = RimePath(vec![Trit::Negative, Trit::Center, Trit::Positive]);
     if path.base3_code().is_none() { return Err("RIME path overflow".into()); }
     if !prime(1000003) || !prime(1000033) { return Err("Rime Fischer endpoints must be prime".into()); }
