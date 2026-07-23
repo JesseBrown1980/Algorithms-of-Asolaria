@@ -1,0 +1,10 @@
+RIME-TRIT-BUILD|schema=RIME-TRIT-OMNI-V1|rust=1.81|json=0|pid_field=0|binary_alphabet=0
+GPU-GATE|wsl_dxg=1|adapter=Intel_UHD|compute_backend=UNAVAILABLE|glyph_buffer=27_trits|gpu_execution=0|json=0
+RIMETRIT|alphabet=-,0,+|rgb_projection=0,127,255|glyphs=27|coordinates=27|json=0
+RIMENEST|branching=3|depth=7|nodes_per_run=3280|watcher_gate=trit|tamper_levels_tested=7|consent=operator_center_until_explicit|json=0
+RIMEPASS|axes=color,time,space,calculation_time,play_time,bits,storage_space|states=-,0,+|coordinates=27|gravity=derived_dimensionless|physical_gravity=UNVERIFIED|json=0
+DEEPWAVE|carrier_coordinates=27|route_topology=6x6x6x6x6x12|routes=93312|operators=omnishannon,gnn,reverse_gain_gnn,fnn,gslm|trained_weights=UNVERIFIED|json=0
+OMNIPIPE|stages=11|mtp=1|dispatcher=1|router=1|revolver=1|omnimet=1|scheduler=1|hrm=1|omnishannon=1|gnn=1|reverse_gain_gnn=1|rime_fischer=1|json=0
+STORAGE|backends=3|roundtrips=3|file_roundtrips=3|sgram=tuple_rows|local=records|cloud=manifest_adapter|arbitrary_payload_recovery=0|json=0
+MODEL|training=trit_glyph_interface|trained_weights=not_present_in_scratch_cell|json=0
+VERDICT|computational_structure=PASS|physical_claims=UNVERIFIED|json=0
