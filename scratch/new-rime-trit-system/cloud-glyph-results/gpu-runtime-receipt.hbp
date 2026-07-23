@@ -1,0 +1,5 @@
+RIME-GPU-RECEIPT|schema=RIME-CLOUD-GLYPH-V1|parent_colors=red,green,blue|states=-,0,+|tuple_count=27
+GPU-PROBE|cuda_device=0|kfd_device=0|render_device=0|compute_backend=UNAVAILABLE|gpu_execution=0
+COORDINATES|R-G-B-;R-G-B0;R-G-B+;R-G0B-;R-G0B0;R-G0B+;R-G+B-;R-G+B0;R-G+B+;R0G-B-;R0G-B0;R0G-B+;R0G0B-;R0G0B0;R0G0B+;R0G+B-;R0G+B0;R0G+B+;R+G-B-;R+G-B0;R+G-B+;R+G0B-;R+G0B0;R+G0B+;R+G+B-;R+G+B0;R+G+B+
+ARTIFACTS|glyph_sheet=rime-27-glyph-sheet.png|sphere_slices=rime-27-sphere-slices.png|deterministic=1
+VERDICT|status=PASS|gpu_execution=0

@@ -2,7 +2,7 @@ fn main() {
     match new_rime_trit_system::verify() {
         Ok(receipt) => {
             println!("RIME-TRIT-BUILD|schema=RIME-TRIT-OMNI-V1|rust=1.81|json=0|pid_field=0|binary_alphabet=0");
-            println!("GPU-GATE|wsl_dxg=1|adapter=Intel_UHD|compute_backend=UNAVAILABLE|parent_colors=3|derived_trit_values=27|gpu_execution=0|json=0");
+            println!("GPU-GATE|compute_probe=generate_cloud_glyph_artifacts.py|parent_colors=3|derived_trit_values=27|json=0");
             println!("RIMETRIT|alphabet=-,0,+|parent_colors=red,green,blue|parent_count=3|derived_trit_values={}|coordinates={}|json=0", receipt.trit_glyphs, receipt.coordinates);
             println!("RIMENEST|branching=3|depth={}|nodes_per_run={}|watcher_gate=trit|tamper_levels_tested={}|consent=operator_center_until_explicit|json=0", receipt.nest_depth, receipt.nest_nodes, receipt.nest_depth);
             println!("RIMEPASS|axes=color,time,space,calculation_time,play_time,bits,storage_space|states=-,0,+|coordinates=27|gravity=derived_dimensionless|physical_gravity=UNVERIFIED|json=0");
